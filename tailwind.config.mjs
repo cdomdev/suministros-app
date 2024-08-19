@@ -4,6 +4,12 @@ export default {
 
 	theme: {
 		extend: {},
+		backgroundImage: {
+			'category-banios': "url('/banios.webp')",
+			'category-cocinas': "url('/cicinas.webp')",
+			'category-contruccion': "url('/constr.webp')",
+			'category-psisos': "url('/pisos.webp')",
+		  }
 	},
 	plugins: [require('flowbite/plugin')],
 }
