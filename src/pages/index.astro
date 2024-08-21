@@ -5,82 +5,73 @@ import MercadoPago from "../components/icons/MercadoPago.astro";
 import Truck from "../components/icons/Truck.astro";
 ---
 
-<Layout title="Welcome to Astro.">
-	<main>
-		<Carrusel />
-		<h2
-			class="text-sm md:text-xl my-2 md:my-4 text-wrap font-semibold text-center lg:pl-16"
-		>
-			Haz de tu hogar o negocio un espacio unico, aqui encontraras
-			Sanitarios, pinturas, lavamanos, cocinas y mas productos para
-			remodelar tus espacios.
-		</h2>
-		<section class="flex flex-col w-full mb-3">
-			<div class="mx-auto">
-				<h3
-				class="text-sm text-center md:text-left md:text-lg my-2 text-wrap font-semibold mx-auto"
-				>
-					Aqui algunos de los productos mas vendidos
-				</h3>
-				<div class="flex flex-wrap md:flex-row justify-center gap-3">
-					<div class="border w-40 h-40  lg:w-80 lg:h-72 bg-red-400">1</div>
-					<div class="border w-40 h-40  lg:w-80 lg:h-72 bg-red-400">2</div>
-					<div class="border w-40 h-40  lg:w-80 lg:h-72 bg-red-400">3</div>
-					<div class="border w-40 h-40  lg:w-80 lg:h-72 bg-red-400">4</div>
-				</div>
-			</div>
-			<div class="mx-auto mb-7">
-				<h3
-					class="text-sm text-center md:text-lg my-2 text-wrap font-semibold mx-auto"
-				>
-					Tambien pudes visitar nuestras categorias de productos
-				</h3>
-				<div
-					class="flex flex-wrap justify-center md:flex-row gap-2 md:gap-4 "
-				>
-					<a
-						href="/Baños"
-						class="bg-[url('/banios.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
-						>Baños
-					</a>
-					<a
-						href="/Baños"
-						class="bg-[url('/cocinas.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
-						>Cocinas
-					</a>
-					<a
-						href="/Baños"
-						class="bg-[url('/constr.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
-						>Contruccion
-					</a>
-					<a
-						href="/Baños"
-						class="bg-[url('/pisos.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
-						>Pisos
-					</a>
-				</div>
-			</div>
-			<div class="flex justify-around">
-				<span
-					class="flex flex-col text-center justify-center text-xs md:text-sm items-center leading-4 font-semibold"
-				>
-					<MercadoPago />
-					Metodos de pago
-					<small class="text-gray-600 text-[10px] md:text-xs"
-						>Paga con tarjetas, credito, debito <br /> a través de mercado
-						pago</small
-					>
-				</span>
-				<span
-					class="flex justify-center items-center text-xs md:text-sm  flex-col font-semibold leading-4"
-				>
-					<Truck />
-					Envios a todo el pais
-					<small class="text-gray-600 text-[10px] md:text-xs"
-						>Recibe tus compras donde estes</small
-					>
-				</span>
-			</div>
-		</section>
-	</main>
+<Layout title="Suministros">
+  <main>
+    <Carrusel />
+    <h2
+      class="text-sm md:text-xl my-2 md:my-4 text-wrap font-semibold text-center lg:pl-16">
+      Haz de tu hogar o negocio un espacio unico, aqui encontraras Sanitarios,
+      pinturas, lavamanos, cocinas y mas productos para remodelar tus espacios.
+    </h2>
+    <section class="flex flex-col w-full mb-3">
+      <div class="mx-auto">
+        <h3
+          class="text-sm text-center md:text-left md:text-lg my-2 text-wrap font-semibold mx-auto">
+          Aqui algunos de los productos mas vendidos
+        </h3>
+        <div class="flex flex-wrap md:flex-row justify-center gap-3">
+          <div class="border w-40 h-40 lg:w-80 lg:h-72 bg-red-400">1</div>
+          <div class="border w-40 h-40 lg:w-80 lg:h-72 bg-red-400">2</div>
+          <div class="border w-40 h-40 lg:w-80 lg:h-72 bg-red-400">3</div>
+          <div class="border w-40 h-40 lg:w-80 lg:h-72 bg-red-400">4</div>
+        </div>
+      </div>
+      <div class="mx-auto mb-7">
+        <h3
+          class="text-sm text-center md:text-lg my-2 text-wrap font-semibold mx-auto">
+          Tambien pudes visitar nuestras categorias de productos
+        </h3>
+        <div class="flex flex-wrap justify-center md:flex-row gap-2 md:gap-4">
+          <a
+            href="/Baños"
+            class="bg-[url('/banios.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
+            >Baños
+          </a>
+          <a
+            href="/Baños"
+            class="bg-[url('/cocinas.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
+            >Cocinas
+          </a>
+          <a
+            href="/Baños"
+            class="bg-[url('/constr.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
+            >Contruccion
+          </a>
+          <a
+            href="/Baños"
+            class="bg-[url('/pisos.webp')] w-40 h-32 lg:min-w-72 lg:min-h-60 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
+            >Pisos
+          </a>
+        </div>
+      </div>
+      <div class="flex justify-around">
+        <span
+          class="flex flex-col text-center justify-center text-xs md:text-sm items-center leading-4 font-semibold">
+          <MercadoPago />
+          Metodos de pago
+          <small class="text-gray-600 text-[10px] md:text-xs"
+            >Paga con tarjetas, credito, debito <br /> a través de mercado pago</small
+          >
+        </span>
+        <span
+          class="flex justify-center items-center text-xs md:text-sm flex-col font-semibold leading-4">
+          <Truck />
+          Envios a todo el pais
+          <small class="text-gray-600 text-[10px] md:text-xs"
+            >Recibe tus compras donde estes</small
+          >
+        </span>
+      </div>
+    </section>
+  </main>
 </Layout>
