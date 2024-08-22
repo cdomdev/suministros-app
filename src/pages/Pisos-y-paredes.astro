@@ -1,0 +1,26 @@
+---
+import Migajas1 from "../components/Migajas1.astro";
+import Layout from "../layouts/Layout.astro";
+---
+
+<Layout title="pisos y paredes">
+    <section class=" mx-3 pt-1 lg:pl-10 lg:pt-3">
+        <Migajas1 ruta="/" titulo="Pisos y paredes" pagina="Pisos y paredes" />
+        <section class="flex flex-col md:flex-row gap-2">
+            <aside class="w-full md:max-w-80 border">
+                <div class="mt-4 bg-red-200 border">
+                    <h4 class="text-base md:text-lg font-semibold">
+                        Pisos y paredes
+                    </h4>
+                </div>
+                <span>Filtros*</span>
+                <div>
+                    acordiones
+                </div>
+            </aside>
+            <article class="w-full min-h-screen">
+                <div class="bg-gray-400">pt-1</div>
+            </article>
+        </section>
+    </section>
+</Layout>
