@@ -1,18 +1,20 @@
 ---
-import CardProductos from "@/components/car/CardProductos.astro";
-import Layout from "../layouts/Layout.astro";
-import { getProductos } from "../services/productos";
+import CardProductos from "@/components/cards/CardProductos.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getProductos } from "../../services/productos";
 import type { ApiResponse } from "@/types/types";
 import { obtenerMarcasUnicas } from "@/utils/MarcasUnicas";
 import { subcategoriasUnicas } from "@/utils/subcategoriasUnicas";
 import Migajas1 from "@/components/Migajas1.astro";
+import FiltrosCategorias from "@/components/filtros/filtrosCategorias.astro";
+import FiltroMarcas from "@/components/filtros/filtroMarcas.astro";
 
 let dataresponse: ApiResponse | null = null;
 let marcasUnicas: string[] | null = null;
 let categoriasUnicas: string[] | null = null;
 
 try {
-  dataresponse = await getProductos("categorias", "cocinas");
+  dataresponse = await getProductos("categorias", "construccion-y-remodelacion");
   if (dataresponse) {
     marcasUnicas = obtenerMarcasUnicas(dataresponse.productos);
     categoriasUnicas = subcategoriasUnicas(dataresponse.productos);
@@ -23,60 +25,38 @@ try {
 
 ---
 
-<Layout title="Cocinas">
-    <Migajas1  titulo="Cocinas" pagina="Cocinas" />
+<Layout title="Contruccion y remodelacion">
+    <Migajas1  titulo="Contruccion y remodelacion" pagina="Contruccion y remodelacion" />
   <section
     class="w-full px-3 mx-auto flex flex-col md:grid gap-1 md:gap-2 md:grid-cols-cat-cust"
   >
   <aside class="px-2 md:px-5 hidden md:flex">
    
   <div class="mt-2 w-full">
-    <h2 class="text-lg font-semibold uppercase">Cocinas</h2>
+    <h2 class="text-lg font-semibold uppercase">Construccion  y remodelacion</h2>
     <span class="text-gray-500 uppercase text-[12px] mb-2">Filtros*</span>
     <div class="w-full bg-[#ececec] py-3 flex justify-start px-2">
       <h3 class="text-[18px]">Categorías</h3>
     </div>
-    <div class="pl-3 ">
+    <div class="pl-3 uppercase ">
       {categoriasUnicas && categoriasUnicas.length > 0 ? (
         categoriasUnicas.map((categoria) => (
-          <ul>
-            <li>
-              <input
-                class="m-2 rounded-[3px] w-3 h-3 focus:ring-2 uppercase"
-                type="checkbox"
-                name="categoria"
-                value={categoria}
-                id={categoria}
-              />
-              <label for={categoria}>{categoria}</label>
-            </li>
-          </ul>
+         <FiltrosCategorias categoria={categoria} />
         ))
-      ) : (
-      <div class="my-2 flex justify-center">
+        ) : (
+        <div class="my-2 flex justify-center">
 
-<p>No hay categorias disponibles</p>
-</div>
-      )}
+          <p>No hay categorias disponibles</p>
+  </div>
+        )}
     </div>
     <div class="w-full bg-[#ececec] py-3 flex justify-start px-2">
       <h3 class="text-[18px]">Marcas</h3>
     </div>
-    <div class="pl-3 ">
+    <div class="pl-3 uppercase ">
       {marcasUnicas && marcasUnicas.length > 0 ? (
         marcasUnicas.map((marca) => (
-          <ul>
-            <li>
-              <input
-                class="m-2 rounded-[3px] w-3 uppercase h-3 focus:ring-2"
-                type="checkbox"
-                name="marca"
-                value={marca}
-                id={marca}
-              />
-              <label for={marca}>{marca}</label>
-            </li>
-          </ul>
+          <FiltroMarcas marca={marca} />
         ))
       ) : (
         <div class="my-2 flex justify-center">
@@ -103,12 +83,13 @@ try {
       <div class="w-full gap-x-2 gap-y-2 md:gap-8 flex flex-wrap">
         {dataresponse && dataresponse.productos.length > 0 ? (
           dataresponse.productos.map((producto) => (
-            <CardProductos
+          <CardProductos
+            id={producto.id}
               img={producto.image}
               precio={producto.valor}
               ref={producto.referencia}
-              texto={producto.nombre}
-              titulo={producto.marca}
+              nombre={producto.nombre}
+              descuento={producto.discount}
               marca={producto.marca}
               categoria={producto.subcategoria.nombre}
             />
@@ -117,12 +98,8 @@ try {
       </div>
     </section>
 
+    
    
-
-
-  </section>
-</Layout>
-
 <script type="module">
   document.addEventListener("DOMContentLoaded", () => {
     const filtroMarcas = document.querySelectorAll('input[name="marca"]');
@@ -165,7 +142,7 @@ try {
         ? "none"
         : "block";
 
-     
+    
     }
 
     filtroMarcas.forEach((input) =>
@@ -179,3 +156,7 @@ try {
     aplicarFiltros();
   });
 </script>
+
+  </section>
+</Layout>
+

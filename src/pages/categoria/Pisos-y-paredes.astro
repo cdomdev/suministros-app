@@ -1,7 +1,7 @@
 ---
-import CardProductos from "@/components/car/CardProductos.astro";
-import Layout from "../layouts/Layout.astro";
-import { getProductos } from "../services/productos";
+import CardProductos from "@/components/cards/CardProductos.astro";
+import Layout from "../../layouts/Layout.astro";
+import { getProductos } from "../../services/productos";
 import type { ApiResponse } from "@/types/types";
 import { obtenerMarcasUnicas } from "@/utils/MarcasUnicas";
 import { subcategoriasUnicas } from "@/utils/subcategoriasUnicas";
@@ -15,7 +15,7 @@ let marcasUnicas: string[] | null = null;
 let categoriasUnicas: string[] | null = null;
 
 try {
-  dataresponse = await getProductos("categorias", "pisos-paredes");
+  dataresponse = await getProductos("categorias", "pisos-y-paredes");
   if (dataresponse) {
     marcasUnicas = obtenerMarcasUnicas(dataresponse.productos);
     categoriasUnicas = subcategoriasUnicas(dataresponse.productos);
@@ -39,16 +39,15 @@ try {
     <div class="w-full bg-[#ececec] py-3 flex justify-start px-2">
       <h3 class="text-[18px]">Categorías</h3>
     </div>
-    <div class="pl-3 ">
+    <div class="pl-3 uppercase ">
       {categoriasUnicas && categoriasUnicas.length > 0 ? (
         categoriasUnicas.map((categoria) => (
           <FiltrosCategorias categoria={categoria}/>
         ))
       ) : (
       <div class="my-2 flex justify-center">
-
-<p>No hay categorias disponibles</p>
-</div>
+       <p>No hay categorias disponibles</p>
+         </div>
       )}
     </div>
     <div class="w-full bg-[#ececec] py-3 flex justify-start px-2">
@@ -85,11 +84,12 @@ try {
         {dataresponse && dataresponse.productos.length > 0 ? (
           dataresponse.productos.map((producto) => (
             <CardProductos
+            id={producto.id}
               img={producto.image}
               precio={producto.valor}
               ref={producto.referencia}
-              texto={producto.nombre}
-              titulo={producto.marca}
+              nombre={producto.nombre}
+              descuento={producto.discount}
               marca={producto.marca}
               categoria={producto.subcategoria.nombre}
             />
@@ -97,63 +97,63 @@ try {
         ): <></>}
       </div>
     </section>
-
+    <script type="module">
+      document.addEventListener("DOMContentLoaded", () => {
+        const filtroMarcas = document.querySelectorAll('input[name="marca"]');
+        const filtroCategorias = document.querySelectorAll(
+          'input[name="categoria"]'
+        );
+        const productos = document.querySelectorAll(".card-producto");
+        const mensajeNoProductos = document.querySelector(
+          "#mensaje-no-productos"
+        );
+    
+        function aplicarFiltros() {
+          const marcasSeleccionadas = Array.from(filtroMarcas)
+            .filter((input) => input.checked)
+            .map((input) => input.value);
+          const categoriasSeleccionadas = Array.from(filtroCategorias)
+            .filter((input) => input.checked)
+            .map((input) => input.value);
+    
+          let hayProductosVisibles = false;
+    
+          productos.forEach((producto) => {
+            const marca = producto.getAttribute("data-marca");
+            const categoria = producto.getAttribute("data-categoria");
+    
+            const mostrarProducto =
+              (marcasSeleccionadas.length === 0 ||
+                marcasSeleccionadas.includes(marca)) &&
+              (categoriasSeleccionadas.length === 0 ||
+                categoriasSeleccionadas.includes(categoria));
+    
+            producto.style.display = mostrarProducto ? "block" : "none";
+    
+            if (mostrarProducto) {
+              hayProductosVisibles = true;
+            }
+          });
+    
+          mensajeNoProductos.style.display = hayProductosVisibles
+            ? "none"
+            : "block";
+    
+          
+        }
+    
+        filtroMarcas.forEach((input) =>
+          input.addEventListener("change", aplicarFiltros)
+        );
+        filtroCategorias.forEach((input) =>
+          input.addEventListener("change", aplicarFiltros)
+        );
+    
+        // Inicializar estado del mensaje al cargar
+        aplicarFiltros();
+      });
+    </script>
+    
   </section>
 </Layout>
 
-<script type="module">
-  document.addEventListener("DOMContentLoaded", () => {
-    const filtroMarcas = document.querySelectorAll('input[name="marca"]');
-    const filtroCategorias = document.querySelectorAll(
-      'input[name="categoria"]'
-    );
-    const productos = document.querySelectorAll(".card-producto");
-    const mensajeNoProductos = document.querySelector(
-      "#mensaje-no-productos"
-    );
-
-    function aplicarFiltros() {
-      const marcasSeleccionadas = Array.from(filtroMarcas)
-        .filter((input) => input.checked)
-        .map((input) => input.value);
-      const categoriasSeleccionadas = Array.from(filtroCategorias)
-        .filter((input) => input.checked)
-        .map((input) => input.value);
-
-      let hayProductosVisibles = false;
-
-      productos.forEach((producto) => {
-        const marca = producto.getAttribute("data-marca");
-        const categoria = producto.getAttribute("data-categoria");
-
-        const mostrarProducto =
-          (marcasSeleccionadas.length === 0 ||
-            marcasSeleccionadas.includes(marca)) &&
-          (categoriasSeleccionadas.length === 0 ||
-            categoriasSeleccionadas.includes(categoria));
-
-        producto.style.display = mostrarProducto ? "block" : "none";
-
-        if (mostrarProducto) {
-          hayProductosVisibles = true;
-        }
-      });
-
-      mensajeNoProductos.style.display = hayProductosVisibles
-        ? "none"
-        : "block";
-
-      
-    }
-
-    filtroMarcas.forEach((input) =>
-      input.addEventListener("change", aplicarFiltros)
-    );
-    filtroCategorias.forEach((input) =>
-      input.addEventListener("change", aplicarFiltros)
-    );
-
-    // Inicializar estado del mensaje al cargar
-    aplicarFiltros();
-  });
-</script>
