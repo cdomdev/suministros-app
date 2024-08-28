@@ -16,6 +16,9 @@ export default {
     fontFamily: {
       "font-cust": "Roboto, sans-serif",
     },
+    gridTemplateColumns: {
+      "cat-cust": "0.8fr 3fr",
+    }
   },
   plugins: [require("flowbite/plugin")],
 };

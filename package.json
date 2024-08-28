@@ -4,20 +4,25 @@
   "version": "0.0.1",
   "scripts": {
     "dev": "astro dev",
-    "start": "astro dev",
+    "start" :"node src/api/server.js", 
     "build": "astro check && astro build",
     "preview": "astro preview",
     "astro": "astro"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.2",
+    "@astrojs/node": "^8.3.3",
     "@astrojs/tailwind": "^5.1.0",
     "@fontsource/roboto": "^5.0.14",
     "astro": "^4.14.2",
     "axios": "^1.7.5",
     "bootstrap": "^5.3.3",
+    "express": "^4.19.2",
     "flowbite": "^2.5.1",
     "tailwindcss": "^3.4.10",
     "typescript": "^5.5.4"
+  },
+  "devDependencies": {
+    "@faker-js/faker": "^8.4.1"
   }
 }
