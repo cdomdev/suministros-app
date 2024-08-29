@@ -10,7 +10,7 @@ const { title } = Astro.props;
 ---
 
 <!doctype html>
-<html lang="en">
+<html lang="es">
   <head>
     <meta charset="UTF-8" />
     <meta name="description" content="Astro description" />
@@ -28,9 +28,9 @@ const { title } = Astro.props;
   </head>
   <Header />
   <body>
-    <section class="mt-[60px] font-font-cust">
+    <main class="pt-2 md:mt-24">
       <slot />
-    </section>
+    </main>
   </body>
   <Footer />
   <script
@@ -46,9 +46,10 @@ const { title } = Astro.props;
     body {
       margin: 0;
       padding: 0;
+      font-family: Roboto, sans-serif;
+      margin-top: 2em;
     }
     html {
-      font-family: "Roboto";
     }
     * {
       box-sizing: border-box;

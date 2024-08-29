@@ -7,8 +7,5 @@ import node from "@astrojs/node";
 export default defineConfig({
   integrations: [tailwind()],
   output: "server",
-  adapter: node({
-    mode: 'middleware',
-    handler: 'src/api/server.js'
-  }),
+  adapter: node(),
 });

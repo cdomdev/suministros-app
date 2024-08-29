@@ -14,19 +14,22 @@ const { id, ref, img, nombre, descuento, precio, marca, categoria } =
   Astro.props;
 
 import { formateValue } from "@/utils/formatearValor";
+import { calcularDescuento } from "@/utils/calcularDescuento";
 ---
 
 <a
-  href=`/poroducto/${id}`
-  class="card-producto rounded-sm flex flex-col gap-2 items-center justify-between w-[10em] md:w-[16em] p-3 h-auto bg-white border hover:shadow-md duration-150"
+  href=`/detalle-producto/${id}`
+  class="card-producto rounded-sm flex flex-col gap-1 items-center justify-between w-[10em] md:w-[16em] p-3 h-auto bg-white border hover:shadow-md duration-150"
   data-marca={marca}
   data-categoria={categoria}>
   <div class="flex w-full justify-between items-center mb-1">
     <span
       class=`${descuento ? 'bg-red-600' :' bg-white'} py-1 px-4   text-xs text-white font-semibold`
-      >{descuento} %</span
+      >{descuento }  %</span
     >
-    <span class="text-gray-700 text-[8px] md:text-[10px]">REF:{ref}</span>
+    <span class="text-gray-700 text-[8px] md:text-[10px] uppercase"
+      >REF:{ref}</span
+    >
   </div>
   <picture>
     <img
@@ -38,15 +41,28 @@ import { formateValue } from "@/utils/formatearValor";
   </picture>
   <div class="mt-2">
     <ul class="flex flex-col justify-center items-center leading-3">
-      <li class="text-gray-400 text-xs font-semibold mt-3">{marca}</li>
-      <li class="text-xs md:text-sm leading-5 text-center">{nombre}</li>
-      <li class="text-sm md:text-lg my-2 font-semibold">
-        $ {formateValue(precio)}
+      <li class="text-gray-400 text-xs font-semibold mt-3 uppercase">
+        {marca}
       </li>
+      <li class="text-xs md:text-sm leading-5 text-center">{nombre}</li>
+      {
+        descuento ? (
+        <li class=" mt-2 line-through text-xs text-red-700 opacity-[50%]">
+            $ {formateValue(precio)}
+          </li>
+          <li class="text-sm md:text-lg my-2 font-semibold ">
+            $ {calcularDescuento(precio, descuento)}
+          </li>
+        ) : (
+          <li class="text-sm md:text-lg my-2 font-semibold">
+            $ {formateValue(precio)}
+          </li>
+        )
+      }
     </ul>
-    <div class="flex justify-center w-[50%] mx-auto">
+    <div class="flex justify-center w-[80%] md:w-[50%] mx-auto">
       <button
-        class="bg-blue-700 border-none py-2 text-xs mt-2 mx-auto text-white w-full m-auto rounded-sm hover:bg-blue-500 duration-100 md:text-sm">
+        class="bg-blue-700 border-none py-2 text-[10px] mt-2 mx-auto text-white w-full m-auto rounded-sm hover:bg-blue-500 duration-100 md:text-sm">
         Ver producto
       </button>
     </div>
