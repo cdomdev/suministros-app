@@ -9,7 +9,17 @@ export interface Producto {
   referencia: string;
   discount: number | null;
   subcategoria: any;
+  quantity?: number
 }
+
+
+export type ProductoCarrito = {
+  image?: string;
+  nombre: string;
+  quantity?: number;
+  referencia: string;
+  id: number
+};
 
 export interface ApiResponse {
   productos: Producto[];

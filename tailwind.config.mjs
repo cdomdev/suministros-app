@@ -19,7 +19,8 @@ export default {
     },
     gridTemplateColumns: {
       "cat-cust": "0.8fr 3fr",
-      "col-cust-2": "50% 50%"
+      "col-cust-2": "50% 50%",
+      "col-cust-3": "70% 30%"
     }
   },
   plugins: [require("flowbite/plugin")],

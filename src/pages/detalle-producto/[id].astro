@@ -3,6 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import { getProductoBy } from "@/services/productos";
 import { calcularDescuento } from "@/utils/calcularDescuento";
 import { formateValue } from "@/utils/formatearValor";
+import { BtnAddCar } from "@/components/carritoDecompras/BtnAddCar";
 const { id } = Astro.params;
 
 let producto;
@@ -74,12 +75,8 @@ if (id) {
                     <p class="text-sm leading-5 text-balance my-3">
                         {producto.description}
                     </p>
-                    <div class="flex gap-5">
-                        <button>Contador</button>
-                        <button
-                            class="bg-blue-600 px-3 py-2 text-white rounded-sm hover:bg-blue-500 duration-200"
-                            >Agregar al carrito</button
-                        >
+                    <div class="flex gap-2">
+                       <BtnAddCar producto={producto} client:load/>
                     </div>
                 </div>
             </div>

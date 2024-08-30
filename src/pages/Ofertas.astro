@@ -1,9 +1,9 @@
 ---
 import CardProductos from "@/components/cards/CardProductos.astro";
-import Migajas1 from "../components/Migajas1.astro";
 import Layout from "../layouts/Layout.astro";
 import { getOfertas } from "@/services/productos";
 import { type ApiResponse } from "@/types/types";
+import MigajasOferatas from "@/components/migajas/migajasOfertas.astro";
 
 let ofertas: ApiResponse | null = null;
 
@@ -12,13 +12,11 @@ try {
 } catch (error) {
     console.error(error);
 }
-
-console.log(ofertas?.productos);
 ---
 
 <Layout title="Ofertas">
     <section class="mx-3 px-10">
-        <Migajas1 titulo="Ofertas" pagina="Ofertas" />
+        <MigajasOferatas titulo="Ofertas" pagina="Ofertas" />
         <h1 class="text-lg md:text-xl font-bold uppercase">
             Grandes descuentos
         </h1>
@@ -31,7 +29,8 @@ console.log(ofertas?.productos);
             calidad a precios unicos. nuestras ofertas te permitirán ahorrar en
             tus proyectos de renovación
         </p>
-        <div class="min-h-screen flex items-center justify-center">
+        <div
+            class="flex items-center flex-wrap justify-center gap-x-8 gap-y-4 py-4 w-full">
             {
                 ofertas && ofertas.productos.length > 0 ? (
                     ofertas.productos.map((producto) => (

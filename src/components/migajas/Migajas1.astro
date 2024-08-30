@@ -3,7 +3,9 @@ interface Props {
   titulo: string;
   pagina: string;
 }
+
 const { titulo, pagina } = Astro.props;
+let tituloSet = titulo.replaceAll(" ", "-");
 ---
 
 <div class="pl-6 mb-3 pt-10">
@@ -43,6 +45,7 @@ const { titulo, pagina } = Astro.props;
               d="m1 9 4-4-4-4"></path>
           </svg>
           <a
+            href=`/categoria/${tituloSet}`
             class="ms-1 text-sm font-medium text-gray-700 hover:text-blue-600 md:ms-2 dark:text-gray-400 dark:hover:text-white"
             >{titulo}</a
           >
