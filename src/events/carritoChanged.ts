@@ -20,5 +20,4 @@ class EventEmitter {
     }
 }
 
-const eventEmitter = typeof window !== 'undefined' ? new EventEmitter() : null;
-export default eventEmitter;
+export const eventEmitter = typeof window !== 'undefined' ? new EventEmitter() : null;

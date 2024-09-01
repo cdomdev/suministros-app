@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import eventEmitter from "@/events/carritoChanged";
+import { eventEmitter } from '@/events/carritoChanged'
 
 const CarritoPageNav = () => {
     const [cantidad, setCantidad] = useState<number>(0);

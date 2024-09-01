@@ -1,4 +1,4 @@
-import eventEmitter from "@/events/carritoChanged";
+import { eventEmitter } from "@/events/carritoChanged";
 import type { Producto } from "@/types/types";
 import { useState } from "react";
 import { Toast } from "../toast/Toas";

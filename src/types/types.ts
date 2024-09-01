@@ -8,7 +8,7 @@ export interface Producto {
   image: string;
   referencia: string;
   discount: number | null;
-  subcategoria: any;
+  subcategoria: any | null;
   quantity?: number
 }
 
@@ -26,3 +26,24 @@ export interface ApiResponse {
 }
 
 
+export interface Ruta {
+  nombre: string[];
+  ruta: string[];
+}
+
+export interface PropsItems {
+  ruta: string[];
+  nombre: string[];
+}
+
+
+export interface ContenidoPagina {
+  titulo: string;
+  subTitulo: string;
+  texto: string;
+  categoria: string
+}
+
+export interface Contenidos {
+  [key: string]: ContenidoPagina;
+}

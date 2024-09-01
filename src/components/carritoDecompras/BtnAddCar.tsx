@@ -1,7 +1,7 @@
 import type { Producto } from "@/types/types"
-import { useEffect, useState } from "react";
+import { useState } from "react";
 import { Toast } from "../toast/Toas";
-import eventEmitter from "@/events/carritoChanged";
+import { eventEmitter } from "@/events/carritoChanged";
 
 export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
     const [quantity, setQuantity] = useState<number>(1);

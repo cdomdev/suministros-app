@@ -1,0 +1,19 @@
+---
+import type { PropsItems } from "@/types/types";
+
+const { ruta, nombre } = Astro.props as PropsItems;
+---
+
+<ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
+    {
+        nombre.map((itemNombre, index) => (
+            <li>
+                <a
+                    href={`/subcategoria/${ruta[index]}`}
+                    class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white">
+                    {itemNombre}
+                </a>
+            </li>
+        ))
+    }
+</ul>

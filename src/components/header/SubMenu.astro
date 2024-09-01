@@ -1,3 +1,28 @@
+---
+import ItemsSub from "./ItemsSub.astro";
+
+const rutas = [
+  {
+    ruta1: {
+      nombre: ["Sanitarios", "Griferias", "Espejos"],
+      ruta: ["sanitarios", "griferias", "espejos"],
+    },
+    ruta2: {
+      nombre: ["Lavaplatos", "Lavaderos"],
+      ruta: ["lavaplatos", "lavaderos"],
+    },
+    ruta3: {
+      nombre: ["Pinturas", "Pegantes", "Limpiadores"],
+      ruta: ["pinturas", "pegantes", "limpiadores"],
+    },
+    ruta4: {
+      nombre: ["Pisos ceramicos", "Paredes"],
+      ruta: ["pisosceramicos", "paredes"],
+    },
+  },
+];
+---
+
 <div>
   <ul class="flex items-center gap-1 md:gap-x-3">
     <li class="relative">
@@ -25,29 +50,11 @@
       <div
         id="drop-1"
         class="hidden absolute left-0 top-full bg-white divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-700">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Sanitarios</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Griferias</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Espejos</a
-            >
-          </li>
-        </ul>
+        {
+          rutas.map((ruta) => (
+            <ItemsSub nombre={ruta.ruta1.nombre} ruta={ruta.ruta1.ruta} />
+          ))
+        }
       </div>
     </li>
     <li class="relative">
@@ -75,27 +82,16 @@
       <div
         id="drop-2"
         class="bg-white divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-700 absolute z-10 hidden">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Lavaplatos</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Lavaderos</a
-            >
-          </li>
-        </ul>
+        {
+          rutas.map((ruta) => (
+            <ItemsSub nombre={ruta.ruta2.nombre} ruta={ruta.ruta2.ruta} />
+          ))
+        }
       </div>
     </li>
     <li class="relative">
       <a
-        href="/categoria/Contruccion-y-remodelacion"
+        href="/categoria/Construccion-y-remodelacion"
         class="focus:ring-0 focus:outline-none focus:ring-indigo-50 font-medium hover:text-gray-500 rounded-lg text-xs lg:text-sm px-3 py-2.5 text-center inline-flex items-center"
         type="button">
         Construccion / remodelacion
@@ -117,29 +113,11 @@
       <div
         id="drop-3"
         class="bg-white divide-y divide-gray-100 rounded-lg shadow w-56 right-0 dark:bg-gray-700 absolute z-10 hidden">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Pinturas</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Pegantes</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Limpiadores</a
-            >
-          </li>
-        </ul>
+        {
+          rutas.map((ruta) => (
+            <ItemsSub nombre={ruta.ruta3.nombre} ruta={ruta.ruta3.ruta} />
+          ))
+        }
       </div>
     </li>
     <li class="relative">
@@ -167,22 +145,11 @@
       <div
         id="drop-4"
         class="bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute z-10 hidden">
-        <ul class="py-2 text-sm text-gray-700 dark:text-gray-200">
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Pisos ceramicos</a
-            >
-          </li>
-          <li>
-            <a
-              href="#"
-              class="block px-4 py-2 hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
-              >Paredes</a
-            >
-          </li>
-        </ul>
+        {
+          rutas.map((ruta) => (
+            <ItemsSub nombre={ruta.ruta4.nombre} ruta={ruta.ruta4.ruta} />
+          ))
+        }
       </div>
     </li>
     <li

@@ -44,3 +44,4 @@ export const getOfertas = async () => {
     throw error
   }
 }
+

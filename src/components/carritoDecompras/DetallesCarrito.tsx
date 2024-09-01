@@ -1,18 +1,16 @@
 import { useState } from 'react'
 import { useEffect } from 'react';
-import eventEmitter from '@/events/carritoChanged';
 import CardCarrito from '../cards/CardCarrito';
 import type { Producto } from '@/types/types';
 import { CarritoEmpty } from './CarritoEmpty';
 const DetallesCarrito = () => {
     const [productos, setProductos] = useState<Producto[]>([])
-
-
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
         setProductos(carrito);
     }, []);
 
+    console.log(productos)
     return (
         <>
             {!productos ? (

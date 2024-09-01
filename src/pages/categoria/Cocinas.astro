@@ -5,9 +5,9 @@ import { getProductos } from "../../services/productos";
 import type { ApiResponse } from "@/types/types";
 import { obtenerMarcasUnicas } from "@/utils/MarcasUnicas";
 import { subcategoriasUnicas } from "@/utils/subcategoriasUnicas";
-import Migajas1 from "@/components/migajas/Migajas1.astro";
 import FiltrosCategorias from "@/components/filtros/filtrosCategorias.astro";
 import FiltroMarcas from "@/components/filtros/filtroMarcas.astro";
+import MigajasCategoria from "@/components/migajas/MigajasCategoria.astro";
 
 let dataresponse: ApiResponse | null = null;
 let marcasUnicas: string[] | null = null;
@@ -26,7 +26,7 @@ try {
 ---
 
 <Layout title="Cocinas">
-    <Migajas1  titulo="Cocinas" pagina="Cocinas" />
+    <MigajasCategoria pagina="Cocinas"/>
   <section
     class="w-full px-3 mx-auto flex flex-col md:grid gap-1 md:gap-2 md:grid-cols-cat-cust"
   >
