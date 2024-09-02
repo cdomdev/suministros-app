@@ -1,3 +1,4 @@
+export const prerender = false
 class EventEmitter {
     private eventTarget: EventTarget;
 

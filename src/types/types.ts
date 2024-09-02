@@ -36,6 +36,12 @@ export interface PropsItems {
   nombre: string[];
 }
 
+export interface PropsItemsCat {
+  ruta: string;
+  nombre: string;
+}
+
+
 
 export interface ContenidoPagina {
   titulo: string;

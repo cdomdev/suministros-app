@@ -1,5 +1,6 @@
 ---
 import ItemsSub from "./ItemsSub.astro";
+import ItemsCat from "./ItemsCat.astro";
 
 const rutas = [
   {
@@ -24,28 +25,9 @@ const rutas = [
 ---
 
 <div>
-  <ul class="flex items-center gap-1 md:gap-x-3">
+  <ul class="flex items-center gap-1 md:gap-x-3 font-font-cust-2 font-normal">
     <li class="relative">
-      <a
-        href="/categoria/Baños"
-        class="focus:ring-0 cursor-pointer focus:outline-none focus:ring-indigo-50 hover:text-gray-500 font-medium rounded-lg text-xs lg:text-sm px-3 py-2.5 text-center inline-flex items-center"
-        type="button">
-        Baños
-        <svg
-          class="w-2.5 h-2.5 ms-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6">
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"></path>
-        </svg>
-      </a>
-
+      <ItemsCat ruta="baños" nombre="Baños" />
       <!-- Dropdown menu -->
       <div
         id="drop-1"
@@ -58,26 +40,7 @@ const rutas = [
       </div>
     </li>
     <li class="relative">
-      <a
-        href="/categoria/Cocinas"
-        class="focus:ring-0 focus:outline-none focus:ring-indigo-50 hover:text-gray-500 font-medium rounded-lg text-xs lg:text-sm px-3 py-2.5 text-center inline-flex items-center"
-        type="button">
-        Cocinas
-        <svg
-          class="w-2.5 h-2.5 ms-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6">
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"></path>
-        </svg>
-      </a>
-
+      <ItemsCat ruta="cocinas" nombre="Cocinas" />
       <!-- Dropdown menu -->
       <div
         id="drop-2"
@@ -90,25 +53,10 @@ const rutas = [
       </div>
     </li>
     <li class="relative">
-      <a
-        href="/categoria/Construccion-y-remodelacion"
-        class="focus:ring-0 focus:outline-none focus:ring-indigo-50 font-medium hover:text-gray-500 rounded-lg text-xs lg:text-sm px-3 py-2.5 text-center inline-flex items-center"
-        type="button">
-        Construccion / remodelacion
-        <svg
-          class="w-2.5 h-2.5 ms-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6">
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"></path>
-        </svg>
-      </a>
+      <ItemsCat
+        ruta="construccion-y-remodelacion"
+        nombre="Construccion / remodelacion"
+      />
       <!-- Dropdown menu -->
       <div
         id="drop-3"
@@ -121,26 +69,7 @@ const rutas = [
       </div>
     </li>
     <li class="relative">
-      <a
-        href="/categoria/Pisos-y-paredes"
-        class="focus:ring-0 focus:outline-none focus:ring-indigo-50 hover:text-gray-500 font-medium rounded-lg text-xs lg:text-sm pl-3 pr-5 py-2.5 text-center inline-flex items-center"
-        type="button">
-        Pisos / paredes
-        <svg
-          class="w-2.5 h-2.5 ms-3"
-          aria-hidden="true"
-          xmlns="http://www.w3.org/2000/svg"
-          fill="none"
-          viewBox="0 0 10 6">
-          <path
-            stroke="currentColor"
-            stroke-linecap="round"
-            stroke-linejoin="round"
-            stroke-width="2"
-            d="m1 1 4 4 4-4"></path>
-        </svg>
-      </a>
-
+      <ItemsCat ruta="pisos-y-paredes" nombre="Pisos / paredes" />
       <!-- Dropdown menu -->
       <div
         id="drop-4"
@@ -161,7 +90,7 @@ const rutas = [
 <div>
   <a
     href="/Medios-de-pago"
-    class="hover:text-gray-500 font-medium rounded-lg text-xs lg:text-sm pl-3 pr-5 py-2.5 text-center inline-flex items-center"
+    class="hover:text-gray-500 text-xs lg:text-sm pl-3 pr-5 py-2.5 text-center inline-flex items-center font-font-cust-2 font-semibold text-gray-800"
     >Medios de pago</a
   >
 </div>

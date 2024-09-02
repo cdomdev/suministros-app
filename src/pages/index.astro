@@ -3,18 +3,7 @@ import Carrusel from "../components/Carrusel.astro";
 import Layout from "../layouts/Layout.astro";
 import MercadoPago from "../components/icons/MercadoPago.astro";
 import Truck from "../components/icons/Truck.astro";
-import { getMostSalled } from "@/services/productos";
-import CardProductos from "@/components/cards/CardProductos.astro";
-import { type ApiResponse } from "@/types/types";
-
-// Inicializa masVendidos como null
-let masVendidos: ApiResponse | null = null;
-
-try {
-  masVendidos = await getMostSalled();
-} catch (error) {
-  console.error(error);
-}
+import MasVendidos from "@/components/MasVendidos.astro";
 ---
 
 <Layout title="Suministros">
@@ -30,28 +19,7 @@ try {
         class="my-3 text-base md:text-lg text-wrap pl-8 md:pl-20 lg:pl-0 font-semibold mx-auto">
         Aqui algunos de los productos mas vendidos
       </h3>
-      <div class="flex flex-wrap md:flex-row justify-center gap-4">
-        {
-          masVendidos && masVendidos.productos.length > 0 ? (
-            masVendidos.productos.map((producto) => (
-              <CardProductos
-                id={producto.id}
-                ref={producto.referencia}
-                img={producto.image}
-                nombre={producto.nombre}
-                descuento={producto.discount}
-                marca={producto.marca}
-                precio={producto.valor}
-                categoria={producto.subcategoria?.nombre || "Sin categoría"}
-              />
-            ))
-          ) : (
-            <p class="text-gray-500 font-light text-center text-xl">
-              Cargando...
-            </p>
-          )
-        }
-      </div>
+      <MasVendidos />
     </div>
     <div class="mx-auto my-7">
       <h3 class="md:text-lg my-2 text-wrap pl-8 md:pl-0 font-semibold mx-auto">

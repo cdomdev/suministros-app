@@ -6,6 +6,7 @@ import { type ApiResponse } from "@/types/types";
 import MigajasOferatas from "@/components/migajas/migajasOfertas.astro";
 
 let ofertas: ApiResponse | null = null;
+export const prerender = false;
 
 try {
     ofertas = await getOfertas();

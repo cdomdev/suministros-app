@@ -10,11 +10,12 @@ import type { ApiResponse } from "@/types/types";
 import CardProductos from "@/components/cards/CardProductos.astro";
 
 const { subcategoria } = Astro.params;
-let contenido: ContenidoPagina;
 
+let contenido: ContenidoPagina;
 let dataresponse: ApiResponse | null = null;
 let marcasUnicas: string[] | null = null;
 
+export const prerender = false;
 try {
     dataresponse = await getProductos("subcategorias", `${subcategoria}`);
     if (dataresponse) {
@@ -22,7 +23,6 @@ try {
     }
 } catch (error) {
     console.error("Error al obtener los productos:", error);
-    console.log("Este es el error ---> ", error);
 }
 
 if (subcategoria && contenidos[subcategoria]) {
@@ -35,15 +35,11 @@ if (subcategoria && contenidos[subcategoria]) {
         categoria: "",
     };
 }
-
-console.log(dataresponse);
+const parsePagina = contenido.categoria.replaceAll("-", " ");
 ---
 
 <Layout title={contenido?.titulo}>
-    <MigajasSubcategorias
-        categoria={contenido.categoria}
-        pagina={contenido.titulo}
-    />
+    <MigajasSubcategorias categoria={parsePagina} pagina={contenido.titulo} />
     <section class="pt-2 flex flex-col px-4 md:grid-cols-cat-cust md:grid">
         <aside class="px-2 md:px-5 hidden md:flex">
             <div class="w-full">
@@ -113,8 +109,6 @@ console.log(dataresponse);
                 const mensajeNoProductos = document.querySelector(
                     "#mensaje-no-productos",
                 );
-                const noProductosCount =
-                    document.querySelector("#no-productos");
 
                 if (!filtroMarcas.length || !productos.length) {
                     return;
@@ -142,10 +136,6 @@ console.log(dataresponse);
                     });
 
                     mensajeNoProductos.style.display = hayProductosVisibles
-                        ? "none"
-                        : "block";
-
-                    noProductosCount.style.display = hayProductosVisibles
                         ? "none"
                         : "block";
                 }

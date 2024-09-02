@@ -70,7 +70,7 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
             />
             <div className="border flex justify-center items-center px-2  ">
                 <button className="decrement" onClick={handleDecrement}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-minus size-5 hover:scale-125 duration-200" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-minus size-5 hover:scale-125 duration-200" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                         <path d="M12.5 17h-6.5v-14h-2" />
@@ -90,7 +90,7 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
                     onChange={(e) => setQuantity(parseInt(e.target.value))}
                 />
                 <button className="increment" onClick={handleIncrement}>
-                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-plus size-5 hover:scale-125 duration-200" width="44" height="44" viewBox="0 0 24 24" stroke-width="1.5" stroke="#2c3e50" fill="none" stroke-linecap="round" stroke-linejoin="round">
+                    <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-plus size-5 hover:scale-125 duration-200" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                         <path d="M12.5 17h-6.5v-14h-2" />

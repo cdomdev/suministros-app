@@ -1,5 +1,5 @@
 import axios from "axios";
-
+export const prerender = false
 export const getProductos = async (categoria: string, producto: string) => {
   const encodedRuta = encodeURIComponent(producto);
 

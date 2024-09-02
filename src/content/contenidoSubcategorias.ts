@@ -54,13 +54,13 @@ export const contenidos: Contenidos = {
         titulo: "Pisos ceramicos",
         subTitulo: "Propuestas innovadoras para renovar tus suelos con elegancia",
         texto: 'Encuentra el piso perfecto para tu hogar entre nuestra amplia selección, nuestros pisos combinan belleza y resisencia para satisfacer tus necesidades',
-        categoria: ''
+        categoria: 'pisos-y-paredes'
     },
     paredes: {
         titulo: "Paredes",
         subTitulo: "Personaliza tus espacions con nuestro portafolio de paredes.",
         texto: 'Nuestras opciones transformarán cualquier ambiente en un espacio único y acogedor.',
-        categoria: ''
+        categoria: 'pisos-y-paredes'
     }
 
 

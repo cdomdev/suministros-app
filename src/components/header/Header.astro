@@ -1,11 +1,10 @@
 ---
 import Sidebar from "./Sidebar.astro";
 import SubMenu from "./SubMenu.astro";
-import Compras from "../icons/Box.astro";
 import Buscador from "./Buscador.astro";
 import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
-import ModalPerfil from "../modal/ModalPerfil.astro";
-import ModalAuth from "../modal/ModalAuth.astro";
+import BoxModal from "../modal/BoxModal";
+import Auth from "@/components/modal/Auth";
 ---
 
 <nav
@@ -29,8 +28,8 @@ import ModalAuth from "../modal/ModalAuth.astro";
     </div>
     <!-- Icons -->
     <div class="flex gap-2 md:gap-4">
-      <ModalPerfil />
-      <ModalAuth />
+      <BoxModal client:visible />
+      <Auth client:visible />
       <CarritoPageNav client:visible />
     </div>
   </div>
