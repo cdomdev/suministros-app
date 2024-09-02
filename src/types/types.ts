@@ -53,3 +53,14 @@ export interface ContenidoPagina {
 export interface Contenidos {
   [key: string]: ContenidoPagina;
 }
+
+export interface Values {
+  email: string,
+  password: string
+}
+
+export interface PropProfile {
+  picture: string,
+  nombre: string,
+  email: string,
+}

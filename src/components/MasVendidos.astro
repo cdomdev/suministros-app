@@ -2,6 +2,7 @@
 import { getMostSalled } from "@/services/productos";
 import CardProductos from "@/components/cards/CardProductos.astro";
 import { type ApiResponse } from "@/types/types";
+import Spiner from "./Spiner.astro";
 
 // Inicializa masVendidos como null
 let masVendidos: ApiResponse | null = null;
@@ -11,7 +12,6 @@ try {
 } catch (error) {
     console.error(error);
 }
-export const prerender = false;
 ---
 
 <div class="flex flex-wrap md:flex-row justify-center gap-4">
@@ -30,9 +30,7 @@ export const prerender = false;
                 />
             ))
         ) : (
-            <p class="text-gray-500 font-light text-center text-xl">
-                Cargando...
-            </p>
+            <Spiner />
         )
     }
 </div>

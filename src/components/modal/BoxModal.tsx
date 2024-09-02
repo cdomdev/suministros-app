@@ -1,37 +1,18 @@
-import React, { useEffect, useState } from "react";
+import React, { useState } from "react";
+import { Modal } from "react-bootstrap";
 
-// Componente principal
-const BoxModal: React.FC = () => {
-    const [isModalOpen, setModalOpen] = useState(false);
 
-    useEffect(() => {
-        const handleShowModal = () => {
-            setModalOpen(true);
-        };
+const PerfilModal: React.FC = () => {
+    const [show, setShow] = useState(false);
 
-        const handleHideModal = () => {
-            setModalOpen(false);
-        };
+    const handleClose = () => setShow(false);
+    const handleShow = () => setShow(true);
 
-        const boxModalEl = document.getElementById("boxModal");
-
-        if (boxModalEl) {
-            boxModalEl.addEventListener("show.bs.modal", handleShowModal);
-            boxModalEl.addEventListener("hide.bs.modal", handleHideModal);
-        }
-
-        return () => {
-            if (boxModalEl) {
-                boxModalEl.removeEventListener("show.bs.modal", handleShowModal);
-                boxModalEl.removeEventListener("hide.bs.modal", handleHideModal);
-            }
-        };
-    }, []);
 
     return (
         <>
 
-            <div className="flex flex-col items-center cursor-pointer" data-bs-toggle="modal" data-bs-target="#boxModal">
+            <div className="flex flex-col items-center cursor-pointer" onClick={handleShow}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-box-seam w-8 h-8 md:w-11 md:h-11"
@@ -54,61 +35,46 @@ const BoxModal: React.FC = () => {
                 <small className="text-[7px] md:text-[8px] uppercase font-semibold hover:scale-110 duration-100">Compras</small>
             </div>
 
+
             {/* Fondo personalizado del modal */}
-            {isModalOpen && <div id="box-backdrop" className="fixed inset-0 bg-gray-900/50 z-40"></div>}
+            {show && <div id="box-backdrop" className="fixed inset-0 bg-gray-900/50 z-40"></div>}
 
             {/* Modal */}
-            <div
-                className="modal fade"
-                id="boxModal"
-                data-bs-backdrop="false"
-                data-bs-keyboard="false"
-                tabIndex={-1}
-                aria-labelledby="boxModalLabel"
-                aria-hidden="true">
-                <div className="modal-dialog">
-                    <div className="modal-content font-font-cust-2">
-                        <div className="flex justify-end px-2 py-1">
+            <Modal
+                show={show} onHide={handleClose}>
+                <Modal.Header closeButton className="border-none p-4">
+                </Modal.Header>
+                <div className="font-font-cust-2 p-2">
+                    <Modal.Body className="pt-0">
+                        <h2 className="font-semibold text-center text-2xl">
+                            Se requiere iniciar sesión
+                        </h2>
+                        <h3 className="text-center">
+                            Tienes que iniciar sesión para utilizar esta función.
+                        </h3>
+                        <hr className="my-2" />
+                        <p className="text-wrap text-sm mx-auto text-black">
+                            La seccion a la que va a acceder contiene información
+                            personal, por lo que necesitamos su identidad para saber qué
+                            información podemos proporcionarle. Por lo tanto, deberá
+                            iniciar sesión rigistrarse si realmente desea acceder.
+                        </p>
+                        <div
+                            className="w-full flex flex-col mx-auto justify-center items-center gap-2 mt-3">
                             <button
-                                type="button"
-                                className="btn-close"
-                                data-bs-dismiss="modal"
-                                aria-label="Close"></button>
+                                className="text-white w-full rounded-md py-2 bg-blue-600"
+                            >Quiero registrarme</button>
+                            <button onClick={() => handleClose()}
+                                className="text-black bg-[#ebebeb] w-full rounded-md py-2"
+                            >Cancelar</button>
                         </div>
-                        <div className="modal-body">
-                            <h2 className="font-semibold text-center text-2xl">
-                                Se requiere iniciar sesión
-                            </h2>
-                            <h3 className="text-center">
-                                Tienes que iniciar sesión para utilizar esta función.
-                            </h3>
-                            <hr className="my-2" />
-                            <p className="text-wrap text-sm mx-auto text-black">
-                                La seccion a la que va a acceder contiene información
-                                personal, por lo que necesitamos su identidad para saber qué
-                                información podemos proporcionarle. Por lo tanto, deberá
-                                iniciar sesión o registrarse si realmente desea acceder.
-                            </p>
-                            <div className="w-full flex flex-col mx-auto justify-center items-center gap-2 mt-3">
-                                <button
-                                    className="text-white w-full rounded-md py-2 bg-blue-600">
-                                    Quiero registrarme
-                                </button>
-                                <button
-                                    className="text-black bg-[#ebebeb] w-full rounded-md py-2"
-                                    type="button"
-                                    data-bs-dismiss="modal"
-                                    aria-label="Close">
-                                    Cancelar
-                                </button>
-                            </div>
-                        </div>
-                    </div>
+                    </Modal.Body>
+
                 </div>
-            </div>
+            </Modal>
         </>
     );
 };
 
 
-export default BoxModal;
+export default PerfilModal;

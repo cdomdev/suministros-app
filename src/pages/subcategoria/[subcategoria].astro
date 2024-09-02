@@ -8,14 +8,13 @@ import MigajasSubcategorias from "@/components/migajas/MigajasSubcategorias.astr
 import { getProductos } from "@/services/productos";
 import type { ApiResponse } from "@/types/types";
 import CardProductos from "@/components/cards/CardProductos.astro";
-
+import Spiner from "@/components/Spiner.astro";
 const { subcategoria } = Astro.params;
 
 let contenido: ContenidoPagina;
 let dataresponse: ApiResponse | null = null;
 let marcasUnicas: string[] | null = null;
 
-export const prerender = false;
 try {
     dataresponse = await getProductos("subcategorias", `${subcategoria}`);
     if (dataresponse) {
@@ -94,7 +93,7 @@ const parsePagina = contenido.categoria.replaceAll("-", " ");
                             />
                         ))
                     ) : (
-                        <>Cargando...</>
+                        <Spiner />
                     )
                 }
             </div>

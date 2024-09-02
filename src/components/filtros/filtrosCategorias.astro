@@ -3,6 +3,7 @@ interface Props {
   categoria: string | null;
 }
 const { categoria } = Astro.props;
+export const prerender = true;
 ---
 
 <ul>

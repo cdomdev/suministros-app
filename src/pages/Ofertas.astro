@@ -4,6 +4,7 @@ import Layout from "../layouts/Layout.astro";
 import { getOfertas } from "@/services/productos";
 import { type ApiResponse } from "@/types/types";
 import MigajasOferatas from "@/components/migajas/migajasOfertas.astro";
+import Spiner from "@/components/Spiner.astro";
 
 let ofertas: ApiResponse | null = null;
 export const prerender = false;
@@ -49,9 +50,7 @@ try {
                         />
                     ))
                 ) : (
-                    <p class="text-gray-500 font-light text-center text-xl">
-                        Cargando...
-                    </p>
+                    <Spiner />
                 )
             }
         </div>
