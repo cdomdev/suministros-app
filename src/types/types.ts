@@ -64,3 +64,13 @@ export interface PropProfile {
   nombre: string,
   email: string,
 }
+
+export interface DatosEnvio {
+  nombre: string | null, 
+  apellido: string | null, 
+  email: string | null, 
+  telefono: string, 
+  direccion: string, 
+  destino: string 
+  detalles: string | null 
+}

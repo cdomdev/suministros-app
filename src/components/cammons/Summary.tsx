@@ -36,6 +36,8 @@ const Summary = () => {
             <hr />
             <div className="w-[80%] m-auto ">
                 <button className="my-4 bg-blue-600 w-full  p-2 rounded-md text-white hover:bg-blue-500 duration-200">Iniciar sesion</button>
+                <a href="/informacion-para-envio">ir a envio</a>
+                <a href="/Pago">ir a pago</a>
             </div>
             <hr />
         </div>
