@@ -8,26 +8,27 @@ import MasVendidos from "@/components/MasVendidos.astro";
 
 <Layout title="Suministros">
   <Carrusel />
-  <h1
-    class="text-sm md:text-xl mx-2 my-3 md:my-4 text-wrap font-semibold text-center lg:pl-16"
-  >
-    Haz de tu hogar o negocio un espacio unico, aqui encontraras Sanitarios,
-    pinturas, lavamanos, cocinas y mas productos para remodelar tus espacios.
-  </h1>
-  <div class=" my-7 mx-auto ]">
-    <p class="text-xs md:text-sm font-normal text-balance text-center ">
-      Somos la marca de remodelación de los colombianos, con una tienda virtual
-      para que compres fácil y rápido, con una amplia red de distribución por
-      todo el país. Ofrecemos una amplia variedad de productos para que puedas
-      encontrar exactamente lo que necesitas: pinturas, materiales de
-      construcción y más.
-    </p>
-  </div>
+  <section class="font-font-cust-2">
+    <h1
+      class="text-sm md:text-xl mx-2 my-3 md:my-4 text-wrap font-semibold text-center lg:pl-16">
+      Haz de tu hogar o negocio un espacio unico, aqui encontraras Sanitarios,
+      pinturas, lavamanos, cocinas y mas productos para remodelar tus espacios.
+    </h1>
+    <div class="my-7 mx-auto ]">
+      <p
+        class="text-xs md:text-base leading-2 font-normal text-balance text-center">
+        Somos la marca de remodelación de los colombianos, con una tienda
+        virtual para que compres fácil y rápido, con una amplia red de
+        distribución por todo el país. Ofrecemos una amplia variedad de
+        productos para que puedas encontrar exactamente lo que necesitas:
+        pinturas, materiales de construcción y más.
+      </p>
+    </div>
+  </section>
   <section class="flex flex-col w-full mb-3">
     <div class="mx-auto">
       <h2
-        class="my-3 text-base md:text-lg text-wrap pl-8 md:pl-20 lg:pl-0 font-semibold mx-auto"
-      >
+        class="my-3 text-base md:text-lg text-wrap pl-8 md:pl-20 lg:pl-0 font-semibold mx-auto">
         Aqui algunos de los productos mas vendidos
       </h2>
       <MasVendidos />
@@ -37,8 +38,7 @@ import MasVendidos from "@/components/MasVendidos.astro";
         Tambien puedes visitar nuestras categorias de productos
       </h2>
       <div
-        class="flex flex-wrap justify-center md:flex-row gap-2 md:gap-5 lg:gap-7"
-      >
+        class="flex flex-wrap justify-center md:flex-row gap-2 md:gap-5 lg:gap-7">
         <a
           href="/categoria/Baños"
           class="bg-[url('/banios.webp')] w-40 h-32 lg:min-w-64 lg:min-h-52 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 drop-shadow-lg drop-sahdow-gray-400 hover:shadow-sm duration-100 hover:text-black text-white bg-cover rounded-lg shadow-md"
@@ -64,8 +64,7 @@ import MasVendidos from "@/components/MasVendidos.astro";
 
     <div class="flex justify-around">
       <span
-        class="flex flex-col text-center justify-center text-xs md:text-sm items-center leading-4 font-semibold"
-      >
+        class="flex flex-col text-center justify-center text-xs md:text-sm items-center leading-4 font-semibold">
         <MercadoPago />
         Metodos de pago
         <small class="text-gray-600 text-[10px] md:text-xs"
@@ -73,8 +72,7 @@ import MasVendidos from "@/components/MasVendidos.astro";
         >
       </span>
       <span
-        class="flex justify-center items-center text-xs md:text-sm flex-col font-semibold leading-4"
-      >
+        class="flex justify-center items-center text-xs md:text-sm flex-col font-semibold leading-4">
         <Truck />
         Envios a todo el pais
         <small class="text-gray-600 text-[10px] md:text-xs"

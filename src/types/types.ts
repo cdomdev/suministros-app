@@ -54,9 +54,15 @@ export interface Contenidos {
   [key: string]: ContenidoPagina;
 }
 
-export interface Values {
+export interface ValuesIniSesion {
   email: string,
-  password: string
+  password: string,
+}
+
+export interface ValuesRegistro {
+  nombre: string,
+  email: string,
+  password: string,
 }
 
 export interface PropProfile {
@@ -66,11 +72,11 @@ export interface PropProfile {
 }
 
 export interface DatosEnvio {
-  nombre: string | null, 
-  apellido: string | null, 
-  email: string | null, 
-  telefono: string, 
-  direccion: string, 
-  destino: string 
-  detalles: string | null 
+  nombre: string | null,
+  apellido: string | null,
+  email: string | null,
+  telefono: string,
+  direccion: string,
+  destino: string
+  detalles: string | null
 }

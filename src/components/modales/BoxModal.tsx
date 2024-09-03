@@ -11,7 +11,6 @@ const PerfilModal: React.FC = () => {
 
     return (
         <>
-
             <div className="flex flex-col items-center cursor-pointer" onClick={handleShow}>
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
@@ -42,7 +41,7 @@ const PerfilModal: React.FC = () => {
             {/* Modal */}
             <Modal
                 show={show} onHide={handleClose}>
-                <Modal.Header closeButton className="border-none p-4">
+                <Modal.Header closeButton className="border-none pb-0 px-4">
                 </Modal.Header>
                 <div className="font-font-cust-2 p-2">
                     <Modal.Body className="pt-0">

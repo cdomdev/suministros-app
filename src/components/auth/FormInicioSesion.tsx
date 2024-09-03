@@ -1,0 +1,151 @@
+import React, { useState } from "react";
+import { Formik, Form, Field, ErrorMessage } from "formik";
+import type { ValuesIniSesion } from "@/types/types";
+import { validaSesion } from '@/services/auth'
+import { Toast } from "../toast/Toas";
+import axios from "axios";
+import { eventAuth } from "@/events/eventAuth";
+
+interface FormaInicioSesionProps {
+    setShow: (show: boolean) => void;
+}
+
+
+const FormaInicioSesion: React.FC<FormaInicioSesionProps> = ({ setShow }) => {
+    const [toastMessage, setToastMessage] = useState<string>('');
+    const [showToast, setShowToast] = useState<boolean>(false);
+    const [bgToast, setBgToast] = useState<string>('');
+
+    const handleSubmit = async (values: ValuesIniSesion) => {
+        try {
+            const response = await validaSesion(values)
+            if (response.status === 200) {
+                setShow(false)
+                eventAuth.emit('authChange', true);
+                localStorage.setItem('infoProfileUSer', JSON.stringify(response.data))
+            }
+        } catch (error) {
+            if (axios.isAxiosError(error) && error.response) {
+                const { status } = error.response;
+                if (status === 404) {
+                    setBgToast('fail')
+                    setShowToast(true)
+                    setToastMessage(`El email ${values.email} no esta registrado`)
+                    setTimeout(() => {
+                        setShowToast(false)
+                    }, 5000)
+                } else if (status === 401) {
+                    setBgToast('fail')
+                    setShowToast(true)
+                    setToastMessage(`Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
+                    setTimeout(() => {
+                        setShowToast(false)
+                    }, 5000)
+                }
+            }
+
+        }
+
+    }
+
+    return (
+        <>
+            <Toast
+                showToast={showToast}
+                setShowToast={setShowToast}
+                toastMessage={toastMessage}
+                setToastMessage={setToastMessage}
+                bgToast={bgToast}
+                setBgToast={setBgToast}
+            />
+            <Formik
+                initialValues={{ email: "", password: "" }}
+                validate={(values: ValuesIniSesion) => {
+                    const errors: Partial<ValuesIniSesion> = {};
+                    if (!values.email) {
+                        errors.email = "¡Este campo no puede quedar vacio!";
+                    } else if (
+                        !/^[A-Z0-9._%+-]+@[A-Z0-9.-]+\.[A-Z]{2,}$/i.test(values.email)
+                    ) {
+                        errors.email = "Ingrese una dirección de correo válida";
+                    }
+                    if (!values.password) {
+                        errors.password = "¡Este campo no puede quedar vacio!";
+                    }
+
+                    return errors;
+                }}
+                onSubmit={handleSubmit}
+            >
+                {({ handleSubmit }) => (
+                    <Form onSubmit={handleSubmit}>
+                        <div className="mb-2">
+                            <label
+                                htmlFor="email"
+                                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
+                            >
+                                Ingrese su correo
+                            </label>
+                            <Field
+                                type="email"
+                                id="email"
+                                name="email"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                                placeholder="example@sumi.com"
+                            />
+                            <ErrorMessage
+                                name="email"
+                                component="div"
+                                className="text-red-500 text-sm mt-1"
+                            />
+                        </div>
+                        <div className="mb-4">
+                            <div className="flex justify-between mb-2">
+                                <label
+                                    htmlFor="password"
+                                    className="block text-sm font-medium text-gray-900 dark:text-white"
+                                >
+                                    Ingrese su contraseña
+                                </label>
+                                <a
+                                    href="/Olvide-mi-contraseña"
+                                    className="text-blue-700 hover:underline duration-150 text-sm flex justify-end px-1"
+                                >
+                                    Olvidé mi contraseña
+                                </a>
+                            </div>
+                            <Field
+                                type="password"
+                                id="password"
+                                name="password"
+                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
+                            />
+                            <ErrorMessage
+                                name="password"
+                                component="div"
+                                className="text-red-500 text-sm mt-1"
+                            />
+                        </div>
+
+                        <button
+                            type="submit"
+                            className="text-white bg-blue-700 w-full hover:bg-blue-800 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                        >
+                            Iniciar sesión
+                        </button>
+                        <div className="w-full flex gap-2 items-center text-sm">
+                            <p className="py-2">¿No tienes cuenta?</p>
+                            <a href="/registro" className="underline hover:text-blue-500 duration-150">
+                                Regístrate aquí
+                            </a>
+                        </div>
+                    </Form>
+                )}
+            </Formik>
+
+        </>
+    );
+};
+
+
+export default FormaInicioSesion;
