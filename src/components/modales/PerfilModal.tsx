@@ -7,8 +7,6 @@ const PerfilModal: React.FC = () => {
 
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
-
-
     return (
         <>
             <div className="flex flex-col items-center cursor-pointer" onClick={handleShow}>
@@ -60,11 +58,11 @@ const PerfilModal: React.FC = () => {
                         </p>
                         <div
                             className="w-full flex flex-col mx-auto justify-center items-center gap-2 mt-3">
-                            <button
-                                className="text-white w-full rounded-md py-2 bg-blue-600"
-                            >Quiero registrarme</button>
+                            <a href="/registro"
+                                className="text-white w-full inline-block text-center rounded-md py-2 bg-blue-600 hover:bg-blue-800 duration-200 text-sm"
+                            >Quiero registrarme</a>
                             <button onClick={() => handleClose()}
-                                className="text-black bg-[#ebebeb] w-full rounded-md py-2"
+                                className="text-black bg-[#ebebeb] w-full rounded-md py-2 hover:bg-[#d3d3d3] duration-200 text-sm"
                             >Cancelar</button>
                         </div>
                     </Modal.Body>

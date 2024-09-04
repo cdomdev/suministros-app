@@ -1,20 +1,30 @@
 import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { ValuesRegistro } from "@/types/types";
-import { validaSesion } from '@/services/auth'
-import { Toast } from "../toast/Toas";
+import { register } from '@/services/auth'
+import { Toast } from "../cammons/Toast";
 import axios from "axios";
 import { eventAuth } from "@/events/eventAuth";
+import { Spinner } from "react-bootstrap";
 
 const Registro: React.FC = () => {
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
+    const [isLoading, setIsLoading] = useState(false);
 
-    const handleSubmit = async (values: ValuesRegistro) => {
+    const handleSubmit = async (values: ValuesRegistro, { resetForm }: { resetForm: () => void }) => {
+        setIsLoading(true)
         try {
-            const response = await validaSesion(values)
-            if (response.status === 200) {
+            const response = await register(values)
+            if (response.status === 201) {
+                setShowToast(true)
+                setBgToast('toast-success')
+                setToastMessage(`Tu registro fue hecho con exito, ya puedes iniciar sesion`)
+                resetForm();
+                setTimeout(() => {
+                    setShowToast(false)
+                }, 10000)
                 eventAuth.emit('authChange', true);
                 localStorage.setItem('infoProfileUSer', JSON.stringify(response.data))
             }
@@ -28,7 +38,7 @@ const Registro: React.FC = () => {
                     setTimeout(() => {
                         setShowToast(false)
                     }, 5000)
-                } else if (status === 505) {
+                } else if (status === 500) {
                     setBgToast('fail')
                     setShowToast(true)
                     setToastMessage(`Hola ${values.nombre} no pudimos hacer tu registro, intentalo de nuevo`)
@@ -37,6 +47,9 @@ const Registro: React.FC = () => {
                     }, 5000)
                 }
             }
+
+        } finally {
+            setIsLoading(false)
 
         }
     }
@@ -75,7 +88,7 @@ const Registro: React.FC = () => {
                     }
                     return errors;
                 }}
-                onSubmit={handleSubmit}
+                onSubmit={(values, { resetForm }) => handleSubmit(values, { resetForm })}
             >
                 {({ handleSubmit }) => (
                     <Form onSubmit={handleSubmit}>
@@ -120,7 +133,7 @@ const Registro: React.FC = () => {
                                 className="text-red-500 text-sm mt-1"
                             />
                         </div>
-                        <div className="mb-2">
+                        <div className="mb-3">
                             <div className="flex justify-between mb-2">
                                 <label
                                     htmlFor="password"
@@ -162,9 +175,15 @@ const Registro: React.FC = () => {
                         </div>
                         <button
                             type="submit"
-                            className="text-white bg-blue-700 w-full hover:bg-blue-800 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="text-white bg-blue-700 w-full hover:bg-blue-800 duration-200 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
-                            Registrarme
+                            {isLoading ? (
+                                <div className="spinner-container">
+                                    <Spinner animation="border" role="status" size="sm" />
+                                </div>
+                            ) : (
+                                <>Restablecer contraseña</>
+                            )}
                         </button>
                     </Form>
                 )}

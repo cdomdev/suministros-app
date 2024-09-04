@@ -3,7 +3,7 @@ import Sidebar from "./Sidebar.astro";
 import SubMenu from "./SubMenu.astro";
 import Buscador from "./Buscador.astro";
 import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
-import BoxModal from "../modales/BoxModal.tsx";
+import PerfilModal from "../modales/PerfilModal.tsx";
 import Auth from "@/components/modales/Auth.tsx";
 import Perfil from "./Perfil.tsx";
 import Pedidos from "./Pedidos.astro";
@@ -32,7 +32,7 @@ const isAuthenticated = authToken !== undefined;
     </div>
     <!-- Icons -->
     <div class="flex gap-2 md:gap-4">
-      {isAuthenticated ? <Pedidos /> : <BoxModal client:only="react" />}
+      {isAuthenticated ? <Pedidos /> : <PerfilModal client:only="react" />}
       {
         isAuthenticated ? (
           <Perfil client:only="react" />

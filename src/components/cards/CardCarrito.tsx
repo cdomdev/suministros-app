@@ -1,7 +1,7 @@
 import { eventEmitter } from "@/events/carritoChanged";
 import type { Producto } from "@/types/types";
 import { useState } from "react";
-import { Toast } from "../toast/Toas";
+import { Toast } from "../cammons/Toast";
 import { formateValue } from "@/utils/formatearValor";
 import { calcularSubTotal } from "@/utils/calcularSubTotal";
 
@@ -27,10 +27,10 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
     };
 
     const handleDeletToCart = (producto: Producto) => {
-        deleFromCar(producto.id);
         setToastMessage('Se eliminó un producto del carrito');
         setBgToast('toast-success');
         setShowToast(true);
+        deleFromCar(producto.id);
         setTimeout(() => {
             setShowToast(false);
         }, 3000);

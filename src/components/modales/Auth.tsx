@@ -1,6 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
-import FormaInicioSesion from "../auth/FormInicioSesion";
+import FormInicioSesion from "@/components/forms/FormInicioSesion";
 
 const Auth: React.FC = () => {
     const [show, setShow] = useState<boolean>(false);
@@ -37,7 +37,7 @@ const Auth: React.FC = () => {
                 </Modal.Header>
                 <div className="font-font-cust-2 p-2">
                     <Modal.Body>
-                        <FormaInicioSesion setShow={setShow} />
+                        <FormInicioSesion setShow={setShow} />
                     </Modal.Body>
 
                 </div>

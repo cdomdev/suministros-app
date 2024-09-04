@@ -2,16 +2,15 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { ValuesIniSesion } from "@/types/types";
 import { validaSesion } from '@/services/auth'
-import { Toast } from "../toast/Toas";
+import { Toast } from "../cammons/Toast";
 import axios from "axios";
 import { eventAuth } from "@/events/eventAuth";
 
-interface FormaInicioSesionProps {
+interface FormInicioSesionProps {
     setShow: (show: boolean) => void;
 }
 
-
-const FormaInicioSesion: React.FC<FormaInicioSesionProps> = ({ setShow }) => {
+const FormaInicioSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');

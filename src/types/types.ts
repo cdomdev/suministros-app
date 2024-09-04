@@ -72,11 +72,26 @@ export interface PropProfile {
 }
 
 export interface DatosEnvio {
-  nombre: string | null,
-  apellido: string | null,
-  email: string | null,
+  nombre?: string | null,
+  apellido?: string | null,
+  email?: string | null,
   telefono: string,
   direccion: string,
   destino: string
-  detalles: string | null
+  detalles: string
+}
+
+export interface DataForgotPassword {
+  nombre?: string,
+  email?: string
+}
+
+export interface ValuesPassWords {
+  password: string;
+  password2: string;
+}
+
+export interface ResetPassword {
+  values: ValuesPassWords;
+  token: string;
 }

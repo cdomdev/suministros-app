@@ -1,10 +1,14 @@
 ---
+import { FormOlvideMiContrasenia } from "@/components/forms/FormOlvideMiContrasenia";
 import Layout from "../layouts/Layout.astro";
 export const prerender = true;
 ---
 
 <Layout title="Recuperar contraseña">
-    <section class="mt-16">
-        <p>Olvide mi contraseña</p>
+    <section class="py-16 bg-[#f4f4f4] font-font-cust-2">
+        <div
+            class="bg-white md:w-[70%] mx-auto flex flex-col justify-center items-center p-4">
+            <FormOlvideMiContrasenia client:visible />
+        </div>
     </section>
 </Layout>
