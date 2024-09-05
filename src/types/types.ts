@@ -95,3 +95,9 @@ export interface ResetPassword {
   values: ValuesPassWords;
   token: string;
 }
+
+
+export type ProductItem = {
+  cantidad: number;
+  valor: number;
+};

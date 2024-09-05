@@ -1,4 +1,4 @@
-import { Modal, Form, Button } from "react-bootstrap";
+import { Form, Button } from "react-bootstrap";
 import type { DatosEnvio } from '@/types/types'
 import { Formik } from "formik";
 
@@ -7,7 +7,10 @@ export const FormEnvioDatosInvitado = () => {
 
     const handleSubmit = async (values: DatosEnvio) => {
         console.log(values)
+        localStorage.setItem('dataUserSendOrder', JSON.stringify(values))
+        window.location.href = '/pago'
     }
+
     return (
         <Formik
             initialValues={{

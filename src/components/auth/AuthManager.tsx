@@ -1,0 +1,61 @@
+import { useEffect, useState } from "react";
+import ModalAuth from "../modales/ModalAuth";
+import type { Producto } from '@/types/types';
+import { eventEmitter } from "@/events/carritoChanged";
+import { UpdateSteps } from "../cammons/UpdateSteps";
+
+const AuthManager = () => {
+    const [productos, setProductos] = useState<Producto[]>([])
+
+    useEffect(() => {
+        const handleCarritoChange = (event: CustomEvent<any>) => {
+            const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+            setProductos(carrito);
+        };
+        if (eventEmitter) {
+            // Agrega el listener para el evento
+            eventEmitter.on('carritoChanged', handleCarritoChange);
+        }
+
+        // Llama a la función para establecer la cantidad al montar el componente
+        handleCarritoChange({} as CustomEvent<any>);
+
+        return () => {
+            if (eventEmitter) {
+                // Elimina el listener cuando el componente se desmonte
+                eventEmitter.off('carritoChanged', handleCarritoChange);
+            }
+        };
+    }, [])
+
+
+
+    return (
+        <>
+            {!productos ? (
+                <>
+                    <p className="text-sm text-center font-semibold my-2 text-red-400">No hay productos en tu carrito</p>
+                </>
+            ) : (
+                <>
+                    {
+                        productos.length > 0 ? (
+                            <div className="font-font-cust-2 mt-2">
+                                <p className="text-sm mb-2 ">Registrate o inicia sesion para tener un historial de tus compras o hacer seguiento del estado de tu pedido.</p>
+                                <ModalAuth triggerElement={<button className="bg-blue-600 w-full text-white py-2 rounded-md uppercase text-sm  mt-2 mb-2 hover:bg-blue-700 hover:shadow-none">Iniciar sesion</button>} />
+                                <UpdateSteps bg="bg-white" textColor="text-black" ruta="/informacion-para-envio" textContent="continuar como invitado" />
+                            </div>
+                        ) :
+                            (
+                                <p className="text-sm text-center font-semibold my-2 text-red-400">No hay productos en tu carrito</p>
+                            )
+                    }
+                </>
+            )
+            }
+
+        </>
+    )
+};
+
+export default AuthManager

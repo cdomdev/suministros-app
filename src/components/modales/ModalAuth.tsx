@@ -1,17 +1,24 @@
 import React, { useState } from "react";
+import type { ReactNode } from "react";
 import { Modal } from "react-bootstrap";
-import { FormEnvioDatosUsuario } from "../forms/FormEnvioDatosUsuario";
+import FormInicioSesion from "@/components/forms/FormInicioSesion";
 
 
-const ModalEnvioUsuario: React.FC = () => {
-    const [show, setShow] = useState(false);
+interface AuthProps {
+    triggerElement: ReactNode;
+}
 
+
+const ModalAuth: React.FC<AuthProps> = ({ triggerElement }) => {
+    const [show, setShow] = useState<boolean>(false);
     const handleClose = () => setShow(false);
     const handleShow = () => setShow(true);
 
     return (
         <>
-            <button onClick={handleShow} className="bg-blue-600 w-[30%] mx-auto  p-2 rounded-md text-white hover:bg-blue-500 duration-200">Ingresar datos</button>
+            <div onClick={handleShow}>
+                {triggerElement}
+            </div>
             {/* Fondo personalizado del modal */}
             {show && <div id="box-backdrop" className="fixed inset-0 bg-gray-900/50 z-40"></div>}
 
@@ -21,8 +28,8 @@ const ModalEnvioUsuario: React.FC = () => {
                 <Modal.Header closeButton className="border-none p-4">
                 </Modal.Header>
                 <div className="font-font-cust-2 p-2">
-                    <Modal.Body className="pt-0">
-                        <FormEnvioDatosUsuario />
+                    <Modal.Body>
+                        <FormInicioSesion setShow={setShow} />
                     </Modal.Body>
                 </div>
             </Modal>
@@ -31,7 +38,4 @@ const ModalEnvioUsuario: React.FC = () => {
 };
 
 
-export default ModalEnvioUsuario;
-
-
-
+export default ModalAuth;

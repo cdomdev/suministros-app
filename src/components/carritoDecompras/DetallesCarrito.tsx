@@ -10,7 +10,7 @@ const DetallesCarrito = () => {
         setProductos(carrito);
     }, []);
 
-    console.log(productos)
+
     return (
         <>
             {!productos ? (

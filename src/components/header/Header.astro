@@ -3,10 +3,9 @@ import Sidebar from "./Sidebar.astro";
 import SubMenu from "./SubMenu.astro";
 import Buscador from "./Buscador.astro";
 import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
-import PerfilModal from "../modales/PerfilModal.tsx";
-import Auth from "@/components/modales/Auth.tsx";
-import Perfil from "./Perfil.tsx";
-import Pedidos from "./Pedidos.astro";
+import { AuthSucces } from "@/components/auth/AuthSucces";
+import { AuthNone } from "@/components/auth/AuthNone";
+
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
@@ -32,12 +31,11 @@ const isAuthenticated = authToken !== undefined;
     </div>
     <!-- Icons -->
     <div class="flex gap-2 md:gap-4">
-      {isAuthenticated ? <Pedidos /> : <PerfilModal client:only="react" />}
       {
         isAuthenticated ? (
-          <Perfil client:only="react" />
+          <AuthSucces client:only="react" />
         ) : (
-          <Auth client:only="react" />
+          <AuthNone client:only="react" />
         )
       }
       <CarritoPageNav client:visible />

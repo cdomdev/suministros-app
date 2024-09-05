@@ -2,9 +2,11 @@ import { useState } from "react";
 import ModalEnvioInvitado from "@/components/modales/ModalEnvioInvitado";
 import ModalEnvioUsuario from "@/components/modales/ModalEnvioUsuario";
 
+interface ExpandedProps {
+  isAuthenticated: boolean;
+}
 
-
- const Expanded: React.FC = () => {
+const Expanded: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
   const [check, setCheck] = useState(false);
   const [expanded, setExpanded] = useState(false);
 
@@ -12,7 +14,7 @@ import ModalEnvioUsuario from "@/components/modales/ModalEnvioUsuario";
     setCheck(!check);
     setExpanded(!expanded);
   };
-  const isLoggedIn = false;
+
 
   return (
     <div className={` border p-2 rounded-md ${expanded ? "expanded" : ""}`}>
@@ -48,7 +50,7 @@ import ModalEnvioUsuario from "@/components/modales/ModalEnvioUsuario";
       {expanded && (
         <div className="w-full flex flex-col justify-center items-center gap-2 p-3">
           <p>Ingresa la informacion de quien recibe el pedido</p>
-          {isLoggedIn ? < ModalEnvioUsuario /> : <ModalEnvioInvitado />}
+          {isAuthenticated ? < ModalEnvioUsuario /> : <ModalEnvioInvitado />}
         </div>
       )}
     </div>

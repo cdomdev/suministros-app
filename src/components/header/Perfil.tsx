@@ -2,16 +2,18 @@ import { useEffect, useState } from "react"
 import axios from "axios"
 import type { PropProfile } from '@/types/types'
 
+
 const Perfil = () => {
-    const [data, setData] = useState<PropProfile>()
+    const [data, setData] = useState<PropProfile | null>(null);
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
     useEffect(() => {
-        const dataLocal = localStorage.getItem('infoProfileUSer')
+        // Verificar si ya existe información del perfil en localStorage
+        const dataLocal = localStorage.getItem('infoProfileUSer');
         if (dataLocal) {
-            setData(JSON.parse(dataLocal))
+            setData(JSON.parse(dataLocal));
         }
-    }, [])
+    }, []);
 
     const toggleDropdown = () => {
         setDropdownOpen((prevState) => !prevState);
@@ -20,13 +22,15 @@ const Perfil = () => {
     const clearStorege = () => {
         localStorage.clear();
         sessionStorage.clear();
-    };
+    }
+
     const logOut = async () => {
-        clearStorege();
-        const response = await axios.post(`http://localhost:3000/user/logout`);
-        if (response.status === 200) {
-            clearStorege()
-            window.location.href = '/'
+        try {
+            await axios.post('http://localhost:3000/user/logout', {}, { withCredentials: true });
+            clearStorege();
+            window.location.reload();
+        } catch (error) {
+            console.error('Error during logout', error);
         }
     };
 

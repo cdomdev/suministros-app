@@ -20,8 +20,9 @@ const FormaInicioSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
             const response = await validaSesion(values)
             if (response.status === 200) {
                 setShow(false)
-                eventAuth.emit('authChange', true);
+                window.location.reload()
                 localStorage.setItem('infoProfileUSer', JSON.stringify(response.data))
+
             }
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {

@@ -1,6 +1,8 @@
-import { calcularTotal, type ProductItem } from "@/utils/calcularPago";
+import { calcularTotal } from "@/utils/calcularPago";
+import type { ProductItem } from "@/types/types";
 import { formateValue } from "@/utils/formatearValor";
 import { useEffect, useState } from "react"
+
 
 const Summary = () => {
     const [productos, setProductos] = useState<ProductItem[]>([])
@@ -12,6 +14,7 @@ const Summary = () => {
         }));
         setProductos(formattedItems);
     }, []);
+
 
     const totalString = calcularTotal(productos).toString()
     const valuFormated = formateValue(totalString)
@@ -33,13 +36,6 @@ const Summary = () => {
                     <path d="M12 16h.01" />
                 </svg>
             </div>
-            <hr />
-            <div className="w-[80%] m-auto ">
-                <button className="my-4 bg-blue-600 w-full  p-2 rounded-md text-white hover:bg-blue-500 duration-200">Iniciar sesion</button>
-                <a href="/informacion-para-envio">ir a envio</a>
-                <a href="/Pago">ir a pago</a>
-            </div>
-            <hr />
         </div>
     )
 }

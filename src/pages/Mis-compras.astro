@@ -2,9 +2,6 @@
 import Layout from "@/layouts/Layout.astro";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
-if (!authToken) {
-    window.location.href = "/404";
-}
 ---
 
 <Layout title="Mis compras">

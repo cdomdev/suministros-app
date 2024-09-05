@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
 
 
-const PerfilModal: React.FC = () => {
+const ModalInfo: React.FC = () => {
     const [show, setShow] = useState(false);
 
     const handleClose = () => setShow(false);
@@ -74,4 +74,4 @@ const PerfilModal: React.FC = () => {
 };
 
 
-export default PerfilModal;
+export default ModalInfo;
