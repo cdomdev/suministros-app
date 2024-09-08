@@ -1,4 +1,4 @@
-import type { DatosEnvio } from '@/types/types';
+import type { DatosUsurio } from '@/types/types';
 import { useEffect, useState } from 'react';
 import { Toast } from '../cammons/Toast';
 import { UpdateSteps } from '../cammons/UpdateSteps';
@@ -7,13 +7,12 @@ const VerifyDataLocal = () => {
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
-
-    const [datos, setDatos] = useState<DatosEnvio | null>(null);
+    const [datos, setDatos] = useState<DatosUsurio | null>(null);
 
     useEffect(() => {
-        const datosLocal = localStorage.getItem('dataUserSendOrder');
+        const datosLocal = localStorage.getItem('dataUserForBuy');
         if (datosLocal) {
-            const parsedData: DatosEnvio = JSON.parse(datosLocal);
+            const parsedData: DatosUsurio = JSON.parse(datosLocal);
             setDatos(parsedData);
         } else {
             setDatos(null);
@@ -21,7 +20,6 @@ const VerifyDataLocal = () => {
     }, []);
 
     const handleToast = () => {
-        console.log('no hay datos')
         setBgToast('fail')
         setShowToast(true)
         setToastMessage('Por favor agrega los datos de envio para continuar')

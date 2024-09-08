@@ -1,14 +1,12 @@
-import { Form, Button } from "react-bootstrap";
-import type { DatosEnvio } from '@/types/types'
+import { Form } from "react-bootstrap";
+import type { DatosUsurio } from '@/types/types'
 import { Formik } from "formik";
-
+import { UpdateSteps } from "../cammons/UpdateSteps";
 
 export const FormEnvioDatosInvitado = () => {
 
-    const handleSubmit = async (values: DatosEnvio) => {
-        console.log(values)
-        localStorage.setItem('dataUserSendOrder', JSON.stringify(values))
-        window.location.href = '/pago'
+    const handleSubmit = async (values: DatosUsurio) => {
+        localStorage.setItem('dataUserForBuy', JSON.stringify(values))
     }
 
     return (
@@ -22,8 +20,8 @@ export const FormEnvioDatosInvitado = () => {
                 destino: "",
                 detalles: "",
             }}
-            validate={(values: DatosEnvio) => {
-                const errors: Partial<DatosEnvio> = {};
+            validate={(values: DatosUsurio) => {
+                const errors: Partial<DatosUsurio> = {};
                 if (!values.nombre) {
                     errors.nombre = "*El campo no puede quedar vacio*";
                 }
@@ -170,13 +168,16 @@ export const FormEnvioDatosInvitado = () => {
                                 />
                             </Form.Group>
                         </div>
-                        <Button
-                            className='w-full '
-                            variant="primary"
+
+                        <UpdateSteps
+                            ruta="/pago"
+                            bg="bg-primary"
+                            textColor="text-white"
+                            textContent="Continuar"
                             type="submit"
-                            disabled={formik.isSubmitting}>
-                            Continuar
-                        </Button>
+                            disabled={formik.isSubmitting}
+                        />
+
                     </Form>
                 </div>
             }

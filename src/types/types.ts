@@ -12,19 +12,14 @@ export interface Producto {
   quantity?: number
 }
 
-
 export type ProductoCarrito = {
-  image?: string;
-  nombre: string;
-  quantity?: number;
-  referencia: string;
-  id: number
+  producto: Producto
 };
+
 
 export interface ApiResponse {
   productos: Producto[];
 }
-
 
 export interface Ruta {
   nombre: string[];
@@ -40,8 +35,6 @@ export interface PropsItemsCat {
   ruta: string;
   nombre: string;
 }
-
-
 
 export interface ContenidoPagina {
   titulo: string;
@@ -71,7 +64,7 @@ export interface PropProfile {
   email: string,
 }
 
-export interface DatosEnvio {
+export interface DatosUsurio {
   nombre?: string | null,
   apellido?: string | null,
   email?: string | null,
@@ -95,7 +88,6 @@ export interface ResetPassword {
   values: ValuesPassWords;
   token: string;
 }
-
 
 export type ProductItem = {
   cantidad: number;

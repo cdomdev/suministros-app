@@ -1,11 +1,13 @@
-import { Form, Button } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Formik } from "formik";
-import type { DatosEnvio } from '@/types/types'
+import type { DatosUsurio } from '@/types/types'
+import { UpdateSteps } from "../cammons/UpdateSteps";
 
 export const FormEnvioDatosUsuario = () => {
-    const handleSubmit = async (values: DatosEnvio) => {
-        console.log(values)
+    const handleSubmit = async (values: DatosUsurio) => {
+        localStorage.setItem('dataUserForBuy', JSON.stringify(values))
     }
+
     return (
         <Formik
             initialValues={{
@@ -14,8 +16,8 @@ export const FormEnvioDatosUsuario = () => {
                 destino: "",
                 detalles: "",
             }}
-            validate={(values: DatosEnvio) => {
-                const errors: Partial<DatosEnvio> = {};
+            validate={(values: DatosUsurio) => {
+                const errors: Partial<DatosUsurio> = {};
                 if (!values.direccion) {
                     errors.direccion = "*El campo no puede quedar vacio*";
                 }
@@ -106,13 +108,14 @@ export const FormEnvioDatosUsuario = () => {
                                 />
                             </Form.Group>
                         </div>
-                        <Button
-                            className='w-full '
-                            variant="primary"
+                        <UpdateSteps
+                            ruta="/pago"
+                            bg="bg-primary"
+                            textColor="text-white"
+                            textContent="Continuar"
                             type="submit"
-                            disabled={formik.isSubmitting}>
-                            Continuar
-                        </Button>
+                            disabled={formik.isSubmitting}
+                        />
                     </Form>
                 </div>
             }

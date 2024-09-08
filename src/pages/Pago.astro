@@ -1,8 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import { Steps } from "@/components/Steps";
+import { Steps } from "@/components/cammons/Steps";
 import DatosPago from "@/components/pago/DetosPago";
 import DatosProductos from "@/components/pago/DatosProductos";
+const cookies = Astro.cookies;
+const authToken = cookies.get("access_token");
+const isAuthenticated = authToken !== undefined;
 ---
 
 <Layout title="Vamos a procesar su pago">
@@ -19,7 +22,10 @@ import DatosProductos from "@/components/pago/DatosProductos";
                 </h2>
             </div>
             <div class="border mt-1 p-2">
-                <DatosPago client:only="react" />
+                <DatosPago
+                    client:only="react"
+                    isAuthenticated={isAuthenticated}
+                />
             </div>
         </article>
         <article>

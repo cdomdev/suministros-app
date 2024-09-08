@@ -1,13 +1,8 @@
-import { Spinner } from "react-bootstrap";
 import { type DataForgotPassword } from "@/types/types";
-import { useEffect } from "react";
 
 
 const SuccessRequest = ({ nombre, email }: DataForgotPassword) => {
 
-    useEffect(() => {
-        let dataLocal = localStorage.getItem('infoProfileUSer')
-    }, [])
     return (
         <div className="flex flex-col justify-center items-center">
             <h1 className="mb-2 font-text-base md:text-base text-center">¡Tu informacion ah sido valida con exito!</h1>

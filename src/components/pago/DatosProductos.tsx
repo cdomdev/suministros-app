@@ -1,4 +1,4 @@
-import type { Producto, DatosEnvio, ProductItem } from '@/types/types'
+import type { Producto, DatosUsurio, ProductItem } from '@/types/types'
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio'
 import { calcularTotal } from '@/utils/calcularPago'
 import { calcularSubTotal } from '@/utils/calcularSubTotal'
@@ -7,7 +7,7 @@ import { useState, useEffect } from 'react'
 
 const DatosProductos = () => {
     const [productos, setProductos] = useState<Producto[]>([])
-    const [datos, setDatos] = useState<DatosEnvio>()
+    const [datos, setDatos] = useState<DatosUsurio>()
     const [valorProducto, setValorProducto] = useState<ProductItem[]>([])
 
     useEffect(() => {

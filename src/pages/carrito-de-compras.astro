@@ -4,7 +4,7 @@ import Contador from "@/components/carritoDecompras/Contador";
 import Summary from "@/components/cammons/Summary";
 import DetallesCarrito from "@/components/carritoDecompras/DetallesCarrito";
 import AuthManager from "@/components/auth/AuthManager";
-import { Steps } from "@/components/Steps";
+import { Steps } from "@/components/cammons/Steps";
 import { UpdateSteps } from "@/components/cammons/UpdateSteps";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
@@ -42,9 +42,9 @@ const isAuthenticated = authToken !== undefined;
                     isAuthenticated ? (
                         <UpdateSteps
                             client:only="react"
-                            ruta="/pago"
-                            bg="blue"
-                            textColor="white"
+                            ruta="/informacion-para-envio"
+                            bg="bg-blue-600"
+                            textColor="text-white"
                             textContent="Continuar"
                         />
                     ) : (
