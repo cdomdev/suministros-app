@@ -10,7 +10,7 @@ import type { ApiResponse } from "@/types/types";
 import CardProductos from "@/components/cards/CardProductos.astro";
 import Spiner from "@/components/Spiner.astro";
 const { subcategoria } = Astro.params;
-
+import ContenidoPages from '@/content/contentPagesSubcateries.json'
 let contenido: ContenidoPagina;
 let dataresponse: ApiResponse | null = null;
 let marcasUnicas: string[] | null = null;
