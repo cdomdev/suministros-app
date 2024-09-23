@@ -1,0 +1,141 @@
+---
+import ItemsSub from "./ItemsSub.astro";
+import ItemsCat from "./ItemsCat.astro";
+
+const rutas = [
+    {
+        ruta1: {
+            nombre: ["Sanitarios", "Griferias", "Espejos"],
+            ruta: ["sanitarios", "griferias", "espejos"],
+        },
+        ruta2: {
+            nombre: ["Lavaplatos", "Lavaderos"],
+            ruta: ["lavaplatos", "lavaderos"],
+        },
+        ruta3: {
+            nombre: ["Pinturas", "Pegantes", "Limpiadores"],
+            ruta: ["pinturas", "pegantes", "limpiadores"],
+        },
+        ruta4: {
+            nombre: ["Pisos ceramicos", "Paredes"],
+            ruta: ["pisosceramicos", "paredes"],
+        },
+    },
+];
+---
+
+<a
+    data-bs-toggle="offcanvas"
+    href="#offcanvasExample"
+    role="button"
+    class="md:hidden"
+    aria-controls="offcanvasExample">
+    <svg
+        class="w-6 h-6"
+        aria-hidden="true"
+        fill="currentColor"
+        viewBox="0 0 20 20"
+        xmlns="http://www.w3.org/2000/svg">
+        <path
+            clip-rule="evenodd"
+            fill-rule="evenodd"
+            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
+        ></path>
+    </svg>
+</a>
+<div
+    class="offcanvas offcanvas-start"
+    tabindex="-1"
+    id="offcanvasExample"
+    aria-labelledby="offcanvasExampleLabel">
+    <div class="offcanvas-header">
+        <h5
+            class="offcanvas-title text-blue-900 uppercase font-bold"
+            id="offcanvasExampleLabe">
+            <span class="text-xl">S</span>uministros
+        </h5>
+        <button
+            type="button"
+            class="btn-close text-reset"
+            data-bs-dismiss="offcanvas"
+            aria-label="Close"></button>
+    </div>
+    <div class="offcanvas-body font-font-cust-2">
+        <div class="h-full p-1 overflow-y-auto dark:bg-gray-800">
+            <ul
+                class="flex items-start flex-col gap-1 md:gap-x-3 font-font-cust-2 font-normal">
+                <li class="relative">
+                    <ItemsCat ruta="baños" nombre="Baños" />
+                    <!-- Dropdown menu -->
+                    <div
+                        id="drop-1"
+                        class="hidden absolute left-0 top-full bg-white divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-700">
+                        {
+                            rutas.map((ruta) => (
+                                <ItemsSub
+                                    nombre={ruta.ruta1.nombre}
+                                    ruta={ruta.ruta1.ruta}
+                                />
+                            ))
+                        }
+                    </div>
+                </li>
+                <li class="relative">
+                    <ItemsCat ruta="cocinas" nombre="Cocinas" />
+                    <!-- Dropdown menu -->
+                    <div
+                        id="drop-2"
+                        class="bg-white divide-y divide-gray-100 rounded-lg shadow w-32 dark:bg-gray-700 absolute z-10 hidden">
+                        {
+                            rutas.map((ruta) => (
+                                <ItemsSub
+                                    nombre={ruta.ruta2.nombre}
+                                    ruta={ruta.ruta2.ruta}
+                                />
+                            ))
+                        }
+                    </div>
+                </li>
+                <li class="relative">
+                    <ItemsCat
+                        ruta="construccion-y-remodelacion"
+                        nombre="Construccion / remodelacion"
+                    />
+                    <!-- Dropdown menu -->
+                    <div
+                        id="drop-3"
+                        class="bg-white divide-y divide-gray-100 rounded-lg shadow w-56 right-0 dark:bg-gray-700 absolute z-10 hidden">
+                        {
+                            rutas.map((ruta) => (
+                                <ItemsSub
+                                    nombre={ruta.ruta3.nombre}
+                                    ruta={ruta.ruta3.ruta}
+                                />
+                            ))
+                        }
+                    </div>
+                </li>
+                <li class="relative">
+                    <ItemsCat ruta="pisos-y-paredes" nombre="Pisos / paredes" />
+                    <!-- Dropdown menu -->
+                    <div
+                        id="drop-4"
+                        class="bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 absolute z-10 hidden">
+                        {
+                            rutas.map((ruta) => (
+                                <ItemsSub
+                                    nombre={ruta.ruta4.nombre}
+                                    ruta={ruta.ruta4.ruta}
+                                />
+                            ))
+                        }
+                    </div>
+                </li>
+                <li
+                    class="text-blue-600 pl-4 font-bold hover:text-blue-400 duration-100 ease-in-out">
+                    <a href="/Ofertas" class="text-xs lg:text-sm">OFERTAS</a>
+                </li>
+            </ul>
+        </div>
+    </div>
+</div>

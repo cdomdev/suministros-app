@@ -32,10 +32,8 @@ const ModalInfo: React.FC = () => {
                 <small className="text-[7px] md:text-[8px] uppercase font-semibold hover:scale-110 duration-100">Compras</small>
             </div>
 
-            {/* Fondo personalizado del modal */}
             {show && <div id="box-backdrop" className="fixed inset-0 bg-gray-900/50 z-40"></div>}
 
-            {/* Modal */}
             <Modal
                 show={show} onHide={handleClose}>
                 <Modal.Header closeButton className="border-none pb-0 px-4">
