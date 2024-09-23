@@ -17,10 +17,11 @@ const Registro: React.FC = () => {
         setIsLoading(true)
         try {
             const response = await register(values)
+            console.log(response)
             if (response.status === 201) {
                 setShowToast(true)
                 setBgToast('toast-success')
-                setToastMessage(`Tu registro fue hecho con exito, ya puedes iniciar sesion`)
+                setToastMessage(`Tu registro fue exitoso, ya puedes iniciar sesion en suministros`)
                 resetForm();
                 setTimeout(() => {
                     setShowToast(false)
@@ -31,6 +32,7 @@ const Registro: React.FC = () => {
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
+                console.log(status)
                 if (status === 404) {
                     setBgToast('fail')
                     setShowToast(true)
