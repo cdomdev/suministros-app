@@ -4,12 +4,18 @@ import { formateValue } from "./formatearValor";
 export const calcularSubTotal = (producto: Producto) => {
     const cantidad = producto.quantity ?? 0;
     const valor = parseFloat(producto.valor) ?? 0;
+    const descuento = producto.discount
 
-    // Verificación explícita de tipos para evitar errores
-    const total = (typeof cantidad === 'number' && typeof valor === 'number')
-        ? cantidad * valor
-        : 0;
+    let valorTotal;
+    if (descuento && descuento > 0) {
+        let valorDeDescuento = valor * descuento / 100
+        valorTotal = (valor - valorDeDescuento) * cantidad
+    } else {
+        valorTotal = cantidad * valor
+    }
 
-    const valueParsed = total.toString();
+    const valueParsed = valorTotal.toFixed(2)
     return formateValue(valueParsed);
 };
+
+

@@ -1,10 +1,9 @@
 ---
 import Layout from "@/layouts/Layout.astro";
-import Summary from "@/components/cammons/Summary";
+import Summary from "@/components/cammon/Summary";
 import Expanded from "@/components/envio/Expanded";
-import { Steps } from "@/components/cammons/Steps";
+import { Steps } from "@/components/cammon/Steps";
 import VerifyDataLocal from "@/components/envio/VerifyDataLocal";
-
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;

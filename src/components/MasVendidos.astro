@@ -3,8 +3,6 @@ import { getMostSalled } from "@/services/productos";
 import CardProductos from "@/components/cards/CardProductos.astro";
 import { type ApiResponse } from "@/types/types";
 import Spiner from "./Spiner.astro";
-
-// Inicializa masVendidos como null
 let masVendidos: ApiResponse | null = null;
 
 try {

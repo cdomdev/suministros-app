@@ -1,35 +1,28 @@
-import type { Producto, DatosUsurio, ProductItem } from '@/types/types'
+import type { Producto, DatosUsurio } from '@/types/types'
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio'
-import { calcularTotal } from '@/utils/calcularPago'
 import { calcularSubTotal } from '@/utils/calcularSubTotal'
 import { formateValue } from '@/utils/formatearValor'
 import { useState, useEffect } from 'react'
+import { calcularTotal } from '@/utils/calcularPago'
 
 const DatosProductos = () => {
     const [productos, setProductos] = useState<Producto[]>([])
     const [datos, setDatos] = useState<DatosUsurio>()
-    const [valorProducto, setValorProducto] = useState<ProductItem[]>([])
 
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
+        const datosUsuario = JSON.parse(localStorage.getItem('dataUserForBuy') || '[]');
         setProductos(carrito)
-        const datosUsuario = JSON.parse(localStorage.getItem('dataUserSendOrder') || '[]');
         setDatos(datosUsuario)
-        const formattedItems = carrito.map((item: any) => ({
-            cantidad: item.quantity || 0,
-            valor: parseFloat(item.valor) || 0
-        }));
-        setValorProducto(formattedItems)
     }, [])
 
-    const total = calcularTotal(valorProducto);
+    const total = calcularTotal(productos);
     const destino = datos?.destino || '0';
     const envio = calcularCostoEnvio({ destino, precio: total });
     const valorString = formateValue(envio.toString())
 
-
     return (
-        <div className=' max-h-80 overflow-y-auto '>
+        <div className=' max-h-96 overflow-y-auto '>
             <span className='text-sm leading-5 text-balance flex flex-col'>
                 Este es el costo de envio de tu compra
                 <span><strong>Costo de envio: $: {valorString}</strong> </span>

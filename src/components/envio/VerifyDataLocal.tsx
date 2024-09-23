@@ -1,7 +1,7 @@
 import type { DatosUsurio } from '@/types/types';
 import { useEffect, useState } from 'react';
-import { Toast } from '../cammons/Toast';
-import { UpdateSteps } from '../cammons/UpdateSteps';
+import { Toast } from '../cammon/Toast';
+import { UpdateSteps } from '../cammon/UpdateSteps';
 
 const VerifyDataLocal = () => {
     const [toastMessage, setToastMessage] = useState<string>('');

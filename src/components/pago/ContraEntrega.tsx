@@ -1,7 +1,7 @@
 import { Spinner } from 'react-bootstrap'
 import { useEffect, useState } from 'react';
-import type { DatosUsurio, Producto, ProductItem } from '@/types/types';
-import { Toast } from '../cammons/Toast';
+import type { DatosUsurio, Producto } from '@/types/types';
+import { Toast } from '../cammon/Toast';
 import { pago } from '@/services/pagos';
 import axios from 'axios';
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio';
@@ -18,42 +18,50 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
-    const [datosUsuario, setDatosusuario] = useState<DatosUsurio>()
-    const [valorProducto, setValorProducto] = useState<ProductItem[]>([])
+    const [datosEnvio, setDatosEnvio] = useState<DatosUsurio | null>(null);
+    const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
 
-
-    // recuperar productos del local para finlizar la compra
     useEffect(() => {
         let productosLocal = JSON.parse(localStorage.getItem('carrito') || '[]');
-        let datosUsuario = localStorage.getItem('dataUserForBuy')
-        if (datosUsuario) {
-            const datosParseados = JSON.parse(datosUsuario)
-            setDatosusuario(datosParseados)
+        let datosEnvioLocal = localStorage.getItem('dataUserForBuy');
+        let datosUsuarioLogLocal = JSON.parse(localStorage.getItem('infoProfileUSer') || '{}');
+        if (datosEnvioLocal) {
+            let datos = JSON.parse(datosEnvioLocal)
+            setDatosEnvio(datos);
         }
-        setdatosproductos(productosLocal)
-        const formattedItems = productosLocal.map((item: any) => ({
-            cantidad: item.quantity || 0,
-            valor: parseFloat(item.valor) || 0
-        }));
-        setValorProducto(formattedItems)
+        setDatosusuarioLog(datosUsuarioLogLocal);
+        setdatosproductos(productosLocal);
     }, [])
 
 
-    const total = calcularTotal(valorProducto);
-    const destino = datosUsuario?.destino || '0';
+    const datosUsuario = { ...datosEnvio, ...datosUsuarioLog };
+    const total = calcularTotal(datosProductos);
+    const destino = datosEnvio?.destino || '0';
     const envio = calcularCostoEnvio({ destino, precio: total });
-    const metodoDePago = 'contre-entrega'
     const rutaUser = 'buy-user'
     const rutainvitado = 'buy-invited'
 
 
     const finalizarCompra = async () => {
+        sessionStorage.setItem('carrito', JSON.stringify(datosProductos))
+        sessionStorage.setItem('dataUserForBuy', JSON.stringify(datosEnvio))
         setIsLoading(true)
-        if (!datosProductos || datosProductos.length === 0 || datosUsuario) {
-            setToastMessage(`Parece que faltan datos para procesar tu compra, intentalo de nuevo`);
+        if (!datosEnvio) {
+            setToastMessage('Faltan los datos de envío, por favor verificar antes de continuar.');
             setBgToast('toast-fail');
             setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000)
+            setTimeout(() => setShowToast(false), 3000);
+            setIsLoading(false);
+            return;
+        }
+
+        if (!datosProductos || datosProductos.length === 0) {
+            setToastMessage('No hay productos en el carrito.');
+            setBgToast('toast-fail');
+            setShowToast(true);
+            setTimeout(() => setShowToast(false), 3000);
+            setIsLoading(false);
+            return;
         }
         try {
             if (isAuthenticated) {
@@ -62,19 +70,23 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                     datos: datosUsuario,
                     ruta: rutaUser,
                     valorDeEnvio: envio,
-                    metodoPago: metodoDePago
                 })
+                if (pagoUsuario.status === 200) {
+                    window.location.href = `/success/${pagoUsuario.data.message}`
+                    localStorage.removeItem('carrito')
+                    localStorage.removeItem('steps')
+                }
             } else {
                 const pagoInvitado = await pago({
                     productos: datosProductos,
-                    datos: datosUsuario,
+                    datos: datosEnvio,
                     ruta: rutainvitado,
                     valorDeEnvio: envio,
-                    metodoPago: metodoDePago
                 })
                 if (pagoInvitado.status === 200) {
-                    console.log('Compra realizada', pagoInvitado.data)
-                    window.location.href = `/sucess/${pagoInvitado.data.message}`
+                    window.location.href = `/success/${pagoInvitado.data.message}`
+                    localStorage.removeItem('carrito')
+                    localStorage.removeItem('steps')
                 }
 
             }
@@ -134,11 +146,11 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 </li>
             </ul>
             <div className='flex flex-col gap-2'>
-                <button className='bg-blue-600 py-2 rounded-md text-white hover:bg-blue-700 duration-100' onClick={finalizarCompra}>
+                <button className='bg-blue-600 py-2 text-sm rounded-md text-white hover:bg-blue-700 duration-100' onClick={finalizarCompra}>
                     {isLoading ? (
                         <Spinner animation="border" role="status" size="sm" />
                     ) : (
-                        "Continuar"
+                        "Continuar con esta forma de pago"
                     )}
                 </button>
             </div>

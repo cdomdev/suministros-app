@@ -1,9 +1,10 @@
 import { eventEmitter } from "@/events/carritoChanged";
 import type { Producto } from "@/types/types";
 import { useState } from "react";
-import { Toast } from "../cammons/Toast";
+import { Toast } from "../cammon/Toast";
 import { formateValue } from "@/utils/formatearValor";
 import { calcularSubTotal } from "@/utils/calcularSubTotal";
+import { calcularDescuento } from "@/utils";
 
 interface CardCarritoProps {
     producto: Producto;
@@ -16,7 +17,6 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
 
-
     const deleFromCar = (productId: number) => {
         const updatedCarItems = productos.filter((item) => item.id !== productId);
         localStorage.setItem('carrito', JSON.stringify(updatedCarItems));
@@ -26,16 +26,20 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
         }
     };
 
+
     const handleDeletToCart = (producto: Producto) => {
         setToastMessage('Se eliminó un producto del carrito');
         setBgToast('toast-success');
         setShowToast(true);
+        window.location.reload()
         deleFromCar(producto.id);
         setTimeout(() => {
             setShowToast(false);
         }, 3000);
     };
 
+    const valorProducto = producto.discount && producto.discount > 0 ? calcularDescuento(producto.valor, producto.discount) : formateValue(producto.valor)
+    const subTotal = calcularSubTotal(producto)
 
     return (
         <div className="border py-2">
@@ -63,6 +67,17 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
                             <strong>Cantidad: </strong>
                             {producto.quantity}
                         </span>
+                        <span className="text-balance text-sm flex gap-1 ">
+                            {
+                                producto.discount ? (
+                                    <>
+                                        <strong>Descuento: </strong>
+                                        <p className="text-red-600 text-sm">{producto.discount}%</p>
+                                    </>
+                                ) : <></>
+                            }
+
+                        </span>
                     </div>
                 </div>
                 <div className="flex">
@@ -81,17 +96,18 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
                 <span className="flex gap-2 items-center">
                     Valor unidad:
                     <strong>
-                        {formateValue(producto.valor)}
+                        $: {valorProducto}
                     </strong>
                 </span>
                 <span className="flex gap-2">
                     Subtotal:
                     <strong>
-                        {calcularSubTotal(producto)}
+                        $: {subTotal}
                     </strong>
                 </span>
             </div>
         </div>
+
     );
 };
 

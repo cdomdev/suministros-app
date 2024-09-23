@@ -21,8 +21,10 @@ export default {
       "cat-cust": "0.8fr 3fr",
       "col-cust-2": "50% 50%",
       "col-cust-3": "70% 30%",
-      "col-cust-4": "60% 40%"
-    }
+      "col-cust-4": "60% 40%",
+      "col-cust-5": "25% 75%"
+    },
+
   },
   plugins: [require("flowbite/plugin")],
 };

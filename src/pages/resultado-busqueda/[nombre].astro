@@ -1,0 +1,13 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Resultados from "@/components/buscador/Resultados.tsx";
+---
+
+<Layout title="aqui estan resultados de tu bsuqueda">
+    <section class="pt-12">
+        <h1 class="text-sm lg:text-lg font-semibold text-center uppercase">
+            Resutados de busqueda
+        </h1>
+        <Resultados client:only="react" />
+    </section>
+</Layout>

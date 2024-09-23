@@ -1,5 +1,5 @@
 ---
-import { FormResetPassword } from "../../components/forms/FormResetPassword";
+import { FormResetPassword } from "../../components/auth/ResetPassword";
 import Layout from "../../layouts/Layout.astro";
 const { token } = Astro.params;
 ---
@@ -8,7 +8,7 @@ const { token } = Astro.params;
     <section class="py-16 bg-[#f4f4f4]">
         <div
             class="bg-white md:w-[70%] mx-auto flex flex-col justify-center items-center p-4">
-            <FormResetPassword client:visible token={token} />
+            <FormResetPassword client:visible token={token || ""} />
         </div>
     </section>
 </Layout>

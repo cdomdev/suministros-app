@@ -21,3 +21,10 @@ export function calcularDescuento(value: string, discount: number | null): strin
     const valueFinishString = valueFinish.toString()
     return formateValue(valueFinishString);
 }
+
+
+export const calcularDescuentoParaTotal = (valor: string, discount: number): string => {
+    const valorNumerico = parseFloat(valor);
+    const descuentoAplicado = valorNumerico - (valorNumerico * (discount / 100));
+    return descuentoAplicado.toFixed(2);
+};

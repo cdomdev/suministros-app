@@ -1,9 +1,19 @@
-import React from 'react'
+import { useState, useEffect } from 'react';
 
-export const RutaPedidos = () => {
+import type { PropProfile } from '@/types/types'
+const RutaPedidos = () => {
+    const [data, setData] = useState<PropProfile>();
+
+    useEffect(() => {
+        const dataLocal = localStorage.getItem('infoProfileUSer');
+        if (dataLocal) {
+            setData(JSON.parse(dataLocal));
+        }
+    }, []);
+
     return (
         <>
-            <a className="flex flex-col items-center cursor-pointer" href="/Mis-compras">
+            <a className="flex flex-col items-center cursor-pointer" href="/usuario/perfil">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
                     className="icon icon-tabler icon-tabler-box-seam w-8 h-8 md:w-11 md:h-11"
@@ -23,9 +33,13 @@ export const RutaPedidos = () => {
                     <path d="M12 12l-8 -4.5"></path>
                 </svg>
                 <small
-                    className="text-[7px] md:text-[8px] uppercase font-semibold hover:scale-110 duration-100">Compras</small>
+                    className="text-[7px] md:text-[8px] uppercase font-semibold hover:scale-110 duration-100"
+                >Compras</small>
             </a>
         </>
 
     )
 }
+
+
+export default RutaPedidos

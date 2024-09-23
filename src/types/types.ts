@@ -58,20 +58,19 @@ export interface ValuesRegistro {
   password: string,
 }
 
-export interface PropProfile {
+export interface PropProfile extends DatosUsurio {
+  id: number,
   picture: string,
-  nombre: string,
-  email: string,
 }
 
 export interface DatosUsurio {
   nombre?: string | null,
   apellido?: string | null,
   email?: string | null,
-  telefono: string,
-  direccion: string,
-  destino: string
-  detalles: string
+  telefono?: string,
+  direccion?: string,
+  destino?: string,
+  detalles?: string
 }
 
 export interface DataForgotPassword {
@@ -89,7 +88,39 @@ export interface ResetPassword {
   token: string;
 }
 
-export type ProductItem = {
+
+export interface GoogleAuthResponse {
+  access_token: string;
+  token_type: string;
+  expires_in: number;
+  scope: string;
+  authuser?: string;
+  prompt?: string;
+}
+
+export type DataUserUpdate = {
+  nombre: string | null,
+  telefono: number | string,
+  direccion: string | string
+}
+
+interface DetallePedido {
+  id: number;
+  precio_unitario: string;
+  sub_total: string;
   cantidad: number;
-  valor: number;
-};
+  descuento: number;
+  Producto: Producto;
+}
+
+export interface Pedido {
+  id: string;
+  costo_de_envio: number;
+  pago_total: number;
+  estado_pedido: string | null;
+  detalles_pedido: DetallePedido[];
+}
+
+export interface PedidosResponse {
+  pedidos: Pedido[];
+}

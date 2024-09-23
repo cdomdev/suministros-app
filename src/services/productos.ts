@@ -1,6 +1,17 @@
 import axios from "axios";
-export const prerender = false
+import type { Producto } from "@/types/types";
 
+export const getAllProducts = async (): Promise<Producto[]> => {
+  try {
+    const response = await axios.get(
+      `http://localhost:3000/productos`
+    );
+    return response.data;
+  } catch (error) {
+    console.error("Error al listar los productos", error);
+    throw error;
+  }
+}
 
 export const getProductos = async (categoria: string, producto: string) => {
   const encodedRuta = encodeURIComponent(producto);

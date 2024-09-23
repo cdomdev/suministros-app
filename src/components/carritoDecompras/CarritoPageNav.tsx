@@ -26,10 +26,8 @@ const CarritoPageNav = () => {
         };
     }, []);
 
-
-
     return (
-        <a className="relative p-0 m-0 flex flex-col items-center" href="/carrito-de-compras">
+        <a className="relative p-0 m-0 flex flex-col items-center cursor-pointer" href="/carrito-de-compras" >
             <div className="relative">
                 <svg
                     xmlns="http://www.w3.org/2000/svg"
