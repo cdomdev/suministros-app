@@ -24,6 +24,9 @@ export default {
       "col-cust-4": "60% 40%",
       "col-cust-5": "25% 75%"
     },
+    // backgroundColor: {
+    //   'color-w': "rgb(37, 211, 102)"
+    // }
 
   },
   plugins: [require("flowbite/plugin")],

@@ -1,4 +1,3 @@
-// types.ts
 export interface Producto {
   id: number;
   marca: string;
@@ -123,4 +122,16 @@ export interface Pedido {
 
 export interface PedidosResponse {
   pedidos: Pedido[];
+}
+
+
+export type ResponsIPInfo = {
+  ip: string;
+  city: string;
+  region: string;
+  country: string;
+  loc: string;
+  org: string;
+  postal: string;
+  timezone: string;
 }

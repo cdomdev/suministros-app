@@ -5,7 +5,6 @@ import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
 import AuthNone from "./AuthNone";
 import AuthSucces from "./AuthSuccess";
 import Offcanvas from "./Offcanvas.astro";
-
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
@@ -18,7 +17,7 @@ const isAuthenticated = authToken !== undefined;
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="../../../logo.webp" class="h-7 md:h-11" alt="Flowbite Logo" />
     </a>
-    <div class="hidden md:block w-1/3">
+    <div class="hidden md:block w-[37%]">
       <Buscador client:visible />
     </div>
     <!-- Icons -->

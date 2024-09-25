@@ -6,6 +6,7 @@ import { pago } from '@/services/pagos';
 import axios from 'axios';
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio';
 import { calcularTotal } from '@/utils/calcularPago';
+import { getDataIp } from '@/services/user';
 
 
 interface ExpandedProps {
@@ -40,7 +41,6 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const envio = calcularCostoEnvio({ destino, precio: total });
     const rutaUser = 'buy-user'
     const rutainvitado = 'buy-invited'
-
 
     const finalizarCompra = async () => {
         sessionStorage.setItem('carrito', JSON.stringify(datosProductos))
