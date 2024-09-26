@@ -1,10 +1,13 @@
 import { useEffect, useState } from "react";
 import { initMercadoPago } from "@mercadopago/sdk-react";
-import type { Producto, DatosUsurio } from '@/types/types'
+import type { Producto, DatosUsurio, ResponsIPInfo } from '@/types/types'
 import { calcularTotal } from "@/utils";
 import { calcularCostoEnvio } from "@/utils";
 import { mercadoPago } from '@/services/pagos'
 import { Toast } from "../cammon/Toast";
+const clientMercadopago = import.meta.env.PUBLIC_CLIENT_MERCADOPAGO;
+const rutaUser = import.meta.env.PUBLIC_URL_CLIENT_MERCADOPAGO
+const rutainvitado = import.meta.env.PUBLIC_URL_INVITED_MERCADOPAGO
 
 interface ExpandedProps {
     isAuthenticated: boolean;
@@ -15,33 +18,31 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const [datosEnvio, setDatosEnvio] = useState<DatosUsurio | null>(null);
     const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
     const [datosProductos, setdatosproductos] = useState<Producto[]>([])
+    const [location, setLocation] = useState<ResponsIPInfo>()
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
 
-    const clientMercadopago = import.meta.env.PUBLIC_CLIENT_MERCADOPAGO;
     initMercadoPago(clientMercadopago, {
         locale: "es-CO",
     });
 
     useEffect(() => {
         let productosLocal = JSON.parse(localStorage.getItem('carrito') || '[]');
-        let datosEnvioLocal = localStorage.getItem('dataUserForBuy');
+        let datosEnvioLocal = JSON.parse(localStorage.getItem('dataUserForBuy') || '');
         let datosUsuarioLogLocal = JSON.parse(localStorage.getItem('infoProfileUSer') || '{}');
-        if (datosEnvioLocal) {
-            let datos = JSON.parse(datosEnvioLocal)
-            setDatosEnvio(datos);
-        }
+        let dataLocation = JSON.parse(localStorage.getItem('referenceDataLocation') || '')
+        setLocation(dataLocation)
+        setDatosEnvio(datosEnvioLocal);
         setDatosusuarioLog(datosUsuarioLogLocal);
         setdatosproductos(productosLocal);
     }, [])
 
-    const datosUrio = { ...datosEnvio, ...datosUsuarioLog };
+    const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location, };
+    const datosInvitado = { ...datosEnvio, ...location }
     const total = calcularTotal(datosProductos);
     const destino = datosEnvio?.destino || '0';
     const envio = calcularCostoEnvio({ destino, precio: total });
-    const rutaUser = 'mercadopago-user'
-    const rutainvitado = 'mercadopago-invited'
 
 
     const createOrder = async () => {
@@ -59,7 +60,7 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             if (isAuthenticated) {
                 const pagoUsuario = await mercadoPago({
                     productos: datosProductos,
-                    datos: datosUrio,
+                    datos: datosUsuario,
                     ruta: rutaUser,
                     valorDeEnvio: envio
                 })
@@ -72,7 +73,7 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             } else {
                 const pagoInvitado = await mercadoPago({
                     productos: datosProductos,
-                    datos: datosEnvio,
+                    datos: datosInvitado,
                     ruta: rutainvitado,
                     valorDeEnvio: envio
                 })

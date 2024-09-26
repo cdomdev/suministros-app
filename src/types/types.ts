@@ -62,14 +62,14 @@ export interface PropProfile extends DatosUsurio {
   picture: string,
 }
 
-export interface DatosUsurio {
+export interface DatosUsurio extends ResponsIPInfo {
   nombre?: string | null,
   apellido?: string | null,
   email?: string | null,
   telefono?: string,
   direccion?: string,
   destino?: string,
-  detalles?: string
+  detalles?: string,
 }
 
 export interface DataForgotPassword {
@@ -126,12 +126,12 @@ export interface PedidosResponse {
 
 
 export type ResponsIPInfo = {
-  ip: string;
-  city: string;
-  region: string;
-  country: string;
-  loc: string;
-  org: string;
-  postal: string;
-  timezone: string;
+  city?: string;
+  region?: string;
+  country?: string | null;
+  postal?: string | null;
+  loc?: string | null;
+  ip?: string | null;
+  org?: string | null;
+  timezone?: string | null;
 }

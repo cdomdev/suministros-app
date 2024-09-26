@@ -41,9 +41,9 @@ const DetosPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 <div className="flex flex-col border-dashed border-2 py-3 px-4">
                     <h3 className="font-semibold text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1">Datos de envio</h3>
                     <span className="text-sm flex flex-col pl-1"><strong>Direccion:</strong>{datos?.direccion}</span>
-                    <span className="text-sm flex flex-col pl-1"><strong>Detalles:</strong>{datos?.direccion}</span>
+                    <span className="text-sm flex flex-col pl-1 text-balance"><strong>Detalles:</strong>{datos?.detalles}</span>
                 </div>
-                <div className="flex flex-col border-dashed border-2 py-3 px-4">
+                <div className="flex flex-col border-dashed border-2 py-3 px-4 min-w-[200px]">
                     <h3 className="font-semibold text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1"> Total a pagar</h3>
                     <span className="font-semibold text-center "> $: {valuFormated}</span>
                 </div>

@@ -1,12 +1,12 @@
-import { Spinner } from 'react-bootstrap'
+import axios from 'axios';
 import { useEffect, useState } from 'react';
-import type { DatosUsurio, Producto } from '@/types/types';
+import type { DatosUsurio, Producto, ResponsIPInfo } from '@/types/types';
 import { Toast } from '../cammon/Toast';
 import { pago } from '@/services/pagos';
-import axios from 'axios';
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio';
 import { calcularTotal } from '@/utils/calcularPago';
-import { getDataIp } from '@/services/user';
+const rutaUser = import.meta.env.PUBLIC_URL_CLIENT
+const rutainvitado = import.meta.env.PUBLIC_URL_INVITED
 
 
 interface ExpandedProps {
@@ -15,33 +15,32 @@ interface ExpandedProps {
 
 export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
-    const [datosProductos, setdatosproductos] = useState<Producto[]>([])
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
+    const [datosProductos, setdatosproductos] = useState<Producto[]>([])
+    const [location, setLocation] = useState<ResponsIPInfo>()
     const [datosEnvio, setDatosEnvio] = useState<DatosUsurio | null>(null);
     const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
 
     useEffect(() => {
         let productosLocal = JSON.parse(localStorage.getItem('carrito') || '[]');
-        let datosEnvioLocal = localStorage.getItem('dataUserForBuy');
+        let datosEnvioLocal = JSON.parse(localStorage.getItem('dataUserForBuy') || '');
         let datosUsuarioLogLocal = JSON.parse(localStorage.getItem('infoProfileUSer') || '{}');
-        if (datosEnvioLocal) {
-            let datos = JSON.parse(datosEnvioLocal)
-            setDatosEnvio(datos);
-        }
+        let dataLocation = JSON.parse(localStorage.getItem('referenceDataLocation') || '')
+        setDatosEnvio(datosEnvioLocal);
+        setLocation(dataLocation)
         setDatosusuarioLog(datosUsuarioLogLocal);
         setdatosproductos(productosLocal);
     }, [])
 
-
-    const datosUsuario = { ...datosEnvio, ...datosUsuarioLog };
-    const total = calcularTotal(datosProductos);
+    const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location };
+    const datosInvitado = { ...datosEnvio, ...location }
     const destino = datosEnvio?.destino || '0';
+    const total = calcularTotal(datosProductos);
     const envio = calcularCostoEnvio({ destino, precio: total });
-    const rutaUser = 'buy-user'
-    const rutainvitado = 'buy-invited'
 
+    console.log(datosUsuario)
     const finalizarCompra = async () => {
         sessionStorage.setItem('carrito', JSON.stringify(datosProductos))
         sessionStorage.setItem('dataUserForBuy', JSON.stringify(datosEnvio))
@@ -79,7 +78,7 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             } else {
                 const pagoInvitado = await pago({
                     productos: datosProductos,
-                    datos: datosEnvio,
+                    datos: datosInvitado,
                     ruta: rutainvitado,
                     valorDeEnvio: envio,
                 })
@@ -148,7 +147,7 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             <div className='flex flex-col gap-2'>
                 <button className='bg-blue-600 py-2 text-sm rounded-md text-white hover:bg-blue-700 duration-100' onClick={finalizarCompra}>
                     {isLoading ? (
-                        <Spinner animation="border" role="status" size="sm" />
+                        <p>Procesando pago...</p>
                     ) : (
                         "Continuar con esta forma de pago"
                     )}
