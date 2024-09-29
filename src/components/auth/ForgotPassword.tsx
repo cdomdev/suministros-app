@@ -3,7 +3,7 @@ import { useEffect, useState } from "react";
 import { Form, Button, Spinner } from "react-bootstrap";
 import SuccessRequest from "../recuperarContraseña/SuccessRequest";
 import axios from "axios";
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 import { type DataForgotPassword } from "@/types/types";
 import { sendRequestResettPassword } from "@/services/auth";
 

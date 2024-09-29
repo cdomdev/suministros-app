@@ -1,11 +1,11 @@
 ---
 import Layout from "@/layouts/Layout.astro";
 import Contador from "@/components/carritoDecompras/Contador";
-import Summary from "@/components/cammon/Summary";
+import Summary from "@/components/Summary";
 import DetallesCarrito from "@/components/carritoDecompras/DetallesCarrito";
 import VerifyAuth from "@/components/carritoDecompras/VerifyAuth";
-import { Steps } from "@/components/cammon/Steps";
-import { UpdateSteps } from "@/components/cammon/UpdateSteps";
+import { Steps } from "@/components/Steps";
+import { UpdateSteps } from "@/components/UpdateSteps";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;

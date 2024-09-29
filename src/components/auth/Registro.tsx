@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { ValuesRegistro } from "@/types/types";
 import { register } from '@/services/auth'
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 import axios from "axios";
 import { eventAuth } from "@/events/eventAuth";
 import { Spinner } from "react-bootstrap";

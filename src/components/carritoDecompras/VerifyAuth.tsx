@@ -2,7 +2,7 @@ import { useEffect, useState } from "react";
 import ModalAuth from "../modales/ModalAuth";
 import type { Producto } from '@/types/types';
 import { eventEmitter } from "@/events/carritoChanged";
-import { UpdateSteps } from "../cammon/UpdateSteps";
+import { UpdateSteps } from "../UpdateSteps";
 
 const VerifyAuth = () => {
     const [productos, setProductos] = useState<Producto[]>([])

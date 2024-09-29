@@ -1,7 +1,7 @@
 import { eventEmitter } from "@/events/carritoChanged";
 import type { Producto } from "@/types/types";
 import { useState } from "react";
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 import { formateValue } from "@/utils/formatearValor";
 import { calcularSubTotal } from "@/utils/calcularSubTotal";
 import { calcularDescuento } from "@/utils";

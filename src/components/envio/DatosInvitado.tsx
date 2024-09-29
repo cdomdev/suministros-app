@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import type { DatosUsurio } from '@/types/types'
 import { Formik } from "formik";
-import { UpdateSteps } from "../cammon/UpdateSteps";
+import { UpdateSteps } from "../UpdateSteps";
 
 export const FormEnvioDatosInvitado = () => {
 

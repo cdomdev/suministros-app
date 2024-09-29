@@ -1,7 +1,7 @@
 import { Form } from "react-bootstrap";
 import { Formik } from "formik";
 import type { DatosUsurio } from '@/types/types'
-import { UpdateSteps } from "../cammon/UpdateSteps";
+import { UpdateSteps } from "../UpdateSteps";
 
 export const FormEnvioDatosUsuario = () => {
     const handleSubmit = async (values: DatosUsurio) => {

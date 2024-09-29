@@ -3,7 +3,7 @@ import Cookies from "js-cookie";
 import type { PropProfile } from "@/types/types";
 import { Form, Spinner } from "react-bootstrap";
 import { Formik, Field, ErrorMessage } from "formik";
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 import type { DataUserUpdate } from "@/types/types";
 import { updateProfile } from "@/services/user";
 

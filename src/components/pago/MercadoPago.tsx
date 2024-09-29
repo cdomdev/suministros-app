@@ -4,7 +4,7 @@ import type { Producto, DatosUsurio, ResponsIPInfo } from '@/types/types'
 import { calcularTotal } from "@/utils";
 import { calcularCostoEnvio } from "@/utils";
 import { mercadoPago } from '@/services/pagos'
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 const clientMercadopago = import.meta.env.PUBLIC_CLIENT_MERCADOPAGO;
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT_MERCADOPAGO
 const rutainvitado = import.meta.env.PUBLIC_URL_INVITED_MERCADOPAGO

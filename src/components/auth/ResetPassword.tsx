@@ -6,7 +6,7 @@ import { Check } from "../icons/Check";
 import { resetPassword, } from "@/services/auth";
 import type { ResetPassword, ValuesPassWords } from "@/types/types";
 import axios from "axios";
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 
 interface FormResetPasswordProps {
     token: string

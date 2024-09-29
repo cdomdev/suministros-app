@@ -1,7 +1,7 @@
 import { Google } from "../icons/Google"
 import { GoogleOAuthProvider, useGoogleLogin } from "@react-oauth/google";
 import axios from "axios";
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 import { useState } from "react";
 import { googleAuth } from "@/services/auth";
 

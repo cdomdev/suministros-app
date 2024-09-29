@@ -2,7 +2,7 @@ import React, { useState } from "react";
 import { Formik, Form, Field, ErrorMessage } from "formik";
 import type { ValuesIniSesion } from "@/types/types";
 import { validaSesion } from '@/services/auth'
-import { Toast } from "../cammon/Toast";
+import { Toast } from "../Toast";
 import axios from "axios";
 
 interface FormInicioSesionProps {

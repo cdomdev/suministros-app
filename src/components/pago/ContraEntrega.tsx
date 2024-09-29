@@ -1,7 +1,7 @@
 import axios from 'axios';
 import { useEffect, useState } from 'react';
 import type { DatosUsurio, Producto, ResponsIPInfo } from '@/types/types';
-import { Toast } from '../cammon/Toast';
+import { Toast } from '../Toast';
 import { pago } from '@/services/pagos';
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio';
 import { calcularTotal } from '@/utils/calcularPago';
