@@ -5,6 +5,7 @@ import { Toast } from '../Toast';
 import { pago } from '@/services/pagos';
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio';
 import { calcularTotal } from '@/utils/calcularPago';
+
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT
 const rutainvitado = import.meta.env.PUBLIC_URL_INVITED
 
@@ -40,7 +41,6 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const total = calcularTotal(datosProductos);
     const envio = calcularCostoEnvio({ destino, precio: total });
 
-    console.log(datosUsuario)
     const finalizarCompra = async () => {
         sessionStorage.setItem('carrito', JSON.stringify(datosProductos))
         sessionStorage.setItem('dataUserForBuy', JSON.stringify(datosEnvio))
@@ -92,10 +92,10 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                if (status === 404) {
+                if (status === 400) {
                     setBgToast('fail')
                     setShowToast(true)
-                    setToastMessage(`algo salio mal con tu compra`)
+                    setToastMessage(`Algo salio mal con tu compra, intentalo de nuevo`)
                     setTimeout(() => {
                         setShowToast(false)
                     }, 5000)

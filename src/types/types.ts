@@ -63,9 +63,9 @@ export interface PropProfile extends DatosUsurio {
 }
 
 export interface DatosUsurio extends ResponsIPInfo {
-  nombre?: string | null,
-  apellido?: string | null,
-  email?: string | null,
+  nombre?: string,
+  apellido?: string,
+  email?: string,
   telefono?: string,
   direccion?: string,
   destino?: string,

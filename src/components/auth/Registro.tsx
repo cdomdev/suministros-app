@@ -33,7 +33,7 @@ const Registro: React.FC = () => {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
                 console.log(status)
-                if (status === 404) {
+                if (status === 409) {
                     setBgToast('fail')
                     setShowToast(true)
                     setToastMessage(`El email ${values.email} ya tiene una cuenta registrada`)

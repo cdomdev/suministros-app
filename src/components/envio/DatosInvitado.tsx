@@ -38,7 +38,10 @@ export const FormEnvioDatosInvitado = () => {
                 }
                 if (!values.telefono) {
                     errors.telefono = "*El campo no puede quedar vacio*";
+                } else if (values.telefono.length < 10) {
+                    errors.telefono = '*Ingrese un numero de telefono valido*';
                 }
+
                 return errors;
             }}
             onSubmit={handleSubmit}>
