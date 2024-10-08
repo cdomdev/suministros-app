@@ -1,1 +1,0 @@
-class r{eventTarget;constructor(){this.eventTarget=new EventTarget}emit(e,t){const n=new CustomEvent(e,{detail:t});this.eventTarget.dispatchEvent(n)}on(e,t){this.eventTarget.addEventListener(e,t)}off(e,t){this.eventTarget.removeEventListener(e,t)}}const v=typeof window<"u"?new r:null;export{v as e};

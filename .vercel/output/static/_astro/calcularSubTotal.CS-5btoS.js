@@ -1,1 +1,0 @@
-import{f as r}from"./calcularDescuento.CXg88ned.js";const u=a=>{const l=a.quantity??0,t=parseFloat(a.valor)??0,e=a.discount;let o;if(e&&e>0){let n=t*e/100;o=(t-n)*l}else o=l*t;const s=o.toFixed(2);return r(s)};export{u as c};
