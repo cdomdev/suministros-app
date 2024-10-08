@@ -55,6 +55,12 @@ const ForgotPassword = () => {
                     }, 5000)
                 }
             }
+            setBgToast('fail')
+            setShowToast(true)
+            setToastMessage(`algo salio mal, por favor intenlado mas tarde`)
+            setTimeout(() => {
+                setShowToast(false)
+            }, 5000)
 
         } finally {
             setIsLoading(false);
@@ -104,7 +110,7 @@ const ForgotPassword = () => {
                                     <Form className="form-recovery" onSubmit={formik.handleSubmit}>
                                         <Form.Group className="mb-3 form-login">
                                             <Form.Label className="block my-2  text-xs md:text-sm font-medium text-gray-900 dark:text-white">
-                                                Ingrese su correo electrónico
+                                                Ingrese su correo electrónico ∗
                                             </Form.Label>
                                             <Field
                                                 type="email"

@@ -37,6 +37,7 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
             }
 
         } catch (error) {
+            console.log(error)
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
                 switch (status) {
@@ -50,10 +51,12 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
                         setToastMessage('Ocurrió un error. Por favor, intenta más tarde.');
                         break;
                 }
-                setBgToast('fail');
-                setShowToast(true);
-                setTimeout(() => setShowToast(false), 5000);
+
             }
+            setBgToast('fail');
+            setShowToast(true);
+            setToastMessage('Ocurrió un error. Por favor, intenta más tarde.');
+            setTimeout(() => setShowToast(false), 5000);
 
         } finally {
             setIsLoading(false);

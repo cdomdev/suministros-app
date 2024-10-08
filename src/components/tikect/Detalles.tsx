@@ -12,8 +12,6 @@ const Detalles = () => {
         setDatos(datosUsuario)
     }, [])
 
-
-    console.log(datos)
     const destino = datos?.destino || '0'
     const total = calcularTotal(productos)
     const envio = calcularCostoEnvio({ destino, precio: total });
@@ -32,37 +30,37 @@ const Detalles = () => {
                     <>
                         <div className="flex justify-between">
                             <span>
-                                <p>{producto.nombre}</p>
-                                <p> Unidades <strong> {producto.quantity}</strong></p>
+                                <p className="text-xs md:text-sm text-balance">{producto.nombre}</p>
+                                <p className="text-xs md:text-sm"> Unidades <strong> {producto.quantity}</strong></p>
                             </span>
-                            <p>$: {calcularSubTotal(producto)}</p>
+                            <p className="text-xs md:text-sm">$: {calcularSubTotal(producto)}</p>
                         </div>
                         <hr className="border-dashed my-1" />
                     </>
                 ))}
             </div>
-            <div className="flex justify-between ">
+            <div className="flex justify-between">
                 <div className="flex flex-col pt-2">
                     <h4 className="text-xs md:text-base uppercase font-semibold">Costo de envio</h4>
-                    <p className="pl-2">$: {formateValue(envioFormated)}</p>
+                    <p className="pl-2 text-xs md:text-sm">$: {formateValue(envioFormated)}</p>
                 </div>
                 <div className="flex flex-col pt-2">
                     <h4 className="text-xs md:text-base uppercase font-semibold">pago total</h4>
-                    <p className="pl-2">$: {valuFormated}</p>
+                    <p className="pl-2 text-xs md:text-sm">$: {valuFormated}</p>
                 </div>
             </div>
             <hr className="border-dashed my-4" />
             <div className="flex justify-between">
                 <span>
                     <h4 className="text-xs md:text-base uppercase font-semibold">Datos de envio</h4>
-                    <p> {datos?.nombre}</p>
-                    <p> {datos?.email}</p>
-                    <p> {datos?.telefono}</p>
+                    <p className="text-xs md:text-sm"> {datos?.nombre}</p>
+                    <p className="text-xs md:text-sm"> {datos?.email}</p>
+                    <p className="text-xs md:text-sm"> {datos?.telefono}</p>
                 </span>
                 <span>
                     <h4 className="text-xs md:text-base uppercase font-semibold">Datos de envio</h4>
-                    <p> {datos?.direccion}</p>
-                    <p> {datos?.detalles}</p>
+                    <p className="text-xs md:text-sm"> {datos?.direccion}</p>
+                    <p className="text-xs md:text-sm"> {datos?.detalles}</p>
                 </span>
             </div>
         </div>

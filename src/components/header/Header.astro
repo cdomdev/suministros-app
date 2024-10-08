@@ -5,6 +5,7 @@ import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
 import AuthNone from "./AuthNone";
 import AuthSucces from "./AuthSuccess";
 import Offcanvas from "./Offcanvas.astro";
+import { Localitation } from "../Localitation";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
@@ -22,6 +23,9 @@ const isAuthenticated = authToken !== undefined;
     </div>
     <!-- Icons -->
     <div class="flex gap-2 md:gap-4">
+      <span class="flex items-end md:hidden">
+        <Localitation client:visible />
+      </span>
       {
         isAuthenticated ? (
           <AuthSucces client:visible />

@@ -33,26 +33,26 @@ const DetosPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
         <div className="flex flex-col py-1">
             <div className="flex flex-col md:flex-row justify-evenly">
                 <div className="flex flex-col border-dashed border-2 py-3 px-4">
-                    <h3 className="font-semibold text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1">Datos de usuario</h3>
-                    <span className="text-sm flex gap-1 flex-col pl-1"><strong>Nombre:</strong>{datos?.nombre || datosUserLogin?.nombre}</span>
-                    <span className="text-sm flex gap-1 flex-col pl-1"><strong>Correo:</strong>{datos?.email || datosUserLogin?.email}</span>
-                    <span className="text-sm flex gap-1 flex-col pl-1"><strong>Telefono:</strong>{datos?.telefono || datosUserLogin?.telefono}</span>
+                    <h3 className="font-semibold text-xs md:text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1">Datos de usuario</h3>
+                    <span className="text-xs md:text-sm flex gap-1 flex-col pl-1"><strong>Nombre:</strong>{datos?.nombre || datosUserLogin?.nombre}</span>
+                    <span className="text-xs md:text-sm flex gap-1 flex-col pl-1"><strong>Correo:</strong>{datos?.email || datosUserLogin?.email}</span>
+                    <span className="text-xs md:text-sm flex gap-1 flex-col pl-1"><strong>Telefono:</strong>{datos?.telefono || datosUserLogin?.telefono}</span>
                 </div>
                 <div className="flex flex-col border-dashed border-2 py-3 px-4">
-                    <h3 className="font-semibold text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1">Datos de envio</h3>
-                    <span className="text-sm flex flex-col pl-1"><strong>Direccion:</strong>{datos?.direccion}</span>
-                    <span className="text-sm flex flex-col pl-1 text-balance"><strong>Detalles:</strong>{datos?.detalles}</span>
+                    <h3 className="font-semibold text-xs md:text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1">Datos de envio</h3>
+                    <span className="text-xs md:text-sm flex flex-col pl-1"><strong>Direccion:</strong>{datos?.direccion}</span>
+                    <span className="text-xs md:text-sm flex flex-col pl-1 text-balance"><strong>Detalles:</strong>{datos?.detalles}</span>
                 </div>
                 <div className="flex flex-col border-dashed border-2 py-3 px-4 min-w-[200px]">
-                    <h3 className="font-semibold text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1"> Total a pagar</h3>
+                    <h3 className="font-semibold text-xs md:text-sm uppercase bg-[#e3e3e3] py-1 px-2 mb-1"> Total a pagar</h3>
                     <span className="font-semibold text-center "> $: {valuFormated}</span>
                 </div>
             </div>
             <div className="w-[90%] mx-auto mt-3">
-                <h3 className="font-semibold text-sm uppercase text-center bg-[#e3e3e3] py-1 px-2 mb-1">
+                <h3 className="font-semibold text-xs md:text-sm uppercase text-center bg-[#e3e3e3] py-1 px-2 mb-1">
                     Medios de pago
                 </h3>
-                <p className="text-sm pt-3 text-wrap  mb-4">
+                <p className="text-xs md:text-sm pt-3 text-wrap  mb-4">
                     Para que tengas total confianza al pagar tus compras, ponemos a tu disposición estas dos opciones de pago. Asegúrate de revisar los términos de cada opción en nuestra página de <a href="/Medios-de-pago" className="text-sm font-semibold text-blue-600 hover:text-blue-500 duration-150">Medios de pago</a>.
                 </p>
                 <MercadoPago isAuthenticated={isAuthenticated} />

@@ -5,6 +5,7 @@ import { Toast } from '../Toast';
 import { pago } from '@/services/pagos';
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio';
 import { calcularTotal } from '@/utils/calcularPago';
+import { getDataIp } from '@/services/user';
 
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT
 const rutainvitado = import.meta.env.PUBLIC_URL_INVITED
@@ -25,15 +26,18 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
 
     useEffect(() => {
+        let dataLocation = JSON.parse(localStorage.getItem('referenceDataLocation') || '')
         let productosLocal = JSON.parse(localStorage.getItem('carrito') || '[]');
         let datosEnvioLocal = JSON.parse(localStorage.getItem('dataUserForBuy') || '');
         let datosUsuarioLogLocal = JSON.parse(localStorage.getItem('infoProfileUSer') || '{}');
-        let dataLocation = JSON.parse(localStorage.getItem('referenceDataLocation') || '')
         setDatosEnvio(datosEnvioLocal);
         setLocation(dataLocation)
         setDatosusuarioLog(datosUsuarioLogLocal);
         setdatosproductos(productosLocal);
+
     }, [])
+
+    console.log(location)
 
     const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location };
     const datosInvitado = { ...datosEnvio, ...location }
@@ -123,7 +127,7 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 bgToast={bgToast}
                 setBgToast={setBgToast}
             />
-            <p className='text-base font-semibold mb-2 flex items-center gap-1 '>Por favor tenga en cuenta lo siguiente
+            <p className='text-sm md:text-base font-semibold mb-2 flex items-center gap-1 '>Por favor tenga en cuenta lo siguiente
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-exclamation-circle size-6" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
@@ -132,7 +136,7 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 </svg>
             </p>
             <ul className='text-sm mb-3 pl-6'>
-                <li className="mb-2 list-disc text-balance">
+                <li className="mb-2 list-disc  text-balance">
                     En caso de no poder recibir la compra, por favor deje a alguien
                     encargado para que la reciba por usted.
                 </li>

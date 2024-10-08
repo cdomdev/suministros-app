@@ -49,7 +49,7 @@ const Expanded: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
       <hr className="border-dashed border-2  font-semibold w-full" />
       {expanded && (
         <div className="w-full flex flex-col justify-center items-center gap-2 p-3">
-          <p>Ingresa la informacion de quien recibe el pedido</p>
+          <p className="text-xs md:text-sm">Ingresa la informacion de quien recibe el pedido</p>
           {isAuthenticated ? < ModalEnvioUsuario /> : <ModalEnvioInvitado />}
         </div>
       )}

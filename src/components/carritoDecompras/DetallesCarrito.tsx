@@ -31,7 +31,7 @@ const DetallesCarrito = () => {
                     ) : (
                         <CarritoEmpty />
                     )}
-                    <a href='/categoria/pisos-y-paredes' className='bg-[#f4f4f4] btn-add-more-products  hover:bg-blue-600 hover:text-white hover:stroke-white duration-200 max-w-[40%] mx-auto shadow-md cursor-pointer py-2 my-3 px-4 rounded-3xl flex items-center hover:shadow-none'>
+                    <a href='/categoria/pisos-y-paredes' className='bg-[#f4f4f4] text-sm btn-add-more-products  hover:bg-blue-600 hover:text-white hover:stroke-white duration-200 w-full md:max-w-[40%] mx-auto shadow-md cursor-pointer py-2 my-3 px-4 rounded-3xl flex items-center justify-center hover:shadow-none'>
                         {productos && productos.length > 0 ? 'Continuar comprando' : 'Agregar productos al carrito'}
                         <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-plus size-5 stroke-black hover:stroke-white" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />

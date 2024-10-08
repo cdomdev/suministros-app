@@ -24,7 +24,6 @@ export const updateProfile = async (email: string, dataUpdate: DataUserUpdate) =
 export const getDataIp = async (): Promise<ResponsIPInfo> => {
     try {
         const response = await axios.get(`https://ipinfo.io/json?token=${token}`);
-
         return response.data;
     } catch (error) {
         console.error("Error fetching IP data:", error);

@@ -55,19 +55,19 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
                 <div className="flex gap-2 items-center">
                     <img src={producto.image} alt={producto.nombre} loading="lazy" className="size-20" />
                     <div className="flex-col flex ">
-                        <span className="text-balance text-sm flex-col flex ">
+                        <span className="text-balance text-xs md:text-sm flex-col flex ">
                             <strong>Producto: </strong>
                             {producto.nombre}
                         </span>
-                        <span className="text-balance text-sm ">
-                            <strong>REF: </strong>
+                        <span className="text-balance text-xs md:text-sm">
+                            <strong >REF: </strong>
                             {producto.referencia}
                         </span>
-                        <span className="text-balance text-sm ">
+                        <span className="text-balance text-xs md:text-sm ">
                             <strong>Cantidad: </strong>
                             {producto.quantity}
                         </span>
-                        <span className="text-balance text-sm flex gap-1 ">
+                        <span className="text-balance text-xs md:text-sm flex gap-1 ">
                             {
                                 producto.discount ? (
                                     <>
@@ -81,7 +81,7 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
                     </div>
                 </div>
                 <div className="flex">
-                    <button onClick={() => handleDeletToCart(producto)} className="hover:text-red-700">Eliminar</button>
+                    <button onClick={() => handleDeletToCart(producto)} className="hover:text-red-700 text-xs md:text-sm">Eliminar</button>
                     <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-trash-x size-6" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#ff2825" fill="none" strokeLinecap="round" strokeLinejoin="round">
                         <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                         <path d="M4 7h16" />
@@ -93,13 +93,13 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
             </div>
             <hr className="w-[90%] m-auto" />
             <div className="w-full flex justify-end pr-10 gap-3 items-center mt-2">
-                <span className="flex gap-2 items-center">
+                <span className="flex gap-2 items-center text-xs md:text-sm">
                     Valor unidad:
                     <strong>
                         $: {valorProducto}
                     </strong>
                 </span>
-                <span className="flex gap-2">
+                <span className="flex gap-2 text-xs md:text-sm">
                     Subtotal:
                     <strong>
                         $: {subTotal}

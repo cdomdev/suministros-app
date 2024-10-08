@@ -41,6 +41,12 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                     }, 5000)
                 }
             }
+            setBgToast('fail')
+            setShowToast(true)
+            setToastMessage(`Hubo un error al verificar tus datos, intentalo de nuevo`)
+            setTimeout(() => {
+                setShowToast(false)
+            }, 5000)
 
         }
 
@@ -127,11 +133,11 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
 
                         <button
                             type="submit"
-                            className="text-white bg-blue-700 w-full hover:bg-blue-800 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
+                            className="text-white text-xs md:text-sm bg-blue-700 w-full hover:bg-blue-800 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             Iniciar sesión
                         </button>
-                        <div className="w-full flex gap-2 items-center text-sm">
+                        <div className="w-full flex gap-2 items-center text-xs md:text-sm">
                             <p className="py-2">¿No tienes cuenta?</p>
                             <a href="/registro" className="underline hover:text-blue-500 duration-150">
                                 Regístrate aquí

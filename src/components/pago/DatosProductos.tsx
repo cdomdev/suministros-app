@@ -23,7 +23,7 @@ const DatosProductos = () => {
 
     return (
         <div className=' max-h-96 overflow-y-auto '>
-            <span className='text-sm leading-5 text-balance flex flex-col'>
+            <span className='text-xs md:text-sm leading-5 text-balance flex flex-col'>
                 Este es el costo de envio de tu compra
                 <span><strong>Costo de envio: $: {valorString}</strong> </span>
             </span>

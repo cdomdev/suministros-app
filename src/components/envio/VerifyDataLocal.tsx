@@ -38,7 +38,7 @@ const VerifyDataLocal = () => {
             {
                 !datos ? (
                     <button
-                        className='bg-blue-600 text-white w-full rounded-md py-2 my-2 text-sm uppercase hover:bg-blue-700 duration-150'
+                        className='bg-blue-600 text-white w-full rounded-md py-2 my-2 text-xs md:text-sm uppercase hover:bg-blue-700 duration-150'
                         onClick={handleToast}
                     >
                         Continuar

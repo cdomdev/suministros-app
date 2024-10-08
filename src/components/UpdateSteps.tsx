@@ -45,7 +45,7 @@ export const UpdateSteps: React.FC<PropUpdate> = ({ ruta, bg, textColor, textCon
                     onClick={handleNextStep}
                     type={type}
                     disabled={disabled}
-                    className={`uppercase inline-block text-center text-sm border w-full py-2 rounded-md mb-2 hover:shadow-sm duration-150 mt-2 ${textColor} ${bg} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
+                    className={`uppercase inline-block text-center text-xs md:text-sm border w-full py-2 rounded-md mb-2 hover:shadow-sm duration-150 mt-2 ${textColor} ${bg} ${disabled ? 'opacity-50 cursor-not-allowed' : ''}`}
                 >
                     {textContent}
                 </button>
@@ -53,7 +53,7 @@ export const UpdateSteps: React.FC<PropUpdate> = ({ ruta, bg, textColor, textCon
                 <a
                     href={ruta}
                     onClick={handleNextStep}
-                    className={`uppercase inline-block text-center text-sm border w-full py-2 rounded-md mb-2 hover:shadow-sm duration-150 mt-2 ${textColor} ${bg}`}
+                    className={`uppercase inline-block text-center text-xs md:text-sm border w-full py-2 rounded-md mb-2 hover:shadow-sm duration-150 mt-2 ${textColor} ${bg}`}
                 >
                     {textContent}
                 </a>

@@ -48,16 +48,16 @@ export const FormEnvioDatosInvitado = () => {
             {(formik) =>
 
                 <div className="font-font-cust-2">
-                    <p className="mb-2 font-normal leading-5 text-base">
+                    <p className="mb-2 font-normal leading-5 text-sm md:text-base">
                         Ingrese los datos en el formulario para el envio de su compra, los datos marcados con (*) son obligatorios
                     </p>
                     <Form onSubmit={formik.handleSubmit}>
                         <Form.Group className="mb-2">
-                            <Form.Label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                 Ingrese su nombre   ∗
                             </Form.Label>
                             <Form.Control
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 type="text"
                                 name="nombre"
                                 placeholder="example"
@@ -70,11 +70,11 @@ export const FormEnvioDatosInvitado = () => {
                             ) : null}
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                 Ingrese su apellido
                             </Form.Label>
                             <Form.Control
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 type="text"
                                 name="apellido"
                                 placeholder="opciona"
@@ -85,11 +85,11 @@ export const FormEnvioDatosInvitado = () => {
 
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                 Ingrese su correo electronico  ∗
                             </Form.Label>
                             <Form.Control
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 type="text"
                                 placeholder="example@sumi.com"
                                 name="email"
@@ -102,11 +102,11 @@ export const FormEnvioDatosInvitado = () => {
                             ) : null}
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                 Seleccione un destino para su pedido  ∗
                             </Form.Label>
                             <Form.Select
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 name="destino"
                                 value={formik.values?.destino}
                                 onChange={formik.handleChange}
@@ -120,11 +120,11 @@ export const FormEnvioDatosInvitado = () => {
                             ) : null}
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                 Ingrese su dirección  ∗
                             </Form.Label>
                             <Form.Control
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 type="text"
                                 placeholder="calle 123 # 45-67"
                                 name="direccion"
@@ -137,11 +137,11 @@ export const FormEnvioDatosInvitado = () => {
                             ) : null}
                         </Form.Group>
                         <Form.Group className="mb-2">
-                            <Form.Label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                 Ingrese un numero de teléfono  ∗
                             </Form.Label>
                             <Form.Control
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 type="number"
                                 name="telefono"
                                 placeholder="123456789"
@@ -155,7 +155,7 @@ export const FormEnvioDatosInvitado = () => {
                         </Form.Group>
 
                         <div className="mb-3">
-                            <Form.Label className="block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                 Detalle adicionales
                             </Form.Label>
                             <Form.Group controlId="exampleForm.ControlTextarea1">
