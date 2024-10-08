@@ -5,17 +5,17 @@ const CarritoPageNav = () => {
     const [cantidad, setCantidad] = useState<number>(0);
 
     useEffect(() => {
-        const handleCarritoChange = (event: CustomEvent<any>) => {
+        const handleCarritoChange = () => {
             const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
             setCantidad(carrito.length);
         };
-
         if (eventEmitter) {
             // Agrega el listener para el evento
             eventEmitter.on('carritoChanged', handleCarritoChange);
         }
+
         // Llama a la función para establecer la cantidad al montar el componente
-        handleCarritoChange({} as CustomEvent<any>);
+        handleCarritoChange();
 
         return () => {
             if (eventEmitter) {

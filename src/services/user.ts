@@ -1,8 +1,10 @@
 import axios from "axios"
-import type { DataUserUpdate, Pedido, PedidosResponse } from "@/types/types";
+import type { DataUserUpdate, PedidosResponse } from "@/types/types";
 import type { ResponsIPInfo } from "@/types/types";
 const HOST = "http://localhost:3000"
 const token = import.meta.env.PUBLIC_TOKEN_PIINFO
+
+
 export const getOrders = async (id: number): Promise<PedidosResponse> => {
     try {
         const response = await axios.get(`${HOST}/user/pedidos/${id}`);
