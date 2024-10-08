@@ -1,7 +1,7 @@
 import { type DataForgotPassword } from "@/types/types";
 
 
-const SuccessRequest = ({ nombre, email }: DataForgotPassword) => {
+const SuccessRequest = ({ email }: DataForgotPassword) => {
 
     return (
         <div className="flex flex-col justify-center items-center">

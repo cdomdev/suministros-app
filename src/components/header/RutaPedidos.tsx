@@ -1,16 +1,4 @@
-import { useState, useEffect } from 'react';
-
-import type { PropProfile } from '@/types/types'
 const RutaPedidos = () => {
-    const [data, setData] = useState<PropProfile>();
-
-    useEffect(() => {
-        const dataLocal = localStorage.getItem('infoProfileUSer');
-        if (dataLocal) {
-            setData(JSON.parse(dataLocal));
-        }
-    }, []);
-
     return (
         <>
             <a className="flex flex-col items-center cursor-pointer" href="/usuario/perfil">

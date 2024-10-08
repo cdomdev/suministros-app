@@ -14,7 +14,6 @@ const CarritoPageNav = () => {
             // Agrega el listener para el evento
             eventEmitter.on('carritoChanged', handleCarritoChange);
         }
-
         // Llama a la función para establecer la cantidad al montar el componente
         handleCarritoChange({} as CustomEvent<any>);
 

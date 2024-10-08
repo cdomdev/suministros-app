@@ -26,7 +26,7 @@ const Detalles = () => {
                     <h4 className="text-xs md:text-base uppercase font-semibold">Productos</h4>
                     <h4 className="text-xs md:text-base uppercase font-semibold">Subtotal</h4>
                 </div>
-                {productos?.map((producto, index) => (
+                {productos?.map((producto) => (
                     <>
                         <div className="flex justify-between">
                             <span>

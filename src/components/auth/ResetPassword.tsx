@@ -4,7 +4,7 @@ import { useEffect, useState } from "react";
 import { Form, Button, Spinner } from "react-bootstrap";
 import { Check } from "../icons/Check";
 import { resetPassword, } from "@/services/auth";
-import type { ResetPassword, ValuesPassWords } from "@/types/types";
+import type { ValuesPassWords } from "@/types/types";
 import axios from "axios";
 import { Toast } from "../Toast";
 

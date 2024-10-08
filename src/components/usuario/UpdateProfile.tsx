@@ -17,12 +17,8 @@ const UpdateProfile = () => {
     useEffect(() => {
         const userSessionCookie = Cookies.get('user_sesion');
         if (userSessionCookie) {
-            try {
-                const userData = JSON.parse(userSessionCookie);
-                setData(userData);
-            } catch (error) {
-                console.error("Error parsing user session cookie:", error);
-            }
+            const userData = JSON.parse(userSessionCookie);
+            setData(userData);
         }
     }, []);
 
@@ -32,8 +28,7 @@ const UpdateProfile = () => {
             if (data && data.email) {
                 const response = await updateProfile(data.email, values)
                 if (response.status === 200) {
-                    console.log(response)
-                    console.log('actulizado')
+                    resetForm()
                 }
             }
         } catch (error) {

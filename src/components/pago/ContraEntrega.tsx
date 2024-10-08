@@ -5,7 +5,6 @@ import { Toast } from '../Toast';
 import { pago } from '@/services/pagos';
 import { calcularCostoEnvio } from '@/utils/calcularCostoDeEnvio';
 import { calcularTotal } from '@/utils/calcularPago';
-import { getDataIp } from '@/services/user';
 
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT
 const rutainvitado = import.meta.env.PUBLIC_URL_INVITED
