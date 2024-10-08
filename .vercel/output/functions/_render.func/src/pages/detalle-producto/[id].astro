@@ -1,0 +1,87 @@
+---
+
+import Layout from "@/layouts/Layout.astro";
+import { getProductoBy } from "@/services/productos";
+import { calcularDescuento } from "@/utils/calcularDescuento";
+import { formateValue } from "@/utils/formatearValor";
+import { BtnAddCar } from "@/components/carritoDecompras/BtnAddCar";
+const { id } = Astro.params;
+let producto;
+if (id) {
+    producto = await getProductoBy({ id });
+}
+
+---
+
+<Layout title=`${producto.nombre}`>
+    <section>
+        <article class="pt-20 max-w-[95vw] m-auto font-font-cust-2 mb-5">
+            <div class="flex flex-col gap-3 md:grid md:grid-cols-col-cust-2">
+                <div class="flex flex-col items-center justify-center gap-3 ">
+                    <div class="flex justify-end w-full pr-20">
+                        { producto.discount ? 
+                            <span class=" bg-red-600 text-2xl px-2 text-white">{ producto?.discount} %</span> : ''
+                        }
+                    </div>
+                    <img
+                    src={producto.image}
+                    alt={producto.nombre}
+                    loading="lazy"
+                    class="size-56 hover:scale-105 duration-200"
+                    />
+                    <div
+                        class="bg-[#f7f7f7] p-3 text-center m-auto block italic max-w-[90%]">
+                        <p class="text-xs text-[#6b6c6d] leading-3">
+                            las fotografías de productos y ambientes son
+                            ilustrativas, los colores y texturas pueden variar
+                            según el dispositivo donde se visualicen y pueden
+                            diferir de la realidad. Los elementos ambientados no
+                            se incluyen en la compra.
+                        </p>
+                    </div>
+                </div>
+                <div class="border p-3">
+                    <div class="flex justify-between text-[#808080]">
+                        <span class="text-base font-semibold">
+                            {producto.marca}
+                        </span>
+                        <span class="text-sm uppercase">
+                            ref:{producto.referencia}
+                        </span>
+                    </div>
+                    <h2
+                        class="text-base md:text-xl my-3 font-bold text-balance">
+                        {producto.nombre}
+                    </h2>
+                    <span class="flex flex-col font-semibold gap-1">
+                        Precio:
+                        {
+                            producto.discount ? (
+                                <strong class="text-xs line-through  text-red-700 opacity-[50%] md:text-lg">
+                                    $ {formateValue(producto.valor)}
+                                </strong>
+                                <strong class="text-base md:text-2xl">
+                                    {calcularDescuento(
+                                        producto.valor,
+                                        producto.discount,
+                                    )}
+                                </strong>
+                            ) : (
+                                <strong class="text-base md:text-2xl">
+                                    $ {formateValue(producto.valor)}
+                                </strong>
+                            )
+                        }
+                    </span>
+                    <p class="text-sm leading-5 text-balance my-3">
+                        {producto.description}
+                    </p>
+                    <div class="flex gap-2">
+                       <BtnAddCar producto={producto} client:load/>
+                    </div>
+                </div>
+            </div>
+        </article>
+        
+    </section>
+</Layout>

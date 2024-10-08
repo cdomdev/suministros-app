@@ -1,0 +1,1 @@
+import{j as a}from"./jsx-runtime.D5qyYPMi.js";import{r as t}from"./index.CZlPm10g.js";const n=()=>{const[e,r]=t.useState(0);return t.useEffect(()=>{const s=JSON.parse(localStorage.getItem("carrito")||"[]");r(s.length)},[]),a.jsx("div",{className:"size-6 flex items-center justify-center rounded-full bg-[#243a5e] text-white font-semibold",children:e})};export{n as default};

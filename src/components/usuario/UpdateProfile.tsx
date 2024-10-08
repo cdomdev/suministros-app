@@ -1,7 +1,7 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import type { PropProfile } from "@/types/types";
-import { Form, Spinner } from "react-bootstrap";
+import { Form } from "react-bootstrap";
 import { Formik, Field, ErrorMessage } from "formik";
 import { Toast } from "../Toast";
 import type { DataUserUpdate } from "@/types/types";
@@ -12,7 +12,6 @@ const UpdateProfile = () => {
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
-    const [isLoading, setIsLoading] = useState(false);
 
     useEffect(() => {
         const userSessionCookie = Cookies.get('user_sesion');
@@ -131,13 +130,9 @@ const UpdateProfile = () => {
                             type="submit"
                             className="text-white bg-blue-700 w-full hover:bg-blue-800 duration-200 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
-                            {isLoading ? (
-                                <div className="spinner-container">
-                                    <Spinner animation="border" role="status" size="sm" />
-                                </div>
-                            ) : (
-                                <>Actualizar mi perfil</>
-                            )}
+                            <div className="spinner-container">
+                                Actulizar perfel
+                            </div>
                         </button>
                     </Form>
                 )}

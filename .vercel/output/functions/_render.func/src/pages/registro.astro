@@ -1,0 +1,41 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import FormRegistro from "@/components/auth/Registro";
+import Check from "@/components/icons/Check.astro";
+---
+
+<Layout title="Registro">
+    <section class="pt-16 bg-[#f4f4f4] min-h-screen mb-0 font-font-cust-2">
+        <div
+            class="bg-white md:w-[70%] mx-auto flex flex-col justify-center items-center p-4">
+            <h1 class="mb-4 font-normal text-base md:text-lg">
+                Ingrese sus datos para el registro
+            </h1>
+            <div class="w-full flex flex-col md:grid grid-cols-col-cust-4">
+                <FormRegistro client:visible />
+                <div class="p-4">
+                    <h2 class="text-sm md:text-base font-normal mb-1">
+                        Beneficios de tener tu cuenta
+                    </h2>
+                    <p class="text-xs md:text-sm mb-1">
+                        Mejora tu experiencia a la hora de hacer tu compra
+                    </p>
+                    <ul class="pl-3">
+                        <li class="flex text-sm items-center gap-1">
+                            <Check />
+                            Realiza seguimiuento de tus compras
+                        </li>
+                        <li class="flex text-sm items-center gap-1">
+                            <Check />
+                            Guarda y actuliza tus datos
+                        </li>
+                        <li class="flex text-sm items-center gap-1">
+                            <Check />
+                            Paga rapido y facil
+                        </li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+    </section>
+</Layout>

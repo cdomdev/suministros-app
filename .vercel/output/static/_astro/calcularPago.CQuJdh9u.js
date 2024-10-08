@@ -1,0 +1,1 @@
+import{c as t}from"./calcularDescuento.CXg88ned.js";const u=r=>!Array.isArray(r)||r.length===0?0:r.reduce((l,a)=>{const c=a.quantity||0,n=parseFloat(a.valor);let o;return a.discount&&a.discount>0?o=parseFloat(t(a.valor,a.discount)):o=n,l+o*c},0);export{u as c};

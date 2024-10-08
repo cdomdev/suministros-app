@@ -1,0 +1,1 @@
+function o(e){return parseFloat(e).toString().replace(/\B(?=(\d{3})+(?!\d))/g,".")}function u(e,a){const t=parseFloat(e);if(!a){const c=t.toString();return o(c)}const n=t*a/100,r=(t-n).toString();return o(r)}const l=(e,a)=>{const t=parseFloat(e);return(t-t*(a/100)).toFixed(2)};export{u as a,l as c,o as f};

@@ -8,7 +8,7 @@ const VerifyAuth = () => {
     const [productos, setProductos] = useState<Producto[]>([])
 
     useEffect(() => {
-        const handleCarritoChange = (event: CustomEvent<any>) => {
+        const handleCarritoChange = () => {
             const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
             setProductos(carrito);
         };
@@ -18,7 +18,7 @@ const VerifyAuth = () => {
         }
 
         // Llama a la función para establecer la cantidad al montar el componente
-        handleCarritoChange({} as CustomEvent<any>);
+        handleCarritoChange();
 
         return () => {
             if (eventEmitter) {

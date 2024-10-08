@@ -1,0 +1,1 @@
+import{a as r}from"./axios.C8DqakIB.js";const e="http://localhost:3000",a="679450cd57d2b1",c=async(t,s)=>{try{return await r.post(`${e}/user/profile-update`,{email:t,dataUpdate:s})}catch(o){throw o}},p=async()=>{try{return(await r.get(`https://ipinfo.io/json?token=${a}`)).data}catch(t){throw console.error("Error fetching IP data:",t),t}};export{p as g,c as u};

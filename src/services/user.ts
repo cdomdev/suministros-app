@@ -2,7 +2,7 @@ import axios from "axios"
 import type { DataUserUpdate, PedidosResponse } from "@/types/types";
 import type { ResponsIPInfo } from "@/types/types";
 const HOST = "http://localhost:3000"
-const token = import.meta.env.PUBLIC_TOKEN_PIINFO
+const token = import.meta.env.PUBLIC_TOKEN_IPINFO
 
 
 export const getOrders = async (id: number): Promise<PedidosResponse> => {

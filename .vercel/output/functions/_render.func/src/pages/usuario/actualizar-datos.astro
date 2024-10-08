@@ -1,0 +1,19 @@
+---
+import Back from "@/components/icons/Back.astro";
+import UsuarioLayout from "@/layouts/UsuarioLayout.astro";
+import UpdateProfile from "@/components/usuario/UpdateProfile";
+---
+
+<UsuarioLayout>
+    <h1 class="font-semibold mt-14 mb-10 text-lg">
+        Actulziar datos de mi perfil
+    </h1>
+    <a
+        href="/usuario/perfil"
+        class="flex items-center my-2 font-semibold hover:text-gray-500"
+        ><Back /> Atras</a
+    >
+    <div class="w-[70%] mx-auto">
+        <UpdateProfile client:visible />
+    </div>
+</UsuarioLayout>
