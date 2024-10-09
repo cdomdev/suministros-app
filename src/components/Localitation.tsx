@@ -7,20 +7,9 @@ export const Localitation = () => {
     const [data, setData] = useState<ResponsIPInfo | null>(null)
     useEffect(() => {
         const fetchData = async () => {
-            let dataLocal = localStorage.getItem('referenceDataLocation')
-            try {
-                if (!dataLocal) {
-                    const response = await getDataIp();
-                    localStorage.setItem('referenceDataLocation', JSON.stringify(response))
-                    setData(response);
-                } else {
-                    let dataParse = JSON.parse(dataLocal)
-                    setData(dataParse)
-                }
-
-            } catch (error) {
-                console.error("Error fetching IP data");
-            }
+            const response = await getDataIp();
+            localStorage.setItem('referenceDataLocation', JSON.stringify(response))
+            setData(response);
         };
         fetchData()
     }, [])
