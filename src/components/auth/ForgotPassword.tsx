@@ -83,12 +83,12 @@ const ForgotPassword = () => {
                     <SuccessRequest email={data?.email} nombre={data?.nombre} />
                 ) : (
                     <>
-                        <h1 className="mb-2 font-normal text-base md:text-lg">
+                        <h1 className="mb-2 font-normal md:text-lg">
                             Solicitud para restablecer contraseña
                         </h1>
-                        <p className="text-xs md:text-sm font-normal">
+                        <p className="text-xs md:text-sm font-normal text-left">
                             Por motivos de seguridad, su clave olvidada debe ser reemplazada
-                            por una nueva. <br /> Ingrese el correo con el que se registro en
+                            por una nueva. Ingrese el correo con el que se registro en
                             suministros
                         </p>
                         <div className="w-full md:w-[56%]">
