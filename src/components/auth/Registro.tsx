@@ -17,7 +17,6 @@ const Registro: React.FC = () => {
         setIsLoading(true)
         try {
             const response = await register(values)
-            console.log(response)
             if (response.status === 201) {
                 setShowToast(true)
                 setBgToast('toast-success')
@@ -32,7 +31,6 @@ const Registro: React.FC = () => {
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                console.log(status)
                 if (status === 409) {
                     setBgToast('fail')
                     setShowToast(true)
@@ -49,6 +47,12 @@ const Registro: React.FC = () => {
                     }, 5000)
                 }
             }
+            setBgToast('fail')
+            setShowToast(true)
+            setToastMessage(`Hola ${values.nombre} no pudimos hacer tu registro, intentalo de mas tarde`)
+            setTimeout(() => {
+                setShowToast(false)
+            }, 5000)
 
         } finally {
             setIsLoading(false)
