@@ -1,24 +1,11 @@
 import axios from "axios"
-import type { DatosUsurio, Producto } from "@/types/types"
+import type { propPago, propMercadopago } from "@/types/types"
+import { HOST } from "@/congif"
 
-type propPago = {
-    productos: Producto[]
-    datos: DatosUsurio,
-    ruta: string,
-    valorDeEnvio: number,
-}
 
-type propMercadopago = {
-    productos: Producto[]
-    datos: DatosUsurio,
-    ruta: string,
-    valorDeEnvio: number,
-}
-
-const API_HOST = 'http://localhost:3000'
 export const pago = async ({ productos, datos, ruta, valorDeEnvio }: propPago) => {
     try {
-        const response = await axios.post(`${API_HOST}/finish/${ruta}`, {
+        const response = await axios.post(`${HOST}/finish/${ruta}`, {
             datos,
             valorDeEnvio,
             productos,
@@ -31,7 +18,7 @@ export const pago = async ({ productos, datos, ruta, valorDeEnvio }: propPago) =
 
 export const mercadoPago = async ({ productos, datos, ruta, valorDeEnvio, }: propMercadopago) => {
     try {
-        const response = await axios.post(`${API_HOST}/finish/${ruta}`, {
+        const response = await axios.post(`${HOST}/finish/${ruta}`, {
             datos,
             valorDeEnvio,
             productos,

@@ -1,7 +1,7 @@
 import axios from "axios"
 import type { DataUserUpdate, PedidosResponse } from "@/types/types";
 import type { ResponsIPInfo } from "@/types/types";
-const HOST = "http://localhost:3000"
+import { HOST } from "@/congif";
 
 const token = import.meta.env.PUBLIC_TOKEN_IPINFO
 

@@ -1,7 +1,6 @@
 import type { DataForgotPassword, ValuesIniSesion, ValuesRegistro, ResetPassword, GoogleAuthResponse } from "@/types/types"
 import axios from "axios"
-
-const HOST = "http://localhost:3000"
+import { HOST } from "@/congif";
 
 export const validaSesion = async (values: ValuesIniSesion) => {
     try {
@@ -79,7 +78,7 @@ const clearStorege = () => {
 
 export const logout = async () => {
     try {
-        await axios.post('http://localhost:3000/user/logout', {}, { withCredentials: true });
+        await axios.post(`${HOST}/user/logout`, {}, { withCredentials: true });
         clearStorege();
         window.location.reload();
     } catch (error) {

@@ -135,3 +135,17 @@ export type ResponsIPInfo = {
   org?: string | null;
   timezone?: string | null;
 }
+
+export type propPago = {
+  productos: Producto[]
+  datos: DatosUsurio,
+  ruta: string,
+  valorDeEnvio: number,
+}
+
+export type propMercadopago = {
+  productos: Producto[]
+  datos: DatosUsurio,
+  ruta: string,
+  valorDeEnvio: number,
+}

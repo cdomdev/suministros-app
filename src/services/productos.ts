@@ -1,10 +1,11 @@
 import axios from "axios";
 import type { Producto } from "@/types/types";
+import { HOST } from "@/congif";
 
 export const getAllProducts = async (): Promise<Producto[]> => {
   try {
     const response = await axios.get(
-      `http://localhost:3000/productos`
+      `${HOST}/productos`
     );
     return response.data;
   } catch (error) {
@@ -18,7 +19,7 @@ export const getProductos = async (categoria: string, producto: string) => {
 
   try {
     const response = await axios.get(
-      `http://localhost:3000/${categoria}/${encodedRuta}`
+      `${HOST}/${categoria}/${encodedRuta}`
     );
     return response.data;
   } catch (error) {
@@ -30,7 +31,7 @@ export const getProductos = async (categoria: string, producto: string) => {
 
 export const getProductoBy = async ({ id }: { id: string }) => {
   try {
-    const response = await axios.get(`http://localhost:3000/producto/${id}`)
+    const response = await axios.get(`${HOST}/producto/${id}`)
     return response.data.producto
   } catch (error) {
     console.error('Error a listar el producto por id', error)
@@ -40,7 +41,7 @@ export const getProductoBy = async ({ id }: { id: string }) => {
 
 export const getMostSalled = async () => {
   try {
-    const response = await axios.get(`http://localhost:3000/productos/list-most-salleds`)
+    const response = await axios.get(`${HOST}/productos/list-most-salleds`)
     return response.data
   } catch (error) {
     console.error('Error al listar los productos mas vendidos', error)
@@ -50,7 +51,7 @@ export const getMostSalled = async () => {
 
 export const getOfertas = async () => {
   try {
-    const response = await axios.get('http://localhost:3000/ofertas')
+    const response = await axios.get(`${HOST}/ofertas'`)
     return response.data
   } catch (error) {
     console.log('Error al listar las ofertas', error)
