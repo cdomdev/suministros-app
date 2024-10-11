@@ -17,6 +17,7 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
     const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (values: ValuesIniSesion) => {
+        setIsLoading(true);
         try {
             const response = await validaSesion(values)
             if (response.status === 200) {
@@ -31,12 +32,14 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                     setBgToast('fail')
                     setShowToast(true)
                     setToastMessage(`El email ${values.email} no esta registrado`)
+                    setIsLoading(false)
                     setTimeout(() => {
                         setShowToast(false)
                     }, 5000)
                 } else if (status === 401) {
                     setBgToast('fail')
                     setShowToast(true)
+                    setIsLoading(false)
                     setToastMessage(`Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
                     setTimeout(() => {
                         setShowToast(false)
@@ -50,6 +53,8 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                 setShowToast(false)
             }, 5000)
 
+        } finally {
+            setIsLoading(false)
         }
 
     }
