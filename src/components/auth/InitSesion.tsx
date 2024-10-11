@@ -4,6 +4,7 @@ import type { ValuesIniSesion } from "@/types/types";
 import { validaSesion } from '@/services/auth'
 import { Toast } from "../Toast";
 import axios from "axios";
+import { Spinner } from "react-bootstrap";
 
 interface FormInicioSesionProps {
     setShow: (show: boolean) => void;
@@ -13,6 +14,7 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
     const [toastMessage, setToastMessage] = useState<string>('');
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
+    const [isLoading, setIsLoading] = useState(false);
 
     const handleSubmit = async (values: ValuesIniSesion) => {
         try {
@@ -43,7 +45,7 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
             }
             setBgToast('fail')
             setShowToast(true)
-            setToastMessage(`Hubo un error al verificar tus datos, intentalo de nuevo`)
+            setToastMessage(`Algo salio mal, intentalo mas tarde`)
             setTimeout(() => {
                 setShowToast(false)
             }, 5000)
@@ -135,6 +137,13 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                             type="submit"
                             className="text-white text-xs md:text-sm bg-blue-700 w-full hover:bg-blue-800 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
+                            {isLoading ? (
+                                <div className="spinner-container">
+                                    <Spinner animation="border" role="status" size="sm" />
+                                </div>
+                            ) : (
+                                <>Registarme</>
+                            )}
                             Iniciar sesión
                         </button>
                         <div className="w-full flex gap-2 items-center text-xs md:text-sm">
