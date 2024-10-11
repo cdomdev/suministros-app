@@ -147,9 +147,9 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                                     <Spinner animation="border" role="status" size="sm" />
                                 </div>
                             ) : (
-                                <>Registarme</>
+                                <>Iniciar sesión</>
                             )}
-                            Iniciar sesión
+
                         </button>
                         <div className="w-full flex gap-2 items-center text-xs md:text-sm">
                             <p className="py-2">¿No tienes cuenta?</p>
