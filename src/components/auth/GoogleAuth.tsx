@@ -65,11 +65,11 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                 bgToast={bgToast}
                 setBgToast={setBgToast}
             />
-            <button onClick={() => googleInit()} className="border w-full flex rounded-md gap-1 font-normal  justify-center items-center py-1 cursor-pointer mb-3 hover:bg-blue-500 duration-150 hover:text-white" >
+            <button onClick={() => googleInit()} className="border w-full flex rounded-md gap-1 font-normal  justify-center  items-center py-1 cursor-pointer mb-3 hover:bg-blue-500 duration-150 hover:text-white" >
                 <span className="block bg-white rounded-full">
                     <Google />
                 </span>
-                <span className="text-sm">Iniciar sesion con google</span>
+                <span className="text-xs md:text-sm">Iniciar sesion con google</span>
             </button>
         </>
     )

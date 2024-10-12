@@ -1,9 +1,10 @@
 import { type DataForgotPassword } from "@/types/types";
 
 const SuccessRequest = ({ email }: DataForgotPassword) => {
-    
-    const removeData = () =>{
+
+    const removeData = () => {
         localStorage.removeItem('isSuccessSend');
+        window.location.href = '/'
     }
     return (
         <div className="flex flex-col justify-center items-center">

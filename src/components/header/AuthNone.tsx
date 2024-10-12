@@ -1,4 +1,4 @@
-import { Person } from "../icons/Person"
+import { Person } from "./Person"
 import ModalAuth from "../modales/ModalAuth"
 import ModalInfo from "../modales/ModalInfo"
 

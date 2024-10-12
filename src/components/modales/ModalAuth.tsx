@@ -28,7 +28,6 @@ const ModalAuth: React.FC<AuthProps> = ({ triggerElement }) => {
                 </Modal.Header>
                 <div className="font-font-cust-2 p-2">
                     <Modal.Body>
-
                         <label
                             htmlFor="email"
                             className="block mb-2 text-sm font-medium text-center text-black dark:text-white"

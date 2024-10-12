@@ -39,7 +39,7 @@ const ForgotPassword = () => {
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                if (status === 404) {
+                if (status === 400) {
                     setBgToast('fail')
                     setShowToast(true)
                     setToastMessage(`El email ${values.email} no esta registrado`)
@@ -57,7 +57,7 @@ const ForgotPassword = () => {
             }
             setBgToast('fail')
             setShowToast(true)
-            setToastMessage(`algo salio mal, por favor intenlado mas tarde`)
+            setToastMessage(`Algo salio mal, por favor intenlado mas tarde`)
             setTimeout(() => {
                 setShowToast(false)
             }, 5000)

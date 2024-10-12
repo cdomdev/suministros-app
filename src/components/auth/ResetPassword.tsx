@@ -37,12 +37,11 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
             }
 
         } catch (error) {
-            console.log(error)
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
                 switch (status) {
                     case 401:
-                        setToastMessage('No pudimos hacer esto, intenta de nuevo.');
+                        setToastMessage('No pudimos hacer esto, intentalo de nuevo.');
                         break;
                     case 400:
                         setToastMessage('El token ha expirado. Solicita un nuevo cambio desde la sección "Olvidé mi contraseña".');
