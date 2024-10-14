@@ -14,6 +14,7 @@ const DropdownProfile = () => {
         }
     }, []);
 
+
     const toggleDropdown = () => {
         setDropdownOpen((prevState) => !prevState);
     };

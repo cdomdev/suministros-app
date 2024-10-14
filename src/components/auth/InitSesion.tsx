@@ -5,6 +5,7 @@ import { validaSesion } from '@/services/auth'
 import { Toast } from "../Toast";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
+import Cookies from "js-cookie";
 
 interface FormInicioSesionProps {
     setShow: (show: boolean) => void;
@@ -22,8 +23,20 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
             const response = await validaSesion(values)
             if (response.status === 200) {
                 setShow(false)
+                const { data } = response
                 window.location.reload()
-                localStorage.setItem('infoProfileUSer', JSON.stringify(response.data))
+                const { accessToken, userSessionData } = data
+                Cookies.set('access_token', accessToken, {
+                    expires: 1,
+                    sameSite: 'lax',
+                    secure: true
+                })
+                Cookies.set('user_sesion', JSON.stringify(userSessionData), {
+                    expires: 1,
+                    sameSite: 'lax',
+                    secure: true
+                })
+                localStorage.setItem('infoProfileUSer', JSON.stringify(userSessionData))
             }
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
