@@ -23,8 +23,8 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
             const response = await validaSesion(values)
             if (response.status === 200) {
                 setShow(false)
-                const { data } = response
                 window.location.reload()
+                const { data } = response
                 const { accessToken, userSessionData } = data
                 Cookies.set('access_token', accessToken, {
                     expires: 1,

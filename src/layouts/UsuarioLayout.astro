@@ -11,6 +11,14 @@ try {
 } catch (error) {
     console.error("Error parsing cookie JSON:", error);
 }
+const isValidURL = (url: string) => {
+    try {
+        new URL(url);
+        return true;
+    } catch (_) {
+        return false;
+    }
+};
 ---
 
 <Layout title=`Hola ${userSession?.nombre}`>
@@ -19,8 +27,12 @@ try {
         <aside class="p-2 flex flex-col gap-2">
             <div class="flex flex-col items-center">
                 {
-                    userSession.picture ? (
-                        <img src={userSession?.picture} class="rounded-full" />
+                    userSession.picture && isValidURL(userSession.picture) ? (
+                        <img
+                            src={userSession.picture}
+                            class="rounded-full"
+                            alt="User Profile Picture"
+                        />
                     ) : (
                         <PerfilDef />
                     )

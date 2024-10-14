@@ -1,6 +1,8 @@
 import { useEffect, useState } from "react"
 import type { PropProfile } from '@/types/types'
 import { logout } from "@/services/auth";
+import UserProfile from "./Avatar";
+import Cookies from "js-cookie";
 
 const DropdownProfile = () => {
     const [data, setData] = useState<PropProfile | null>(null);
@@ -14,6 +16,17 @@ const DropdownProfile = () => {
         }
     }, []);
 
+    const clearStorage = () => {
+        localStorage.clear()
+        sessionStorage.clear()
+        Cookies.remove('user_sesio')
+        Cookies.remove('access_token')
+    }
+
+    const logoutCookies = async () => {
+        await logout()
+        clearStorage()
+    }
 
     const toggleDropdown = () => {
         setDropdownOpen((prevState) => !prevState);
@@ -21,50 +34,19 @@ const DropdownProfile = () => {
 
     return (
         <div>
-            {data && data.picture ? (
-                <div className="flex flex-col justify-center items-center gap-1">
-                    <img
-                        id="avatarButton"
-                        className="w-9 h-9 rounded-full cursor-pointer relative"
-                        src={data.picture}
-                        alt="profile user"
-                        onClick={toggleDropdown}
-                        loading="lazy"
-                    />
-                    <small className="text-[7px] md:text-[8px] uppercase font-semibold hover:scale-110 md:-mb-[2px] duration-100">Perfil</small>
-                </div>
-            ) : (
-                <div className="flex flex-col items-center gap-1 md:gap-2 cursor-pointer">
-                    <div
-                        className="relative w-7 h-7 md:w-10 md:h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
-                        onClick={toggleDropdown}
-                    >
-                        <svg
-                            className="absolute w-8 h-8 md:w-12 md:h-12 text-gray-400  -left-[2px] md:-left-1"
-                            fill="currentColor"
-                            viewBox="0 0 20 20"
-                            xmlns="http://www.w3.org/2000/svg"
-                        ><path
-                            fillRule="evenodd"
-                            d="M10 9a3 3 0 100-6 3 3 0 000 6zm-7 9a7 7 0 1114 0H3z"
-                            clipRule="evenodd"></path></svg>
-                    </div>
-                    <small className="text-[7px] md:text-[8px] uppercase font-semibold hover:scale-110 duration-100">Perfil</small>
-                </div>
-            )}
-
+            <UserProfile toggleDropdown={toggleDropdown} />
             <div
                 id="userDropdown"
                 className={`z-10 absolute right-3 ${dropdownOpen ? "block" : "hidden"
                     } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
                 <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                    <div className="font-semibold text-base uppercase">
+                    <div className="font-semibold text-sm md:text-base uppercase">
                         {data?.nombre}
                     </div>
                     <div className="font-medium truncate">{data?.email || ""}</div>
                 </div>
                 <ul
-                    className="text-sm text-gray-700 dark:text-gray-200"
+                    className="text-xs md:text-sm text-gray-700 dark:text-gray-200"
                     aria-labelledby="avatarButton">
                     <li>
                         <a
@@ -83,8 +65,8 @@ const DropdownProfile = () => {
                 </ul>
                 <div className="">
                     <button
-                        onClick={() => logout()}
-                        className="block   text-sm text-gray-700 hover:bg-red-600 w-full duration-200 hover:text-white rounded-b-md py-2">
+                        onClick={() => logoutCookies()}
+                        className="block text-xs md:text-sm text-gray-700 hover:bg-red-600 w-full duration-200 hover:text-white rounded-b-md py-2">
                         Cerrar sesion
                     </button>
                 </div>

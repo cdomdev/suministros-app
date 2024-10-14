@@ -4,6 +4,7 @@ import axios from "axios";
 import { Toast } from "../Toast";
 import { useState } from "react";
 import { googleAuth } from "@/services/auth";
+import Cookies from "js-cookie";
 
 const clientId = import.meta.env.PUBLIC_CLIENT_ID;
 interface FormInicioSesionProps {
@@ -30,7 +31,19 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                 if (serverResponse.status === 200) {
                     window.location.reload()
                     setShow(false)
-                    localStorage.setItem('infoProfileUSer', JSON.stringify(serverResponse.data))
+                    const { data } = serverResponse
+                    const { accessToken, userSessionData } = data
+                    Cookies.set('access_token', accessToken, {
+                        expires: 1,
+                        sameSite: 'lax',
+                        secure: true
+                    })
+                    Cookies.set('user_sesion', JSON.stringify(userSessionData), {
+                        expires: 1,
+                        sameSite: 'lax',
+                        secure: true
+                    })
+                    localStorage.setItem('infoProfileUSer', JSON.stringify(userSessionData))
                 }
             } catch (error) {
                 if (axios.isAxiosError(error) && error.response) {
