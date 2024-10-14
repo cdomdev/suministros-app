@@ -23,8 +23,8 @@ const DropdownProfile = () => {
         Cookies.remove('access_token')
     }
 
-    const logoutCookies = async () => {
-        await logout()
+    const logoutCookies = () => {
+        logout()
         clearStorage()
     }
 
