@@ -19,7 +19,7 @@ const DropdownProfile = () => {
     const clearStorage = () => {
         localStorage.clear()
         sessionStorage.clear()
-        Cookies.remove('user_sesio')
+        Cookies.remove('user_sesion')
         Cookies.remove('access_token')
     }
 

@@ -58,11 +58,18 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                     } else if (status === 401) {
                         setBgToast('fail')
                         setShowToast(true)
-                        setToastMessage(`Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
+                        setToastMessage(`Hubo un error en el inicio de sesion con tu cuenta, intentalo mas tarde`)
                         setTimeout(() => {
                             setShowToast(false)
                         }, 5000)
                     }
+                } else {
+                    setBgToast('fail')
+                    setShowToast(true)
+                    setToastMessage(`Algo salio mal, por favaor intentalo mas tarde`)
+                    setTimeout(() => {
+                        setShowToast(false)
+                    }, 5000)
                 }
             }
 
