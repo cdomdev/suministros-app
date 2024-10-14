@@ -45,13 +45,14 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                         setShowToast(false)
                     }, 5000)
                 }
+            } else {
+                setBgToast('fail')
+                setShowToast(true)
+                setToastMessage(`Algo salio mal, intentalo mas tarde`)
+                setTimeout(() => {
+                    setShowToast(false)
+                }, 5000)
             }
-            setBgToast('fail')
-            setShowToast(true)
-            setToastMessage(`Algo salio mal, intentalo mas tarde`)
-            setTimeout(() => {
-                setShowToast(false)
-            }, 5000)
 
         } finally {
             setIsLoading(false)
