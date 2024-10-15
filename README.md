@@ -1,54 +1,96 @@
-# Astro Starter Kit: Basics
+# Proyecto de Tienda Web - Suministros
+![alt text](public/logo.webp)
 
-```sh
-npm create astro@latest -- --template basics
-```
+Este es un proyecto de tienda en línea desarrollado con Astro y react, que permite a los usuarios realizar compras, gestionar su perfil y realizar pagos a través de la pasarela de Mercado Pago. 
 
-[![Open in StackBlitz](https://developer.stackblitz.com/img/open_in_stackblitz.svg)](https://stackblitz.com/github/withastro/astro/tree/latest/examples/basics)
-[![Open with CodeSandbox](https://assets.codesandbox.io/github/button-edit-lime.svg)](https://codesandbox.io/p/sandbox/github/withastro/astro/tree/latest/examples/basics)
-[![Open in GitHub Codespaces](https://github.com/codespaces/badge.svg)](https://codespaces.new/withastro/astro?devcontainer_path=.devcontainer/basics/devcontainer.json)
+## Índice
 
-> 🧑‍🚀 **Seasoned astronaut?** Delete this file. Have fun!
+- [Características](#características)
+- [Tecnologías](#tecnologías)
+- [Requisitos Previos](#requisitos-previos)
+- [Instalación](#instalación)
+- [Configuración](#configuración)
+- [Estructura del Proyecto](#estructura-del-proyecto)
+- [Licencia](#licencia)
 
-![just-the-basics](https://github.com/withastro/astro/assets/2244813/a0a5533c-a856-4198-8470-2d67b1d7c554)
+## Características
 
-## 🚀 Project Structure
+- *Pasarela de pagos con Mercado Pago*: Integración completa para procesar pagos de manera segura.
+- *Autenticacion con google con el protocolo Auth*: Integración completa para la autenticacion con google de manera segura.
+- *Gestión de perfiles de usuario*: Permite a los usuarios registrarse, iniciar sesión y gestionar su perfil.
+- *Experiencia de compra*: Funcionalidad de carrito de compras, navegación de productos por categorías y opciones de filtrado.
+- *Interfaz amigable*: Desarrollada con Astro y Tailwind CSS para una experiencia de usuario óptima en dispositivos móviles y de escritorio.
 
-Inside of your Astro project, you'll see the following folders and files:
+## Tecnologías
 
-```text
-/
-├── public/
-│   └── favicon.svg
-├── src/
-│   ├── components/
-│   │   └── Card.astro
+- *Frontend*: [Astro](https://astro.build/) con componentes React y Tailwind CSS.
+- *Autenticación*: Gestionada mediante JWT para asegurar las sesiones de usuario.
+- *Pasarela de Pago*: [Mercado Pago](https://www.mercadopago.com/) para la integración de pagos en línea.
+
+## Requisitos Previos
+
+Antes de comenzar, asegúrate de tener instalado lo siguiente:
+
+- [Astro](https://astro.build/) (para ejecutar el proyecto)
+- [Node.js](https://nodejs.org/) (versión 14 o superior)
+- Cuenta de [Mercado Pago](https://www.mercadopago.com/)
+- Cuenta de [Google Cloud](https://cloud.google.com/cloud-console/)
+
+
+## Instalación
+
+1. * Bifucar o Clonar el repositorio*:
+
+- bash: git clone https://github.com/cdomdev/suministros-app
+
+
+2. * Instalar las dependencias:
+
+
+Usamos npm para instalar y administrar las dependencias.
+
+# Instala node para Windows:
+
+- powershell -c https://nodejs.org/dist/v20.18.0/node-v20.18.0-x64.msi | bash
+
+
+# Instalacion con npm:
+- npm install
+
+## Configuracion
+
+1. *Configurar el entorno*:
+
+Crea un archivo .env en la raiz del proyecto y añade tus claves de acceso. Por ejemplo
+
+MERCADOPAGO_ACCESS_TOKEN=tu_token_de_mercadopago
+DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
+
+
+## Estructura del Proyecto
+
+├── public
+├── src
+│   ├── components /
+│   ├── content/
+│   ├── events/
+│   ├── hook/
 │   ├── layouts/
-│   │   └── Layout.astro
-│   └── pages/
-│       └── index.astro
+│   ├── services/
+│   └── types/
+│   ├── utils/
+│   └── config.ts
+└── .astro.c
+├── .gitignore
+└── .env
 └── package.json
-```
+└── README.md
 
-Astro looks for `.astro` or `.md` files in the `src/pages/` directory. Each page is exposed as a route based on its file name.
 
-There's nothing special about `src/components/`, but that's where we like to put any Astro/React/Vue/Svelte/Preact components.
+## Licencia
 
-Any static assets, like images, can be placed in the `public/` directory.
+Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
 
-## 🧞 Commands
 
-All commands are run from the root of the project, from a terminal:
 
-| Command                   | Action                                           |
-| :------------------------ | :----------------------------------------------- |
-| `npm install`             | Installs dependencies                            |
-| `npm run dev`             | Starts local dev server at `localhost:4321`      |
-| `npm run build`           | Build your production site to `./dist/`          |
-| `npm run preview`         | Preview your build locally, before deploying     |
-| `npm run astro ...`       | Run CLI commands like `astro add`, `astro check` |
-| `npm run astro -- --help` | Get help using the Astro CLI                     |
 
-## 👀 Want to learn more?
-
-Feel free to check [our documentation](https://docs.astro.build) or jump into our [Discord server](https://astro.build/chat).
