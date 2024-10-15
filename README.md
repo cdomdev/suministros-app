@@ -70,7 +70,7 @@ DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
 ## Estructura del Proyecto
 
 ├── public
-├── src
+├── src/
 │   ├── components /
 │   ├── content/
 │   ├── events/
