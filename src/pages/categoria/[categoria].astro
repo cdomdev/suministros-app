@@ -114,8 +114,6 @@ try {
               .filter((input) => input.checked)
               .map((input) => input.value);
 
-            let hayProductosVisibles = false;
-
             productos.forEach((producto) => {
               const marca = producto.getAttribute("data-marca");
               const categoria = producto.getAttribute("data-categoria");
