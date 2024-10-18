@@ -109,7 +109,7 @@ export const FormEnvioDatosUsuario = () => {
                             </Form.Group>
                         </div>
                         <UpdateSteps
-                            ruta="/pago"
+                            ruta="/Pago"
                             bg="bg-primary"
                             textColor="text-white"
                             textContent="Continuar"
