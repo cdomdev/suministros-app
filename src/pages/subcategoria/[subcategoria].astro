@@ -56,7 +56,7 @@ const parsePagina = contenido.categoria.replaceAll("-", " ");
                                 <FiltroMarcas marca={marca} />
                             ))
                         ) : (
-                            <div class="my-2 flex justify-center">
+                            <div class="my-2 flex justify-center uppercase">
                                 <p>No hay marcas disponibles</p>
                             </div>
                         )
@@ -93,7 +93,12 @@ const parsePagina = contenido.categoria.replaceAll("-", " ");
                             />
                         ))
                     ) : (
-                        <Spiner />
+                        <div class="flex w-full flex-col items-center justify-center text-center">
+                            <Spiner />
+                            <span class="text-xs text-gray-500 mb-2">
+                                Cargango productos
+                            </span>
+                        </div>
                     )
                 }
             </div>

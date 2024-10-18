@@ -8,13 +8,13 @@ import { subcategoriasUnicas } from "@/utils/subcategoriasUnicas";
 import FiltrosCategorias from "@/components/filtros/filtrosCategorias.astro";
 import FiltroMarcas from "@/components/filtros/filtroMarcas.astro";
 import MigajasCategoria from "@/components/migajas/MigajasCategoria.astro";
+import Spiner from "@/components/Spiner.astro";
 const { categoria } = Astro.params;
 let dataresponse: ApiResponse | null = null;
 let marcasUnicas: string[] | null = null;
 let categoriasUnicas: string[] | null = null;
 const categoriaParseade = categoria?.toUpperCase();
 const migajasTexParseada = categoria?.replaceAll("-", " ");
-
 try {
   dataresponse = await getProductos("categorias", `${categoria}`);
   if (dataresponse) {
@@ -72,11 +72,6 @@ try {
         class=`text-sm md:text-base font-light uppercase mb-3 ${dataresponse && dataresponse?.productos?.length > 0 ? 'block' : 'hidden'}`>
         {dataresponse?.productos?.length} Productos
       </span>
-      <div
-        id="mensaje-no-productos"
-        class="w-full justify-center text-base md:text-xl items-center text-red-500 font-semibold hidden text-center">
-        No hay productos disponibles.
-      </div>
       <div class="w-full gap-x-2 gap-y-2 md:gap-8 flex flex-wrap">
         {
           dataresponse && dataresponse.productos.length > 0 ? (
@@ -93,7 +88,10 @@ try {
               />
             ))
           ) : (
-            <></>
+            <div class="flex w-full flex-col items-center justify-center text-center">
+              <Spiner />
+              <span class="text-xs text-gray-500">Cargango productos</span>
+            </div>
           )
         }
       </div>
@@ -105,57 +103,45 @@ try {
         const filtroCategorias = document.querySelectorAll(
           'input[name="categoria"]',
         );
-        const productos = document.querySelectorAll(".card-producto");
-        const mensajeNoProductos = document.querySelector(
-          "#mensaje-no-productos",
-        );
-        const noProductosCount = document.querySelector("#no-productos");
+        if (filtroMarcas.length > 0 || filtroCategorias.length > 0) {
+          const productos = document.querySelectorAll(".card-producto");
 
-        function aplicarFiltros() {
-          const marcasSeleccionadas = Array.from(filtroMarcas)
-            .filter((input) => input.checked)
-            .map((input) => input.value);
-          const categoriasSeleccionadas = Array.from(filtroCategorias)
-            .filter((input) => input.checked)
-            .map((input) => input.value);
+          function aplicarFiltros() {
+            const marcasSeleccionadas = Array.from(filtroMarcas)
+              .filter((input) => input.checked)
+              .map((input) => input.value);
+            const categoriasSeleccionadas = Array.from(filtroCategorias)
+              .filter((input) => input.checked)
+              .map((input) => input.value);
 
-          let hayProductosVisibles = false;
+            let hayProductosVisibles = false;
 
-          productos.forEach((producto) => {
-            const marca = producto.getAttribute("data-marca");
-            const categoria = producto.getAttribute("data-categoria");
+            productos.forEach((producto) => {
+              const marca = producto.getAttribute("data-marca");
+              const categoria = producto.getAttribute("data-categoria");
 
-            const mostrarProducto =
-              (marcasSeleccionadas.length === 0 ||
-                marcasSeleccionadas.includes(marca)) &&
-              (categoriasSeleccionadas.length === 0 ||
-                categoriasSeleccionadas.includes(categoria));
+              const mostrarProducto =
+                (marcasSeleccionadas.length === 0 ||
+                  marcasSeleccionadas.includes(marca)) &&
+                (categoriasSeleccionadas.length === 0 ||
+                  categoriasSeleccionadas.includes(categoria));
 
-            producto.style.display = mostrarProducto ? "block" : "none";
+              producto.style.display = mostrarProducto ? "block" : "none";
 
-            if (mostrarProducto) {
-              hayProductosVisibles = true;
-            }
-          });
+              if (mostrarProducto) {
+                hayProductosVisibles = true;
+              }
+            });
+          }
 
-          mensajeNoProductos.style.display = hayProductosVisibles
-            ? "none"
-            : "block";
-
-          noProductosCount.style.display = hayProductosVisibles
-            ? "none"
-            : "block";
+          filtroMarcas.forEach((input) =>
+            input.addEventListener("change", aplicarFiltros),
+          );
+          filtroCategorias.forEach((input) =>
+            input.addEventListener("change", aplicarFiltros),
+          );
+          aplicarFiltros();
         }
-
-        filtroMarcas.forEach((input) =>
-          input.addEventListener("change", aplicarFiltros),
-        );
-        filtroCategorias.forEach((input) =>
-          input.addEventListener("change", aplicarFiltros),
-        );
-
-        // Inicializar estado del mensaje al cargar
-        aplicarFiltros();
       });
     </script>
   </section>
