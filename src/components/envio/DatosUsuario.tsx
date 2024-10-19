@@ -97,10 +97,10 @@ export const FormEnvioDatosUsuario = () => {
                             </Form.Label>
                             <Form.Group controlId="exampleForm.ControlTextarea1">
                                 <Form.Control
-                                    className='bg-gray-50 border border-gray-300  text-gray-900 text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                    className='bg-gray-50 border border-gray-300  text-gray-900 text-xs md:text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                     as="textarea"
                                     rows={3}
-                                    placeholder="ej: Conjunto residencial sumi, torre 9, apartamento 123"
+                                    placeholder="Conjunto residencial sumi, torre 9, apartamento 123"
                                     name="detalles"
                                     value={formik.values.detalles}
                                     onChange={formik.handleChange}
