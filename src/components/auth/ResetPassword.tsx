@@ -79,18 +79,18 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
                     <h1 className="text-center mb-3 text-base md:text-lg">Solicitud para restablecer contraseña</h1>
                     <h2 className="font-normal text-sm md:text-base mb-2">
                         A continuación encontrará un formulario para restablecer su
-                        contraseña, por favor siga las indicaciones
+                        contraseña, para mejorar la segurida de su nueva contraseña, puede siguie las siguintes indicaciones
                     </h2>
-                    <ul className="text-sm pl-3">
-                        <li className="flex gap-1">
+                    <ul className="text-xs md:text-sm pl-3">
+                        <li className="flex gap-1 text-balance ">
                             <Check />
                             Ingrese una nueva contraseña
                         </li>
-                        <li className="flex gap-1">
+                        <li className="flex gap-1 text-balance">
                             <Check />
                             Confirme la contraseña
                         </li>
-                        <li className="flex gap-1">
+                        <li className="flex gap-1 text-balance">
                             <Check />
                             La contraseña debe contener al menos una mayúscula, una minúscula,
                             un número y tener un minimo de 5 y un máximo de 10 caracteres
@@ -122,7 +122,7 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
                         {(formik) => (
                             <Form className="form-recovery" onSubmit={formik.handleSubmit}>
                                 <Form.Group className="mb-3 form-login">
-                                    <Form.Label className="mt-2 pass block mb-2 text-sm font-medium text-gray-900 dark:text-white ">
+                                    <Form.Label className="mt-2 pass block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white ">
                                         Ingrese una nueva contraseña
                                     </Form.Label>
                                     <Field
@@ -137,7 +137,7 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
                                     />
                                 </Form.Group>
                                 <Form.Group className="mb-3 form-login">
-                                    <Form.Label className="mt-2 block mb-2 text-sm font-medium text-gray-900 dark:text-white">
+                                    <Form.Label className="mt-2 block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
                                         Confirme la contraseña
                                     </Form.Label>
                                     <Field
