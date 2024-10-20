@@ -11,6 +11,7 @@ interface PropUpdate {
     disabled?: boolean;
 }
 
+
 export const UpdateSteps: React.FC<PropUpdate> = ({ ruta, bg, textColor, textContent, type = 'button', disabled = false }) => {
     const [productos, setProductos] = useState<Producto[]>([])
     const [, setSteps] = useLocalStorage('steps', 1);
@@ -29,7 +30,7 @@ export const UpdateSteps: React.FC<PropUpdate> = ({ ruta, bg, textColor, textCon
         setSteps((prev: number) => prev + 1);
 
         if (type === 'button' || type === 'submit' || type === 'reset') {
-            window.location.href = ruta;
+            window.location.href = `${ruta}`;
         }
     };
 
