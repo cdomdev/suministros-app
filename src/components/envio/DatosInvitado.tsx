@@ -173,7 +173,7 @@ export const FormEnvioDatosInvitado = () => {
                         </div>
 
                         <UpdateSteps
-                            ruta="/pago"
+                            ruta="/Pago"
                             bg="bg-primary"
                             textColor="text-white"
                             textContent="Continuar"
