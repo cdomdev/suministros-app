@@ -1,31 +1,21 @@
 ---
 import UsuarioLayout from "@/layouts/UsuarioLayout.astro";
 import Back from "@/components/icons/Back.astro";
-import { getOrders } from "@/services/user";
+import { getOrdersBy } from "@/services/user";
 import type { PedidosResponse } from "@/types/types";
-import { formateValue } from "@/utils";
+import { priceFormated } from "@/utils";
 const cookies = Astro.cookies;
 const userSessionCookie = cookies.get("user_sesion");
 const userSessionString = userSessionCookie ? userSessionCookie.value : null;
 let data = null;
 let pedidos: PedidosResponse | null = null;
-
 try {
     data = userSessionString ? JSON.parse(userSessionString) : null;
     if (data && data.id) {
-        pedidos = await getOrders(data.id);
+        pedidos = await getOrdersBy(data.id);
     }
 } catch (error) {
     console.error("Error parsing cookie JSON:", error);
-}
-
-function priceFormated(value: number | string) {
-    if (typeof value === "string") {
-        return formateValue(value);
-    } else {
-        let valueText = value.toString();
-        return formateValue(valueText);
-    }
 }
 ---
 
@@ -36,69 +26,104 @@ function priceFormated(value: number | string) {
         class="flex items-center my-2 font-semibold hover:text-gray-500"
         ><Back /> Atras</a
     >
+
     <div
         class="w-full flex gap-2 mb-7 p-4 flex-col font-font-cust-2 overflow-y-auto max-h-96">
         {
             pedidos && pedidos.pedidos && pedidos.pedidos.length > 0 ? (
-                pedidos.pedidos.map((pedido) => (
-                    <article class="flex flex-col gap-2 border p-3 bg-[#f4f4f4]">
-                        <div class="flex gap-4 justify-center">
-                            <ul>
-                                <li class="text-center text-xs md:text-sm font-semibold">
-                                    Numero de pedido
-                                </li>
-                                <li class="text-xs md:text-sm">
-                                    # {pedido.id}
-                                </li>
-                            </ul>
-                            <ul>
-                                <li class="text-center text-xs md:text-sm  font-semibold">
-                                    Pago total
-                                </li>
-                                <li class="text-center text-xs md:text-sm ">
-                                    $ {priceFormated(pedido.pago_total)}
-                                </li>
-                            </ul>
-                            <ul>
-                                <li class="text-center  text-xs md:text-sm font-semibold">
-                                    Estado del pedido
-                                </li>
-                                <li class="text-xs md:text-sm">
-                                    {pedido.estado_pedido ||
-                                        "El estado del pedido no se ha actualizado"}
-                                </li>
-                            </ul>
-                        </div>
-                        <span class="text-center font-semibold text-xs md:text-sm ">
-                            Productos
-                        </span>
-                        <div class="flex items-center justify-center border w-full py-2 gap-2 overflow-x-auto">
-                            {pedido.detalles_pedido.map((producto) => (
-                                <div class="flex flex-col justify-center p-3 items-center border bg-white ">
-                                    <img
-                                        src={producto.Producto.image}
-                                        alt={producto.Producto.nombre}
-                                        class="size-20"
-                                    />
-                                    <ul>
-                                        <li class="text-xs text-center">
-                                            Cantidad:{" "}
-                                            <strong>{producto.cantidad}</strong>
-                                        </li>
-                                        <li class="text-xs text-center text-balance ">
-                                            Ref: {producto.Producto.referencia}
-                                        </li>
-                                        <li class="text-xs text-center text-balance ">
-                                            {producto.Producto.nombre}
-                                        </li>
-                                    </ul>
-                                </div>
-                            ))}
+                pedidos.pedidos.map((pedido, index) => (
+                    <article>
+                        <div class="relative overflow-x-auto mb-3">
+                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                                <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                                    <tr>
+                                        <th
+                                            scope="col"
+                                            class="px-6 py-3 rounded-s-lg">
+                                            # pedido
+                                        </th>
+                                        <th scope="col" class="px-6 py-3 ">
+                                            Nombre del producto
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Cantidad
+                                        </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            Referencia
+                                        </th>
+                                        <th
+                                            scope="col"
+                                            class="px-6 py-3 rounded-e-lg">
+                                            {" "}
+                                            Valor UN
+                                        </th>
+                                    </tr>
+                                </thead>
+                                <tbody>
+                                    <tr class="bg-white dark:bg-gray-800">
+                                        <th
+                                            scope="row"
+                                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                                            {index + 1}
+                                        </th>
+                                        <th
+                                            scope="row"
+                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            {
+                                                pedido.detalles_pedido[0]
+                                                    .Producto.nombre
+                                            }
+                                        </th>
+                                        <td class="px-6 py-4">
+                                            {" "}
+                                            {pedido.detalles_pedido[0].cantidad}
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {" "}
+                                            {
+                                                pedido.detalles_pedido[0]
+                                                    .Producto.referencia
+                                            }
+                                        </td>
+                                        <td class="px-6 py-4">
+                                            {priceFormated(
+                                                pedido.detalles_pedido[0]
+                                                    .Producto.valor,
+                                            )}
+                                        </td>
+                                    </tr>
+                                </tbody>
+                                <tfoot>
+                                    <tr class="font-semibold text-gray-900 dark:text-white">
+                                        <th
+                                            scope="row"
+                                            class="px-6 py-3 text-sm md:text-base">
+                                            Total
+                                        </th>
+                                        <td class="px-6 py-3">
+                                            {priceFormated(pedido.pago_total)}
+                                        </td>
+                                    </tr>
+                                    <tr class="font-semibold text-gray-900 dark:text-white">
+                                        <th
+                                            scope="row"
+                                            class="px-6 py-3 text-sm md:text-base">
+                                            Costo de envio
+                                        </th>
+                                        <td class="px-6 py-3">
+                                            {priceFormated(
+                                                pedido.costo_de_envio,
+                                            )}
+                                        </td>
+                                    </tr>
+                                </tfoot>
+                            </table>
+                            <hr />
                         </div>
                     </article>
                 ))
             ) : (
-                <p>No hay pedidos</p>
+                <p class="text-gray-500 text-sm md:text-base">No hay pedidos</p>
             )
         }
     </div>

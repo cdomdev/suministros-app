@@ -83,12 +83,12 @@ const ForgotPassword = () => {
                     <SuccessRequest email={data?.email} nombre={data?.nombre} />
                 ) : (
                     <>
-                        <h1 className="mb-2 font-normal md:text-lg">
+                        <h1 className="mb-3 font-normal md:text-lg">
                             Solicitud para restablecer contraseña
                         </h1>
-                        <p className="text-xs md:text-sm font-normal text-left">
+                        <p className="text-xs md:text-base text-balance font-normal text-left mb-3">
                             Por motivos de seguridad, su clave olvidada debe ser reemplazada
-                            por una nueva. Ingrese el correo con el que se registro en
+                            por una nueva. <br />Ingrese el correo con el que se registro en
                             suministros
                         </p>
                         <div className="w-full md:w-[56%]">
@@ -109,7 +109,7 @@ const ForgotPassword = () => {
                                 {(formik) => (
                                     <Form className="form-recovery" onSubmit={formik.handleSubmit}>
                                         <Form.Group className="mb-3 form-login">
-                                            <Form.Label className="block my-2  text-xs md:text-sm font-medium text-gray-900 dark:text-white">
+                                            <Form.Label className="block my-2  text-xs md:text-base font-medium text-gray-900 dark:text-white">
                                                 Ingrese su correo electrónico ∗
                                             </Form.Label>
                                             <Field
@@ -128,7 +128,7 @@ const ForgotPassword = () => {
                                         <Button
                                             variant="primary"
                                             type="submit"
-                                            className="btn-recovery-password w-full text-xs md:text-sm py-2"
+                                            className="btn-recovery-password w-full text-xs md:text-base py-2"
                                             disabled={formik.isSubmitting}>
                                             {isLoading ? (
                                                 <div className="spinner-container">

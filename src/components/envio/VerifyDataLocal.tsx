@@ -46,7 +46,7 @@ const VerifyDataLocal = () => {
                 ) : (
                     <UpdateSteps
                         bg="bg-blue-600"
-                        ruta="/Pago"
+                        ruta="/pago"
                         textColor="text-white"
                         textContent="continuar"
                     />

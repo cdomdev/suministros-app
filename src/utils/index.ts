@@ -1,5 +1,5 @@
 export { calcularCostoEnvio } from './calcularCostoDeEnvio'
 export { calcularSubTotal } from './calcularSubTotal'
-export { formateValue } from './formatearValor'
+export { formateValue, priceFormated } from './formatearValor'
 export { calcularDescuento } from './calcularDescuento'
 export { calcularTotal } from './calcularPago'
