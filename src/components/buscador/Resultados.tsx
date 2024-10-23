@@ -13,7 +13,7 @@ const Resultados = () => {
     return (
         <article className='w-[90%] mx-auto flex flex-col items-center justify-center '>
             <span className='font-semibold mb-2'>{productos.length} productos</span>
-            <div className='flex gap-4 flex-wrap items-center justify-center w-full'>
+            <div className='flex gap-4 flex-wrap justify-center w-full'>
                 {productos && productos.length > 0 ? (
                     productos.map((producto) => (
                         <CardProductos id={producto.id} discount={producto.discount} nombre={producto.marca} description={producto.description} subcategoria={producto.subcategoria} image={producto.image} marca={producto.marca} valor={producto.valor} referencia={producto.referencia} />

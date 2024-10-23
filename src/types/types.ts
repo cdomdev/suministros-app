@@ -98,7 +98,6 @@ export interface GoogleAuthResponse {
 }
 
 export type DataUserUpdate = {
-  nombre: string | null,
   telefono: number | string,
   direccion: string | string
 }

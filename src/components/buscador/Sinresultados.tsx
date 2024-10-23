@@ -1,7 +1,7 @@
 
 export const Sinresultados = () => {
     return (
-        <div className="flex flex-col md:flex-row w-full justify-center items-center gap-3 md:w-[60%] mt-2 p-4">
+        <div className="flex flex-col md:flex-row w-full justify-center items-center gap-3 md:w-[60%] mt-1 px-4">
             <div className="flex  justify-start items-center ">
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-world-search size-32 md:size-52 stroke-gray-500" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />

@@ -39,10 +39,11 @@ const parsePagina = contenido.categoria.replaceAll("-", " ");
 
 <Layout title={contenido?.titulo}>
     <MigajasSubcategorias categoria={parsePagina} pagina={contenido.titulo} />
-    <section class="pt-2 flex flex-col px-4 md:grid-cols-cat-cust md:grid">
+    <section
+        class="pt-2 flex flex-col px-4 md:grid-cols-cat-cust md:grid min-h-dvh">
         <aside class="px-2 md:px-5 hidden md:flex">
             <div class="w-full">
-                <h2 class="text-sm md:text-base font-semibold">
+                <h2 class="text-sm md:text-lg font-semibold">
                     {contenido.titulo}
                 </h2>
                 <span class="text-gray-500 uppercase text-[12px] mb-2"
@@ -67,7 +68,7 @@ const parsePagina = contenido.categoria.replaceAll("-", " ");
             </div>
         </aside>
         <article class="pl-2">
-            <h1 class="font-semibold text-lg lg:text-xl uppercase">
+            <h1 class="font-semibold text-lg lg:text-lg uppercase">
                 {contenido?.titulo}
             </h1>
             <h2 class="font-semibold text-base lg:text-lg">

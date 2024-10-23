@@ -51,7 +51,7 @@ export const getMostSalled = async () => {
 
 export const getOfertas = async () => {
   try {
-    const response = await axios.get(`${HOST}/ofertas'`)
+    const response = await axios.get(`${HOST}/ofertas`)
     return response.data
   } catch (error) {
     console.log('Error al listar las ofertas', error)

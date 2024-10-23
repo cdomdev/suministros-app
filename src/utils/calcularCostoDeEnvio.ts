@@ -13,7 +13,7 @@ export const calcularCostoEnvio = ({ destino, precio }: Envio): number => {
         // Determinar el costo de envío basado en el destino
         switch (destinoInt) {
             case 1:
-                return 150;
+                return 15000;
             case 2:
                 return 25000;
             default:

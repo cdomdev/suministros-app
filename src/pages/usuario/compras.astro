@@ -20,7 +20,9 @@ try {
 ---
 
 <UsuarioLayout>
-    <h1 class="font-semibold mt-14 mb-10 text-lg">Mis compras</h1>
+    <h1 class="font-semibold md:7 md:mt-14 mb-4 md:mb-10 text-lg">
+        Mis compras
+    </h1>
     <a
         href="/usuario/perfil"
         class="flex items-center my-2 font-semibold hover:text-gray-500"
@@ -28,13 +30,13 @@ try {
     >
 
     <div
-        class="w-full flex gap-2 mb-7 p-4 flex-col font-font-cust-2 overflow-y-auto max-h-96">
+        class="w-full flex gap-2 mb-7 p-1 md:p-4 flex-col font-font-cust-2 overflow-auto max-h-96">
         {
             pedidos && pedidos.pedidos && pedidos.pedidos.length > 0 ? (
                 pedidos.pedidos.map((pedido, index) => (
                     <article>
-                        <div class="relative overflow-x-auto mb-3">
-                            <table class="w-full text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                        <div class="relative overflow-auto">
+                            <table class="w-full textr-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th
@@ -68,7 +70,7 @@ try {
                                         </th>
                                         <th
                                             scope="row"
-                                            class="px-6 py-4 font-medium text-gray-900 whitespace-nowrap dark:text-white">
+                                            class="px-6 py-4 font-medium text-balance text-gray-900 whitespace-nowrap dark:text-white">
                                             {
                                                 pedido.detalles_pedido[0]
                                                     .Producto.nombre

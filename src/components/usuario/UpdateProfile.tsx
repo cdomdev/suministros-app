@@ -10,6 +10,7 @@ import { updateProfile } from "@/services/user";
 const UpdateProfile = () => {
     const [data, setData] = useState<PropProfile | null>(null);
     const [toastMessage, setToastMessage] = useState<string>('');
+    const [isLoading, setIsLoading] = useState<boolean>(false)
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
 
@@ -23,15 +24,36 @@ const UpdateProfile = () => {
 
 
     const handleSubmit = async (values: DataUserUpdate, { resetForm }: { resetForm: () => void }) => {
+        setIsLoading(true)
         try {
             if (data && data.email) {
                 const response = await updateProfile(data.email, values)
-                if (response.status === 200) {
+                if (response.status === 201) {
                     resetForm()
+                    Cookies.set('user_sesion', JSON.stringify(response.data.user), {
+                        expires: 1,
+                        sameSite: 'lax',
+                        secure: true
+                    })
+                    setIsLoading(false)
+                    setToastMessage('Datos actulizados con exito');
+                    setBgToast('toast-success');
+                    setShowToast(true);
+                    setTimeout(() => {
+                        setShowToast(false)
+                    }, 5000)
                 }
             }
         } catch (error) {
-
+            setIsLoading(false)
+            setToastMessage('No pudimos actualizar tus datos, intentalo mas tarde');
+            setBgToast('toast-fail');
+            setShowToast(true);
+            setTimeout(() => {
+                setShowToast(false)
+            }, 5000)
+        } finally {
+            setIsLoading(false)
         }
     }
 
@@ -46,12 +68,9 @@ const UpdateProfile = () => {
                 setBgToast={setBgToast}
             />
             <Formik
-                initialValues={{ nombre: "", telefono: "", direccion: "", }}
+                initialValues={{ telefono: "", direccion: "", }}
                 validate={(values: DataUserUpdate) => {
                     const errors: Partial<DataUserUpdate> = {};
-                    if (!values.nombre) {
-                        errors.nombre = "¡Este campo quedara con su nombre actual!";
-                    }
                     if (!values.telefono) {
                         errors.telefono = "¡Este campo no puede quedar vacio!";
                     }
@@ -64,27 +83,6 @@ const UpdateProfile = () => {
             >
                 {({ handleSubmit }) => (
                     <Form onSubmit={handleSubmit}>
-                        <div className="mb-2">
-                            <label
-                                htmlFor="nombre"
-                                className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
-                            >
-                                Ingrese su nombre
-                            </label>
-                            <Field
-                                type="text"
-                                id="nombre"
-                                name="nombre"
-                                className="bg-gray-50 border border-gray-300 text-gray-900 text-sm rounded-lg focus:ring-blue-500 focus:border-blue-200 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light"
-                                placeholder="Si este campo no se modifica quedara con su valor actual"
-                            />
-                            <ErrorMessage
-                                name="nombre"
-                                component="div"
-                                className="text-red-500 text-sm mt-1"
-                            />
-                        </div>
-
                         <div className="mb-2">
                             <label
                                 htmlFor="telefono"
@@ -131,7 +129,7 @@ const UpdateProfile = () => {
                             className="text-white bg-blue-700 w-full hover:bg-blue-800 duration-200 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
                         >
                             <div className="spinner-container">
-                                Actulizar perfel
+                                {isLoading ? 'Actualizando...' : 'Actualizar datos'}
                             </div>
                         </button>
                     </Form>
