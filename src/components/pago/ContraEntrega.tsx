@@ -36,8 +36,6 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
 
     }, [])
 
-    console.log(location)
-
     const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location };
     const datosInvitado = { ...datosEnvio, ...location }
     const destino = datosEnvio?.destino || '0';
