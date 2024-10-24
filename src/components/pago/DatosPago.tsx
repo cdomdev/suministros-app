@@ -29,6 +29,7 @@ const DetosPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const valorConEnvio = (total + envio).toString()
     const valuFormated = formateValue(valorConEnvio)
 
+    
     return (
         <div className="flex flex-col py-1">
             <div className="flex flex-col md:flex-row justify-evenly">
