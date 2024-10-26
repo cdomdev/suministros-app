@@ -69,12 +69,12 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
                         </span>
                         <span className="text-balance text-xs md:text-sm flex gap-1 ">
                             {
-                                producto.discount ? (
+                                producto.discount ?? (
                                     <>
                                         <strong>Descuento: </strong>
                                         <p className="text-red-600 text-sm">{producto.discount}%</p>
                                     </>
-                                ) : <></>
+                                )
                             }
 
                         </span>

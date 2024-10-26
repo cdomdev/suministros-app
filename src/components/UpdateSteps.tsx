@@ -14,12 +14,15 @@ interface PropUpdate {
 
 export const UpdateSteps: React.FC<PropUpdate> = ({ ruta, bg, textColor, textContent, type = 'button', disabled = false }) => {
     const [productos, setProductos] = useState<Producto[]>([])
-    const [, setSteps] = useLocalStorage('steps', 1);
+    const [setSteps] = useLocalStorage('steps', 1);
+    const rutaLower = ruta.toLowerCase()
 
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
         setProductos(carrito);
     }, [])
+
+    localStorage.setItem('ruta', JSON.stringify(rutaLower))
 
     const handleNextStep = (e: React.MouseEvent<HTMLButtonElement | HTMLAnchorElement>) => {
         if (disabled) {
@@ -30,7 +33,7 @@ export const UpdateSteps: React.FC<PropUpdate> = ({ ruta, bg, textColor, textCon
         setSteps((prev: number) => prev + 1);
 
         if (type === 'button' || type === 'submit' || type === 'reset') {
-            window.location.href = `${ruta}`;
+            window.location.href = `${rutaLower}`;
         }
     };
 

@@ -34,9 +34,9 @@ try {
         {
             pedidos && pedidos.pedidos && pedidos.pedidos.length > 0 ? (
                 pedidos.pedidos.map((pedido, index) => (
-                    <article>
+                    <article class="overflow-x-auto">
                         <div class="relative overflow-auto">
-                            <table class="w-full textr-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400">
+                            <table class="w-full text-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 overflow-auto">
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th
@@ -53,11 +53,15 @@ try {
                                         <th scope="col" class="px-6 py-3">
                                             Referencia
                                         </th>
+                                        <th scope="col" class="px-6 py-3">
+                                            {" "}
+                                            Valor U.N
+                                        </th>
                                         <th
                                             scope="col"
                                             class="px-6 py-3 rounded-e-lg">
                                             {" "}
-                                            Valor UN
+                                            Estado de pedido
                                         </th>
                                     </tr>
                                 </thead>
@@ -93,6 +97,10 @@ try {
                                                     .Producto.valor,
                                             )}
                                         </td>
+                                        <td class="px-6 py-4 capitalize">
+                                            {pedido?.estado_pedido ||
+                                                "Sin estado"}
+                                        </td>
                                     </tr>
                                 </tbody>
                                 <tfoot>
@@ -120,7 +128,7 @@ try {
                                     </tr>
                                 </tfoot>
                             </table>
-                            <hr />
+                            <hr class="mb-4" />
                         </div>
                     </article>
                 ))
