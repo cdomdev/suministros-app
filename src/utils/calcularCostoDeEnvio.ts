@@ -16,6 +16,8 @@ export const calcularCostoEnvio = ({ destino, precio }: Envio): number => {
                 return 15000;
             case 2:
                 return 25000;
+            case 3:
+                return 0;
             default:
                 return 30000;
         }

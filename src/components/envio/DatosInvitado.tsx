@@ -114,6 +114,7 @@ export const FormEnvioDatosInvitado = () => {
                                 <option value="">Seleccione un destino</option>
                                 <option value="1">Bogota - Municipios aledaños</option>
                                 <option value="2">Otros destinos nacionales</option>
+                                <option value="3">Otros</option>
                             </Form.Select>
                             {formik.touched.destino && formik.errors.destino ? (
                                 <div className="text-red-600 font-normal text-sm">{formik.errors.destino}</div>
