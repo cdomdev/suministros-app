@@ -125,8 +125,8 @@ export interface PedidosResponse {
 
 
 export type ResponsIPInfo = {
-  city?: string;
-  region?: string;
+  city?: string | null;
+  region?: string | null;
   country?: string | null;
   postal?: string | null;
   loc?: string | null;

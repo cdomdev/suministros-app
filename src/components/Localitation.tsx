@@ -7,12 +7,22 @@ export const Localitation = () => {
     const [data, setData] = useState<ResponsIPInfo | null>(null)
     useEffect(() => {
         const fetchData = async () => {
-            const response = await getDataIp();
-            localStorage.setItem('referenceDataLocation', JSON.stringify(response))
-            setData(response);
+            try {
+                const response = await getDataIp();
+                if (response) {
+                    localStorage.setItem('referenceDataLocation', JSON.stringify(response));
+                    setData(response);
+                }
+                console.log(response)
+            } catch (error) {
+                console.error("Error fetching IP data:", error);
+                const fallbackData = { city: "Sin data", region: "Sin  data" };
+                localStorage.setItem('referenceDataLocation', JSON.stringify(fallbackData));
+            }
         };
-        fetchData()
-    }, [])
+
+        fetchData();
+    }, []);
 
     return (
         <div className="flex flex-col items-center">

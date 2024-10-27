@@ -23,10 +23,12 @@ const DatosProductos = () => {
 
     return (
         <div className=' max-h-96 overflow-y-auto '>
-            <span className='text-xs md:text-sm leading-5 text-balance flex flex-col'>
-                Este es el costo de envio de tu compra
-                <span><strong>Costo de envio: $: {valorString}</strong> </span>
-            </span>
+            {productos && productos.length > 0 ?
+                <span className='text-xs md:text-sm leading-5 text-balance flex flex-col'>
+                    Este es el costo de envio de tu compra
+                    <span><strong>Costo de envio: $: {valorString}</strong> </span>
+                </span > : <p className='text-sm text-center text-gray-400'>No hay datos par un proceso de pago</p>
+            }
             {
                 productos.map((producto) => (
                     <div key={producto.id} className='flex flex-col  border bg-white my-2 p-1'>
