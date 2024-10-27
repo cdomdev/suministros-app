@@ -87,7 +87,6 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             }
 
         } catch (e) {
-            console.log(e);
             setToastMessage('No pudimos procesar tu compra, por favor intentalo de nuevo o intentalo despues');
             setBgToast('toast-fail');
             setTimeout(() => setShowToast(false), 3000);

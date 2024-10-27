@@ -5,7 +5,6 @@ import { HOST } from "@/congif";
 
 const token = import.meta.env.PUBLIC_TOKEN_IPINFO
 
-
 export const getOrdersBy = async (id: string): Promise<PedidosResponse> => {
     try {
         const response = await axios.get(`${HOST}/user/pedidos/${id}`);
