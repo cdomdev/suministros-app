@@ -63,7 +63,7 @@ const DetosPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                         <ModalOpcionesPago isAuthenticated={isAuthenticated} />
                     </div>
                 </div>
-            ) : <span className="text-center text-gray-400 text-sm block py-2">no hay datos para procesar un pago</span>}
+            ) : <span className="text-center text-gray-400 text-sm block py-2">No hay datos para procesar un pago</span>}
         </>
 
     )

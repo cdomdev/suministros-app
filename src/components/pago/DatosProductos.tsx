@@ -39,7 +39,7 @@ const DatosProductos = () => {
                                 <span className='text-xs md:text-sm flex gap-1'><strong>Precio unidad:</strong> {formateValue(producto.valor)}</span>
                                 <span className='text-xs md:text-sm flex gap-1'><strong>Cantidada:</strong> {producto.quantity}</span>
                                 <span className='text-xs md:text-sm flex gap-1'><strong>Referencia:</strong> {producto.referencia}</span>
-                                <span className='text-xs md:text-sm flex gap-1'><strong>Descuento:</strong> {producto.discount || 0}% </span>
+                                <span className='text-xs md:text-sm flex gap-1 text-red-600'><strong>Descuento:</strong> {producto.discount || 0}% </span>
                             </div>
                         </div>
                         <div className='w-full border'>
