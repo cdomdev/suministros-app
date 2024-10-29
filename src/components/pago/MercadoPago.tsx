@@ -68,8 +68,8 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 if (pagoUsuario.status === 200) {
                     const { init_point } = pagoUsuario.data;
                     window.location.href = init_point;
-                    localStorage.removeItem('dataUserForBuy')
-                    localStorage.removeItem('carrito')
+                    // localStorage.removeItem('dataUserForBuy')
+                    // localStorage.removeItem('carrito')
                 }
             } else {
                 const pagoInvitado = await mercadoPago({
@@ -81,8 +81,8 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 if (pagoInvitado.status === 200) {
                     const { init_point } = pagoInvitado.data;
                     window.location.href = init_point;
-                    localStorage.removeItem('dataUserForBuy')
-                    localStorage.removeItem('carrito')
+                    // localStorage.removeItem('dataUserForBuy')
+                    // localStorage.removeItem('carrito')
                 }
             }
 
