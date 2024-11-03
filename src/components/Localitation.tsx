@@ -13,7 +13,6 @@ export const Localitation = () => {
                     localStorage.setItem('referenceDataLocation', JSON.stringify(response));
                     setData(response);
                 }
-                console.log(response)
             } catch (error) {
                 console.error("Error fetching IP data:", error);
                 const fallbackData = { city: "Sin data", region: "Sin  data" };

@@ -9,7 +9,7 @@
             rel="noopener noreferrer">
             <svg
                 xmlns="http://www.w3.org/2000/svg"
-                class="icon icon-tabler icon-tabler-brand-whatsapp stroke-white"
+                class="icon icon-tabler icon-tabler-brand-whatsapp stroke-white size-8 md:size-10"
                 width="44"
                 height="44"
                 viewBox="0 0 24 24"
@@ -60,11 +60,14 @@
         padding: 10px;
         position: relative;
         border-radius: 50%;
+        transition: all ease 0.3s;
         background-color: rgb(37, 211, 102);
         box-shadow: 0 0 10px 1px rgb(206, 206, 206);
+        &:hover {
+            box-shadow: 0 0 10px rgb(241, 240, 240);
+        }
     }
     .content .icon-w {
-        font-size: 40px;
         color: white;
     }
 </style>

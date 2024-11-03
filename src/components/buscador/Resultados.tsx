@@ -11,7 +11,7 @@ const Resultados = () => {
         setProductos(carrito);
     }, [])
     return (
-        <article className='w-[90%] mx-auto flex flex-col items-center justify-center '>
+        <article className='w-[90%] pt-16  mx-auto flex flex-col items-center justify-center '>
             <span className='font-semibold mb-2'>{productos.length} productos</span>
             <div className='flex gap-4 flex-wrap justify-center w-full'>
                 {productos && productos.length > 0 ? (

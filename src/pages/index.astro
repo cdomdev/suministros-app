@@ -4,24 +4,24 @@ import Layout from "../layouts/Layout.astro";
 import MercadoPago from "../components/icons/MercadoPago.astro";
 import Truck from "../components/icons/Truck.astro";
 import MasVendidos from "@/components/MasVendidos.astro";
+import SliderIndex from "@/components/SliderIndex.astro";
 ---
 
 <Layout title="Suministros">
   <Carrusel />
   <section>
+    <SliderIndex />
     <h1
-      class="text-sm md:text-xl mx-2 my-3 md:my-4 text-wrap font-semibold text-center lg:pl-16">
-      Haz de tu hogar o negocio un espacio unico, aqui encontraras Sanitarios,
-      pinturas, lavamanos, cocinas y mas productos para remodelar tus espacios.
+      class="hidden md:block text-sm md:text-xl mx-2 my-3 md:my-4 text-wrap font-semibold text-center lg:pl-16 font-font-cust-2">
+      Haz de tu hogar o negocio un espacio unico
     </h1>
-    <div class="my-7 mx-auto ]">
+    <div class="my-7 mx-auto hidden md:block">
       <p
-        class="text-xs md:text-base leading-2 font-normal text-balance text-center">
+        class="text-xs md:text-base leading-2 font-normal text-balance text-center font-font-cust-2">
         Somos la marca de remodelación de los colombianos, con una tienda
         virtual para que compres fácil y rápido, con una amplia red de
-        distribución por todo el país. Ofrecemos una amplia variedad de
-        productos para que puedas encontrar exactamente lo que necesitas:
-        pinturas, materiales de construcción y más.
+        distribución por todo el país. aqui encontraras Sanitarios, pinturas,
+        lavamanos, cocinas y mas productos para remodelar tus espacios.
       </p>
     </div>
   </section>
@@ -29,7 +29,7 @@ import MasVendidos from "@/components/MasVendidos.astro";
     <div class="mx-auto">
       <h2
         class="my-3 text-base md:text-lg text-wrap md:pl-20 lg:pl-0 font-semibold mx-auto">
-        Aqui algunos de los productos mas vendidos
+        Estos son algunos de los productos mas vendidos
       </h2>
       <MasVendidos />
     </div>

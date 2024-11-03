@@ -68,7 +68,7 @@ DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
 
 
 ## Estructura del Proyecto
-
+/
 ├── public
 ├── src/
 │   ├── components /
@@ -85,6 +85,7 @@ DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
 └── .env
 └── package.json
 └── README.md
+
 
 
 ## Licencia

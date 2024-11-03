@@ -38,7 +38,7 @@ const ModalOpcionesPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 <div className="font-font-cust-2 p-2">
                     <Modal.Body className="pt-0">
                         <ContraEntrega isAuthenticated={isAuthenticated} />
-                        <button className='mt-2 text-sm w-full bg-[#ebebeb] py-2 px-4 rounded-md hover:bg-[#d5d5d5] duration-100' onClick={() => setShow(false)}>
+                        <button className='mt-2.5 text-sm w-full bg-[#ebebeb] py-2 px-4 rounded-md hover:bg-[#d5d5d5] duration-100' onClick={() => setShow(false)}>
                             Cambiar el metodo de pago
                         </button>
                     </Modal.Body>

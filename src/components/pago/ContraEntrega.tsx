@@ -100,15 +100,14 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                     setTimeout(() => {
                         setShowToast(false)
                     }, 5000)
-                } else if (status === 500) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`No pudidos proceder con tu compra`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
                 }
             }
+            setBgToast('fail')
+            setShowToast(true)
+            setToastMessage(`No pudidos proceder con tu compra, intentalo mas tarde`)
+            setTimeout(() => {
+                setShowToast(false)
+            }, 5000)
         } finally {
             setIsLoading(false)
         }
@@ -124,17 +123,17 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 bgToast={bgToast}
                 setBgToast={setBgToast}
             />
-            <p className='text-sm md:text-base font-semibold mb-2 flex items-center gap-1 '>Por favor tenga en cuenta lo siguiente
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-exclamation-circle size-6" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
+            <p className='text-sm md:text-base font-semibold mb-3 flex items-center gap-3 '>Por favor tenga en cuenta lo siguiente
+                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-exclamation-circle size-4 md:size-6  stroke-red-600" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                     <path d="M12 12m-9 0a9 9 0 1 0 18 0a9 9 0 1 0 -18 0" />
                     <path d="M12 9v4" />
                     <path d="M12 16v.01" />
                 </svg>
             </p>
-            <ul className='text-sm mb-3 pl-6'>
+            <ul className='text-sm mb-4 pl-6'>
                 <li className="mb-2 list-disc  text-balance">
-                    En caso de no poder recibir la compra, por favor deje a alguien
+                    En caso de no poder recibir la compra, deje a alguien
                     encargado para que la reciba por usted.
                 </li>
                 <li className='mb-2 list-disc text-balance'>

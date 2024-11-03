@@ -27,8 +27,7 @@ const DetosPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const total = calcularTotal(productos)
     const envio = calcularCostoEnvio({ destino, precio: total });
     const valorConEnvio = (total + envio).toString()
-    const valuFormated = formateValue(valorConEnvio)
-
+    const valuFormated = parseFloat(formateValue(valorConEnvio))
 
 
     return (

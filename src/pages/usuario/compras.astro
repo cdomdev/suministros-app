@@ -34,15 +34,15 @@ try {
         {
             pedidos && pedidos.pedidos && pedidos.pedidos.length > 0 ? (
                 pedidos.pedidos.map((pedido, index) => (
-                    <article class="overflow-x-auto">
-                        <div class="relative overflow-auto">
+                    <article>
+                        <div class="relative">
                             <table class="w-full text-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 overflow-auto">
                                 <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
                                     <tr>
                                         <th
                                             scope="col"
                                             class="px-6 py-3 rounded-s-lg">
-                                            # pedido
+                                            pedido # {index + 1}
                                         </th>
                                         <th scope="col" class="px-6 py-3 ">
                                             Nombre del producto
