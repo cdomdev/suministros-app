@@ -68,6 +68,9 @@ DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
 
 
 ## Estructura del Proyecto
+
+
+```text
 /
 ├── public/
 │   └── favicon.webp
@@ -92,6 +95,7 @@ DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
 └── package.json
 └── README.md
 
+```
 
 ## Licencia
 
