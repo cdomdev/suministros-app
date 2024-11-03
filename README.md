@@ -69,23 +69,28 @@ DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
 
 ## Estructura del Proyecto
 /
-├── public
+├── public/
+│   └── favicon.webp
 ├── src/
-│   ├── components /
+│   ├── components / 
+│   │   └── CardProducts.astro
 │   ├── content/
+│   │   └── Content.ts
 │   ├── events/
+│   │   └── Content.ts
 │   ├── hook/
+│   │   └── Content.ts
 │   ├── layouts/
-│   ├── services/
-│   └── types/
-│   ├── utils/
-│   └── config.ts
+│   │   └── Layout.astro
+│   └── services/
+│       ├──  Layout.astro
+│       ├──  Layout.astro
+│       └── Layout.astro 
 └── .astro.c
 ├── .gitignore
 └── .env
 └── package.json
 └── README.md
-
 
 
 ## Licencia
