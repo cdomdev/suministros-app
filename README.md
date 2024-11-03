@@ -90,7 +90,7 @@ DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
 
 ## Licencia
 
-Este proyecto está bajo la Licencia MIT - ver el archivo LICENSE para más detalles.
+Este proyecto está bajo la Licencia MIT - Para mas detalles ver el archivo LICENSE.
 
 
 
