@@ -24,6 +24,17 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
 
+    const handleToast = (bg: string, ms: string) => {
+        setBgToast(bg)
+        setShowToast(true)
+        setToastMessage(ms)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+
+    }
+
+
     const googleInit = useGoogleLogin({
         onSuccess: async (response) => {
             try {
@@ -49,28 +60,13 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                 if (axios.isAxiosError(error) && error.response) {
                     const { status } = error.response;
                     if (status === 404) {
-                        setBgToast('fail')
-                        setShowToast(true)
-                        setToastMessage(`Algo salio mal con el inicio, intentalo de nuevo`)
-                        setTimeout(() => {
-                            setShowToast(false)
-                        }, 5000)
+                        handleToast('fail', `Algo salio mal con el inicio de sesion, intentalo de nuevo`)
                     } else if (status === 401) {
-                        setBgToast('fail')
-                        setShowToast(true)
-                        setToastMessage(`Hubo un error en el inicio de sesion con tu cuenta, intentalo mas tarde`)
-                        setTimeout(() => {
-                            setShowToast(false)
-                        }, 5000)
+                        handleToast('fail', `Hubo un error en el inicio de sesion con tu cuenta, intentalo mas tarde`)
                     }
-                } else {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`Algo salio mal, por favaor intentalo mas tarde`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
                 }
+
+                handleToast('fail', `Algo salio mal, por favaor intentalo mas tarde`)
             }
 
         }

@@ -17,6 +17,17 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
     const [bgToast, setBgToast] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
 
+
+    const handleToast = (bg: string, ms: string) => {
+        setBgToast(bg)
+        setShowToast(true)
+        setToastMessage(ms)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+
+    }
+
     const handleSubmit = async (values: ValuesIniSesion) => {
         setIsLoading(true);
         try {
@@ -42,30 +53,13 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
                 if (status === 404) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`El email ${values.email} no esta registrado`)
-                    setIsLoading(false)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('fail', `El email ${values.email} no esta registrado`)
                 } else if (status === 401) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setIsLoading(false)
-                    setToastMessage(`Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('fail', `Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
                 }
-            } else {
-                setBgToast('fail')
-                setShowToast(true)
-                setToastMessage(`Algo salio mal, intentalo mas tarde`)
-                setTimeout(() => {
-                    setShowToast(false)
-                }, 5000)
             }
+
+            handleToast('fail', `Hubo un error inesperado, intentalo mas tarde`)
 
         } finally {
             setIsLoading(false)

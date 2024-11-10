@@ -13,16 +13,12 @@ const VerifyAuth = () => {
             setProductos(carrito);
         };
         if (eventEmitter) {
-            // Agrega el listener para el evento
             eventEmitter.on('carritoChanged', handleCarritoChange);
         }
 
-        // Llama a la función para establecer la cantidad al montar el componente
         handleCarritoChange();
-
         return () => {
             if (eventEmitter) {
-                // Elimina el listener cuando el componente se desmonte
                 eventEmitter.off('carritoChanged', handleCarritoChange);
             }
         };

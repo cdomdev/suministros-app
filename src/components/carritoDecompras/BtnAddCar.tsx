@@ -20,26 +20,28 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
         }
     };
 
+    const handleToast = (bg: string, ms: string) => {
+        setShowToast(true)
+        setBgToast(bg)
+        setToastMessage(ms)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+    }
 
     const addProductoLocal = (producto: Producto, quantity: number): void => {
-        // Obtener la lista de productos desde localStorage
         let productosLocal: Producto[] = JSON.parse(localStorage.getItem('carrito') || '[]');
 
-        // Comprobar si el producto ya existe en la lista
         const productoExistente = productosLocal.find((prod) => prod.id === producto.id);
 
         if (productoExistente) {
-            // Si el producto ya existe, sumar la cantidad al producto existente
             productoExistente.quantity = (productoExistente.quantity || 0) + quantity;
         } else {
-            // Si el producto no existe, agregarlo a la lista con la cantidad seleccionada
             productosLocal.push({ ...producto, quantity });
         }
 
-        // Guardar la lista actualizada en localStorage
         localStorage.setItem('carrito', JSON.stringify(productosLocal));
 
-        // crear evento para indicador del carrito
         if (eventEmitter) {
             eventEmitter.emit('carritoChanged');
         }
@@ -49,13 +51,7 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
 
     const handleAddToCart = () => {
         addProductoLocal(producto, quantity);
-        setToastMessage(`Se agregaron ${quantity} productos al carrito`);
-        setBgToast('toast-success');
-        setShowToast(true);
-        setQuantity(1)
-        setTimeout(() => {
-            setShowToast(false)
-        }, 3000)
+        handleToast('toast-success', `Se agregaron ${quantity} productos al carrito`)
     };
 
     return (

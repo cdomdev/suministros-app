@@ -27,6 +27,16 @@ const ForgotPassword = () => {
         }
     }, [])
 
+    const handleToast = (bg: string, ms: string) => {
+        setBgToast(bg)
+        setShowToast(true)
+        setToastMessage(ms)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+
+    }
+
     const handleSubmit = async (values: ValuesForgotPassword) => {
         setIsLoading(true);
         try {
@@ -40,28 +50,12 @@ const ForgotPassword = () => {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
                 if (status === 400) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`El email ${values.email} no esta registrado`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('fail', `El email ${values.email} no esta registrado`)
                 } else if (status === 401) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('fail', `Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
                 }
             }
-            setBgToast('fail')
-            setShowToast(true)
-            setToastMessage(`Algo salio mal, por favor intenlado mas tarde`)
-            setTimeout(() => {
-                setShowToast(false)
-            }, 5000)
-
+            handleToast('fail', `Algo salio mal, por favor intenlado mas tarde`)
         } finally {
             setIsLoading(false);
         }

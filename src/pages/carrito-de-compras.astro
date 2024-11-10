@@ -12,161 +12,141 @@ const isAuthenticated = authToken !== undefined;
 ---
 
 <Layout title="Carrito de compras">
-    <div class="pt-16 w-full items-center justify-center px-20">
-        <Steps client:only="react" />
-    </div>
-    <section
-        class="pt-10 flex flex-col lg:grid gap-2 w-[90%] m-auto md:grid-cols-col-cust-3">
-        <article>
-            <div
-                class="border w-full bg-[#f4f4f4] py-2 px-3 flex gap-2 items-center">
-                <h2 class="font-normal text-base md:text-xl">
-                    Productos en el carrito
-                </h2>
-                <Contador client:visible />
-            </div>
-            <div class="border mt-1 p-2">
-                <DetallesCarrito client:visible />
-            </div>
-        </article>
-        <article>
-            <div class="w-full bg-[#f4f4f4] border py-2 px-3">
-                <h2 class="font-normal text-base md:text-xl">
-                    Detalles de tu compra
-                </h2>
-            </div>
-            <div class="border mt-1 p-2 bg-[#f4f4f4]">
-                <Summary client:visible />
-                <hr />
-                {
-                    isAuthenticated ? (
-                        <UpdateSteps
-                            client:only="react"
-                            ruta="/informacion-para-envio"
-                            bg="bg-blue-600"
-                            textColor="text-white"
-                            textContent="Continuar"
-                        />
-                    ) : (
-                        <VerifyAuth client:load />
-                    )
-                }
-            </div>
-            <div class="mt-1 flex flex-col gap-1">
-                <div
-                    class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-lock-dollar size-[5rem]"
-                        width="44"
-                        height="44"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="#2c3e50"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"
-                        ></path>
-                        <path d="M13 21h-6a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2h10"
-                        ></path>
-                        <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
-                        <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
-                        <path
-                            d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"
-                        ></path>
-                        <path d="M19 21v1m0 -8v1"></path>
-                    </svg>
-                    <div>
-                        <h4 class="text-xs md:text-sm font-semibold">
-                            Compra segura
-                        </h4>
-                        <p
-                            class="leading-4 text-xs md:text-sm font-light text-balance">
-                            Tus datos personales se mantienen bajo estricta
-                            confidencialidad y estan protegidos.
-                        </p>
-                    </div>
-                </div>
-                <div
-                    class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]">
-                    <svg
-                        xmlns="http://www.w3.org/2000/svg"
-                        class="icon icon-tabler icon-tabler-truck-delivery size-16"
-                        width="44"
-                        height="44"
-                        viewBox="0 0 24 24"
-                        stroke-width="1.5"
-                        stroke="#2c3e50"
-                        fill="none"
-                        stroke-linecap="round"
-                        stroke-linejoin="round">
-                        <path stroke="none" d="M0 0h24v24H0z" fill="none"
-                        ></path>
-                        <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
-                        ></path>
-                        <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"
-                        ></path>
-                        <path
-                            d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"
-                        ></path>
-                        <path d="M3 9l4 0"></path>
-                    </svg>
-                    <div>
-                        <h4 class="text-xs md:ext-sm font-semibold">
-                            Envio gratis
-                        </h4>
-                        <p
-                            class="leading-4 text-xs md:text-sm font-light text-balance">
-                            por compras mayores a $ 400.000 <br /> El envio es total
-                            mente gratis <strong
-                                class="text-blue-600 font-semibold">
-                                <a href="/Costos-de-envio">
-                                    Consulte terminos en costos de envios
-                                </a>
-                            </strong>
-                        </p>
-                    </div>
-                </div>
-                <div
-                    class="box-text border-dashed border-3 border-black p-2 flex items-start gap-1 bg-[#f4f4f4]">
-                    <div class="flex justify-start items-start">
-                        <svg
-                            xmlns="http://www.w3.org/2000/svg"
-                            class="icon icon-tabler icon-tabler-file-check size-10"
-                            width="44"
-                            height="44"
-                            viewBox="0 0 24 24"
-                            stroke-width="1.5"
-                            stroke="#2c3e50"
-                            fill="none"
-                            stroke-linecap="round"
-                            stroke-linejoin="round">
-                            <path stroke="none" d="M0 0h24v24H0z" fill="none"
-                            ></path>
-                            <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
-                            <path
-                                d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
-                            ></path>
-                            <path d="M9 15l2 2l4 -4"></path>
-                        </svg>
-                    </div>
-                    <div>
-                        <h4 class="text-xs md:text-sm font-semibold">
-                            Garantia para tus compras
-                        </h4>
-                        <p
-                            class="leading-4 text-xs md:text-sm font-light text-balance">
-                            Puedes devolver tu compra en un plazo máximo de 30
-                            días, el producto debe estar en perfecto estado: sin
-                            uso, tener todos sus accesorios, manuales y embalaje
-                            original. Si tienes dudas, comunícate a nuestra
-                            línea de atención al cliente desde Bogotá 30237455 o
-                            a la línea nacional 320 859 9323.
-                        </p>
-                    </div>
-                </div>
-            </div>
-        </article>
-    </section>
+  <div class="pt-16 w-full items-center justify-center px-20">
+    <Steps client:only="react" />
+  </div>
+  <section
+    class="pt-10 flex flex-col lg:grid gap-2 w-[90%] m-auto md:grid-cols-col-cust-3 min-h-dvh">
+    <article>
+      <div class="border w-full bg-[#f4f4f4] py-2 px-3 flex gap-2 items-center">
+        <h2 class="font-normal text-base md:text-xl">
+          Productos en el carrito
+        </h2>
+        <Contador client:visible />
+      </div>
+      <div class="border mt-1 p-2">
+        <DetallesCarrito client:visible />
+      </div>
+    </article>
+    <article>
+      <div class="w-full bg-[#f4f4f4] border py-2 px-3">
+        <h2 class="font-normal text-base md:text-xl">Detalles de tu compra</h2>
+      </div>
+      <div class="border mt-1 p-2 bg-[#f4f4f4]">
+        <Summary client:visible />
+        <hr />
+        {
+          isAuthenticated ? (
+            <UpdateSteps
+              client:only="react"
+              ruta="/informacion-para-envio"
+              bg="bg-blue-600"
+              textColor="text-white"
+              textContent="Continuar"
+            />
+          ) : (
+            <VerifyAuth client:load />
+          )
+        }
+      </div>
+      <div class="mt-1 flex flex-col gap-1">
+        <div
+          class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-lock-dollar size-[5rem]"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M13 21h-6a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2h10"></path>
+            <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
+            <path d="M8 11v-4a4 4 0 1 1 8 0v4"></path>
+            <path d="M21 15h-2.5a1.5 1.5 0 0 0 0 3h1a1.5 1.5 0 0 1 0 3h-2.5"
+            ></path>
+            <path d="M19 21v1m0 -8v1"></path>
+          </svg>
+          <div>
+            <h4 class="text-xs md:text-sm font-semibold">Compra segura</h4>
+            <p class="leading-4 text-xs md:text-sm font-light text-balance">
+              Tus datos personales se mantienen bajo estricta confidencialidad y
+              estan protegidos.
+            </p>
+          </div>
+        </div>
+        <div
+          class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]">
+          <svg
+            xmlns="http://www.w3.org/2000/svg"
+            class="icon icon-tabler icon-tabler-truck-delivery size-16"
+            width="44"
+            height="44"
+            viewBox="0 0 24 24"
+            stroke-width="1.5"
+            stroke="#2c3e50"
+            fill="none"
+            stroke-linecap="round"
+            stroke-linejoin="round">
+            <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+            <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+            <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
+            <path d="M5 17h-2v-4m-1 -8h11v12m-4 0h6m4 0h2v-6h-8m0 -5h5l3 5"
+            ></path>
+            <path d="M3 9l4 0"></path>
+          </svg>
+          <div>
+            <h4 class="text-xs md:ext-sm font-semibold">Envio gratis</h4>
+            <p class="leading-4 text-xs md:text-sm font-light text-balance">
+              por compras mayores a $ 400.000 <br /> El envio es total mente gratis
+              <strong class="text-blue-600 font-semibold">
+                <a href="/Costos-de-envio">
+                  Consulte terminos en costos de envios
+                </a>
+              </strong>
+            </p>
+          </div>
+        </div>
+        <div
+          class="box-text border-dashed border-3 border-black p-2 flex items-start gap-1 bg-[#f4f4f4]">
+          <div class="flex justify-start items-start">
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              class="icon icon-tabler icon-tabler-file-check size-10"
+              width="44"
+              height="44"
+              viewBox="0 0 24 24"
+              stroke-width="1.5"
+              stroke="#2c3e50"
+              fill="none"
+              stroke-linecap="round"
+              stroke-linejoin="round">
+              <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
+              <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
+              <path
+                d="M17 21h-10a2 2 0 0 1 -2 -2v-14a2 2 0 0 1 2 -2h7l5 5v11a2 2 0 0 1 -2 2z"
+              ></path>
+              <path d="M9 15l2 2l4 -4"></path>
+            </svg>
+          </div>
+          <div>
+            <h4 class="text-xs md:text-sm font-semibold">
+              Garantia para tus compras
+            </h4>
+            <p class="leading-4 text-xs md:text-sm font-light text-balance">
+              Puedes devolver tu compra en un plazo máximo de 30 días, el
+              producto debe estar en perfecto estado: sin uso, tener todos sus
+              accesorios, manuales y embalaje original. Si tienes dudas,
+              comunícate a nuestra línea de atención al cliente desde Bogotá
+              30237455 o a la línea nacional 320 859 9323.
+            </p>
+          </div>
+        </div>
+      </div>
+    </article>
+  </section>
 </Layout>

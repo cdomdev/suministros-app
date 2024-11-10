@@ -27,6 +27,16 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
         }
     }, [])
 
+
+    const handleToast = (bg: string, ms: string) => {
+        setShowToast(true)
+        setBgToast(bg)
+        setToastMessage(ms)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 7000)
+    }
+
     const handleSubmit = async (values: ValuesPassWords) => {
         setIsLoading(true);
         try {
@@ -41,21 +51,19 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
                 const { status } = error.response;
                 switch (status) {
                     case 401:
-                        setToastMessage('No pudimos hacer esto, intentalo de nuevo.');
+                        handleToast('fail', 'El token ha expirado. Solicita un nuevo cambio desde la sección "Olvidé mi contraseña"')
                         break;
                     case 400:
-                        setToastMessage('El token ha expirado. Solicita un nuevo cambio desde la sección "Olvidé mi contraseña".');
+                        handleToast('fail', 'El token ha expirado. Solicita un nuevo cambio desde la sección "Olvidé mi contraseña"')
                         break;
                     default:
-                        setToastMessage('Ocurrió un error. Por favor, intenta más tarde.');
+                        handleToast('fail', 'Ocurrió un error interno. Por favor, intenta más tarde.')
                         break;
                 }
 
             }
-            setBgToast('fail');
-            setShowToast(true);
-            setToastMessage('Ocurrió un error. Por favor, intenta más tarde.');
-            setTimeout(() => setShowToast(false), 5000);
+
+            handleToast('fail', 'Ocurrió un error interno. Por favor, intenta más tarde.')
 
         } finally {
             setIsLoading(false);

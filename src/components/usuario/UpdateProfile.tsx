@@ -23,6 +23,17 @@ const UpdateProfile = () => {
     }, []);
 
 
+
+    const handleToast = (bg: string, ms: string) => {
+        setShowToast(true)
+        setBgToast(bg)
+        setToastMessage(ms)
+        setIsLoading(false)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+    }
+
     const handleSubmit = async (values: DataUserUpdate, { resetForm }: { resetForm: () => void }) => {
         setIsLoading(true)
         try {
@@ -35,23 +46,11 @@ const UpdateProfile = () => {
                         sameSite: 'lax',
                         secure: true
                     })
-                    setIsLoading(false)
-                    setToastMessage('Datos actulizados con exito');
-                    setBgToast('toast-success');
-                    setShowToast(true);
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('toast-success', 'Datos actulizados con exito')
                 }
             }
         } catch (error) {
-            setIsLoading(false)
-            setToastMessage('No pudimos actualizar tus datos, intentalo mas tarde');
-            setBgToast('toast-fail');
-            setShowToast(true);
-            setTimeout(() => {
-                setShowToast(false)
-            }, 5000)
+            handleToast('fail', 'No pudimos actualizar tus datos, intentalo mas tarde')
         } finally {
             setIsLoading(false)
         }

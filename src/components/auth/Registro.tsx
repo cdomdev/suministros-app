@@ -13,46 +13,40 @@ const Registro: React.FC = () => {
     const [bgToast, setBgToast] = useState<string>('');
     const [isLoading, setIsLoading] = useState(false);
 
+
+    const handleToast = (bg: string, ms: string) => {
+        setShowToast(true)
+        setBgToast(bg)
+        setToastMessage(ms)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 7000)
+    }
+
     const handleSubmit = async (values: ValuesRegistro, { resetForm }: { resetForm: () => void }) => {
         setIsLoading(true)
         try {
             const response = await register(values)
             if (response.status === 201) {
-                setShowToast(true)
-                setBgToast('toast-success')
-                setToastMessage(`Tu registro fue exitoso, ya puedes iniciar sesion en suministros`)
-                resetForm();
-                setTimeout(() => {
-                    setShowToast(false)
-                }, 10000)
                 eventAuth.emit('authChange', true);
                 localStorage.setItem('infoProfileUSer', JSON.stringify(response.data))
+                resetForm();
+                handleToast('toast-success', `Tu registro fue exitoso, ya puedes iniciar sesion en suministros`)
             }
         } catch (error) {
+            console.log(error)
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
+                console.log(status)
                 if (status === 409) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`El email ${values.email} ya tiene una cuenta registrada`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('fail', `El email ${values.email} ya tiene una cuenta registrada`)
                 } else if (status === 500) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`Hola ${values.nombre} no pudimos hacer tu registro, intentalo de nuevo`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('fail', `Hola ${values.nombre} no pudimos hacer tu registro, intentalo de nuevo`)
                 }
+            } else {
+                handleToast('fail', `Hola ${values.nombre} tuvimos un error al intentar realizar tu regsitro, intentalo de mas tarde`)
             }
-            setBgToast('fail')
-            setShowToast(true)
-            setToastMessage(`Hola ${values.nombre} no pudimos hacer tu registro, intentalo de mas tarde`)
-            setTimeout(() => {
-                setShowToast(false)
-            }, 5000)
+
 
         } finally {
             setIsLoading(false)

@@ -17,8 +17,19 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
     const [showToast, setShowToast] = useState<boolean>(false);
     const [bgToast, setBgToast] = useState<string>('');
 
+
+    const handleToast = (bg: string, ms: string) => {
+        setShowToast(true)
+        setBgToast(bg)
+        setToastMessage(ms)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+    }
+
     const deleFromCar = (productId: number) => {
         const updatedCarItems = productos.filter((item) => item.id !== productId);
+
         localStorage.setItem('carrito', JSON.stringify(updatedCarItems));
         setProductos(updatedCarItems);
         if (eventEmitter) {
@@ -26,16 +37,9 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
         }
     };
 
-
     const handleDeletToCart = (producto: Producto) => {
-        setToastMessage('Se eliminó un producto del carrito');
-        setBgToast('toast-success');
-        setShowToast(true);
-        window.location.reload()
+        handleToast('toast-success', 'Se eliminó un producto del carrito')
         deleFromCar(producto.id);
-        setTimeout(() => {
-            setShowToast(false);
-        }, 3000);
     };
 
     const valorProducto = producto.discount && producto.discount > 0 ? calcularDescuento(producto.valor, producto.discount) : formateValue(producto.valor)

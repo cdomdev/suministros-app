@@ -42,25 +42,27 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const total = calcularTotal(datosProductos);
     const envio = calcularCostoEnvio({ destino, precio: total });
 
+    const handleToast = (bg: string, ms: string) => {
+        setShowToast(true)
+        setBgToast(bg)
+        setToastMessage(ms)
+        setIsLoading(false);
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+    }
+
     const finalizarCompra = async () => {
         sessionStorage.setItem('carrito', JSON.stringify(datosProductos))
         sessionStorage.setItem('dataUserForBuy', JSON.stringify(datosEnvio))
         setIsLoading(true)
         if (!datosEnvio) {
-            setToastMessage('Faltan los datos de envío, por favor verificar antes de continuar.');
-            setBgToast('toast-fail');
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000);
-            setIsLoading(false);
+            handleToast("toast-fail", 'Faltan los datos de envío, por favor verificar antes de continuar')
             return;
         }
 
         if (!datosProductos || datosProductos.length === 0) {
-            setToastMessage('No hay productos en el carrito.');
-            setBgToast('toast-fail');
-            setShowToast(true);
-            setTimeout(() => setShowToast(false), 3000);
-            setIsLoading(false);
+            handleToast("toast-fail", 'No hay productos en el carrito.')
             return;
         }
         try {
@@ -94,20 +96,9 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
                 if (status === 400) {
-                    setBgToast('fail')
-                    setShowToast(true)
-                    setToastMessage(`Algo salio mal con tu compra, intentalo de nuevo`)
-                    setTimeout(() => {
-                        setShowToast(false)
-                    }, 5000)
+                    handleToast('fail', `Algo salio mal al procesar tu compra, intentalo de nuevo`)
                 }
             }
-            setBgToast('fail')
-            setShowToast(true)
-            setToastMessage(`No pudidos proceder con tu compra, intentalo mas tarde`)
-            setTimeout(() => {
-                setShowToast(false)
-            }, 5000)
         } finally {
             setIsLoading(false)
         }

@@ -16,12 +16,10 @@ export const UpdateSteps: React.FC<PropUpdate> = ({ ruta, bg, textColor, textCon
     const [productos, setProductos] = useState<Producto[]>([])
     const [, setSteps] = useLocalStorage('steps', 1);
     let rutaCapitalice;
-    if(ruta === 'pago'){
-       return rutaCapitalice = ruta.toLocaleLowerCase();
+
+    if (ruta === 'pago') {
+        return rutaCapitalice = ruta.toLocaleLowerCase();
     }
-
-    console.log(rutaCapitalice)
-
     useEffect(() => {
         const carrito = JSON.parse(localStorage.getItem('carrito') || '[]');
         setProductos(carrito);

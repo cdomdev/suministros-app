@@ -45,15 +45,20 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const destino = datosEnvio?.destino || '0';
     const envio = calcularCostoEnvio({ destino, precio: total });
 
+    const handleToast = (bg: string, ms: string) => {
+        setToastMessage(ms)
+        setBgToast(bg)
+        setShowToast(true)
+        setIsLoading(false)
+        setTimeout(() => {
+            setShowToast(false)
+        }, 5000)
+    }
 
     const createOrder = async () => {
         try {
             if (!datosProductos || !datosEnvio || datosProductos.length === 0) {
-                setToastMessage('Faltan algunos datos, verifica eh intentalo de nuevo');
-                setBgToast('toast-fail');
-                setShowToast(true);
-                setTimeout(() => setShowToast(false), 3000);
-                setIsLoading(false);
+                handleToast('toast-fail', 'Faltan algunos datos, verifica eh intentalo de nuevo')
                 return;
             }
 
@@ -87,10 +92,7 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             }
 
         } catch (e) {
-            setToastMessage('No pudimos procesar tu compra, por favor intentalo de nuevo o intentalo despues');
-            setBgToast('toast-fail');
-            setTimeout(() => setShowToast(false), 3000);
-            setShowToast(true);
+            handleToast('fail', 'No pudimos procesar tu compra, por favor intentalo de nuevo o intentalo despues')
         } finally {
             setIsLoading(false);
         }

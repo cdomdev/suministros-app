@@ -10,23 +10,18 @@ const CarritoPageNav = () => {
             setCantidad(carrito.length);
         };
         if (eventEmitter) {
-            // Agrega el listener para el evento
             eventEmitter.on('carritoChanged', handleCarritoChange);
         }
-
-        // Llama a la función para establecer la cantidad al montar el componente
         handleCarritoChange();
-
         return () => {
             if (eventEmitter) {
-                // Elimina el listener cuando el componente se desmonte
                 eventEmitter.off('carritoChanged', handleCarritoChange);
             }
         };
     }, []);
 
     return (
-        <a className="relative p-0 m-0 flex flex-col items-center cursor-pointer" href="/carrito-de-compras" >
+        <a className="relative p-0 m-0 flex flex-col items-center cursor-pointer" href="/carrito-de-compras" onClick={() => window.location.href = '/carrito-de-compras'} >
             <div className="relative">
                 <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart size-8 md:size-11 stroke-gray-700" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
                     <path stroke="none" d="M0 0h24v24H0z" fill="none" />
