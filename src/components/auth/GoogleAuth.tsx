@@ -59,14 +59,13 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
             } catch (error) {
                 if (axios.isAxiosError(error) && error.response) {
                     const { status } = error.response;
-                    if (status === 404) {
-                        handleToast('fail', `Algo salio mal con el inicio de sesion, intentalo de nuevo`)
-                    } else if (status === 401) {
-                        handleToast('fail', `Hubo un error en el inicio de sesion con tu cuenta, intentalo mas tarde`)
+                    if (status === 404 || status === 403 || status === 401) {
+                        handleToast('fail', `${error.response.data.message}`)
+                    } else {
+                        handleToast('fail', `Ocurrio un error interno, por favor intente mas tarde`)
                     }
-                }
 
-                handleToast('fail', `Algo salio mal, por favaor intentalo mas tarde`)
+                }
             }
 
         }

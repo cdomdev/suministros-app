@@ -32,6 +32,7 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
         setIsLoading(true);
         try {
             const response = await validaSesion(values)
+            console.log(response)
             if (response.status === 200) {
                 setShow(false)
                 window.location.reload()
@@ -49,17 +50,17 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                 })
                 localStorage.setItem('infoProfileUSer', JSON.stringify(userSessionData))
             }
+
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                if (status === 404) {
-                    handleToast('fail', `El email ${values.email} no esta registrado`)
-                } else if (status === 401) {
-                    handleToast('fail', `Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
+                if (status === 404 || status === 403 || status === 401) {
+                    handleToast('fail', `${error.response.data.message}`)
+                } else {
+                    handleToast('fail', `Ocurrio un error interno, por favor intente mas tarde`)
                 }
             }
 
-            handleToast('fail', `Hubo un error inesperado, intentalo mas tarde`)
 
         } finally {
             setIsLoading(false)

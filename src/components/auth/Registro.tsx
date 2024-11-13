@@ -34,19 +34,16 @@ const Registro: React.FC = () => {
                 handleToast('toast-success', `Tu registro fue exitoso, ya puedes iniciar sesion en suministros`)
             }
         } catch (error) {
-            console.log(error)
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                console.log(status)
-                if (status === 409) {
-                    handleToast('fail', `El email ${values.email} ya tiene una cuenta registrada`)
-                } else if (status === 500) {
-                    handleToast('fail', `Hola ${values.nombre} no pudimos hacer tu registro, intentalo de nuevo`)
+                if (status === 409 || status === 404 || status === 401) {
+                    handleToast('fail', `${error.response.data.message}`)
+                } else {
+                    handleToast('fail', `Ocurrio un error interno, por favor intente mas tarde`)
                 }
             } else {
                 handleToast('fail', `Hola ${values.nombre} tuvimos un error al intentar realizar tu regsitro, intentalo de mas tarde`)
             }
-
 
         } finally {
             setIsLoading(false)
