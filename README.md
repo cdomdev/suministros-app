@@ -42,20 +42,18 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 
 ## Instalación
 
-1. - Bifucar o Clonar el repositorio\*:
+1. Bifucar o Clonar el repositorio\*:
 
 - bash: git clone https://github.com/cdomdev/suministros-app
 
-2. - Instalar las dependencias:
+2. Instalar las dependencias:
 
 Usamos npm para instalar y administrar las dependencias.
 
 # Instala node para Windows:
-```text
 
 - powershell -c https://nodejs.org/dist/v20.18.0/node-v20.18.0-x64.msi | bash
 
-```
 # Instalacion con npm:
 
 - npm install
