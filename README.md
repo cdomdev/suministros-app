@@ -1,6 +1,6 @@
 # Proyecto de Tienda Web - Suministros
 
-<a href="/https://suministros-app-alpha.vercel.app/">
+<a href="https://suministros-app-alpha.vercel.app/">
 
 ![alt text](public/README.md.png)
 
@@ -62,52 +62,50 @@ Usamos npm para instalar y administrar las dependencias.
 
 1. _Configurar el entorno_:
 
-Crea un archivo .env en la raiz del proyecto y añade tus claves de acceso. Por ejemplo
+Crea un archivo .env en la raiz del proyecto y añade las siguientes varibles con tus claves de acceso
+
+Cliente de google para inicio de sesion - lo solicitas atrevez de: https://developers.google.com/identity/oauth2/web/guides/get-google-api-clientid
 
 ```text
-
-/*
-Cliente de google para inicio de sesion - lo solicitas atrevez de:
-https://developers.google.com/identity/oauth2/web/guides/get-google-api-clientid
-*/
-
-
 PUBLIC_CLIENT_ID='Tu cliente_ID'
-
-/*
-Cliente de mercadopago para procesar pagos - lo solicitas atrevez de:
-
-https://www.mercadopago.com.co/developers/es/docs/checkout-api/landing
-*/
-
-PUBLIC_CLIENT_MERCADOPAGO='Tu cliente mercado pago'
-
-/*
-Cliente de ipInfo para el manejo de ubicacion aproximada de usuarios - lo solicitas atrevez de:
-
-https://ipinfo.io/
-*/
-
-PUBLIC_TOKEN_IPINFO=""
-
-<!-- para el manejo de ruta de compras y pago contra entrega con el rol de usuario -->
-PUBLIC_URL_CLIENT="buy-user"
-
-<!-- para el manejo de ruta de compras y pago contra entrega con el rol de invitado -->
-
-PUBLIC_URL_INVITED="buy-invited"
-
-<!-- para el manejo de ruta de compras y pago a traves de mercadopago con el rol de usuario -->
-
-PUBLIC_URL_CLIENT_MERCADOPAGO="mercadopago-user"
-
-<!-- para el manejo de ruta de compras y pago a traves de mercadopago con el rol de invitado -->
-
-PUBLIC_URL_INVITED_MERCADOPAGO="mercadopago-invited"
-
 ```
 
+Cliente de mercadopago para procesar pagos - lo solicitas atrevez de: https://www.mercadopago.com.co/developers/es/docs/checkout-api
+
+```text
+PUBLIC_CLIENT_MERCADOPAGO='Tu cliente mercado pago'
+```
+Cliente de ipInfo para el manejo de ubicacion aproximada de usuarios - lo solicitas atrevez de: https://ipinfo.io/
+
+
+```text
+PUBLIC_TOKEN_IPINFO="Tu token"
+```
+Para el manejo de ruta de compras y pago a traves de el modo contra entrega con el rol de usuario
+
+```text
+PUBLIC_URL_CLIENT="buy-user"
+```
+Para el manejo de ruta de compras y pago a traves de el modo contra entrega con el rol de invitado
+
+```text
+PUBLIC_URL_INVITED="buy-invited"
+```
+
+Para el manejo de ruta de compras y pago a traves de mercadopago con el rol de usuario 
+```text
+PUBLIC_URL_CLIENT_MERCADOPAGO="mercadopago-user"
+```
+
+Para el manejo de ruta de compras y pago a traves de mercadopago con el rol de invitado
+
+```text
+PUBLIC_URL_INVITED_MERCADOPAGO="mercadopago-invited"
+```
+
+
 ## Estructura del Proyecto
+
 
 ```text
 /
