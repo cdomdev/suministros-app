@@ -51,9 +51,11 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 Usamos npm para instalar y administrar las dependencias.
 
 # Instala node para Windows:
+```text
 
 - powershell -c https://nodejs.org/dist/v20.18.0/node-v20.18.0-x64.msi | bash
 
+```
 # Instalacion con npm:
 
 - npm install
