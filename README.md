@@ -1,6 +1,6 @@
 # Proyecto de Tienda Web - Suministros
 
-<a href="/https://suministros-app-alpha.vercel.app/">
+<a href="https://suministros-app-alpha.vercel.app/">
 
 ![alt text](public/README.md.png)
 
