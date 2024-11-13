@@ -64,8 +64,12 @@ Usamos npm para instalar y administrar las dependencias.
 
 Crea un archivo .env en la raiz del proyecto y añade tus claves de acceso. Por ejemplo
 
+```text
+
 MERCADOPAGO_ACCESS_TOKEN=tu_token_de_mercadopago
 DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
+
+```
 
 ## Estructura del Proyecto
 
