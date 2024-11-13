@@ -81,12 +81,12 @@ Cliente de ipInfo para el manejo de ubicacion aproximada de usuarios - lo solici
 ```text
 PUBLIC_TOKEN_IPINFO="Tu token"
 ```
-Para el manejo de ruta de compras y pago contra entrega con el rol de usuario
+Para el manejo de ruta de compras y pago a traves de el modo contra entrega con el rol de usuario
 
 ```text
 PUBLIC_URL_CLIENT="buy-user"
 ```
-Para el manejo de ruta de compras y pago contra entrega con el rol de invitado -->
+Para el manejo de ruta de compras y pago a traves de el modo contra entrega con el rol de invitado
 
 ```text
 PUBLIC_URL_INVITED="buy-invited"
@@ -105,6 +105,7 @@ PUBLIC_URL_INVITED_MERCADOPAGO="mercadopago-invited"
 
 
 ## Estructura del Proyecto
+
 
 ```text
 /
