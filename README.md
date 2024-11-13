@@ -2,7 +2,7 @@
 
 <a href="/https://suministros-app-alpha.vercel.app/">
 
-![alt text](/README.md.png)
+![alt text](public/README.md.png)
 
 </a>
 Este es un proyecto de tienda en línea desarrollado con Astro y react, que permite a los usuarios realizar compras, gestionar su perfil y realizar pagos a través de la pasarela de Mercado Pago.
