@@ -66,8 +66,44 @@ Crea un archivo .env en la raiz del proyecto y añade tus claves de acceso. Por 
 
 ```text
 
-MERCADOPAGO_ACCESS_TOKEN=tu_token_de_mercadopago
-DATABASE_URL=mysql://usuario:contraseña@host:puerto/nombre_base_datos
+/*
+Cliente de google para inicio de sesion - lo solicitas atrevez de:
+https://developers.google.com/identity/oauth2/web/guides/get-google-api-clientid
+*/
+
+
+PUBLIC_CLIENT_ID='Tu cliente_ID'
+
+/*
+Cliente de mercadopago para procesar pagos - lo solicitas atrevez de:
+
+https://www.mercadopago.com.co/developers/es/docs/checkout-api/landing
+*/
+
+PUBLIC_CLIENT_MERCADOPAGO='Tu cliente mercado pago'
+
+/*
+Cliente de ipInfo para el manejo de ubicacion aproximada de usuarios - lo solicitas atrevez de:
+
+https://ipinfo.io/
+*/
+
+PUBLIC_TOKEN_IPINFO=""
+
+<!-- para el manejo de ruta de compras y pago contra entrega con el rol de usuario -->
+PUBLIC_URL_CLIENT="buy-user"
+
+<!-- para el manejo de ruta de compras y pago contra entrega con el rol de invitado -->
+
+PUBLIC_URL_INVITED="buy-invited"
+
+<!-- para el manejo de ruta de compras y pago a traves de mercadopago con el rol de usuario -->
+
+PUBLIC_URL_CLIENT_MERCADOPAGO="mercadopago-user"
+
+<!-- para el manejo de ruta de compras y pago a traves de mercadopago con el rol de invitado -->
+
+PUBLIC_URL_INVITED_MERCADOPAGO="mercadopago-invited"
 
 ```
 
