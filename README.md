@@ -43,7 +43,7 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 ## Instalación
 
 1. Bifucar o Clonar el repositorio\*:
-2. 
+
 ```text
  git clone https://github.com/cdomdev/suministros-app
 ```
@@ -58,7 +58,9 @@ Usamos npm para instalar y administrar las dependencias.
 
 # Instalacion con npm:
 
+```text
 - npm install
+```
 
 ## Configuracion
 
