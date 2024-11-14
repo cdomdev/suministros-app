@@ -43,8 +43,10 @@ Antes de comenzar, asegúrate de tener instalado lo siguiente:
 ## Instalación
 
 1. Bifucar o Clonar el repositorio\*:
-
-- bash: git clone https://github.com/cdomdev/suministros-app
+2. 
+```text
+ git clone https://github.com/cdomdev/suministros-app
+```
 
 2. Instalar las dependencias:
 
