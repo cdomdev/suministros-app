@@ -5,6 +5,7 @@ import { calcularTotal } from "@/utils";
 import { calcularCostoEnvio } from "@/utils";
 import { mercadoPago } from '@/services/pagos'
 import { Toast } from "../Toast";
+import axios from "axios"
 
 const clientMercadopago = import.meta.env.PUBLIC_CLIENT_MERCADOPAGO;
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT_MERCADOPAGO
@@ -91,8 +92,15 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 }
             }
 
-        } catch (e) {
-            handleToast('fail', 'No pudimos procesar tu compra, por favor intentalo de nuevo o intentalo despues')
+        } catch (error) {
+            if (axios.isAxiosError(error) && error.response) {
+                const { status } = error.response;
+                if (status === 400) {
+                    handleToast('fail', `Algo salio mal al procesar tu compra, intentalo de nuevo`)
+                }else{
+                    handleToast('fail', `Ocurrio un error inesperado en el proceso de compra, intentalo mas tarde`)
+                }
+            }
         } finally {
             setIsLoading(false);
         }

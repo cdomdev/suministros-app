@@ -1,5 +1,6 @@
 import React, { useState } from "react";
 import { Modal } from "react-bootstrap";
+import { IconModalIF } from "../icons/IconModalIF";
 
 
 const ModalInfo: React.FC = () => {
@@ -10,13 +11,7 @@ const ModalInfo: React.FC = () => {
     return (
         <>
             <div className="hidden md:flex flex-col items-center cursor-pointer " onClick={handleShow}>
-                <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-box-seam w-8 h-8 md:w-11 md:h-11" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
-                    <path stroke="none" d="M0 0h24v24H0z" fill="none" />
-                    <path d="M15 21h-6.426a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304h11.339a2 2 0 0 1 1.977 2.304l-.258 1.678" />
-                    <path d="M9 11v-5a3 3 0 0 1 6 0v5" />
-                    <path d="M19 16v3" />
-                    <path d="M19 22v.01" />
-                </svg>
+                <IconModalIF />
                 <small className="text-[7px] md:text-[8px] uppercase font-semibold hover:scale-110 duration-100">Compras</small>
             </div>
 
@@ -51,7 +46,6 @@ const ModalInfo: React.FC = () => {
                             >Cancelar</button>
                         </div>
                     </Modal.Body>
-
                 </div>
             </Modal>
         </>

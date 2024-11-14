@@ -28,15 +28,15 @@ const Registro: React.FC = () => {
         try {
             const response = await register(values)
             if (response.status === 201) {
+                resetForm();
                 eventAuth.emit('authChange', true);
                 localStorage.setItem('infoProfileUSer', JSON.stringify(response.data))
-                resetForm();
                 handleToast('toast-success', `Tu registro fue exitoso, ya puedes iniciar sesion en suministros`)
             }
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                if (status === 409 || status === 404 || status === 401) {
+                if (status === 409 || status === 404 || status === 401 || status === 400) {
                     handleToast('fail', `${error.response.data.message}`)
                 } else {
                     handleToast('fail', `Ocurrio un error interno, por favor intente mas tarde`)

@@ -97,6 +97,8 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 const { status } = error.response;
                 if (status === 400) {
                     handleToast('fail', `Algo salio mal al procesar tu compra, intentalo de nuevo`)
+                }else{
+                    handleToast('fail', `Ocurrio un error inesperado en el proceso de compra, intentalo mas tarde`)
                 }
             }
         } finally {

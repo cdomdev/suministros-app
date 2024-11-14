@@ -49,22 +49,12 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                switch (status) {
-                    case 401:
-                        handleToast('fail', 'El token ha expirado. Solicita un nuevo cambio desde la sección "Olvidé mi contraseña"')
-                        break;
-                    case 400:
-                        handleToast('fail', 'El token ha expirado. Solicita un nuevo cambio desde la sección "Olvidé mi contraseña"')
-                        break;
-                    default:
-                        handleToast('fail', 'Ocurrió un error interno. Por favor, intenta más tarde.')
-                        break;
+                if(status === 400 || status === 401 || status === 403 || status === 404){
+                    handleToast('fail', `${error.response.data.message}`)
+                }else{
+                    handleToast('fail', 'Ocurrió un error interno. Por favor, intenta más tarde.')
                 }
-
             }
-
-            handleToast('fail', 'Ocurrió un error interno. Por favor, intenta más tarde.')
-
         } finally {
             setIsLoading(false);
         }

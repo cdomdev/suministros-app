@@ -54,7 +54,7 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                if (status === 404 || status === 403 || status === 401) {
+                if (status === 404 || status === 403 || status === 401 || status === 400) {
                     handleToast('fail', `${error.response.data.message}`)
                 } else {
                     handleToast('fail', `Ocurrio un error interno, por favor intente mas tarde`)

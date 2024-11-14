@@ -49,13 +49,12 @@ const ForgotPassword = () => {
         } catch (error) {
             if (axios.isAxiosError(error) && error.response) {
                 const { status } = error.response;
-                if (status === 400) {
-                    handleToast('fail', `El email ${values.email} no esta registrado`)
-                } else if (status === 401) {
-                    handleToast('fail', `Datos incorrectos, verifica tus datos eh intentalo de nuevo`)
-                }
+                if (status === 400 || status === 401 || status === 403 || status === 404) {
+                    handleToast('fail', `${error.response.data.message}`)
+                }else{
+                    handleToast('fail', `Ocurrio un error interno, por favor intente mas tarde`)
+                } 
             }
-            handleToast('fail', `Algo salio mal, por favor intenlado mas tarde`)
         } finally {
             setIsLoading(false);
         }
