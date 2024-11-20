@@ -29,7 +29,8 @@ try {
             tus proyectos de renovación
         </p>
         <div
-            class="flex flex-wrap justify-center md:justify-start gap-x-3 md:gap-x-8 gap-y-4 py-4 w-full">
+            class="flex flex-wrap justify-center md:justify-start gap-x-3 md:gap-x-8 gap-y-4 py-4 w-full"
+        >
             {
                 ofertas && ofertas.productos.length > 0 ? (
                     ofertas.productos.map((producto) => (
@@ -47,7 +48,12 @@ try {
                         />
                     ))
                 ) : (
-                    <Spiner />
+                    <div class="flex w-full flex-col items-center justify-center text-center">
+                        <Spiner />
+                        <span class="text-xs text-gray-500 mb-2">
+                            Cargango productos...
+                        </span>
+                    </div>
                 )
             }
         </div>
