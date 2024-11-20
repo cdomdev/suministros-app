@@ -3,14 +3,15 @@ import Layout from "../layouts/Layout.astro";
 ---
 
 <Layout title="Cambios y devoluciones">
-    <section class="max-w-80 md:max-w-screen-sm lg:max-w-screen-lg m-auto pt-2">
+    <section class="max-w-80 md:max-w-screen-sm lg:max-w-screen-lg m-auto pt-2 min-h-dvh">
         <h1 class="font-bold uppercase text-center text-sm md:text-base pt-14">
             Cambios y Devoluciones
         </h1>
-        <h2 class="font-bold uppercase text-xs md:text-sm mt-3 mb-2">
+        <article>
+        <h2 class="font-bold uppercase text-xs md:text-sm mt-4 mb-2">
             Condiciones Generales
         </h2>
-        <h3 class="text-sm font-semibold uppercase">Estado del Producto</h3>
+        <h3 class="text-sm font-semibold uppercase my-2">Estado del Producto</h3>
         <ul class="text-xs md:text-sm pl-6 text-wrap">
             <li class="list-disc mb-1">
                 El producto debe estar en condiciones aptas para su venta, es
@@ -26,7 +27,9 @@ import Layout from "../layouts/Layout.astro";
             </li>
         </ul>
 
-        <h2 class="font-bold uppercase text-xs md:text-sm mt-4">
+    </article>
+    <article>
+        <h2 class="font-bold uppercase text-xs md:text-sm my-2">
             Plazo para Cambios
         </h2>
         <ul class="text-xs md:text-sm pl-6 text-wrap">
@@ -38,8 +41,9 @@ import Layout from "../layouts/Layout.astro";
                 Para materiales de obra sobrante, el plazo es de 90 días.
             </li>
         </ul>
-
-        <h2 class="font-bold uppercase text-xs md:text-sm mt-4">Excepciones</h2>
+    </article>
+    <article>
+        <h2 class="font-bold uppercase text-xs md:text-sm my-3">Excepciones</h2>
         <ul class="text-xs md:text-sm pl-6 text-wrap">
             <li class="list-disc mb-1 text-wrap">
                 No se aceptarán cambios o devoluciones de productos diseñados,
@@ -51,7 +55,9 @@ import Layout from "../layouts/Layout.astro";
                 equivalente al valor real pagado por el producto.
             </li>
         </ul>
-        <h2 class="font-bold uppercase text-xs md:text-sm mt-4">
+    </article>
+    <article>
+        <h2 class="font-bold uppercase text-xs md:text-sm my-3">
             Devolución Antes de la Entrega
         </h2>
         <p class="text-xs md:text-sm mt-2 text-wrap">
@@ -71,5 +77,6 @@ import Layout from "../layouts/Layout.astro";
                 valor pagado.
             </li>
         </ul>
+    </article>
     </section>
 </Layout>
