@@ -55,16 +55,13 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     const finalizarCompra = async () => {
         sessionStorage.setItem('carrito', JSON.stringify(datosProductos))
         sessionStorage.setItem('dataUserForBuy', JSON.stringify(datosEnvio))
+        sessionStorage.setItem('paymentMethod', JSON.stringify(true))
         setIsLoading(true)
-        if (!datosEnvio) {
-            handleToast("toast-fail", 'Faltan los datos de envío, por favor verificar antes de continuar')
+        if (!datosEnvio || !datosProductos || datosProductos.length === 0) {
+            handleToast("toast-fail", 'Parece que faltan algnuos datos para proceder con la compra, por favor verificar antes de continuar')
             return;
         }
 
-        if (!datosProductos || datosProductos.length === 0) {
-            handleToast("toast-fail", 'No hay productos en el carrito.')
-            return;
-        }
         try {
             if (isAuthenticated) {
                 const pagoUsuario = await pago({
@@ -97,7 +94,7 @@ export const ContraEntrega: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                 const { status } = error.response;
                 if (status === 400) {
                     handleToast('fail', `Algo salio mal al procesar tu compra, intentalo de nuevo`)
-                }else{
+                } else {
                     handleToast('fail', `Ocurrio un error inesperado en el proceso de compra, intentalo mas tarde`)
                 }
             }
