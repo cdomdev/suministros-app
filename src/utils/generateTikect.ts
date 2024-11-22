@@ -113,7 +113,7 @@ export const generateTicket = (
     footStyles: {
       fillColor: [240, 240, 240],
       textColor: [0, 0, 0],
-      fontStyle: "italic",
+      fontStyle: "normal",
     },
   });
 
@@ -148,6 +148,7 @@ export const generateTicket = (
     { maxWidth: 180 }
   );
   // Guardar PDF
+  // doc.autoPrint({ variant: "non-conform" });
   doc.save(`Ticket-${datos?.nombre?.toLowerCase()}.pdf`);
 };
 
