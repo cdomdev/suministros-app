@@ -6,29 +6,29 @@ import Spiner from "./Spiner.astro";
 let masVendidos: ApiResponse | null = null;
 
 try {
-    masVendidos = await getMostSalled();
+  masVendidos = await getMostSalled();
 } catch (error) {
-    console.error(error);
+  console.error(error);
 }
 ---
 
 <div class="flex flex-wrap md:flex-row justify-center gap-4">
-    {
-        masVendidos && masVendidos.productos.length > 0 ? (
-            masVendidos.productos.map((producto) => (
-                <CardProductos
-                    id={producto.id}
-                    ref={producto.referencia}
-                    img={producto.image}
-                    nombre={producto.nombre}
-                    descuento={producto.discount}
-                    marca={producto.marca}
-                    precio={producto.valor}
-                    categoria={producto.subcategoria?.nombre || "Sin categoría"}
-                />
-            ))
-        ) : (
-            <Spiner />
-        )
-    }
+  {
+    masVendidos && masVendidos.productos.length > 0 ? (
+      masVendidos.productos.map((producto) => (
+        <CardProductos
+          id={producto.id}
+          ref={producto.referencia}
+          img={producto.image}
+          nombre={producto.nombre}
+          descuento={producto.discount}
+          marca={producto.marca}
+          precio={producto.valor}
+          categoria={producto.subcategoria?.nombre || "Sin categoría"}
+        />
+      ))
+    ) : (
+      <Spiner />
+    )
+  }
 </div>
