@@ -29,37 +29,31 @@ export const generateTicket = (
 
   const timeFormatted = `${horas}:${minutes}:${seconds}`;
 
-  const maxWidth = 180;
-
   // Título principal
   doc.setFont("Roboto", "bold");
   doc.setFontSize(17);
-  doc.text("DETALLES DE TU COMPRA", 105, 18, { align: "center" });
+  doc.text("DETALLES DE TU COMPRA", 105, 28, { align: "center" });
 
-  doc.setLineDashPattern([3, 1], 0);
-  doc.line(10, 25, 200, 27);
-
-  // Texto descriptivo
-  const texto = `Estimado usuario, agradecemos por preferirnos para las compras de sus productos`;
-  const texto2 = `Ducumento expedido a los ${dia} días del mes ${mes} del ${año} a las ${timeFormatted} horas`;
-  doc.setFontSize(12);
-  doc.setFont("Roboto", "normal");
-  doc.setTextColor(0, 0, 0);
-  doc.text(texto, 12, 35, { maxWidth: maxWidth });
-
-  doc.setFontSize(9);
+  // Fecha
+  const textoFecha = `${dia} / ${mes} / ${año}  -  ${timeFormatted}`;
+  doc.setFontSize(8);
   doc.setTextColor(85, 85, 85);
-  doc.text(texto2, 105, 24, { align: "center" });
+  doc.text(textoFecha, 105, 32, { align: "center" });
 
+  // linea con estilo dashed
+  doc.setLineDashPattern([1, 1], 0);
+  doc.line(12, 35, 198, 35);
+
+  // Primer subtitulo
   doc.setFont("Roboto", "bold");
   doc.setFontSize(12);
-  doc.text("DATOS DEL COMPRADOR", 12, 50);
+  doc.text("DATOS DEL CLIENTE", 12, 45);
 
   // Espacio antes de los productos
   doc.text("DATOS DE LOS PRODUCTOS", 12, 85);
 
   autoTable(doc, {
-    startY: 53,
+    startY: 50,
     head: [["Nombre", "Email", "Teléfono", "Dirección"]],
     body: [
       [
@@ -123,6 +117,36 @@ export const generateTicket = (
     },
   });
 
+  // posicion final de la tabla
+  const finalY =
+    (doc as jsPDF & { lastAutoTable: { finalY: number } }).lastAutoTable
+      .finalY + 10;
+
+  doc.setFontSize(12);
+  doc.setFont("Roboto", "bold");
+  doc.text(
+    "Gracias por su compra. ¡Esperamos volver a verlo pronto!",
+    105,
+    finalY + 3,
+    { align: "center" }
+  );
+
+  doc.setFont("Roboto", "normal");
+  doc.text(
+    `Este documento es de caracter informativo y no puede ser utilizado como comprobante fiscal o de pago.`,
+    12,
+    finalY + 15
+  );
+
+  let mail = `contactosumi@sumi.com`;
+  let wh = `+ 57 601 560 5000`;
+  doc.setFont("Roboto", "normal");
+  doc.text(
+    `Si tiene alguna duda o consulta, puede contáctarnos: ${mail} - ${wh} `,
+    12,
+    finalY + 21,
+    { maxWidth: 180 }
+  );
   // Guardar PDF
   doc.save(`Ticket-${datos?.nombre?.toLowerCase()}.pdf`);
 };
