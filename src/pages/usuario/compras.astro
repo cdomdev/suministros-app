@@ -4,137 +4,145 @@ import Back from "@/components/icons/Back.astro";
 import { getOrdersBy } from "@/services/user";
 import type { PedidosResponse } from "@/types/types";
 import { priceFormated } from "@/utils";
+import Car from "@/components/icons/Car.astro";
 const cookies = Astro.cookies;
 const userSessionCookie = cookies.get("user_sesion");
 const userSessionString = userSessionCookie ? userSessionCookie.value : null;
 let data = null;
 let pedidos: PedidosResponse | null = null;
 try {
-    data = userSessionString ? JSON.parse(userSessionString) : null;
-    if (data && data.id) {
-        pedidos = await getOrdersBy(data.id);
-    }
+  data = userSessionString ? JSON.parse(userSessionString) : null;
+  if (data && data.id) {
+    pedidos = await getOrdersBy(data.id);
+  }
 } catch (error) {
-    console.error("Error parsing cookie JSON:", error);
+  console.error("Error parsing cookie JSON:", error);
 }
 ---
 
 <UsuarioLayout>
-    <h1 class="font-semibold md:7 md:mt-14 mb-4 md:mb-10 text-lg">
-        Mis compras
-    </h1>
-    <a
-        href="/usuario/perfil"
-        class="flex items-center my-2 font-semibold hover:text-gray-500"
-        ><Back /> Atras</a
-    >
+  <h1 class="font-semibold md:7 md:mt-14 mb-4 md:mb-10 text-lg pt-20">
+    Mis compras
+  </h1>
+  <a
+    href="/usuario/perfil"
+    class="flex items-center my-2 font-semibold hover:text-gray-500"
+    ><Back /> Atras</a
+  >
 
-    <div
-        class="w-full flex gap-2 mb-7 p-1 md:p-4 flex-col font-font-cust-2 overflow-auto max-h-96">
-        {
-            pedidos && pedidos.pedidos && pedidos.pedidos.length > 0 ? (
-                pedidos.pedidos.map((pedido, index) => (
-                    <article>
-                        <div class="relative">
-                            <table class="w-full text-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 overflow-auto">
-                                <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
-                                    <tr>
-                                        <th
-                                            scope="col"
-                                            class="px-6 py-3 rounded-s-lg">
-                                            pedido # {index + 1}
-                                        </th>
-                                        <th scope="col" class="px-6 py-3 ">
-                                            Nombre del producto
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Cantidad
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            Referencia
-                                        </th>
-                                        <th scope="col" class="px-6 py-3">
-                                            {" "}
-                                            Valor U.N
-                                        </th>
-                                        <th
-                                            scope="col"
-                                            class="px-6 py-3 rounded-e-lg">
-                                            {" "}
-                                            Estado de pedido
-                                        </th>
-                                    </tr>
-                                </thead>
-                                <tbody>
-                                    <tr class="bg-white dark:bg-gray-800">
-                                        <th
-                                            scope="row"
-                                            class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
-                                            {index + 1}
-                                        </th>
-                                        <th
-                                            scope="row"
-                                            class="px-6 py-4 font-medium text-balance text-gray-900 whitespace-nowrap dark:text-white">
-                                            {
-                                                pedido.detalles_pedido[0]
-                                                    .Producto.nombre
-                                            }
-                                        </th>
-                                        <td class="px-6 py-4">
-                                            {" "}
-                                            {pedido.detalles_pedido[0].cantidad}
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {" "}
-                                            {
-                                                pedido.detalles_pedido[0]
-                                                    .Producto.referencia
-                                            }
-                                        </td>
-                                        <td class="px-6 py-4">
-                                            {priceFormated(
-                                                pedido.detalles_pedido[0]
-                                                    .Producto.valor,
-                                            )}
-                                        </td>
-                                        <td class="px-6 py-4 capitalize">
-                                            {pedido?.estado_pedido ||
-                                                "Sin estado"}
-                                        </td>
-                                    </tr>
-                                </tbody>
-                                <tfoot>
-                                    <tr class="font-semibold text-gray-900 dark:text-white">
-                                        <th
-                                            scope="row"
-                                            class="px-6 py-3 text-sm md:text-base">
-                                            Total
-                                        </th>
-                                        <td class="px-6 py-3">
-                                            {priceFormated(pedido.pago_total)}
-                                        </td>
-                                    </tr>
-                                    <tr class="font-semibold text-gray-900 dark:text-white">
-                                        <th
-                                            scope="row"
-                                            class="px-6 py-3 text-sm md:text-base">
-                                            Costo de envio
-                                        </th>
-                                        <td class="px-6 py-3">
-                                            {priceFormated(
-                                                pedido.costo_de_envio,
-                                            )}
-                                        </td>
-                                    </tr>
-                                </tfoot>
-                            </table>
-                            <hr class="mb-4" />
-                        </div>
-                    </article>
-                ))
-            ) : (
-                <p class="text-gray-500 text-sm md:text-base">No hay pedidos</p>
-            )
-        }
-    </div>
+  <div
+    class="w-full flex gap-2 mb-7 p-1 md:p-4 flex-col font-font-cust-2 overflow-auto max-h-96">
+    {
+      pedidos && pedidos.pedidos && pedidos.pedidos.length > 0 ? (
+        pedidos.pedidos.map((pedido, index) => (
+          <article>
+            <div class="relative">
+              <table class="w-full text-xs md:text-sm text-left rtl:text-right text-gray-500 dark:text-gray-400 overflow-auto">
+                <thead class="text-xs text-gray-700 uppercase bg-gray-100 dark:bg-gray-700 dark:text-gray-400">
+                  <tr>
+                    <th scope="col" class="px-6 py-3 rounded-s-lg">
+                      pedido # {index + 1}
+                    </th>
+                    <th scope="col" class="px-6 py-3 ">
+                      Nombre del producto
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Cantidad
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      Referencia
+                    </th>
+                    <th scope="col" class="px-6 py-3">
+                      {" "}
+                      Valor U.N
+                    </th>
+                    <th scope="col" class="px-6 py-3 rounded-e-lg">
+                      {" "}
+                      Estado de pedido
+                    </th>
+                  </tr>
+                </thead>
+                <tbody>
+                  <tr class="bg-white dark:bg-gray-800">
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-semibold text-gray-900 whitespace-nowrap dark:text-white">
+                      {index + 1}
+                    </th>
+                    <th
+                      scope="row"
+                      class="px-6 py-4 font-medium text-balance text-gray-900 whitespace-nowrap dark:text-white">
+                      {pedido.detalles_pedido[0].Producto.nombre}
+                    </th>
+                    <td class="px-6 py-4">
+                      {" "}
+                      {pedido.detalles_pedido[0].cantidad}
+                    </td>
+                    <td class="px-6 py-4">
+                      {" "}
+                      {pedido.detalles_pedido[0].Producto.referencia}
+                    </td>
+                    <td class="px-6 py-4">
+                      {priceFormated(pedido.detalles_pedido[0].Producto.valor)}
+                    </td>
+                    <td class="px-6 py-4 capitalize">
+                      {pedido?.estado_pedido || "Sin estado"}
+                    </td>
+                  </tr>
+                </tbody>
+                <tfoot>
+                  <tr class="font-semibold text-gray-900 dark:text-white">
+                    <th scope="row" class="px-6 py-3 text-sm md:text-base">
+                      Total
+                    </th>
+                    <td class="px-6 py-3">
+                      {priceFormated(pedido.pago_total)}
+                    </td>
+                  </tr>
+                  <tr class="font-semibold text-gray-900 dark:text-white">
+                    <th scope="row" class="px-6 py-3 text-sm md:text-base">
+                      Costo de envio
+                    </th>
+                    <td class="px-6 py-3">
+                      {priceFormated(pedido.costo_de_envio)}
+                    </td>
+                  </tr>
+                </tfoot>
+              </table>
+              <hr class="mb-4" />
+            </div>
+          </article>
+        ))
+      ) : (
+        <div class="flex justify-center items-center flex-col gap-2">
+          <p class="text-gray-500 text-sm md:text-base text-center">
+            Aun no tienes compras, puede ir a la tienda y hacer tu primera
+            compra
+          </p>
+          <a
+            href="/categoria/cocinas"
+            class="text-gray-500 text-sm flex items-center hover:text-blue-600 duration-150">
+            Hacer mis compras
+            <svg
+              xmlns="http://www.w3.org/2000/svg"
+              width="24"
+              height="24"
+              viewBox="0 0 24 24"
+              fill="none"
+              stroke="currentColor"
+              stroke-width="1"
+              stroke-linecap="round"
+              stroke-linejoin="round"
+              class="icon icon-tabler icons-tabler-outline icon-tabler-shopping-bag size-5">
+              <>
+                <path stroke="none" d="M0 0h24v24H0z" fill="none" />
+                <path d="M6.331 8h11.339a2 2 0 0 1 1.977 2.304l-1.255 8.152a3 3 0 0 1 -2.966 2.544h-6.852a3 3 0 0 1 -2.965 -2.544l-1.255 -8.152a2 2 0 0 1 1.977 -2.304z" />
+                <path d="M9 11v-5a3 3 0 0 1 6 0v5" />
+              </>
+            </svg>
+          </a>
+        </div>
+      )
+    }
+  </div>
 </UsuarioLayout>
