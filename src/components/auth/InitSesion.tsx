@@ -32,7 +32,6 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
         setIsLoading(true);
         try {
             const response = await validaSesion(values)
-            console.log(response)
             if (response.status === 200) {
                 setShow(false)
                 window.location.reload()

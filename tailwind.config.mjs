@@ -12,6 +12,9 @@ export default {
       "category-cocinas": "url('/cicinas.webp')",
       "category-contruccion": "url('/constr.webp')",
       "category-psisos": "url('/pisos.webp')",
+      "bg-chat": "linear-gradient(90deg, rgba(255,255,255,1) 0%, rgba(245,249,250,1) 35%, rgba(255,255,255,1) 100%);",
+
+
     },
     fontFamily: {
       "font-cust": "Roboto, sans-serif",

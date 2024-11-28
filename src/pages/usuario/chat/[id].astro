@@ -1,26 +1,22 @@
 ---
 import UsuarioLayout from "@/layouts/UsuarioLayout.astro";
 import Back from "@/components/icons/Back.astro";
-import { getOrdersBy } from "@/services/user";
-import type { PedidosResponse } from "@/types/types";
 import Chat from "@/components/usuario/Chat";
 const cookies = Astro.cookies;
 const userSessionCookie = cookies.get("user_sesion");
-const userSessionString = userSessionCookie ? userSessionCookie.value : null;
-// let data = null;
-// let pedidos: PedidosResponse | null = null;
-// try {
-//   data = userSessionString ? JSON.parse(userSessionString) : null;
-//   if (data && data.id) {
-//     pedidos = await getOrdersBy(data.id);
-//   }
-// } catch (error) {
-//   console.error("Error parsing cookie JSON:", error);
-// }
+let data = null;
+if (userSessionCookie && userSessionCookie.value) {
+  try {
+    data = JSON.parse(userSessionCookie.value);
+    console.log(data);
+  } catch (error) {
+    console.error("Error al parsear la cookie:", error);
+  }
+}
 ---
 
 <UsuarioLayout>
-  <h1 class="font-semibold md:7 md:mt-14 mb-4 md:mb-10 text-lg pt-20">
+  <h1 class="font-semibold md:7 md:mt-14 mb-4 md:mb-10 text-lg">
     Mis conversaciones
   </h1>
   <a
@@ -31,6 +27,6 @@ const userSessionString = userSessionCookie ? userSessionCookie.value : null;
 
   <div
     class="w-full flex gap-2 mb-7 p-1 md:p-4 flex-col font-font-cust-2 overflow-auto max-h-96">
-    <Chat client:visible />
+    <Chat client:visible usuario={data} />
   </div>
 </UsuarioLayout>
