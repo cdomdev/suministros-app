@@ -42,7 +42,7 @@ const Registro: React.FC = () => {
                     handleToast('fail', `Ocurrio un error interno, por favor intente mas tarde`)
                 }
             } else {
-                handleToast('fail', `Hola ${values.nombre} tuvimos un error al intentar realizar tu regsitro, intentalo de mas tarde`)
+                handleToast('fail', `Hola ${values.nombre} tuvimos un error al intentar realizar tu registro, intentalo de mas tarde`)
             }
 
         } finally {
