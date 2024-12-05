@@ -26,6 +26,8 @@ export const FormEnvioDatosUsuario = () => {
                 }
                 if (!values.telefono) {
                     errors.telefono = "*El campo no puede quedar vacio*";
+                } else if (values.telefono.length < 10) {
+                    errors.telefono = '*Ingrese un numero de telefono valido*';
                 }
                 return errors;
             }}
@@ -38,12 +40,12 @@ export const FormEnvioDatosUsuario = () => {
                     </p>
                     <Form onSubmit={formik.handleSubmit}>
 
-                        <Form.Group className="mb-2">
-                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white ">
-                                Ingrese su dirección ∗
+                    <Form.Group className="mb-2">
+                            <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
+                                Ingrese su dirección  ∗
                             </Form.Label>
                             <Form.Control
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 type="text"
                                 placeholder="calle 123 # 45-67"
                                 name="direccion"
@@ -75,10 +77,10 @@ export const FormEnvioDatosUsuario = () => {
                         </Form.Group>
                         <Form.Group className="mb-2">
                             <Form.Label className="block mb-2 text-xs md:text-sm font-medium text-gray-900 dark:text-white">
-                                Ingrese un numero de teléfono ∗
+                                Ingrese un numero de teléfono  ∗
                             </Form.Label>
                             <Form.Control
-                                className='bg-gray-50 border border-gray-300 text-gray-900 text-xs md:text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
+                                className='bg-gray-50 border text-xs md:text-sm border-gray-300 text-gray-900 rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                 type="number"
                                 name="telefono"
                                 placeholder="123456789"
@@ -100,7 +102,7 @@ export const FormEnvioDatosUsuario = () => {
                                     className='bg-gray-50 border border-gray-300  text-gray-900 text-xs md:text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                     as="textarea"
                                     rows={3}
-                                    placeholder="Conjunto residencial sumi, torre 9, apartamento 123"
+                                    placeholder="Conjunto residencial, torre 9, apartamento 123"
                                     name="detalles"
                                     value={formik.values.detalles}
                                     onChange={formik.handleChange}

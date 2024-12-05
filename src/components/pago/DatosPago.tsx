@@ -58,8 +58,8 @@ const DetosPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
                         <p className="text-xs md:text-sm pt-3 text-wrap  mb-4">
                             Para que tengas total confianza al pagar tus compras, ponemos a tu disposición estas dos opciones de pago. Asegúrate de revisar los términos de cada opción en nuestra página de <a href="/Medios-de-pago" className="text-sm font-semibold text-blue-600 hover:text-blue-500 duration-150">Medios de pago</a>.
                         </p>
-                        <MercadoPago isAuthenticated={isAuthenticated} />
-                        <ModalOpcionesPago isAuthenticated={isAuthenticated} />
+                        <MercadoPago  />
+                        <ModalOpcionesPago />
                     </div>
                 </div>
             ) : <span className="text-center text-gray-400 text-sm block py-2">No hay datos para procesar un pago</span>}

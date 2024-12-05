@@ -57,13 +57,8 @@ export interface ValuesRegistro {
   password: string,
 }
 
-// export interface PropProfile extends DatosUsurio {
-//   id: number,
-//   picture: string,
-// }
-
 export interface DatosUsurio extends ResponsIPInfo {
-  id: number,
+  id?: number,
   nombre?: string,
   apellido?: string,
   picture?: string,

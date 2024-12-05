@@ -9,13 +9,10 @@ import axios from "axios"
 
 const clientMercadopago = import.meta.env.PUBLIC_CLIENT_MERCADOPAGO;
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT_MERCADOPAGO
-const rutainvitado = import.meta.env.PUBLIC_URL_INVITED_MERCADOPAGO
 
-interface ExpandedProps {
-    isAuthenticated: boolean;
-}
+console.log(clientMercadopago)
 
-const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
+const MercadoPago =  () => {
     const [isLoading, setIsLoading] = useState<boolean>(false);
     const [datosEnvio, setDatosEnvio] = useState<DatosUsurio | null>(null);
     const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
@@ -41,7 +38,6 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     }, [])
 
     const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location, };
-    const datosInvitado = { ...datosEnvio, ...location }
     const total = calcularTotal(datosProductos);
     const destino = datosEnvio?.destino || '0';
     const envio = calcularCostoEnvio({ destino, precio: total });
@@ -64,32 +60,18 @@ const MercadoPago: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
             }
 
             setIsLoading(true);
-            if (isAuthenticated) {
-                const pagoUsuario = await mercadoPago({
-                    productos: datosProductos,
-                    datos: datosUsuario,
-                    ruta: rutaUser,
-                    valorDeEnvio: envio
-                })
-                if (pagoUsuario.status === 200) {
-                    const { init_point } = pagoUsuario.data;
-                    window.location.href = init_point;
-                    // localStorage.removeItem('dataUserForBuy')
-                    // localStorage.removeItem('carrito')
-                }
-            } else {
-                const pagoInvitado = await mercadoPago({
-                    productos: datosProductos,
-                    datos: datosInvitado,
-                    ruta: rutainvitado,
-                    valorDeEnvio: envio
-                })
-                if (pagoInvitado.status === 200) {
-                    const { init_point } = pagoInvitado.data;
-                    window.location.href = init_point;
-                    // localStorage.removeItem('dataUserForBuy')
-                    // localStorage.removeItem('carrito')
-                }
+
+            const pagoUsuario = await mercadoPago({
+                productos: datosProductos,
+                datos: datosUsuario,
+                ruta: rutaUser,
+                valorDeEnvio: envio
+            })
+            if (pagoUsuario.status === 201) {
+                const { init_point } = pagoUsuario.data;
+                window.location.href = init_point;
+                // localStorage.removeItem('dataUserForBuy')
+                // localStorage.removeItem('carrito')
             }
 
         } catch (error) {

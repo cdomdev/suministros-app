@@ -19,6 +19,7 @@ export const FormEnvioDatosInvitado = () => {
                 telefono: "",
                 destino: "",
                 detalles: "",
+
             }}
             validate={(values: DatosUsurio) => {
                 const errors: Partial<DatosUsurio> = {};
@@ -164,7 +165,7 @@ export const FormEnvioDatosInvitado = () => {
                                     className='bg-gray-50 border border-gray-300  text-gray-900 text-xs md:text-sm rounded-lg focus:ring-blue-200 focus:border-blue-500 block w-full p-2.5 dark:bg-gray-700 dark:border-gray-600 dark:placeholder-gray-400 dark:text-white dark:focus:ring-blue-500 dark:focus:border-blue-500 dark:shadow-sm-light'
                                     as="textarea"
                                     rows={3}
-                                    placeholder="Conjunto residencial sumi, torre 9, apartamento 123"
+                                    placeholder="Conjunto residencial, torre 9, apartamento 123"
                                     name="detalles"
                                     value={formik.values?.detalles}
                                     onChange={formik.handleChange}
