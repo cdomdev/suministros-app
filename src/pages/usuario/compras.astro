@@ -4,7 +4,7 @@ import Back from "@/components/icons/Back.astro";
 import { getOrdersBy } from "@/services/user";
 import type { PedidosResponse } from "@/types/types";
 import { priceFormated } from "@/utils";
-import Car from "@/components/icons/Car.astro";
+
 const cookies = Astro.cookies;
 const userSessionCookie = cookies.get("user_sesion");
 const userSessionString = userSessionCookie ? userSessionCookie.value : null;

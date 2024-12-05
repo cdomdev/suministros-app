@@ -4,7 +4,6 @@ import { SvgGlass } from "@/components/icons/SvgGlass";
 import { busquedaProductos } from "@/services/busqueda";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
-import { Localitation } from '@/components/Localitation'
 
 const BuscadorOfCanvas = () => {
     const [searchTerm, setSearchTerm] = useState<string>("");

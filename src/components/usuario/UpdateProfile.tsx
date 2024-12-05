@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
-import type { PropProfile } from "@/types/types";
+import type { DatosUsurio } from "@/types/types";
 import { Form } from "react-bootstrap";
 import { Formik, Field, ErrorMessage } from "formik";
 import { Toast } from "../Toast";
@@ -8,7 +8,7 @@ import type { DataUserUpdate } from "@/types/types";
 import { updateProfile } from "@/services/user";
 
 const UpdateProfile = () => {
-    const [data, setData] = useState<PropProfile | null>(null);
+    const [data, setData] = useState<DatosUsurio | null>(null);
     const [toastMessage, setToastMessage] = useState<string>('');
     const [isLoading, setIsLoading] = useState<boolean>(false)
     const [showToast, setShowToast] = useState<boolean>(false);

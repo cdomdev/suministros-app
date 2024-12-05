@@ -1,11 +1,11 @@
 import { useEffect, useState } from "react"
-import type { PropProfile } from '@/types/types'
+import type { DatosUsurio } from '@/types/types'
 import { logout } from "@/services/auth";
 import UserProfile from "./Avatar";
 import Cookies from "js-cookie";
 
 const DropdownProfile = () => {
-    const [data, setData] = useState<PropProfile | null>(null);
+    const [data, setData] = useState<DatosUsurio | null>(null);
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
     useEffect(() => {
