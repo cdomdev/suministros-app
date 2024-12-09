@@ -3,8 +3,9 @@ import { io } from "socket.io-client";
 import type { DatosUsurio } from "@/types/types";
 import { Lock } from "../icons/Lock";
 import { SendIcon } from "../icons/SendIcon";
-export const HOST = import.meta.env.PUBLIC_HOST_API;
+import { getMessages } from "@/services/user";
 
+export const HOST = import.meta.env.PUBLIC_HOST_API;
 const socket = io(HOST, {});
 
 type Message = {
@@ -22,6 +23,14 @@ const Chat: React.FC<{ usuario: DatosUsurio }> = ({ usuario }) => {
     minute: "2-digit",
   });
 
+  useEffect(() => {
+    const fetchMessages = async () => {
+      const response = await getMessages(usuario.id);
+      console.log(response)
+    };
+
+    fetchMessages();
+  }, []);
   const handleMessage = async (event: React.FormEvent<HTMLFormElement>) => {
     event.preventDefault();
 
@@ -78,8 +87,8 @@ const Chat: React.FC<{ usuario: DatosUsurio }> = ({ usuario }) => {
               <path d="M8 13h6"></path>
               <path d="M18 4a3 3 0 0 1 3 3v8a3 3 0 0 1 -3 3h-5l-5 3v-3h-2a3 3 0 0 1 -3 -3v-8a3 3 0 0 1 3 -3h12z"></path>
             </svg>
-            Si tienes alguno duda sobre sus compras, escribanos, trataremos de
-            resolver su inquietud lo antes posible.
+            Si tienes alguna duda sobre tus compras, escribanos, trataremos de
+            resolver tu inquietud lo antes posible.
           </span>
         ) : (
           <ul className="w-full flex flex-col gap-2">
