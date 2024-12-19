@@ -21,7 +21,7 @@ const ModalInfo: React.FC = () => {
                 show={show} onHide={handleClose}>
                 <Modal.Header closeButton className="border-none pb-0 px-4">
                 </Modal.Header>
-                <div className="font-font-cust-2 p-2">
+                <div className="   p-2">
                     <Modal.Body className="pt-0">
                         <h2 className="font-semibold text-center text-xl md:text-2xl">
                             Se requiere iniciar sesión

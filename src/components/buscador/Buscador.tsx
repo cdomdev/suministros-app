@@ -39,7 +39,7 @@ const Buscador = () => {
 
     return (
         <div className="flex gap-3">
-            <form className="flex items-center w-full ld:w-4/5 lg:mx-auto font-font-cust-2">
+            <form className="flex items-center w-full ld:w-4/5 lg:mx-auto   ">
                 <label htmlFor="simple-search" className="sr-only">Search</label>
                 <div className="relative w-full">
                     <div

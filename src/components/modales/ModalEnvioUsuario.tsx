@@ -20,7 +20,7 @@ const ModalEnvioUsuario: React.FC = () => {
                 show={show} onHide={handleClose}>
                 <Modal.Header closeButton className="border-none px-4 pt-4 pb-1">
                 </Modal.Header>
-                <div className="font-font-cust-2 p-2">
+                <div className="   p-2">
                     <Modal.Body className="pt-0">
                         <FormEnvioDatosUsuario />
                     </Modal.Body>

@@ -34,7 +34,7 @@ export const FormEnvioDatosUsuario = () => {
             onSubmit={handleSubmit}>
             {(formik) =>
 
-                <div className="font-font-cust-2">
+                <div className="  ">
                     <p className="mb-2 font-normal text-sm md:text-base">
                         Ingrese los datos en el formulario para el envio de su compra, los datos marcados con (<strong className="text-base">∗</strong>) son obligatorios
                     </p>

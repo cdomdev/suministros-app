@@ -36,7 +36,7 @@ const ModalOpcionesPago = () => {
           closeButton
           className="border-none pt-4 pb-1 px-4"
         ></Modal.Header>
-        <div className="font-font-cust-2 p-2">
+        <div className="   p-2">
           <Modal.Body className="pt-0">
             <ContraEntrega />
             <button

@@ -14,7 +14,7 @@ export const Sinresultados = () => {
                     <path d="M20.2 20.2l1.8 1.8" />
                 </svg>
             </div>
-            <div className="font-font-cust-2 ">
+            <div className="   ">
                 <h4 className='text-base md:text-lg font-semibold text-balance'>No hemos encontrados resultados de tu busqueda</h4>
                 <h5 className='text-sm md:text-base'>Puedes intentar lo siguiente.</h5>
                 <ul className='pl-6'>

@@ -48,7 +48,7 @@ export const FormEnvioDatosInvitado = () => {
             onSubmit={handleSubmit}>
             {(formik) =>
 
-                <div className="font-font-cust-2">
+                <div className="  ">
                     <p className="mb-2 font-normal leading-5 text-sm md:text-base">
                         Ingrese los datos en el formulario para el envio de su compra, los datos marcados con (*) son obligatorios
                     </p>

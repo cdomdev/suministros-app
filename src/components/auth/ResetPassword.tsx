@@ -61,7 +61,7 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
     }
 
     return (
-        <div className="font-font-cust-2">
+        <div className="  ">
             <Toast
                 showToast={showToast}
                 setShowToast={setShowToast}
