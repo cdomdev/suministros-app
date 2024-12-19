@@ -16,10 +16,7 @@ export default {
 
 
     },
-    fontFamily: {
-      "font-cust": "Roboto, sans-serif",
-      "font-cust-2": "Montserrat, sans-serif"
-    },
+   
     gridTemplateColumns: {
       "cat-cust": "0.8fr 3fr",
       "col-cust-2": "50% 50%",
