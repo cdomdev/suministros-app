@@ -40,7 +40,7 @@ const DropdownProfile = () => {
                 className={`z-10 absolute right-3 ${dropdownOpen ? "block" : "hidden"
                     } bg-white divide-y divide-gray-100 rounded-lg shadow w-44 dark:bg-gray-700 dark:divide-gray-600`}>
                 <div className="px-4 py-3 text-sm text-gray-900 dark:text-white">
-                    <div className="font-semibold text-sm md:text-base uppercase">
+                    <div className="font-semibold text-xs text-balance uppercase">
                         {data?.nombre}
                     </div>
                     <div className="font-medium truncate">{data?.email || ""}</div>
