@@ -10,7 +10,7 @@ export const Localitation = () => {
             try {
                 const response = await getDataIp();
                 if (response) {
-                    localStorage.setItem('referenceDataLocation', JSON.stringify(response));
+                    sessionStorage.setItem('referenceDataLocation', JSON.stringify(response));
                     setData(response);
                 }
 
