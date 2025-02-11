@@ -1,6 +1,5 @@
 import { logout } from '@/services/auth'
 import { LogoutIcon } from '../icons/LogoutIcon'
-import './style.css'
 
 
 const BtnLogout = () => {
