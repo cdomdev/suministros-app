@@ -63,7 +63,7 @@ const DropdownProfile = () => {
                         </a>
                     </li>
                 </ul>
-                <div className="">
+                <div>
                     <button
                         onClick={() => logoutCookies()}
                         className="block text-xs md:text-sm text-gray-700 hover:bg-red-600 w-full duration-200 hover:text-white rounded-b-md py-2">
