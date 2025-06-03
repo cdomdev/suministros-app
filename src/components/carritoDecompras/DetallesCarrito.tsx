@@ -3,7 +3,6 @@ import { useEffect } from 'react';
 import CardCarrito from '../cards/CardCarrito';
 import type { Producto } from '@/types/types';
 import { CarritoEmpty } from './CarritoEmpty';
-import './style.css'
 
 const DetallesCarrito = () => {
     const [productos, setProductos] = useState<Producto[]>([])
@@ -31,9 +30,9 @@ const DetallesCarrito = () => {
                     ) : (
                         <CarritoEmpty />
                     )}
-                    <a href='/categoria/pisos-y-paredes' className='bg-[#f4f4f4] text-sm btn-add-more-products  hover:bg-blue-600 hover:text-white hover:stroke-white duration-200 w-full md:max-w-[40%] mx-auto shadow-md cursor-pointer py-2 my-3 px-4 rounded-3xl flex items-center justify-center hover:shadow-none'>
+                    <a href='/categoria/pisos-y-paredes' className='bg-[#f4f4f4] text-sm btn-add-more-products  hover:bg-blue-600 hover:text-white hover:stroke-white duration-200 w-full md:max-w-[40%] mx-auto shadow-md cursor-pointer py-2 my-3 px-4 rounded-3xl flex items-center justify-center hover:shadow-none group'>
                         {productos && productos.length > 0 ? 'Continuar comprando' : 'Agregar productos al carrito'}
-                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-plus size-5 stroke-black hover:stroke-white" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
+                        <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-shopping-cart-plus size-5 stroke-black hover:stroke-white group-hover:stroke-white" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" fill="none" strokeLinecap="round" strokeLinejoin="round">
                             <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                             <path d="M4 19a2 2 0 1 0 4 0a2 2 0 0 0 -4 0" />
                             <path d="M12.5 17h-6.5v-14h-2" />

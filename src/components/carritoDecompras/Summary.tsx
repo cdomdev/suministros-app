@@ -2,7 +2,7 @@ import { calcularTotal } from "@/utils/calcularPago";
 import type { Producto } from "@/types/types";
 import { formateValue } from "@/utils/formatearValor";
 import { useEffect, useState } from "react"
-import { OctagonIcon } from "./icons/OctagonIcon";
+import { OctagonIcon } from "../icons/OctagonIcon";
 
 
 const Summary = () => {

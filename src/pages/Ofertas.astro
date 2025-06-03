@@ -34,13 +34,13 @@ try {
           ofertas.productos.map((producto) => (
             <CardProductos
               id={producto.id}
-              ref={producto.referencia}
-              img={producto.image}
-              nombre={producto.titulo}
-              descuento={producto.discount}
-              marca={producto.marca}
+              image={producto.image}
               precio={producto.precio}
-              categoria={producto.subcategoria?.nombre || "Sin categoría"}
+              referencia={producto.referencia}
+              titulo={producto.titulo}
+              discount={producto.discount}
+              marca={producto.marca}
+              categoria={producto.subcategoria}
             />
           ))
         ) : (

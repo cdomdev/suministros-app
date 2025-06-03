@@ -83,15 +83,13 @@ const urlForPage = `${contenido.categoria.replaceAll("-", " ")}`;
             dataresponse.productos.map((producto) => (
               <CardProductos
                 id={producto.id}
-                img={producto.image}
+                image={producto.image}
                 precio={producto.precio}
-                ref={producto.referencia}
-                nombre={producto.titulo}
-                descuento={producto.discount}
+                referencia={producto.referencia}
+                titulo={producto.titulo}
+                discount={producto.discount}
                 marca={producto.marca}
-                categoria={
-                  producto.subcategoria?.nombre || "Categoría desconocida"
-                }
+                categoria={producto.subcategoria}
               />
             ))
           ) : (

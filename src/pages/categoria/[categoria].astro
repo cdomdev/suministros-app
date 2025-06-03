@@ -1,5 +1,4 @@
 ---
-import CardProductos from "@/components/cards/CardProductos.astro";
 import Layout from "../../layouts/Layout.astro";
 import {  getAllProducts} from "../../services/productos";
 import type { ApiResponse } from "@/types/types";
@@ -9,6 +8,7 @@ import FiltrosCategorias from "@/components/filtros/filtrosCategorias.astro";
 import FiltroMarcas from "@/components/filtros/filtroMarcas.astro";
 import Spiner from "@/components/Spiner.astro";
 import BreadCrums from "@/components/BreadCrums.astro";
+import CardProductos from "@/components/cards/CardProductos.astro";
 const { categoria } = Astro.params;
 let dataresponse: ApiResponse | null = null;
 let marcasUnicas: string[] | null = null;
@@ -82,13 +82,13 @@ const titlePage = categoria ? categoria.replaceAll('-', ' ') : ""
             dataresponse.productos.map((producto) => (
               <CardProductos
                 id={producto.id}
-                img={producto.image}
+                image={producto.image}
                 precio={producto.precio}
-                ref={producto.referencia}
-                nombre={producto.titulo}
-                descuento={producto.discount}
+                referencia={producto.referencia}
+                titulo={producto.titulo}
+                discount={producto.discount}
                 marca={producto.marca}
-                categoria={producto.subcategoria.nombre}
+                categoria={producto.subcategoria}
               />
             ))
           ) : (

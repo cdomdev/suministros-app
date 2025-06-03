@@ -1,26 +1,23 @@
-import axios from "axios";
 import { useEffect, useState } from "react";
 import type { DatosUsurio, Producto, ResponsIPInfo } from "@/types/types";
 import { Toast } from "../Toast";
 import { pago } from "@/services/pagos";
 import { calcularCostoEnvio } from "@/utils/calcularCostoDeEnvio";
 import { calcularTotal } from "@/utils/calcularPago";
-
-const rutaUser = import.meta.env.PUBLIC_URL_CLIENT;
+import { useToastStore } from "@/context/store.context";
 
 export const ContraEntrega = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
-  const [toastMessage, setToastMessage] = useState<string>("");
-  const [showToast, setShowToast] = useState<boolean>(false);
-  const [bgToast, setBgToast] = useState<string>("");
   const [datosProductos, setdatosproductos] = useState<Producto[]>([]);
   const [location, setLocation] = useState<ResponsIPInfo>();
   const [datosEnvio, setDatosEnvio] = useState<DatosUsurio | null>(null);
   const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
 
+  const { showToast } = useToastStore();
+
   useEffect(() => {
     let dataLocation = JSON.parse(
-      localStorage.getItem("referenceDataLocation") || ""
+      sessionStorage.getItem("referenceDataLocation") || ""
     );
     let productosLocal = JSON.parse(localStorage.getItem("carrito") || "[]");
     let datosEnvioLocal = JSON.parse(
@@ -29,27 +26,17 @@ export const ContraEntrega = () => {
     let datosUsuarioLogLocal = JSON.parse(
       localStorage.getItem("infoProfileUSer") || "{}"
     );
+
     setDatosEnvio(datosEnvioLocal);
     setLocation(dataLocation);
     setDatosusuarioLog(datosUsuarioLogLocal);
     setdatosproductos(productosLocal);
   }, []);
 
-  const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location,  };
+  const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location };
   const destino = datosEnvio?.destino || "0";
   const total = calcularTotal(datosProductos);
   const envio = calcularCostoEnvio({ destino, precio: total });
-
-
-  const handleToast = (bg: string, ms: string) => {
-    setShowToast(true);
-    setBgToast(bg);
-    setToastMessage(ms);
-    setIsLoading(false);
-    setTimeout(() => {
-      setShowToast(false);
-    }, 5000);
-  };
 
   const finalizarCompra = async () => {
     sessionStorage.setItem("carrito", JSON.stringify(datosProductos));
@@ -57,54 +44,35 @@ export const ContraEntrega = () => {
     sessionStorage.setItem("paymentMethod", JSON.stringify(true));
     setIsLoading(true);
     if (!datosEnvio || !datosProductos || datosProductos.length === 0) {
-      handleToast(
-        "toast-fail",
-        "Parece que faltan algnuos datos para proceder con la compra, por favor verificar antes de continuar"
+      showToast(
+        "Parece que faltan algnuos datos para proceder con la compra, por favor verificar antes de continuar",
+        "error"
       );
       return;
     }
-    try {
-      const pagoUsuario = await pago({
-        productos: datosProductos,
-        datos: datosUsuario,
-        ruta: rutaUser,
-        valorDeEnvio: envio,
-      });
-      if (pagoUsuario.status === 201) {
-        window.location.href = `/success/${pagoUsuario.data.message}`;
-        localStorage.removeItem("carrito");
-        localStorage.removeItem("steps");
-      }
-    } catch (error) {
-      if (axios.isAxiosError(error) && error.response) {
-        const { status } = error.response;
-        if (status === 400) {
-          handleToast(
-            "fail",
-            `Algo salio mal al procesar tu compra, intentalo de nuevo`
-          );
-        } else {
-          handleToast(
-            "fail",
-            `Ocurrio un error inesperado en el proceso de compra, intentalo mas tarde`
-          );
-        }
-      }
-    } finally {
-      setIsLoading(false);
+
+    const res = await pago({
+      productos: datosProductos,
+      datos: datosUsuario,
+      ruta: "rutaUser",
+      valorDeEnvio: envio,
+    });
+    const { status } = res;
+    if (status === 201) {
+      window.location.href = `/success/${res.data.message}`;
+      localStorage.removeItem("carrito");
+      localStorage.removeItem("steps");
+    } else if (status === 404 || 400) {
+      showToast(
+        `Algo salio mal al procesar tu compra, intentalo de nuevo`,
+        "error"
+      );
     }
   };
 
   return (
     <>
-      <Toast
-        showToast={showToast}
-        setShowToast={setShowToast}
-        toastMessage={toastMessage}
-        setToastMessage={setToastMessage}
-        bgToast={bgToast}
-        setBgToast={setBgToast}
-      />
+      <Toast />
       <p className="text-sm md:text-base font-semibold mb-3 flex items-center gap-3 ">
         Por favor tenga en cuenta lo siguiente
         <svg

@@ -59,13 +59,13 @@ const Detalles = () => {
                                 <th
                                     scope="row"
                                     className="px-6 py-2 font-medium text-gray-900 whitespace-nowrap dark:text-white text-balance">
-                                    {producto.nombre}
+                                    {producto.titulo}
                                 </th>
                                 <td className="px-6 py-4">{producto.quantity}</td>
                                 <td className="px-6 py-4 text-red-600">
                                     {producto.discount || 0} %
                                 </td>
-                                <td className="px-6 py-4">{formateValue(producto.valor)}</td>
+                                <td className="px-6 py-4">{formateValue(producto.precio)}</td>
                                 <td className="px-6 py-4">{calcularSubTotal(producto)}</td>
                             </tr>
                         ))}
