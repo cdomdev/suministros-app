@@ -81,7 +81,7 @@ const MercadoPago = () => {
       <Toast />
       <div className="flex flex-col items-center justify-center mb-3 ">
         <button
-          className="border flex py-2 px-4 items-center gap-1 rounded-md bg-[#009ee3] text-white hover:bg-[#0049e5ef] duration-100"
+          className="border flex py-2 px-4 items-center gap-1 rounded-md bg-[#009ee3] text-white hover:bg-[#0049e5ef] duration-100 text-xs md:text-sm lg:text-base"
           onClick={createOrder}
         >
           {isLoading ? (
@@ -89,7 +89,7 @@ const MercadoPago = () => {
               <img
                 src="../../../mercadopago.webp"
                 alt="logo de mercadopago"
-                className="size-7"
+                className="size-7 shrink-0"
               />
               Estamos procesando tu pago...
             </>

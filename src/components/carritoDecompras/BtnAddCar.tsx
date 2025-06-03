@@ -46,10 +46,13 @@ export const BtnAddCar = ({ producto }: Props) => {
     }
   };
 
+  const muchProductMessage = `Se agrego ${quantity} producto al carrito`
+  const oneProductMessage = `Se agregaron ${quantity} productos al carrito`
+
   const handleAddToCart = () => {
     addProductoLocal(producto, quantity);
     showToast(
-      `Se agregaron ${quantity} ${quantity > 1 ? "productos" : "producto"} al carrito`,
+      `${quantity > 1 ? muchProductMessage : oneProductMessage}`,
       "success"
     );
   };

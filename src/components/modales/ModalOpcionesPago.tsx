@@ -14,7 +14,7 @@ const ModalOpcionesPago = () => {
       <div className="flex flex-col items-center justify-center">
         <button
           onClick={handleShow}
-          className=" bg-blue-500  mx-auto flex items-center justify-center gap-1  py-2.5 px-16 rounded-md text-white duration-200 hover:bg-blue-600 "
+          className=" bg-blue-500  mx-auto flex items-center justify-center gap-1  py-2.5 px-16 rounded-md text-white duration-200 hover:bg-blue-600 text-xs md:text-sm lg:text-base "
         >
           <span className="bg-white inline-flex rounded-full p-1">
             <IconModalOpPy />

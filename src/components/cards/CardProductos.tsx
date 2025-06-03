@@ -20,7 +20,7 @@ export const CardProductos: React.FC<Producto> = ({
     >
       <div className="flex w-full justify-between items-center mb-1">
         <span
-          className={`${discount ? "bg-red-600" : "bg-white"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
+          className={`${discount > 0 ? "bg-red-600" : "bg-white"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
         >
           {discount ? `${discount} %` : ""}
         </span>

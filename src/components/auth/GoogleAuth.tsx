@@ -54,7 +54,7 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
         status === 400
       ) {
         showToast(
-          `Algo salio mal con el inicio de sesion, pr favor intentalo de nuevo`,
+          `Algo salio mal con el inicio de sesion, por favor intentalo de nuevo`,
           "error"
         );
       } else if (status === 500) {

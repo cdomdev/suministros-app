@@ -24,7 +24,7 @@ import { calcularDescuento } from "@/utils/calcularDescuento";
 >
   <div class="flex w-full justify-between items-center mb-1 h-7 md:h-10">
     <span
-      class={`${discount ? "bg-red-600" : "bg-transparent"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
+      class={`${discount > 0 ? "bg-red-600" : "bg-transparent"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
     >
       {discount ? `${discount} %` : ""}
     </span>
