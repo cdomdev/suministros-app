@@ -6,7 +6,7 @@ export interface Producto {
   description: string;
   image: string;
   referencia: string;
-  discount: number | null;
+  discount: number;
   subcategoria: any | null;
   quantity?: number
 }
