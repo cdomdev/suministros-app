@@ -16,16 +16,15 @@ const isAuthenticated = authToken !== undefined;
   <div class="flex flex-wrap items-center justify-between py-3 px-3">
     <Offcanvas />
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
-      <img src="../../../logo.webp" class="h-7 md:h-11" alt="Logo" />
+      <img src="/logo.webp" class="h-7 md:h-11" alt="Logo" />
     </a>
     <div class="hidden md:block w-[37%]">
       <Buscador client:visible />
     </div>
-    <!-- Icons -->
     <div class="flex gap-1 md:gap-4">
-      <span class="flex items-end md:hidden">
+      <div class="flex items-end md:hidden">
         <Localitation client:visible />
-      </span>
+      </div>
       {
         isAuthenticated ? (
           <AuthSucces client:visible />

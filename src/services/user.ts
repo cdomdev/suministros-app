@@ -1,8 +1,7 @@
 import axios from "axios";
 import type { DataUserUpdate, PedidosResponse } from "@/types/types";
-import type { ResponsIPInfo } from "@/types/types";
 import { HOST } from "@/congif";
-// import { api } from "@/config/axios.conf";
+import { query } from "./query";
 
 export const getOrdersBy = async (id: string): Promise<PedidosResponse> => {
   try {
@@ -34,17 +33,10 @@ export const updateProfile = async (
   }
 };
 
-export const getDataIp = async (): Promise<ResponsIPInfo> => {
-  try {
-    const response = await axios.get(`${HOST}/user/data-ipInfo`);
-    return response.data.data;
-  } catch (error) {
-    console.error("Error fetching IP data:", error);
-    throw error;
-  }
+export const getDataIp = async () => {
+  const response = await query(`/location/data-ip-info`, "GET");
+  return response.data.data;
 };
-
-
 
 export const getMessages = async (id: number | undefined) => {
   try {
@@ -52,7 +44,7 @@ export const getMessages = async (id: number | undefined) => {
       withCredentials: true,
     });
 
-    console.log(response)
+    console.log(response);
     return response;
   } catch (error) {
     throw error;

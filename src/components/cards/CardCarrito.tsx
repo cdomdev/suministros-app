@@ -42,7 +42,7 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
         deleFromCar(producto.id);
     };
 
-    const valorProducto = producto.discount && producto.discount > 0 ? calcularDescuento(producto.valor, producto.discount) : formateValue(producto.valor)
+    const valorProducto = producto.discount && producto.discount > 0 ? calcularDescuento(producto.precio, producto.discount) : formateValue(producto.precio)
     const subTotal = calcularSubTotal(producto)
 
     return (
@@ -57,11 +57,11 @@ const CardCarrito = ({ producto, productos, setProductos }: CardCarritoProps) =>
             />
             <div className="flex justify-between px-6 py-2 items-center">
                 <div className="flex gap-2 items-center">
-                    <img src={producto.image} alt={producto.nombre} loading="lazy" className="size-20" />
+                    <img src={producto.image} alt={producto.titulo} loading="lazy" className="size-20" />
                     <div className="flex-col flex ">
                         <span className="text-balance text-xs md:text-sm flex-col flex ">
                             <strong>Producto: </strong>
-                            {producto.nombre}
+                            {producto.titulo}
                         </span>
                         <span className="text-balance text-xs md:text-sm">
                             <strong >REF: </strong>

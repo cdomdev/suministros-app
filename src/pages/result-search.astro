@@ -1,0 +1,16 @@
+---
+import Layout from "@/layouts/Layout.astro";
+import Resultados from "@/components/buscador/Resultados.tsx";
+const { url } = Astro.request;
+const searchParams = new URL(url).searchParams;
+const name = searchParams.get("name");
+---
+
+<Layout title={`Resultados de ${name}`}>
+  <section class="min-h-dvh flex items-center justify-start flex-col pt-16">
+    <h1 class="text-sm lg:text-lg font-semibold text-center uppercase">
+      Resutados de busqueda
+    </h1>
+    <Resultados client:only="react" />
+  </section>
+</Layout>

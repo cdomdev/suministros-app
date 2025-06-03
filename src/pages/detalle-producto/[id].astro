@@ -6,27 +6,28 @@ import { calcularDescuento } from "@/utils/calcularDescuento";
 import { formateValue } from "@/utils/formatearValor";
 import { BtnAddCar } from "@/components/carritoDecompras/BtnAddCar";
 import MasVendidos from "@/components/MasVendidos.astro";
+import type {  Producto } from "@/types/types";
 const { id } = Astro.params;
-let producto;
+let producto: Producto | null = null ;
 if (id) {
-    producto = await getProductoBy({ id });
+    producto = await getProductoBy(id);
 }
 
 ---
 
-<Layout title=`${producto.nombre}`>
+<Layout title=`${producto?.titulo}`>
     <section class="min-h-dvh">
         <article class="pt-20 max-w-[95vw] m-auto mb-5">
             <div class="flex flex-col gap-3 md:grid md:grid-cols-col-cust-2">
                 <div class="flex flex-col items-center justify-center gap-3 ">
                     <div class="flex justify-end w-full pr-20">
-                        { producto.discount ? 
+                        { producto?.discount ? 
                             <span class=" bg-red-600 text-base md:text-2xl px-2 text-white">{ producto?.discount} %</span> : ''
                         }
                     </div>
                     <img
-                    src={producto.image}
-                    alt={producto.nombre}
+                    src={producto?.image}
+                    alt={producto?.titulo}
                     loading="lazy"
                     class="size-56 hover:scale-105 duration-200"
                     />
@@ -44,38 +45,38 @@ if (id) {
                 <div class="border p-3">
                     <div class="flex justify-between text-[#808080]">
                         <span class="text-base font-semibold">
-                            {producto.marca}
+                            {producto?.marca}
                         </span>
                         <span class="text-sm uppercase">
-                            ref:{producto.referencia}
+                            ref:{producto?.referencia}
                         </span>
                     </div>
                     <h2
                         class="text-base md:text-xl my-3 font-bold text-balance">
-                        {producto.nombre}
+                        {producto?.titulo}
                     </h2>
                     <span class="flex flex-col font-semibold gap-1">
                         Precio:
                         {
-                            producto.discount ? (
+                            producto?.discount ? (
                                 <strong class="text-xs line-through  text-red-700 opacity-[50%] md:text-lg">
-                                    $  {formateValue(producto.valor)}
+                                    $  {formateValue(producto?.precio)}
                                 </strong>
                                 <strong class="text-base md:text-2xl">
                                     ${calcularDescuento(
-                                        producto.valor,
+                                        producto.precio,
                                         producto.discount,
                                     )}
                                 </strong>
                             ) : (
                                 <strong class="text-base md:text-2xl">
-                                  {formateValue(producto.valor)}
+                                  {formateValue(producto?.precio)}
                                 </strong>
                             )
                         }
                     </span>
                     <p class="text-sm leading-5 text-balance my-3">
-                        {producto.description}
+                        {producto?.description}
                     </p>
                     <div class="flex gap-2">
                        <BtnAddCar producto={producto} client:load/>

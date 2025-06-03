@@ -1,88 +1,58 @@
-import type { DataForgotPassword, ValuesIniSesion, ValuesRegistro, ResetPassword, GoogleAuthResponse } from "@/types/types"
-import axios from "axios"
-import { HOST } from "@/congif";
+import type {
+  DataForgotPassword,
+  ValuesIniSesion,
+  ValuesRegistro,
+  ResetPassword,
+  GoogleAuthResponse,
+} from "@/types/types";
+import { query } from "./query";
 
 export const validaSesion = async (values: ValuesIniSesion) => {
-    try {
-        const response = await axios.post(`${HOST}/user/login`, values, {
-            withCredentials: true
-        });
-        return response;
-    } catch (error) {
-        throw error;
-    }
+  const response = await query(`/auth/login`, "POST", {
+    values,
+  });
+  return response;
 };
 
 export const googleAuth = async (response: GoogleAuthResponse) => {
-    try {
-        const responseServer = await axios.post(
-            `${HOST}/user/google-auth`,
-            {
-                token: response.access_token,
-            },
-            {
-                withCredentials: true,
-            }
-        );
-        return responseServer
-    } catch (error) {
-        throw error
-    }
-
-}
-
+  const responseServer = await query(`/auth/google`, "POST", {
+    token: response.access_token,
+  });
+  return responseServer;
+};
 
 export const register = async (values: ValuesRegistro) => {
-    try {
-        const response = await axios.post(`${HOST}/user/register`, values, {
-            withCredentials: true
-        })
-        return response
-    } catch (e) {
-        throw e
-    }
-}
-
+  const response = await query(`/auth/register`, "POST", {
+    values,
+  });
+  return response;
+};
 
 export const sendRequestResettPassword = async (values: DataForgotPassword) => {
-    try {
-        const response = await axios.post(`${HOST}/user/validate-email`, values, {
-            withCredentials: true
-        })
-        return response
-    } catch (e) {
-        throw e
-    }
-
-}
+  const response = await query(`/auth/forgot-password`, "POST", {
+    values,
+  });
+  return response;
+};
 
 export const resetPassword = async ({ values, token }: ResetPassword) => {
-    if (!token) {
-        throw new Error('Token is missing.');
-    }
+  if (!token) {
+    throw new Error("Token is missing.");
+  }
 
-    try {
-        const response = await axios.post(`${HOST}/reset-password/${token}`, values, {
-            withCredentials: true
-        });
-        return response;
-    } catch (e) {
-        throw e;
-    }
+  const response = await query(`/auth/reset-password?token=${token}`, "POST", {
+    values,
+  });
+  return response;
 };
 
 const clearStorege = () => {
-    localStorage.clear()
-    sessionStorage.clear()
-}
+  localStorage.clear();
+  sessionStorage.clear();
+};
 
 export const logout = async () => {
-    try {
-        await axios.post(`${HOST}/user/logout`, {}, { withCredentials: true });
-        clearStorege();
-        window.location.reload();
-    } catch (error) {
-        console.error('Error during logout', error);
-    }
-}
-
+  await query(`/auth/logout`, "POST");
+  clearStorege();
+  window.location.reload();
+};

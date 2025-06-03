@@ -1,8 +1,8 @@
 export interface Producto {
   id: number;
   marca: string;
-  nombre: string;
-  valor: string;
+  titulo: string;
+  precio: string;
   description: string;
   image: string;
   referencia: string;
@@ -40,6 +40,12 @@ export interface ContenidoPagina {
   subTitulo: string;
   texto: string;
   categoria: string
+}
+
+export interface ContenidoPaginaOfertas {
+  titulo: string;
+  subTitulo: string;
+  texto: string;
 }
 
 export interface Contenidos {

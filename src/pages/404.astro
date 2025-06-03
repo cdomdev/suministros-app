@@ -3,16 +3,24 @@ import Layout from "@/layouts/Layout.astro";
 import Icon from "@/components/icons/404-icon.astro";
 ---
 
-<Layout title="not fount">
-    <section class="flex items-center justify-center flex-col min-h-dvh">
-        <Icon />
-        <h1 class="text-center text-xs md:text-lg">
-            La ruta a la que esta intentando acceder no existe.
-        </h1>
-        <a
-            href="/"
-            class="mt-2 hover:underline text-xs text-center hover:text-blue-500 duration-150 lg:text-lg"
-            >Volver al inicio</a
-        >
-    </section>
+<Layout title="¡La pagina no existe!">
+  <section class="flex items-center justify-center flex-col min-h-dvh">
+    <Icon class="size-40" />
+    <div class="flex flex-col items-center justify-center text-center p-6">
+      <h1
+        class="text-xl md:text-3xl font-semibold text-gray-800 dark:text-gray-200"
+      >
+        Página no encontrada
+      </h1>
+      <p class="text-sm md:text-base text-gray-600 dark:text-gray-400 mt-2">
+        La ruta a la que estás intentando acceder no existe o ha sido movida.
+      </p>
+      <a
+        href="/"
+        class="mt-4 inline-block bg-blue-600 text-white px-5 py-2 rounded-md text-sm md:text-base hover:bg-blue-700 transition-colors duration-200"
+      >
+        Volver al inicio
+      </a>
+    </div>
+  </section>
 </Layout>

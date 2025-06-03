@@ -1,0 +1,10 @@
+---
+const { text, icon: Icon, } = Astro.props;
+---
+
+<div class="flex items-center justify-start gap-2 max-w-52 w-52 shrink-0">
+  <Icon class="size-10 shrink-0" />
+  <p class="text-black text-xs leading-snug break-words text-balance">
+    {text}
+  </p>
+</div>

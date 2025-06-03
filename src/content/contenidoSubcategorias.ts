@@ -1,4 +1,4 @@
-import { type Contenidos } from "@/types/types";
+import { type ContenidoPaginaOfertas, type Contenidos } from "@/types/types";
 
 export const contenidos: Contenidos = {
   sanitarios: {
@@ -78,4 +78,12 @@ export const contenidos: Contenidos = {
       "Nuestras opciones transformarán cualquier ambiente en un espacio único y acogedor.",
     categoria: "pisos-y-paredes",
   },
+};
+
+export const contenidoOfertas: ContenidoPaginaOfertas = {
+  titulo: "Grandes descuentos",
+  subTitulo:
+    " Aprovecha nuestras ofertas especiales y encuentra productos de calidad a precios irresistibles",
+  texto:
+    " Aprovecha nuestras ofertas especiales y encuentra productos de calidad a precios unicos. nuestras ofertas te permitirán ahorrar en tus proyectos de renovación",
 };

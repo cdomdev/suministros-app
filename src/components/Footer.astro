@@ -1,3 +1,8 @@
+---
+const dataYear = new Date()
+const año = dataYear.getFullYear()
+---
+
 <footer class="bg-white dark:bg-gray-900 mt-10">
   <div class="mx-auto w-full">
     <hr />
@@ -155,7 +160,8 @@
     <div
       class="px-4 py-3 w-full flex justify-center bg-[#253b61] dark:bg-gray-700 md:flex md:items-center"
     >
-      <span class="text-sm text-white text-center">© 2024 Suministros </span>
+      <span class="text-sm text-white text-center">© {año} Suministros </span>
     </div>
   </div>
 </footer>
+

@@ -1,61 +1,57 @@
 ---
 import CardProductos from "@/components/cards/CardProductos.astro";
 import Layout from "../layouts/Layout.astro";
+import { contenidoOfertas } from "@/content/contenidoSubcategorias";
 import { getOfertas } from "@/services/productos";
-import { type ApiResponse } from "@/types/types";
+import type { ApiResponse } from "@/types/types";
 import Spiner from "@/components/Spiner.astro";
-import MigajasOfertas from "@/components/migajas/migajasOfertas.astro";
+import BreadCrums from "@/components/BreadCrums.astro";
 let ofertas: ApiResponse | null = null;
 try {
-    ofertas = await getOfertas();
+  ofertas = await getOfertas();
 } catch (error) {
-    console.error(error);
+  console.error(error);
 }
 ---
 
 <Layout title="Ofertas">
-    <section class="mx-3 px-0 md:px-10 min-h-dvh">
-        <MigajasOfertas pagina="Ofertas" />
-        <h1 class="text-lg md:text-xl font-bold uppercase">
-            Grandes descuentos
-        </h1>
-        <h2 class="text-base md:text-lg font-bold pt-2">
-            Aprovecha nuestras ofertas especiales y encuentra productos de
-            calidad a precios irresistibles
-        </h2>
-        <p class="text-xs md:text-base pt-1">
-            Aprovecha nuestras ofertas especiales y encuentra productos de
-            calidad a precios unicos. nuestras ofertas te permitirán ahorrar en
-            tus proyectos de renovación
-        </p>
-        <div
-            class="flex flex-wrap justify-center md:justify-start gap-x-3 md:gap-x-8 gap-y-4 py-4 w-full"
-        >
-            {
-                ofertas && ofertas.productos.length > 0 ? (
-                    ofertas.productos.map((producto) => (
-                        <CardProductos
-                            id={producto.id}
-                            ref={producto.referencia}
-                            img={producto.image}
-                            nombre={producto.nombre}
-                            descuento={producto.discount}
-                            marca={producto.marca}
-                            precio={producto.valor}
-                            categoria={
-                                producto.subcategoria?.nombre || "Sin categoría"
-                            }
-                        />
-                    ))
-                ) : (
-                    <div class="flex w-full flex-col items-center justify-center text-center">
-                        <Spiner />
-                        <span class="text-xs text-gray-500 mb-2">
-                            Cargango productos...
-                        </span>
-                    </div>
-                )
-            }
-        </div>
-    </section>
+  <section class="mx-3 px-0 md:px-10 min-h-dvh">
+    <BreadCrums pagina={["productos", "ofertas"]} />
+    <h1 class="text-lg md:text-xl font-bold uppercase">
+      {contenidoOfertas.titulo}
+    </h1>
+    <h2 class="text-base md:text-lg font-bold pt-2">
+      {contenidoOfertas.subTitulo}
+    </h2>
+    <p class="text-xs md:text-base pt-1">
+      {contenidoOfertas.subTitulo}
+    </p>
+    <div
+      class="flex flex-wrap justify-center md:justify-start gap-x-3 md:gap-x-8 gap-y-4 py-4 w-full"
+    >
+      {
+        ofertas && ofertas.productos.length > 0 ? (
+          ofertas.productos.map((producto) => (
+            <CardProductos
+              id={producto.id}
+              ref={producto.referencia}
+              img={producto.image}
+              nombre={producto.titulo}
+              descuento={producto.discount}
+              marca={producto.marca}
+              precio={producto.precio}
+              categoria={producto.subcategoria?.nombre || "Sin categoría"}
+            />
+          ))
+        ) : (
+          <div class="flex w-full flex-col items-center justify-center text-center">
+            <Spiner />
+            <span class="text-xs text-gray-500 mb-2">
+              Cargango productos...
+            </span>
+          </div>
+        )
+      }
+    </div>
+  </section>
 </Layout>

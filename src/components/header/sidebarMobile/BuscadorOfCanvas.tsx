@@ -1,7 +1,7 @@
 import { SvgCarrritoSearh } from "@/components/icons/SvgCarrritoSearh";
 import { useState } from "react";
 import { SvgGlass } from "@/components/icons/SvgGlass";
-import { busquedaProductos } from "@/services/busqueda";
+import { busquedaProductos } from "@/services/productos";
 import axios from "axios";
 import { Spinner } from "react-bootstrap";
 
