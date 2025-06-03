@@ -79,7 +79,8 @@ if (id) {
                         {producto?.description}
                     </p>
                     <div class="flex gap-2">
-                       <BtnAddCar producto={producto} client:load/>
+                     {producto && <BtnAddCar producto={producto} client:load />}
+
                     </div>
                 </div>
             </div>

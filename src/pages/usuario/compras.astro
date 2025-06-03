@@ -72,7 +72,7 @@ try {
                     <th
                       scope="row"
                       class="px-6 py-4 font-medium text-balance text-gray-900 whitespace-nowrap dark:text-white">
-                      {pedido.detalles_pedido[0].Producto.nombre}
+                      {pedido.detalles_pedido[0].Producto.titulo}
                     </th>
                     <td class="px-6 py-4">
                       {" "}
@@ -83,7 +83,7 @@ try {
                       {pedido.detalles_pedido[0].Producto.referencia}
                     </td>
                     <td class="px-6 py-4">
-                      {priceFormated(pedido.detalles_pedido[0].Producto.valor)}
+                      {priceFormated(pedido.detalles_pedido[0].Producto.precio)}
                     </td>
                     <td class="px-6 py-4 capitalize">
                       {pedido?.estado_pedido || "Sin estado"}

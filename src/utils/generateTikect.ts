@@ -80,10 +80,10 @@ export const generateTicket = (
 
   // Tabla de productos
   const tableBody = productos?.map((producto) => [
-    producto.nombre,
+    producto.titulo,
     producto.quantity || 0,
     `${producto.discount || 0} %`,
-    formateValue(producto.valor),
+    formateValue(producto.precio),
     calcularSubTotal(producto),
   ]);
 

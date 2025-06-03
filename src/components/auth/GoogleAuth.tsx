@@ -27,7 +27,7 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
   const googleInit = useGoogleLogin({
     onSuccess: async (response) => {
       const serverResponse = await googleAuth(response);
-      const { status, data } = serverResponse;
+      const { status } = serverResponse;
       if (serverResponse.status === 200) {
         window.location.reload();
         setShow(false);

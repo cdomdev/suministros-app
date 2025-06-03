@@ -6,7 +6,10 @@ import { useToastStore } from "@/context/store.context";
 import { Minus } from "../icons/Minus";
 import { More } from "../icons/More";
 
-export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
+interface Props {
+  producto: Producto;
+}
+export const BtnAddCar = ({ producto }: Props) => {
   const [quantity, setQuantity] = useState<number>(1);
 
   const { showToast } = useToastStore();
@@ -56,7 +59,7 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
       <Toast />
       <div className="border flex justify-center items-center px-2  ">
         <button className="decrement" onClick={handleDecrement}>
-       <Minus className="size-5"/>
+          <Minus className="size-5" />
         </button>
         <input
           type="number"
@@ -70,7 +73,7 @@ export const BtnAddCar: React.FC<{ producto: Producto }> = ({ producto }) => {
           onChange={(e) => setQuantity(parseInt(e.target.value))}
         />
         <button className="increment" onClick={handleIncrement}>
-       <More className="size-5"/>
+          <More className="size-5" />
         </button>
       </div>
       <button
