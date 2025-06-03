@@ -1,7 +1,7 @@
-export function formateValue(value: string | number): string {
-  const num = typeof value === "string" ? parseFloat(value) : value;
-  if (isNaN(num)) return "$0";
-  return `$${num.toFixed(2)}`;
+export function formateValue(value: string ) {
+  if (!value) return null;
+  const valueParse = parseFloat(value);
+  return valueParse.toString().replace(/\B(?=(\d{3})+(?!\d))/g, ".");
 }
 
 export const priceFormated = (value: number | string) => {
