@@ -9,7 +9,7 @@ const DropdownProfile = () => {
     const [dropdownOpen, setDropdownOpen] = useState<boolean>(false);
 
     useEffect(() => {
-        const userSessionData = localStorage.getItem('infoProfileUSer');
+        const userSessionData = sessionStorage.getItem('infoProfileUSer');
         if (userSessionData) {
             const userData = JSON.parse(userSessionData);
             setData(userData);

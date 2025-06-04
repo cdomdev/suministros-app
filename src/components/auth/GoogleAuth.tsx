@@ -43,7 +43,7 @@ const BtnLoguin: React.FC<FormInicioSesionProps> = ({ setShow }) => {
           sameSite: "lax",
           secure: true,
         });
-        localStorage.setItem(
+        sessionStorage.setItem(
           "infoProfileUSer",
           JSON.stringify(userSessionData)
         );

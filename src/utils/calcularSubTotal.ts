@@ -4,7 +4,7 @@ import { formateValue } from "./formatearValor";
 export const calcularSubTotal = (producto: Producto) => {
   const cantidad = producto.quantity ?? 0;
   const valor = parseFloat(producto.precio) ?? 0;
-  const descuento = producto.discount;
+  const descuento = producto.descuento;
 
   let valorTotal;
   if (descuento && descuento > 0) {

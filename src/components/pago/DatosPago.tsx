@@ -16,7 +16,7 @@ const DetosPago = () => {
       localStorage.getItem("dataUserForBuy") || "[]"
     );
     const datosUsuarioLog = JSON.parse(
-      localStorage.getItem("infoProfileUSer") || "[]"
+      sessionStorage.getItem("infoProfileUSer") || "[]"
     );
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     setDatos(datosUsuario);

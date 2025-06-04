@@ -30,7 +30,7 @@ const MercadoPago = () => {
       localStorage.getItem("dataUserForBuy") || ""
     );
     let datosUsuarioLogLocal = JSON.parse(
-      localStorage.getItem("infoProfileUSer") || "{}"
+      sessionStorage.getItem("infoProfileUSer") || "{}"
     );
     let dataLocation = JSON.parse(
       sessionStorage.getItem("referenceDataLocation") || ""

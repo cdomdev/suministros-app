@@ -21,8 +21,8 @@ if (id) {
             <div class="flex flex-col gap-3 md:grid md:grid-cols-col-cust-2">
                 <div class="flex flex-col items-center justify-center gap-3 ">
                     <div class="flex justify-end w-full pr-20">
-                        { producto?.discount ? 
-                            <span class=" bg-red-600 text-base md:text-2xl px-2 text-white">{ producto?.discount} %</span> : ''
+                        { producto?.descuento ? 
+                            <span class=" bg-red-600 text-base md:text-2xl px-2 text-white">{ producto?.descuento} %</span> : ''
                         }
                     </div>
                     <img
@@ -58,14 +58,14 @@ if (id) {
                     <span class="flex flex-col font-semibold gap-1">
                         Precio:
                         {
-                            producto?.discount ? (
+                            producto?.descuento ? (
                                 <strong class="text-xs line-through  text-red-700 opacity-[50%] md:text-lg">
                                     $  {formateValue(producto?.precio)}
                                 </strong>
                                 <strong class="text-base md:text-2xl">
                                     ${calcularDescuento(
                                         producto.precio,
-                                        producto.discount,
+                                        producto.descuento,
                                     )}
                                 </strong>
                             ) : (

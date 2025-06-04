@@ -20,7 +20,7 @@ export const Toast: React.FC = () => {
 
   return (
     <div className="fixed top-10 left-10 transform  z-50 space-y-4">
-      {toasts.map((toast) => (
+      {[...toasts].reverse().map((toast) => (
         <div
           key={toast.id}
           className={`flex items-center w-full max-w-xs p-4 rounded-lg shadow transition-all ${

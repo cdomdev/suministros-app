@@ -12,10 +12,10 @@ export const calcularTotal = (items: Producto[] | null | undefined): number => {
 
     let valorFinal;
 
-    if (item.discount && item.discount > 0) {
+    if (item.descuento && item.descuento > 0) {
       // Verifica si hay descuento y calcula el valor con descuento
       valorFinal = parseFloat(
-        calcularDescuentoParaTotal(item.precio, item.discount)
+        calcularDescuentoParaTotal(item.precio, item.descuento)
       );
     } else {
       valorFinal = valor;

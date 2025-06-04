@@ -52,7 +52,7 @@ export const BtnAddCar = ({ producto }: Props) => {
   const handleAddToCart = () => {
     addProductoLocal(producto, quantity);
     showToast(
-      `${quantity > 1 ? muchProductMessage : oneProductMessage}`,
+      `${quantity > 1 ?  oneProductMessage : muchProductMessage}`,
       "success"
     );
   };

@@ -29,8 +29,8 @@ const CardCarrito = ({
   };
 
   const valorProducto =
-    producto.discount && producto.discount > 0
-      ? calcularDescuento(producto.precio, producto.discount)
+    producto.descuento && producto.descuento > 0
+      ? calcularDescuento(producto.precio, producto.descuento)
       : formateValue(producto.precio);
 
   const subTotal = calcularSubTotal(producto);
@@ -62,9 +62,9 @@ const CardCarrito = ({
               </span>
               <span className="text-balance text-xs md:text-sm flex gap-1 ">
                 <strong>Descuento: </strong>
-                {producto.discount && producto?.discount > 0 ? (
+                {producto.descuento && producto?.descuento > 0 ? (
                   <>
-                    <p className="text-red-600 text-sm">{producto.discount}%</p>
+                    <p className="text-red-600 text-sm">{producto.descuento}%</p>
                   </>
                 ) : (
                   <p className="text-red-600 text-sm">{0}%</p>

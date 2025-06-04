@@ -25,8 +25,7 @@ export const useToastStore = create<ToastStore>((set) => ({
         type,
       };
 
-      // máximo 3
-      const updatedToasts = [...state.toasts, newToast].slice(-3); 
+      const updatedToasts = [...state.toasts, newToast].slice(0, 3); 
 
       return { toasts: updatedToasts };
     }),

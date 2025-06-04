@@ -24,7 +24,7 @@ const Resultados = () => {
               precio={producto.precio}
               referencia={producto.referencia}
               titulo={producto.titulo}
-              discount={producto.discount}
+              descuento={producto.descuento}
               description={producto.description}
               marca={producto.marca}
               subcategoria={producto.subcategoria}

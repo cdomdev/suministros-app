@@ -6,15 +6,19 @@ export interface Producto {
   description: string;
   image: string;
   referencia: string;
-  discount: number;
-  subcategoria: any | null;
-  quantity?: number
+  descuento: number;
+  categoria?: Categoria;
+  subcategoria?: Categoria;
+  quantity?: number;
 }
 
+interface Categoria {
+  id: string;
+  nombre: string;
+}
 export type ProductoCarrito = {
-  producto: Producto
+  producto: Producto;
 };
-
 
 export interface ApiResponse {
   productos: Producto[];
@@ -39,7 +43,7 @@ export interface ContenidoPagina {
   titulo: string;
   subTitulo: string;
   texto: string;
-  categoria: string
+  categoria: string;
 }
 
 export interface ContenidoPaginaOfertas {
@@ -53,31 +57,31 @@ export interface Contenidos {
 }
 
 export interface ValuesIniSesion {
-  email: string,
-  password: string,
+  email: string;
+  password: string;
 }
 
 export interface ValuesRegistro {
-  nombre: string,
-  email: string,
-  password: string,
+  nombre: string;
+  email: string;
+  password: string;
 }
 
 export interface DatosUsurio extends ResponsIPInfo {
-  id?: number,
-  nombre?: string,
-  apellido?: string,
-  picture?: string,
-  email?: string,
-  telefono?: string,
-  direccion?: string,
-  destino?: string,
-  detalles?: string,
+  id?: number;
+  nombre?: string;
+  apellido?: string;
+  picture?: string;
+  email?: string;
+  telefono?: string;
+  direccion?: string;
+  destino?: string;
+  detalles?: string;
 }
 
 export interface DataForgotPassword {
-  nombre?: string,
-  email?: string
+  nombre?: string;
+  email?: string;
 }
 
 export interface ValuesPassWords {
@@ -90,7 +94,6 @@ export interface ResetPassword {
   token: string;
 }
 
-
 export interface GoogleAuthResponse {
   access_token: string;
   token_type: string;
@@ -101,9 +104,9 @@ export interface GoogleAuthResponse {
 }
 
 export type DataUserUpdate = {
-  telefono: number | string,
-  direccion: string | string
-}
+  telefono: number | string;
+  direccion: string | string;
+};
 
 interface DetallePedido {
   id: number;
@@ -126,7 +129,6 @@ export interface PedidosResponse {
   pedidos: Pedido[];
 }
 
-
 export type ResponsIPInfo = {
   city?: string | null;
   region?: string | null;
@@ -136,18 +138,17 @@ export type ResponsIPInfo = {
   ip?: string | null;
   org?: string | null;
   timezone?: string | null;
-}
+};
 
 export type propPago = {
-  productos: Producto[]
-  datos: DatosUsurio,
-  ruta: string,
-  valorDeEnvio: number,
-}
+  productos: Producto[];
+  datos: DatosUsurio;
+  valorDeEnvio: number;
+};
 
 export type propMercadopago = {
-  productos: Producto[]
-  datos: DatosUsurio,
-  ruta: string,
-  valorDeEnvio: number,
-}
+  productos: Producto[];
+  datos: DatosUsurio;
+  ruta: string;
+  valorDeEnvio: number;
+};

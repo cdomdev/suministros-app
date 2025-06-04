@@ -24,7 +24,7 @@ export const ContraEntrega = () => {
       localStorage.getItem("dataUserForBuy") || ""
     );
     let datosUsuarioLogLocal = JSON.parse(
-      localStorage.getItem("infoProfileUSer") || "{}"
+      sessionStorage.getItem("infoProfileUSer") || "{}"
     );
 
     setDatosEnvio(datosEnvioLocal);
@@ -54,17 +54,25 @@ export const ContraEntrega = () => {
     const res = await pago({
       productos: datosProductos,
       datos: datosUsuario,
-      ruta: "rutaUser",
       valorDeEnvio: envio,
     });
+
     const { status } = res;
+
     if (status === 201) {
       window.location.href = `/success/${res.data.message}`;
       localStorage.removeItem("carrito");
       localStorage.removeItem("steps");
     } else if (status === 404 || 400) {
+      setIsLoading(false);
       showToast(
         `Algo salio mal al procesar tu compra, intentalo de nuevo`,
+        "error"
+      );
+    } else if (status === 500) {
+      setIsLoading(false);
+      showToast(
+        "Ocurrio un probla interno, por favor intenra realizar tu compra mas tarde o cuminicate con el equipo de soporte",
         "error"
       );
     }

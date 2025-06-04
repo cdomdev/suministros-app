@@ -8,9 +8,11 @@ import { calcularSubTotal } from "./calcularSubTotal";
 
 export const generateTicket = (
   datos: DatosUsurio,
-  productos: Producto[] | null
+  productos: Producto[] | null,
+  data: DatosUsurio
 ) => {
   const doc = new jsPDF();
+
 
   // Variables dinámicas
   const destino = datos?.destino || "0";
@@ -30,7 +32,7 @@ export const generateTicket = (
   const timeFormatted = `${horas}:${minutes}:${seconds}`;
 
   // Título principal
-  doc.setFont("Roboto", "bold");
+  doc.setFont("Monserrat", "bold");
   doc.setFontSize(17);
   doc.text("DETALLES DE TU COMPRA", 105, 28, { align: "center" });
 
@@ -45,7 +47,7 @@ export const generateTicket = (
   doc.line(12, 35, 198, 35);
 
   // Primer subtitulo
-  doc.setFont("Roboto", "bold");
+  doc.setFont("Moserrat", "bold");
   doc.setFontSize(12);
   doc.text("DATOS DEL CLIENTE", 12, 45);
 
@@ -59,8 +61,8 @@ export const generateTicket = (
       [
         datos?.nombre || "-",
         datos?.email || "-",
-        datos?.telefono || "-",
-        datos?.direccion || "-",
+        datos?.telefono || data?.telefono || "-",
+        datos?.direccion || data.direccion || "-",
       ],
     ],
     margin: { left: 12, right: 12 },
@@ -82,7 +84,7 @@ export const generateTicket = (
   const tableBody = productos?.map((producto) => [
     producto.titulo,
     producto.quantity || 0,
-    `${producto.discount || 0} %`,
+    `${producto.descuento || 0} %`,
     formateValue(producto.precio),
     calcularSubTotal(producto),
   ]);
@@ -93,9 +95,9 @@ export const generateTicket = (
     body: tableBody,
     foot: [
       ["Subtotal", "", "", formateValue(total.toString())],
-      ["Costo de Envío", "", "", envioFormated],
-      ["Método de Pago", "", "", "Contraentrega"],
-      ["Pago Total", "", "", valuFormated],
+      ["Costo de envío", "", "", envioFormated],
+      ["Método de pago", "", "", "Contra entrega"],
+      ["Pago total", "", "", valuFormated],
     ],
     margin: { top: 10, left: 12, right: 12 },
     styles: {
@@ -123,7 +125,7 @@ export const generateTicket = (
       .finalY + 10;
 
   doc.setFontSize(12);
-  doc.setFont("Roboto", "bold");
+  doc.setFont("Monserrat", "bold");
   doc.text(
     "Gracias por su compra. ¡Esperamos volver a verlo pronto!",
     105,
@@ -131,7 +133,7 @@ export const generateTicket = (
     { align: "center" }
   );
 
-  doc.setFont("Roboto", "normal");
+  doc.setFont("Monserrat", "normal");
   doc.text(
     `Este documento es de caracter informativo y no puede ser utilizado como comprobante fiscal o de pago.`,
     12,
@@ -149,7 +151,7 @@ export const generateTicket = (
   );
   // Guardar PDF
   // doc.autoPrint({ variant: "non-conform" });
-  doc.save(`Ticket-${datos?.nombre?.toLowerCase()}.pdf`);
+  doc.save(`Ticket de compra ${datos?.nombre?.toLowerCase()}.pdf`);
 };
 
 export default generateTicket;

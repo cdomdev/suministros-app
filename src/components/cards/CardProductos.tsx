@@ -4,7 +4,7 @@ import { formateValue } from "@/utils";
 import { calcularDescuento } from "@/utils";
 
 export const CardProductos: React.FC<Producto> = ({
-  discount,
+  descuento,
   id,
   image,
   marca,
@@ -20,9 +20,9 @@ export const CardProductos: React.FC<Producto> = ({
     >
       <div className="flex w-full justify-between items-center mb-1">
         <span
-          className={`${discount > 0 ? "bg-red-600" : "bg-white"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
+          className={`${descuento > 0 ? "bg-red-600" : "bg-white"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
         >
-          {discount ? `${discount} %` : ""}
+          {descuento ? `${descuento} %` : ""}
         </span>
         <span className="text-gray-700 text-[8px] md:text-[10px] uppercase">
           REF: {referencia}
@@ -44,13 +44,13 @@ export const CardProductos: React.FC<Producto> = ({
             {marca}
           </li>
           <li className="text-xs md:text-sm leading-5 text-center">{titulo}</li>
-          {discount ? (
+          {descuento ? (
             <>
               <li className="mt-2 line-through text-xs md:text-sm font-semibold text-red-700 opacity-[50%]">
                 $ {formateValue(precio)}
               </li>
               <li className="text-sm md:text-lg my-2 font-semibold">
-                $ {calcularDescuento(precio, discount)}
+                $ {calcularDescuento(precio, descuento)}
               </li>
             </>
           ) : (

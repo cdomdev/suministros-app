@@ -23,7 +23,7 @@ const Registro: React.FC = () => {
       resetForm();
       setIsLoading(false);
       eventAuth.emit("authChange", true);
-      localStorage.setItem("infoProfileUSer", JSON.stringify(response.data));
+      sessionStorage.setItem("infoProfileUSer", JSON.stringify(response.data));
       showToast(
         `Tu registro fue exitoso, ya puedes iniciar sesion en suministros`,
         "success"

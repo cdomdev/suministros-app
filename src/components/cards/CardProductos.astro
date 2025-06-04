@@ -2,16 +2,8 @@
 import type { Producto } from "@/types/types";
 
 const props = Astro.props as Producto;
-const {
-  id,
-  referencia,
-  image,
-  titulo,
-  discount,
-  precio,
-  marca,
-  subcategoria,
-} = props;
+const { id, referencia, image, titulo, descuento, precio, marca, categoria } =
+  props;
 import { formateValue } from "@/utils/formatearValor";
 import { calcularDescuento } from "@/utils/calcularDescuento";
 ---
@@ -20,13 +12,13 @@ import { calcularDescuento } from "@/utils/calcularDescuento";
   href={`/detalle-producto/${id}`}
   class="card-producto rounded-sm flex justify-between flex-col w-[10em] md:w-[16em] p-3 max-h-[32em] border border-gray-200 hover:shadow-md duration-150"
   data-marca={marca}
-  data-categoria={subcategoria}
+  data-categoria={categoria}
 >
   <div class="flex w-full justify-between items-center mb-1 h-7 md:h-10">
     <span
-      class={`${discount > 0 ? "bg-red-600" : "bg-transparent"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
+      class={`${descuento > 0 ? "bg-red-600" : "bg-transparent"} py-1 px-2 md:px-4 text-xs md:text-sm text-white font-semibold`}
     >
-      {discount ? `${discount} %` : ""}
+      {descuento ? `${descuento} %` : ""}
     </span>
     <span class="text-gray-700 text-[8px] md:text-[10px] uppercase"
       >REF: {referencia}</span
@@ -51,14 +43,14 @@ import { calcularDescuento } from "@/utils/calcularDescuento";
       </li>
       <li class="text-xs md:text-sm leading-5 text-center">{titulo}</li>
       <li
-        class={`${discount ? "mt-2 line-through text-xs md:text-sm font-semibold text-red-700 opacity-[50%]" : "h-4"}`}
+        class={`${descuento ? "mt-2 line-through text-xs md:text-sm font-semibold text-red-700 opacity-[50%]" : "h-4"}`}
       >
-        {discount ? `$ ${formateValue(precio)}` : ""}
+        {descuento ? `$ ${formateValue(precio)}` : ""}
       </li>
       <li class="text-sm md:text-lg my-2 font-semibold">
         {
-          discount
-            ? `$ ${calcularDescuento(precio, discount)}`
+          descuento
+            ? `$ ${calcularDescuento(precio, descuento)}`
             : `$ ${formateValue(precio)}`
         }
       </li>
