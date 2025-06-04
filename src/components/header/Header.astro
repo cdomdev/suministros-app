@@ -5,14 +5,16 @@ import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
 import AuthNone from "./AuthNone";
 import AuthSucces from "./AuthSuccess";
 import Offcanvas from "./sidebarMobile/Offcanvas.astro";
-import { Localitation } from "../Localitation";
+import ModalLocation from "@/components/modales/ModalLocation";
+
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
 ---
 
 <nav
-  class="border-gray-200 dark:bg-gray-900 dark:border-gray-700 w-full fixed top-0 z-10 bg-white">
+  class="border-gray-200 dark:bg-gray-900 dark:border-gray-700 w-full fixed top-0 z-10 bg-white"
+>
   <div class="flex flex-wrap items-center justify-between py-3 px-3">
     <Offcanvas />
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
@@ -21,10 +23,10 @@ const isAuthenticated = authToken !== undefined;
     <div class="hidden md:block w-[37%]">
       <Buscador client:visible />
     </div>
-    
+
     <div class="flex gap-1 md:gap-4">
       <div class="flex items-end md:hidden">
-        <Localitation client:visible />
+        <ModalLocation client:only />
       </div>
       {
         isAuthenticated ? (
@@ -38,7 +40,8 @@ const isAuthenticated = authToken !== undefined;
   </div>
   <hr class="text-gray-500" />
   <div
-    class="py-1 md:py-2 md:px-2 w-full shadow-md lg:px-10 justify-between hidden md:flex submenu-items">
+    class="py-1 md:py-2 md:px-2 w-full shadow-md lg:px-10 justify-between hidden md:flex submenu-items"
+  >
     <SubMenu />
   </div>
 </nav>

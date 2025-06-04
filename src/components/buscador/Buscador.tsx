@@ -4,6 +4,7 @@ import { SvgGlass } from "../icons/SvgGlass";
 import { busquedaProductos } from "@/services/productos";
 import { Spinner } from "react-bootstrap";
 import { Localitation } from "@/components/Localitation";
+import ModalLocation from "../modales/ModalLocation";
 
 const Buscador = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -15,7 +16,7 @@ const Buscador = () => {
     }
     setIsLoading(true);
     const response = await busquedaProductos(searchTerm);
-    const {status} = response
+    const { status } = response
     if (response.status === 200) {
       sessionStorage.setItem(
         "resultado-busqueda",
@@ -66,7 +67,7 @@ const Buscador = () => {
         </button>
       </form>
 
-      <Localitation />
+      <ModalLocation />
     </div>
   );
 };

@@ -149,6 +149,14 @@ export type propPago = {
 export type propMercadopago = {
   productos: Producto[];
   datos: DatosUsurio;
-  ruta: string;
   valorDeEnvio: number;
 };
+
+export type CiudadPorDepartamento = {
+  id: number;
+  departamento: string;
+  ciudades: string[];
+};
+
+
+export type ListaUbicaciones = CiudadPorDepartamento[];
