@@ -150,6 +150,7 @@ export type propMercadopago = {
   productos: Producto[];
   datos: DatosUsurio;
   valorDeEnvio: number;
+ruta: string;
 };
 
 export type CiudadPorDepartamento = {
