@@ -3,7 +3,7 @@ import type { Producto } from "@/types/types";
 export const subcategoriasUnicas = (productos: Producto[]) => {
   const subcategorias = [
     ...new Set(
-      productos.map((producto: Producto) => producto.subcategoria.nombre)
+      productos.map((producto: Producto) => producto.subcategoria?.nombre)
     ),
   ];
   return subcategorias;
