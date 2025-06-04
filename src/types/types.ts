@@ -7,8 +7,8 @@ export interface Producto {
   image: string;
   referencia: string;
   descuento: number;
-  categoria?: Categoria;
-  subcategoria?: Categoria;
+  categoria: Categoria;
+  subcategoria: Categoria;
   quantity?: number;
 }
 
