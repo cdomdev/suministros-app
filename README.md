@@ -90,21 +90,11 @@ Para el manejo de ruta de compras y pago a traves de el modo contra entrega con 
 ```text
 PUBLIC_URL_CLIENT="buy-user"
 ```
-Para el manejo de ruta de compras y pago a traves de el modo contra entrega con el rol de invitado
 
-```text
-PUBLIC_URL_INVITED="buy-invited"
-```
 
 Para el manejo de ruta de compras y pago a traves de mercadopago con el rol de usuario 
 ```text
 PUBLIC_URL_CLIENT_MERCADOPAGO="mercadopago-user"
-```
-
-Para el manejo de ruta de compras y pago a traves de mercadopago con el rol de invitado
-
-```text
-PUBLIC_URL_INVITED_MERCADOPAGO="mercadopago-invited"
 ```
 
 
