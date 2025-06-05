@@ -6,6 +6,22 @@ import Truck from "../components/icons/Truck.astro";
 import MasVendidos from "@/components/MasVendidos.astro";
 import SliderIndex from "@/components/SliderIndex.astro";
 import ContainerSecctions from "@/components/ContainerSecctions.astro";
+import "@/styles/globals.css";
+
+const items = [
+  { href: "/categoria/Baños", img: "/banios.webp", text: "Baños" },
+  { href: "/categoria/Cocinas", img: "/cocinas.webp", text: "Cocinas" },
+  {
+    href: "/categoria/Construccion-y-remodelacion",
+    img: "/constr.webp",
+    text: "Construcción",
+  },
+  {
+    href: "/categoria/Pisos-y-paredes",
+    img: "/pisos.webp",
+    text: "Pisos",
+  },
+];
 ---
 
 <Layout title="Suministros">
@@ -14,82 +30,61 @@ import ContainerSecctions from "@/components/ContainerSecctions.astro";
     <SliderIndex />
   </section>
   <ContainerSecctions>
-    <h1
-      class="block text-sm md:text-xl mx-2 my-3 md:my-4 text-wrap font-semibold text-center lg:pl-16"
-    >
-      Haz de tu hogar o negocio un espacio unico
-    </h1>
-    <p class="text-xs md:text-base/6 font-normal text-wrap py-3 px-3">
+    <h2 class="text-lg text-pretty px-2 md:px-0 md:text-xl font-bold mb-2">
+      Haz de tu hogar o negocio un espacio único
+    </h2>
+    <p class="text-gray-600 text-sm md:text-base px-2 text-pretty leading-1">
       Somos la marca de remodelación de los colombianos, con una tienda virtual
-      para que compres fácil y rápido, con una amplia red de distribución por
-      todo el país. Aqui encontraras Sanitarios, pinturas, lavamanos, cocinas y
-      mas productos para remodelar tus espacios.
+      que te permite comprar fácil y rápido. Explora sanitarios, pinturas,
+      lavamanos, cocinas y más.
     </p>
   </ContainerSecctions>
 
-  <ContainerSecctions>
-    <h2
-      class="my-1 md:my-3 text-sm md:text-lg text-balance pl-5 md:pl-20 lg:pl-0 font-semibold mx-auto mb-3"
-    >
-      Estos son algunos de los productos mas vendidos
-    </h2>
+  <section class="mt-3">
+    <div class="text-center mb-6">
+      <h3 class="text-lg md:text-xl font-semibold">Productos más vendidos</h3>
+    </div>
     <MasVendidos />
-  </ContainerSecctions>
+  </section>
 
-  <ContainerSecctions class="mb-14">
-    <h3 class="my-2 text-sm md:text-lg font-semibold mx-auto mb-4 px-3">
-      Categorias
-    </h3>
-
-    <article class="flex flex-wrap md:flex-row gap-3 md:gap-10 justify-center">
+  <section class="py-10 bg-white">
+    <div class="text-center mb-6">
+      <h3 class="text-lg md:text-xl font-semibold">Categorías</h3>
+    </div>
+    <div class="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto px-4">
       {
-        [
-          { href: "/categoria/Baños", img: "/banios.webp", text: "Baños" },
-          { href: "/categoria/Cocinas", img: "/cocinas.webp", text: "Cocinas" },
-          {
-            href: "/categoria/Construccion-y-remodelacion",
-            img: "/constr.webp",
-            text: "Construcción",
-          },
-          {
-            href: "/categoria/Pisos-y-paredes",
-            img: "/pisos.webp",
-            text: "Pisos",
-          },
-        ].map(({ href, img, text }) => (
-          <a
-            href={href}
-            aria-label={text}
-            class="relative w-40 h-32 lg:w-64 lg:h-52 flex items-end justify-center text-base md:text-2xl pb-2 md:pb-4 text-white bg-cover rounded-lg shadow-md hover:shadow-lg transition duration-150 ease-in-out"
-            style={{ backgroundImage: `url(${img})` }}
-          >
-            <span class="bg-white px-3 text-black rounded-md font-semibold text-lg">
-              {text}
-            </span>
+        items.map((item) => (
+          <a href={item.href}>
+            <div class="rounded-lg overflow-hidden shadow-md hover:shadow-sm duration-200 transition cursor-pointer bg-red-200 md:min-w-[250px]">
+              <img src={item.img} class="w-full h-32 object-cover" />
+              <div class="text-center py-2 bg-gray-100 font-semibold text-xm md:text-base">
+                {item.text}
+              </div>
+            </div>
           </a>
         ))
       }
-    </article>
-  </ContainerSecctions>
+    </div>
+  </section>
 
-  <ContainerSecctions class="flex justify-around">
+  <section class="bg-gray-50 py-10">
     <div
-      class="flex flex-col text-center justify-center text-xs md:text-sm items-center leading-4"
+      class="flex flex-col md:flex-row items-center justify-center gap-12 text-center max-w-4xl mx-auto"
     >
-      <MercadoPago />
-      Metodos de pago
-      <small class="text-gray-600 text-[10px] md:text-xs"
-        >Paga con tarjetas, credito, debito <br /> a través de mercado pago</small
+      <div
+        class="flex justify-center items-center text-xs md:text-sm flex-col leading-4"
       >
-    </div>
-    <div
-      class="flex justify-center items-center text-xs md:text-sm flex-col leading-4"
-    >
-      <Truck />
-      Envios a todo el pais
-      <small class="text-gray-600 text-[10px] md:text-xs"
-        >Recibe tus compras donde estes</small
+        <MercadoPago class="size-14" />
+        <h4 class="font-semibold text-sm">Métodos de pago</h4>
+        <p class="text-xs text-gray-500">Tarjetas de crédito, débito y pse</p>
+      </div>
+      <div
+        class="flex justify-center items-center text-xs md:text-sm flex-col leading-4"
       >
+        <Truck class="size-14" />
+        <h4 class="font-semibold text-sm">Envíos a todo el país</h4>
+        <p class="text-xs text-gray-500">Recibe tus compras donde estés</p>
+      </div>
     </div>
-  </ContainerSecctions>
+  </section>
 </Layout>

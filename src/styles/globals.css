@@ -1,0 +1,40 @@
+@font-face {
+    font-family: "Montserrat";
+    src: url("/fonts/montserrat-latin-400-normal.woff") format("woff2");
+    font-display: swap;
+}
+
+html,
+body,
+main {
+    margin: 0;
+    padding: 0;
+    scroll-behavior: smooth;
+    font-family: "Montserrat", sans-serif;
+    overflow-x: hidden;
+    box-sizing: border-box;
+}
+
+
+/* La barra de desplazamiento completa */
+::-webkit-scrollbar {
+    width: 10px;
+}
+
+/* El "track" de la barra de desplazamiento */
+::-webkit-scrollbar-track {
+    background: #ececec;
+    border-radius: 10px;
+}
+
+/* El pulgar (thumb) de la barra de desplazamiento */
+::-webkit-scrollbar-thumb {
+    background: #d0d0d0;
+    border-radius: 10px;
+    height: 10px;
+}
+
+/* El pulgar (thumb) cuando esté en hover */
+::-webkit-scrollbar-thumb:hover {
+    background: #555;
+}

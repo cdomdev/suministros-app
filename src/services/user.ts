@@ -1,52 +1,25 @@
-import axios from "axios";
-import type { DataUserUpdate, PedidosResponse } from "@/types/types";
-import { HOST } from "@/congif";
+import type { DataUserUpdate } from "@/types/types";
 import { query } from "./query";
 
-export const getOrdersBy = async (id: string): Promise<PedidosResponse> => {
-  try {
-    const response = await axios.get(`${HOST}/user/pedidos/${id}`, {
-      withCredentials: true,
-    });
-    return response.data as PedidosResponse;
-  } catch (error) {
-    throw error;
-  }
+export const getOrdersBy = async (id?: string) => {
+  const response = await query(`/user/pedidos/${id}`, "GET");
+  return response.data;
 };
 
 export const updateProfile = async (
   email: string,
   dataUpdate: DataUserUpdate
 ) => {
-  try {
-    const response = await axios.post(
-      `${HOST}/user/profile-update`,
-      {
-        email,
-        dataUpdate,
-      },
-      { withCredentials: true }
-    );
-    return response;
-  } catch (error) {
-    throw error;
-  }
-};
-
-export const getDataIp = async () => {
-  const response = await query(`/location/data-ip-info`, "GET");
-  return response.data.data;
+  const response = await query(`/user/update-profile`, "PUT", {
+    email,
+    dataUpdate,
+  });
+  return response;
 };
 
 export const getMessages = async (id: number | undefined) => {
-  try {
-    const response = await axios.get(`${HOST}/user/mssm/${id}`, {
-      withCredentials: true,
-    });
+  const response = await query(`/user/mssm/${id}`, "GET");
 
-    console.log(response);
-    return response;
-  } catch (error) {
-    throw error;
-  }
+  console.log(response);
+  return response;
 };
