@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import { initMercadoPago } from "@mercadopago/sdk-react";
-import type { Producto, DatosUsurio, ResponsIPInfo } from "@/types/types";
+import type { Producto, DatosUsurio,  } from "@/types/types";
 import { calcularTotal } from "@/utils";
 import { calcularCostoEnvio } from "@/utils";
 import { mercadoPago } from "@/services/pagos";
 import { Toast } from "../Toast";
 import { useToastStore } from "@/context/store.context";
+import { useUbicacion } from "@/hook/useUbicacion";
 
 const clientMercadopago = import.meta.env.PUBLIC_CLIENT_MERCADOPAGO;
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT_MERCADOPAGO;
@@ -16,8 +17,8 @@ const MercadoPago = () => {
   const [datosEnvio, setDatosEnvio] = useState<DatosUsurio | null>(null);
   const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
   const [datosProductos, setdatosproductos] = useState<Producto[]>([]);
-  const [location, setLocation] = useState<ResponsIPInfo>();
 
+  const {departamento} = useUbicacion()
   const { showToast } = useToastStore();
 
   initMercadoPago(clientMercadopago, {
@@ -35,16 +36,14 @@ const MercadoPago = () => {
     let dataLocation = JSON.parse(
       sessionStorage.getItem("referenceDataLocation") || ""
     );
-    setLocation(dataLocation);
     setDatosEnvio(datosEnvioLocal);
     setDatosusuarioLog(datosUsuarioLogLocal);
     setdatosproductos(productosLocal);
   }, []);
 
   const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location };
-  const total = calcularTotal(datosProductos);
-  const destino = datosEnvio?.destino || "0";
-  const envio = calcularCostoEnvio({ destino, precio: total });
+  const subtotal = calcularTotal(datosProductos);
+  const envio = calcularCostoEnvio({ departamento, subtotal });
 
   const createOrder = async () => {
     if (!datosProductos || !datosEnvio || datosProductos.length === 0) {

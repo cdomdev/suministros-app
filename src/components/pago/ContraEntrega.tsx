@@ -1,47 +1,41 @@
 import { useEffect, useState } from "react";
-import type { DatosUsurio, Producto, ResponsIPInfo } from "@/types/types";
+import type { DatosUsurio, Producto } from "@/types/types";
 import { Toast } from "../Toast";
 import { pago } from "@/services/pagos";
 import { calcularCostoEnvio } from "@/utils/calcularCostoDeEnvio";
 import { calcularTotal } from "@/utils/calcularPago";
 import { useToastStore } from "@/context/store.context";
+import Cookies from "js-cookie";
+import { useUbicacion } from "@/hook/useUbicacion";
 
 export const ContraEntrega = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
   const [datosProductos, setdatosproductos] = useState<Producto[]>([]);
-  const [location, setLocation] = useState<ResponsIPInfo>();
   const [datosEnvio, setDatosEnvio] = useState<DatosUsurio | null>(null);
   const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
 
+  const { departamento } = useUbicacion();
   const { showToast } = useToastStore();
 
   useEffect(() => {
-    let dataLocation = JSON.parse(
-      sessionStorage.getItem("referenceDataLocation") || ""
-    );
     let productosLocal = JSON.parse(localStorage.getItem("carrito") || "[]");
-    let datosEnvioLocal = JSON.parse(
-      localStorage.getItem("dataUserForBuy") || ""
-    );
+    let datosEnvioLocal = JSON.parse(Cookies.get("dataUserForBuy") || "");
     let datosUsuarioLogLocal = JSON.parse(
-      sessionStorage.getItem("infoProfileUSer") || "{}"
+      Cookies.get("user_sesion") || "{}"
     );
 
     setDatosEnvio(datosEnvioLocal);
-    setLocation(dataLocation);
     setDatosusuarioLog(datosUsuarioLogLocal);
     setdatosproductos(productosLocal);
   }, []);
 
   const datosUsuario = { ...datosEnvio, ...datosUsuarioLog, ...location };
-  const destino = datosEnvio?.destino || "0";
-  const total = calcularTotal(datosProductos);
-  const envio = calcularCostoEnvio({ destino, precio: total });
+  const subtotal = calcularTotal(datosProductos);
+  const envio = calcularCostoEnvio({ departamento, subtotal });
 
   const finalizarCompra = async () => {
-    sessionStorage.setItem("carrito", JSON.stringify(datosProductos));
-    sessionStorage.setItem("dataUserForBuy", JSON.stringify(datosEnvio));
-    sessionStorage.setItem("paymentMethod", JSON.stringify(true));
+    Cookies.set("carrito", JSON.stringify(datosProductos));
+    Cookies.set("paymentMethod", JSON.stringify(true));
     setIsLoading(true);
     if (!datosEnvio || !datosProductos || datosProductos.length === 0) {
       showToast(

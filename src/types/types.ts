@@ -67,7 +67,7 @@ export interface ValuesRegistro {
   password: string;
 }
 
-export interface DatosUsurio extends ResponsIPInfo {
+export interface DatosUsurio  {
   id?: number;
   nombre?: string;
   apellido?: string;
@@ -75,7 +75,8 @@ export interface DatosUsurio extends ResponsIPInfo {
   email?: string;
   telefono?: string;
   direccion?: string;
-  destino?: string;
+  ciudad?: string ,
+  departamento?: string,
   detalles?: string;
 }
 
@@ -129,16 +130,6 @@ export interface PedidosResponse {
   pedidos: Pedido[];
 }
 
-export type ResponsIPInfo = {
-  city?: string | null;
-  region?: string | null;
-  country?: string | null;
-  postal?: string | null;
-  loc?: string | null;
-  ip?: string | null;
-  org?: string | null;
-  timezone?: string | null;
-};
 
 export type propPago = {
   productos: Producto[];

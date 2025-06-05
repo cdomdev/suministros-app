@@ -7,23 +7,24 @@ import {
   formateValue,
   generateTicket,
 } from "@/utils";
+import { useUbicacion } from "@/hook/useUbicacion";
+import Cookies from "js-cookie";
 
 const Detalles = () => {
   const [productos, setProductos] = useState<Producto[]>();
   const [datos, setDatos] = useState<DatosUsurio>();
-  const [data, setData] = useState<DatosUsurio>({})
+  const [data, setData] = useState<DatosUsurio>({});
+
+  const { departamento, ciudad } = useUbicacion();
 
   useEffect(() => {
     try {
-      const carrito = JSON.parse(sessionStorage.getItem("carrito") || "[]");
-      const dataUser = JSON.parse(
-        sessionStorage.getItem("infoProfileUSer") || "{}"
-      );
+      const carrito = JSON.parse(Cookies.get("carrito") || "[]");
+      const dataUser = JSON.parse(Cookies.get("user_sesion") || "{}");
 
-        // data de usuario envio
-      const data = JSON.parse(localStorage.getItem("dataUserForBuy") || "{}")
-      
-      
+      // data de usuario envio
+      const data = JSON.parse(Cookies.get("dataUserForBuy") || "{}");
+
       if (dataUser && typeof dataUser === "object") setData(data);
       if (Array.isArray(carrito)) setProductos(carrito);
       if (dataUser && typeof dataUser === "object") setDatos(dataUser);
@@ -32,14 +33,13 @@ const Detalles = () => {
     }
   }, []);
 
-  const destino = datos?.destino || "0";
-  const total = calcularTotal(productos) || 0;
-  const totalString = formateValue(total.toString());
+  const subtotal = calcularTotal(productos) || 0;
+  const totalString = formateValue(subtotal.toString());
 
-  const envioRaw = calcularCostoEnvio({ destino, precio: total });
+  const envioRaw = calcularCostoEnvio({ departamento, subtotal });
   const envio = isNaN(envioRaw) ? 0 : envioRaw;
 
-  const valorConEnvio = (total + envio).toString();
+  const valorConEnvio = (subtotal + envio).toString();
   const valuFormated = formateValue(valorConEnvio);
   const envioFormated = formateValue(envio.toString());
 
@@ -152,7 +152,7 @@ const Detalles = () => {
         <div className="flex flex-col md:flex-row mt-4 mb-2 gap-2 items-center justify-center">
           <button
             className="flex items-center gap-1 uppercase text-xs font-semibold border px-4 py-2.5 md:py-2 rounded-md bg-blue-600 text-white duration-300 hover:text-gray-400 hover:bg-gray-500"
-            onClick={() => generateTicket(datos ?? {}, productos || null, data)}
+            onClick={() => generateTicket(datos ?? {}, productos || null, data, departamento, ciudad)}
           >
             Descargar factura
             <svg

@@ -5,18 +5,22 @@ import { formateValue } from "@/utils/formatearValor";
 import { useState, useEffect } from "react";
 import MercadoPago from "@/components/pago/MercadoPago";
 import ModalOpcionesPago from "../modales/ModalOpcionesPago";
+import {useUbicacion} from "@/hook/useUbicacion"
+import Cookies from "js-cookie";
 
 const DetosPago = () => {
   const [datos, setDatos] = useState<DatosUsurio>();
   const [productos, setProductos] = useState<Producto[]>([]);
   const [datosUserLogin, setDatosUserLogin] = useState<DatosUsurio>();
 
+  const {departamento} = useUbicacion()
+
   useEffect(() => {
     const datosUsuario = JSON.parse(
-      localStorage.getItem("dataUserForBuy") || "[]"
+      Cookies.get("dataUserForBuy") || "[]"
     );
     const datosUsuarioLog = JSON.parse(
-      sessionStorage.getItem("infoProfileUSer") || "[]"
+      Cookies.get("user_sesion") || "[]"
     );
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     setDatos(datosUsuario);
@@ -24,10 +28,9 @@ const DetosPago = () => {
     setProductos(carrito);
   }, []);
 
-  const destino = datos?.destino || "0";
-  const total = calcularTotal(productos);
-  const envio = calcularCostoEnvio({ destino, precio: total });
-  const valorConEnvio = (total + envio).toString();
+  const subtotal = calcularTotal(productos);
+  const envio = calcularCostoEnvio({ departamento, subtotal });
+  const valorConEnvio = (subtotal + envio).toString();
   const valuFormated = formateValue(valorConEnvio);
 
   return (
@@ -92,7 +95,7 @@ const DetosPago = () => {
               </a>
               .
             </p>
-            <MercadoPago />
+            {/* <MercadoPago /> */}
             <ModalOpcionesPago />
           </div>
         </div>

@@ -1,26 +1,18 @@
 interface Envio {
-    destino: string,
-    precio: number
+  departamento: string;
+  subtotal: number;
 }
-export const calcularCostoEnvio = ({ destino, precio }: Envio): number => {
-    const free = 400000;
-    const destinoInt = parseInt(destino, 10);
 
-    // Si el precio es mayor o igual al umbral de envío gratis
-    if (precio >= free) {
-        return 0;
-    } else {
-        // Determinar el costo de envío basado en el destino
-        switch (destinoInt) {
-            case 1:
-                return 15000;
-            case 2:
-                return 25000;
-            case 3:
-                return 0;
-            default:
-                return 30000;
-        }
-    }
+export const calcularCostoEnvio = ({ departamento, subtotal }: Envio): number => {
+  const ENVIO_GRATIS_UMBRAL = 400000;
+
+  if (subtotal >= ENVIO_GRATIS_UMBRAL) return 0;
+
+  const departamentoNormalizado = departamento.trim().toLowerCase();
+
+  const departamentosConEnvioReducido = ["cundinamarca", "bogotá d.c."];
+
+  const esEnvioReducido = departamentosConEnvioReducido.includes(departamentoNormalizado);
+
+  return esEnvioReducido ? 20000 : 40000;
 };
-

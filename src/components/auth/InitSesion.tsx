@@ -39,10 +39,6 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
           sameSite: "lax",
           secure: true,
         });
-        sessionStorage.setItem(
-          "infoProfileUSer",
-          JSON.stringify(userSessionData)
-        );
       } else if (
         status === 404 ||
         status === 403 ||

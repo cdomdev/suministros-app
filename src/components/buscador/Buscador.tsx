@@ -3,7 +3,6 @@ import { useState } from "react";
 import { SvgGlass } from "../icons/SvgGlass";
 import { busquedaProductos } from "@/services/productos";
 import { Spinner } from "react-bootstrap";
-import { Localitation } from "@/components/Localitation";
 import ModalLocation from "../modales/ModalLocation";
 
 const Buscador = () => {
@@ -32,7 +31,7 @@ const Buscador = () => {
   };
 
   return (
-    <div className="flex gap-3">
+    <div className="flex gap-1">
       <form className="flex items-center w-full ld:w-4/5 lg:mx-auto   ">
         <label htmlFor="simple-search" className="sr-only">
           Search

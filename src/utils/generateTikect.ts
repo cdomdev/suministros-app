@@ -9,17 +9,19 @@ import { calcularSubTotal } from "./calcularSubTotal";
 export const generateTicket = (
   datos: DatosUsurio,
   productos: Producto[] | null,
-  data: DatosUsurio
+  data: DatosUsurio,
+  departamento: string,
+  ciudad: string
 ) => {
   const doc = new jsPDF();
 
 
   // Variables dinámicas
-  const destino = datos?.destino || "0";
-  const total = calcularTotal(productos);
-  const envio = calcularCostoEnvio({ destino, precio: total });
+
+  const subtotal = calcularTotal(productos);
+  const envio = calcularCostoEnvio({ departamento, subtotal });
   const envioFormated = formateValue(envio.toString());
-  const valorConEnvio = (total + envio).toString();
+  const valorConEnvio = (subtotal + envio).toString();
   const valuFormated = formateValue(valorConEnvio);
   const fecha = new Date();
   const dia = fecha.getDate();
@@ -44,28 +46,30 @@ export const generateTicket = (
 
   // linea con estilo dashed
   doc.setLineDashPattern([1, 1], 0);
-  doc.line(12, 35, 198, 35);
+  doc.line(5, 35, 205, 35);
 
   // Primer subtitulo
   doc.setFont("Moserrat", "bold");
   doc.setFontSize(12);
-  doc.text("DATOS DEL CLIENTE", 12, 45);
+  doc.text("DATOS DEL CLIENTE", 5, 45);
 
   // Espacio antes de los productos
-  doc.text("DATOS DE LOS PRODUCTOS", 12, 85);
+  doc.text("DATOS DE LOS PRODUCTOS", 5, 85);
 
   autoTable(doc, {
     startY: 50,
-    head: [["Nombre", "Email", "Teléfono", "Dirección"]],
+    head: [["Nombre", "Email", "Teléfono","Departamento", "Ciudad",  "Dirección"]],
     body: [
       [
         datos?.nombre || "-",
         datos?.email || "-",
         datos?.telefono || data?.telefono || "-",
+        departamento,
+        ciudad,
         datos?.direccion || data.direccion || "-",
       ],
     ],
-    margin: { left: 12, right: 12 },
+    margin: { left: 5, right: 5 },
     styles: {
       fontSize: 10,
       cellPadding: 4,
@@ -94,12 +98,12 @@ export const generateTicket = (
     head: [["Productos", "Cantidad", "Descuento", "Precio", "Subtotal"]],
     body: tableBody,
     foot: [
-      ["Subtotal", "", "", formateValue(total.toString())],
+      ["Subtotal", "", "", formateValue(subtotal.toString())],
       ["Costo de envío", "", "", envioFormated],
       ["Método de pago", "", "", "Contra entrega"],
       ["Pago total", "", "", valuFormated],
     ],
-    margin: { top: 10, left: 12, right: 12 },
+    margin: { top: 10, left: 5, right: 5 },
     styles: {
       fontSize: 10,
       cellPadding: 3,
