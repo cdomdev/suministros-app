@@ -107,7 +107,7 @@ export const ContraEntrega = () => {
         <li className=" list-disc text-balance">
           Si tiene dudas sobre el metodo de pago seleccionado, antes de
           continuar lo invitamos a consultar la pagina de{" "}
-          <a href="/Medios-de-pago" className="text-blue-500 font-semibold">
+          <a href="/medios-de-pago" className="text-blue-500 font-semibold">
             {" "}
             metodos de pago
           </a>

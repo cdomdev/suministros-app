@@ -176,7 +176,7 @@ export const FormEnvioDatosUsuario = () => {
               </div>
             </div>
             <UpdateSteps
-              ruta="/Pago"
+              ruta="/pago"
               bg="bg-primary"
               textColor="text-white"
               textContent="Continuar"

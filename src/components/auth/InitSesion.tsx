@@ -111,7 +111,7 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
                   Ingrese su contraseña
                 </label>
                 <a
-                  href="/Olvide-mi-contraseña"
+                  href="/olvide-mi-contraseña"
                   className="text-blue-700 hover:underline duration-150 text-sm flex justify-end px-1"
                 >
                   Olvidé mi contraseña

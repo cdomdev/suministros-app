@@ -88,7 +88,7 @@ const DetosPago = () => {
               disposición estas dos opciones de pago. Asegúrate de revisar los
               términos de cada opción en nuestra página de{" "}
               <a
-                href="/Medios-de-pago"
+                href="/medios-de-pago"
                 className="text-sm font-semibold text-blue-600 hover:text-blue-500 duration-150"
               >
                 Medios de pago
