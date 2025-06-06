@@ -2,11 +2,10 @@
 import SubMenu from "./SubMenu.astro";
 import Buscador from "../buscador/Buscador";
 import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
-import AuthNone from "./AuthNone";
-import AuthSucces from "./AuthSuccess";
 import Offcanvas from "./sidebarMobile/Offcanvas.astro";
-import ModalLocation from "@/components/modales/ModalLocation";
-
+import { Locations } from "@/components/Locations";
+import NavigateProfile from "@/components/NavigateProfile";
+import LoginAndShoping from "@/components/LoginAndShoping";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
@@ -25,16 +24,17 @@ const isAuthenticated = authToken !== undefined;
     </div>
 
     <div class="flex gap-1 md:gap-4">
-      <div class="flex items-end md:hidden ">
-        <ModalLocation client:only/>
+      <div class="flex items-end md:hidden">
+        <Locations client:only />
       </div>
-      {
-        isAuthenticated ? (
-          <AuthSucces client:visible />
-        ) : (
-          <AuthNone client:visible />
-        )
-      }
+      <NavigateProfile isAuthenticated={isAuthenticated} client:only />
+
+      <LoginAndShoping
+        isAuthenticated={isAuthenticated}
+        isBtn={false}
+        client:only
+      />
+
       <CarritoPageNav client:visible />
     </div>
   </div>

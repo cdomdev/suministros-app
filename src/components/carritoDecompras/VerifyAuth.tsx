@@ -1,5 +1,5 @@
 import { useEffect, useState } from "react";
-import ModalAuth from "../modales/ModalAuth";
+import LoginAndShoping from "../LoginAndShoping";
 import type { Producto } from '@/types/types';
 import { eventEmitter } from "@/events/carritoChanged";
 
@@ -35,7 +35,7 @@ const VerifyAuth = () => {
                         productos.length > 0 ? (
                             <div className="   mt-2">
                                 <p className="text-xs md:text-sm mb-2 ">Registrate o inicia sesion para tener un historial de tus compras o hacer seguiento del estado de tu pedido.</p>
-                                <ModalAuth triggerElement={<button className="bg-blue-600 w-full text-white py-2 rounded-md uppercase text-xs md:text-sm  my-3  hover:bg-blue-700 hover:shadow-none">Iniciar sesion</button>} />
+                                <LoginAndShoping  isBtn={true} isAuthenticated />
                             </div>
                         ) :
                             (

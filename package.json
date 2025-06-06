@@ -7,7 +7,8 @@
     "start": "node src/api/server.js",
     "build": "astro check && astro build",
     "preview": "astro preview",
-    "astro": "astro"
+    "astro": "astro",
+    "postinstall": "flowbite-react patch"
   },
   "dependencies": {
     "@astrojs/check": "^0.9.4",

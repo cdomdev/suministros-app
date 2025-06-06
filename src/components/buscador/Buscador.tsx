@@ -3,7 +3,7 @@ import { useState } from "react";
 import { SvgGlass } from "../icons/SvgGlass";
 import { busquedaProductos } from "@/services/productos";
 import { Spinner } from "react-bootstrap";
-import ModalLocation from "../modales/ModalLocation";
+import { Locations } from "../Locations";
 
 const Buscador = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -66,7 +66,7 @@ const Buscador = () => {
         </button>
       </form>
 
-      <ModalLocation />
+      <Locations />
     </div>
   );
 };
