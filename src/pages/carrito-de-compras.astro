@@ -3,9 +3,9 @@ import Layout from "@/layouts/Layout.astro";
 import Contador from "@/components/carritoDecompras/Contador";
 import Summary from "@/components/carritoDecompras/Summary";
 import DetallesCarrito from "@/components/carritoDecompras/DetallesCarrito";
-import VerifyAuth from "@/components/carritoDecompras/VerifyAuth";
 import { Steps } from "@/components/Steps";
-import { UpdateSteps } from "@/components/UpdateSteps";
+import IsAuht from "@/components/carritoDecompras/ValidateSesionCar";
+
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
@@ -16,7 +16,8 @@ const isAuthenticated = authToken !== undefined;
     <Steps client:only="react" />
   </div>
   <section
-    class="pt-10 flex flex-col lg:grid gap-2 w-[90%] m-auto md:grid-cols-col-cust-3 min-h-dvh">
+    class="pt-10 flex flex-col lg:grid gap-2 w-[90%] m-auto md:grid-cols-col-cust-3 min-h-dvh"
+  >
     <article>
       <div class="border w-full bg-[#f4f4f4] py-2 px-3 flex gap-2 items-center">
         <h2 class="font-normal text-base md:text-xl">
@@ -35,23 +36,12 @@ const isAuthenticated = authToken !== undefined;
       <div class="border mt-1 p-2 bg-[#f4f4f4]">
         <Summary client:visible />
         <hr />
-        {
-          isAuthenticated ? (
-            <UpdateSteps
-              client:only="react"
-              ruta="/informacion-para-envio"
-              bg="bg-blue-600"
-              textColor="text-white"
-              textContent="Continuar"
-            />
-          ) : (
-            <VerifyAuth client:load />
-          )
-        }
+        <IsAuht isAuthenticated={isAuthenticated} client:only />
       </div>
       <div class="mt-1 flex flex-col gap-1">
         <div
-          class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]">
+          class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-lock-dollar size-[5rem]"
@@ -62,7 +52,8 @@ const isAuthenticated = authToken !== undefined;
             stroke="#2c3e50"
             fill="none"
             stroke-linecap="round"
-            stroke-linejoin="round">
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M13 21h-6a2 2 0 0 1 -2 -2v-6a2 2 0 0 1 2 -2h10"></path>
             <path d="M11 16a1 1 0 1 0 2 0a1 1 0 0 0 -2 0"></path>
@@ -80,7 +71,8 @@ const isAuthenticated = authToken !== undefined;
           </div>
         </div>
         <div
-          class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]">
+          class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]"
+        >
           <svg
             xmlns="http://www.w3.org/2000/svg"
             class="icon icon-tabler icon-tabler-truck-delivery size-16"
@@ -91,7 +83,8 @@ const isAuthenticated = authToken !== undefined;
             stroke="#2c3e50"
             fill="none"
             stroke-linecap="round"
-            stroke-linejoin="round">
+            stroke-linejoin="round"
+          >
             <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
             <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
             <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0"></path>
@@ -112,7 +105,8 @@ const isAuthenticated = authToken !== undefined;
           </div>
         </div>
         <div
-          class="box-text border-dashed border-3 border-black p-2 flex items-start gap-1 bg-[#f4f4f4]">
+          class="box-text border-dashed border-3 border-black p-2 flex items-start gap-1 bg-[#f4f4f4]"
+        >
           <div class="flex justify-start items-start">
             <svg
               xmlns="http://www.w3.org/2000/svg"
@@ -124,7 +118,8 @@ const isAuthenticated = authToken !== undefined;
               stroke="#2c3e50"
               fill="none"
               stroke-linecap="round"
-              stroke-linejoin="round">
+              stroke-linejoin="round"
+            >
               <path stroke="none" d="M0 0h24v24H0z" fill="none"></path>
               <path d="M14 3v4a1 1 0 0 0 1 1h4"></path>
               <path

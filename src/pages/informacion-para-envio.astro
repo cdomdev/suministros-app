@@ -3,7 +3,7 @@ import Layout from "@/layouts/Layout.astro";
 import Summary from "@/components/carritoDecompras/Summary";
 import Expanded from "@/components/envio/Expanded";
 import { Steps } from "@/components/Steps";
-import VerifyDataLocal from "@/components/envio/VerifyDataLocal";
+import ValidateSesion from "@/components/envio/ValidateSesion";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
@@ -33,7 +33,7 @@ const isAuthenticated = authToken !== undefined;
       </div>
       <div class="border mt-1 p-2 bg-[#f4f4f4]">
         <Summary client:visible />
-        <VerifyDataLocal client:only="react" />
+        <ValidateSesion client:only />
         <div class="mt-1 flex flex-col gap-1">
           <div
             class="box-text border-dashed border-3 border-black p-2 flex items-center gap-1 bg-[#f4f4f4]">

@@ -16,6 +16,7 @@
     "@astrojs/vercel": "^7.8.2",
     "@mercadopago/sdk-react": "^0.0.18",
     "@react-oauth/google": "^0.12.1",
+    "@tailwindcss/postcss": "^4.1.8",
     "@types/react": "^18.3.5",
     "@types/react-dom": "^18.3.0",
     "astro": "^4.16.7",
@@ -40,5 +41,10 @@
     "@babel/preset-env": "^7.26.0",
     "@types/js-cookie": "^3.0.6",
     "browserslist": "^4.24.2"
+  },
+  "pnpm": {
+    "onlyBuiltDependencies": [
+      "@tailwindcss/oxide"
+    ]
   }
 }

@@ -4,7 +4,7 @@ import { calcularTotal } from "@/utils/calcularPago";
 import { formateValue } from "@/utils/formatearValor";
 import { useState, useEffect } from "react";
 // import MercadoPago from "@/components/pago/MercadoPago";
-import {useUbicacion} from "@/hook/useUbicacion"
+import { useUbicacion } from "@/hook/useUbicacion";
 import Cookies from "js-cookie";
 import OpcionesPago from "./OpcionPago";
 
@@ -12,16 +12,11 @@ const DetosPago = () => {
   const [datos, setDatos] = useState<DatosUsurio>();
   const [productos, setProductos] = useState<Producto[]>([]);
   const [datosUserLogin, setDatosUserLogin] = useState<DatosUsurio>();
-
-  const {departamento} = useUbicacion()
+  const { departamento } = useUbicacion();
 
   useEffect(() => {
-    const datosUsuario = JSON.parse(
-      Cookies.get("dataUserForBuy") || "[]"
-    );
-    const datosUsuarioLog = JSON.parse(
-      Cookies.get("user_sesion") || "[]"
-    );
+    const datosUsuario = JSON.parse(Cookies.get("dataUserForBuy") || "[]");
+    const datosUsuarioLog = JSON.parse(Cookies.get("user_sesion") || "[]");
     const carrito = JSON.parse(localStorage.getItem("carrito") || "[]");
     setDatos(datosUsuario);
     setDatosUserLogin(datosUsuarioLog);

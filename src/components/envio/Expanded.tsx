@@ -14,7 +14,6 @@ const Expanded: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
     setExpanded(!expanded);
   };
 
-
   return (
     <div className={` border p-2 rounded-md ${expanded ? "expanded" : ""}`}>
       <div className=" flex gap-1 items-center cursor-pointer ">
@@ -29,12 +28,26 @@ const Expanded: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
           <div className="flex items-center gap-2" onClick={handleToggle}>
             <label
               className={`custom-checkbox ${check ? "checked" : ""}`}
-              htmlFor="envio-normal-checkbox">
+              htmlFor="envio-normal-checkbox"
+            >
               <span className="circle" />
             </label>
             <span className="flex items-center gap-2 group">
-              <p className="font-semibold text-base md:text-lg ">Datos para el envío</p>
-              <svg xmlns="http://www.w3.org/2000/svg" className="icon icon-tabler icon-tabler-truck-delivery lg:group-hover:translate-x-40 duration-300" width="44" height="44" viewBox="0 0 24 24" strokeWidth="1.5" stroke="#2c3e50" fill="none" strokeLinecap="round" strokeLinejoin="round">
+              <p className="font-semibold text-base md:text-lg ">
+                Datos para el envío
+              </p>
+              <svg
+                xmlns="http://www.w3.org/2000/svg"
+                className="icon icon-tabler icon-tabler-truck-delivery lg:group-hover:translate-x-40 duration-300"
+                width="44"
+                height="44"
+                viewBox="0 0 24 24"
+                strokeWidth="1.5"
+                stroke="#2c3e50"
+                fill="none"
+                strokeLinecap="round"
+                strokeLinejoin="round"
+              >
                 <path stroke="none" d="M0 0h24v24H0z" fill="none" />
                 <path d="M7 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
                 <path d="M17 17m-2 0a2 2 0 1 0 4 0a2 2 0 1 0 -4 0" />
@@ -48,12 +61,14 @@ const Expanded: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
       <hr className="border-dashed border-2  font-semibold w-full" />
       {expanded && (
         <div className="w-full flex flex-col justify-center items-center gap-2 p-3">
-          <p className="text-xs md:text-sm">Ingresa la informacion de quien recibe el pedido</p>
-          {isAuthenticated && < Envio /> }
+          <p className="text-xs md:text-sm">
+            Ingresa la informacion de quien recibe el pedido
+          </p>
+          {isAuthenticated && <Envio />}
         </div>
       )}
     </div>
   );
 };
 
-export default Expanded
+export default Expanded;
