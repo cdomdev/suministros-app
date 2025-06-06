@@ -1,5 +1,5 @@
 import { useState } from "react";
-import ModalEnvioUsuario from "@/components/modales/ModalEnvioUsuario";
+import Envio from "./Envio";
 
 interface ExpandedProps {
   isAuthenticated: boolean;
@@ -49,7 +49,7 @@ const Expanded: React.FC<ExpandedProps> = ({ isAuthenticated }) => {
       {expanded && (
         <div className="w-full flex flex-col justify-center items-center gap-2 p-3">
           <p className="text-xs md:text-sm">Ingresa la informacion de quien recibe el pedido</p>
-          {isAuthenticated && < ModalEnvioUsuario /> }
+          {isAuthenticated && < Envio /> }
         </div>
       )}
     </div>

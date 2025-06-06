@@ -6,6 +6,7 @@ import Offcanvas from "./sidebarMobile/Offcanvas.astro";
 import { Locations } from "@/components/Locations";
 import NavigateProfile from "@/components/NavigateProfile";
 import LoginAndShoping from "@/components/LoginAndShoping";
+import Envio from "../envio/Envio";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;

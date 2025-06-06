@@ -81,7 +81,7 @@ const InitSesion: React.FC<FormInicioSesionProps> = ({ setShow }) => {
         onSubmit={handleSubmit}
       >
         {({ handleSubmit }) => (
-          <Form onSubmit={handleSubmit}>
+          <Form onSubmit={handleSubmit} className="text-left">
             <div className="mb-2">
               <label
                 htmlFor="email"

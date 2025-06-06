@@ -40,7 +40,7 @@ export function Locations() {
                 onClose={() => setShow(false)}
             >
 
-                <div className="mb-2">
+                <div className="mb-2 text-left">
                     <label
                         htmlFor="departamento"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
@@ -61,7 +61,7 @@ export function Locations() {
                         ))}
                     </select>
                 </div>
-                <div className="mb-3">
+                <div className="mb-3 text-left">
                     <label
                         htmlFor="ciudad"
                         className="block mb-2 text-sm font-medium text-gray-900 dark:text-white"
