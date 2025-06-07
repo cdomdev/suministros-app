@@ -2,7 +2,7 @@ import { SvgCarrritoSearh } from "@/components/icons/SvgCarrritoSearh";
 import { useState } from "react";
 import { SvgGlass } from "@/components/icons/SvgGlass";
 import { busquedaProductos } from "@/services/productos";
-import { Spinner } from "react-bootstrap";
+import { Spinner } from "@/components/Spinner";
 
 const BuscadorOfCanvas = () => {
   const [searchTerm, setSearchTerm] = useState<string>("");
@@ -54,7 +54,7 @@ const BuscadorOfCanvas = () => {
         className="p-2.5 ms-2 text-sm font-medium text-white bg-blue-700 rounded-lg border border-blue-700 hover:bg-blue-800 focus:ring-4 focus:outline-none focus:ring-blue-300 dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
       >
         {isLoading ? (
-          <Spinner animation="border" size="sm" variant="primary" />
+          <Spinner className="size-4" />
         ) : (
           <>
             <SvgGlass />

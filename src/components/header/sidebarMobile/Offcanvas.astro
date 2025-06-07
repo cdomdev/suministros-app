@@ -1,52 +1,10 @@
 ---
-import BuscadorOfCanvas from "./BuscadorOfCanvas";
 import ItemsSidebar from "./itemsSidebar.astro";
-
 ---
 
-<a
-    data-bs-toggle="offcanvas"
-    href="#offcanvasExample"
-    role="button"
-    class="md:hidden"
-    aria-controls="offcanvasExample">
-    <svg
-        class="w-6 h-6"
-        aria-hidden="true"
-        fill="currentColor"
-        viewBox="0 0 20 20"
-        xmlns="http://www.w3.org/2000/svg">
-        <path
-            clip-rule="evenodd"
-            fill-rule="evenodd"
-            d="M2 4.75A.75.75 0 012.75 4h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 4.75zm0 10.5a.75.75 0 01.75-.75h7.5a.75.75 0 010 1.5h-7.5a.75.75 0 01-.75-.75zM2 10a.75.75 0 01.75-.75h14.5a.75.75 0 010 1.5H2.75A.75.75 0 012 10z"
-        ></path>
-    </svg>
-    <span class="sr-only">button-control</span>
-</a>
 <div
-    class="offcanvas offcanvas-start max-w-[300px]"
-    tabindex="-1"
-    id="offcanvasExample"
-    aria-labelledby="offcanvasExampleLabel">
-    <div class="flex justify-between pl-6 pr-3 py-1 shadow-sm">
-        <h5
-            class="offcanvas-title text-blue-900 uppercase font-bold"
-            id="offcanvasExampleLabe">
-            <span class="text-xl">S</span>uministros
-        </h5>
-        <button
-            type="button"
-            class="btn-close text-reset"
-            data-bs-dismiss="offcanvas"
-            aria-label="Close"></button>
-    </div>
-    <div class="flex justify-center pt-3">
-        <BuscadorOfCanvas client:visible />
-    </div>
-    <div class="offcanvas-body p-2   ">
-        <div class="h-full overflow-y-auto dark:bg-gray-800">
-            <ItemsSidebar />
-        </div>
-    </div>
+  id="sidebar"
+  class="fixed top-[60px] left-0 z-20 w-64 h-[calc(100vh-60px)] bg-white shadow-lg transition-transform duration-300 ease-in-out transform -translate-x-full md:hidden"
+>
+  <ItemsSidebar />
 </div>

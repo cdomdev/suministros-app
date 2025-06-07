@@ -1,4 +1,5 @@
 ---
+// Header.astro
 import SubMenu from "./SubMenu.astro";
 import Buscador from "../buscador/Buscador";
 import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
@@ -11,37 +12,49 @@ const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
 ---
 
-<nav
-  class="border-gray-200 dark:bg-gray-900 dark:border-gray-700 w-full fixed top-0 z-10 bg-white"
->
-  <div class="flex flex-wrap items-center justify-between py-3 px-3">
-    <Offcanvas />
+<nav class="border-gray-200 dark:bg-gray-900 dark:border-gray-700 w-full fixed top-0 z-10 bg-white">
+  <div class="flex flex-wrap items-center justify-between py-3 px-3 relative">
+    <!-- Botón hamburguesa (abre el sidebar) -->
+    <button
+      onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')"
+      type="button"
+      class="inline-flex items-center p-2 w-10 h-10 justify-center text-sm text-gray-500 rounded-lg md:hidden hover:bg-gray-100 focus:outline-none focus:ring-2 focus:ring-gray-200 dark:text-gray-400 dark:hover:bg-gray-700 dark:focus:ring-gray-600"
+      aria-controls="sidebar"
+      aria-expanded="false"
+    >
+      <span class="sr-only">Open main menu</span>
+      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
+        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      </svg>
+    </button>
+
+    <!-- Logo -->
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="/logo.webp" class="h-7 md:h-11" alt="Logo" />
     </a>
+
+    <!-- Buscador desktop -->
     <div class="hidden md:block w-[37%]">
       <Buscador client:visible />
     </div>
 
+    <!-- Iconos y accesos -->
     <div class="flex gap-1 md:gap-4">
       <div class="flex items-end md:hidden">
         <Locations client:only />
       </div>
       <NavigateProfile isAuthenticated={isAuthenticated} client:only />
-
-      <LoginAndShoping
-        isAuthenticated={isAuthenticated}
-        isBtn={false}
-        client:only
-      />
-
+      <LoginAndShoping isAuthenticated={isAuthenticated} isBtn={false} client:only />
       <CarritoPageNav client:visible />
     </div>
+
+    <!-- Offcanvas insertado (lateral mobile) -->
+    <Offcanvas />
   </div>
+
   <hr class="text-gray-500" />
-  <div
-    class="py-1 md:py-2 md:px- w-full shadow-md lg:px-5 justify-between hidden md:flex submenu-items"
-  >
+
+  <div class="py-1 md:py-2 w-full shadow-md lg:px-5 justify-between hidden md:flex submenu-items">
     <SubMenu />
   </div>
 </nav>

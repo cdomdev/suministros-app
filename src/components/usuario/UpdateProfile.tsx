@@ -1,8 +1,7 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import type { DatosUsurio } from "@/types/types";
-import { Form } from "react-bootstrap";
-import { Formik, Field, ErrorMessage } from "formik";
+import { Formik, Field, ErrorMessage,Form } from "formik";
 import { Toast } from "../Toast";
 import type { DataUserUpdate } from "@/types/types";
 import { updateProfile } from "@/services/user";
