@@ -7,6 +7,7 @@ import type { ValuesPassWords } from "@/types/types";
 import { useToastStore } from "@/context/store.context";
 import { Spinner } from "../Spinner";
 import { Toast } from "../Toast";
+import Cookies from "js-cookie";
 
 interface FormResetPasswordProps {
   token: string;
@@ -19,7 +20,7 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
   const { showToast } = useToastStore();
 
   useEffect(() => {
-    const send = localStorage.getItem("processSucces");
+    const send = Cookies.get("processSucces");
     if (send) {
       const dataPerse = JSON.parse(send);
       setSuccess(dataPerse);
@@ -31,7 +32,7 @@ export const FormResetPassword = ({ token }: FormResetPasswordProps) => {
     const response = await resetPassword({ values, token });
     const { status, details } = response;
     if (response && response.status === 200) {
-      showToast("Se actualizo la contrasela con exito", "success")
+      showToast("Se actualizo la contraseña con exito", "success")
       setSuccess(true);
       setIsLoading(false);
       localStorage.setItem("processSucces", JSON.stringify(true));

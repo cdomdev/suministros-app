@@ -7,11 +7,10 @@ interface Props {
 
 const { pagina } = Astro.props;
 
-// Convertimos en array si es un string
 const breadcrumbs = Array.isArray(pagina) ? pagina : [pagina];
 ---
 
-<div class="pl-6 mb-3 pt-12">
+<div class="pl-2 md:pl-6 mb-3 pt-14 md:pt-12">
   <nav class="flex" aria-label="Breadcrumb">
     <ol
       class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"

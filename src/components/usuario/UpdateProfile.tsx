@@ -1,11 +1,12 @@
 import { useEffect, useState } from "react";
 import Cookies from "js-cookie";
 import type { DatosUsurio } from "@/types/types";
-import { Formik, Field, ErrorMessage,Form } from "formik";
+import { Formik, Field, ErrorMessage, Form } from "formik";
 import { Toast } from "../Toast";
 import type { DataUserUpdate } from "@/types/types";
 import { updateProfile } from "@/services/user";
 import { useToastStore } from "@/context/store.context";
+import { Spinner } from "../Spinner";
 
 const UpdateProfile = () => {
   const [data, setData] = useState<DatosUsurio | null>(null);
@@ -21,7 +22,6 @@ const UpdateProfile = () => {
     }
   }, []);
 
-
   const handleSubmit = async (
     values: DataUserUpdate,
     { resetForm }: { resetForm: () => void }
@@ -29,10 +29,12 @@ const UpdateProfile = () => {
     setIsLoading(true);
     if (data && data.email) {
       const response = await updateProfile(data.email, values);
-      const { status } = response;
+      console.log("datos de cliente--->", response);
+      const { status, data: datos } = response;
       if (response.status === 201) {
         resetForm();
-        Cookies.set("user_sesion", JSON.stringify(response.data.user), {
+        setIsLoading(false);
+        Cookies.set("user_sesion", JSON.stringify(datos.usuario), {
           expires: 1,
           sameSite: "lax",
           secure: true,
@@ -40,18 +42,24 @@ const UpdateProfile = () => {
         showToast("Datos actulizados con exito", "success");
       } else if (status === 404 || status === 400) {
         showToast(
-          "No su pudo actulziar la informacion, intanta de nuevo",
+          "No su pudo actualizar la informacion, intanta de nuevo",
           "error"
         );
+        setIsLoading(false);
       } else if (status === 500) {
         showToast(
-          "No su pudo actulziar la informacion, intanta mas tarde",
+          "No su pudo actualizar la informacion, intanta mas tarde",
           "error"
         );
+        setIsLoading(false);
       }
+    }else{
+      setIsLoading(false)
+      showToast("Algo salio mal con tu sesion, por favor intenta inicar sesion nuevamente", "error")
     }
   };
 
+  
   return (
     <>
       <Toast />
@@ -119,7 +127,11 @@ const UpdateProfile = () => {
               className="text-white bg-blue-700 w-full hover:bg-blue-800 duration-200 focus:ring-4 mb-3 focus:outline-none focus:ring-blue-300 font-medium rounded-lg text-sm px-5 py-2.5 text-center dark:bg-blue-600 dark:hover:bg-blue-700 dark:focus:ring-blue-800"
             >
               <div className="spinner-container">
-                {isLoading ? "Actualizando..." : "Actualizar datos"}
+                {isLoading ? (
+                  <Spinner className="size-4 inline-block text-center" />
+                ) : (
+                  "Actualizar datos"
+                )}
               </div>
             </button>
           </Form>

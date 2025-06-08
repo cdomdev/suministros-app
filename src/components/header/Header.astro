@@ -1,9 +1,8 @@
 ---
-// Header.astro
 import SubMenu from "./SubMenu.astro";
 import Buscador from "../buscador/Buscador";
 import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
-import Offcanvas from "./sidebarMobile/Offcanvas.astro";
+import Offcanvas from "./Offcanvas.astro";
 import { Locations } from "@/components/Locations";
 import NavigateProfile from "@/components/NavigateProfile";
 import LoginAndShoping from "@/components/LoginAndShoping";
@@ -14,7 +13,6 @@ const isAuthenticated = authToken !== undefined;
 
 <nav class="border-gray-200 dark:bg-gray-900 dark:border-gray-700 w-full fixed top-0 z-10 bg-white">
   <div class="flex flex-wrap items-center justify-between py-3 px-3 relative">
-    <!-- Botón hamburguesa (abre el sidebar) -->
     <button
       onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')"
       type="button"
@@ -28,18 +26,15 @@ const isAuthenticated = authToken !== undefined;
       </svg>
     </button>
 
-    <!-- Logo -->
     <a href="/" class="flex items-center space-x-3 rtl:space-x-reverse">
       <img src="/logo.webp" class="h-7 md:h-11" alt="Logo" />
     </a>
 
-    <!-- Buscador desktop -->
     <div class="hidden md:block w-[37%]">
       <Buscador client:visible />
     </div>
 
-    <!-- Iconos y accesos -->
-    <div class="flex gap-1 md:gap-4">
+    <div class="flex gap-1 md:gap-2">
       <div class="flex items-end md:hidden">
         <Locations client:only />
       </div>
@@ -48,7 +43,6 @@ const isAuthenticated = authToken !== undefined;
       <CarritoPageNav client:visible />
     </div>
 
-    <!-- Offcanvas insertado (lateral mobile) -->
     <Offcanvas />
   </div>
 

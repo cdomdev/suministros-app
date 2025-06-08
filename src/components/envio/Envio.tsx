@@ -79,7 +79,7 @@ export default function Envio() {
         >
           {(formik) => (
             <>
-              <p className="mb-2 font-normal text-sm md:text-base">
+              <p className="mb-2 font-normal text-sm md:text-base text-left py-2">
                 Ingrese los datos en el formulario para el envio de su compra,
                 los datos marcados con (<strong className="text-base">∗</strong>
                 ) son obligatorios

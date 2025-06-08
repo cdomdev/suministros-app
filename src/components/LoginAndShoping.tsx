@@ -30,7 +30,6 @@ export default function LoginAndShoping({ isAuthenticated
                             )
                         }
 
-
                         <Modal isOpen={show} onClose={() => setShow(false)}>
                             <label
                                 htmlFor="email"
@@ -40,9 +39,9 @@ export default function LoginAndShoping({ isAuthenticated
                             </label>
                             <GoogleAuth setShow={setShow} />
                             <div className="flex items-center justify-center mb-2 gap-2">
-                                <hr className="border-2 border-black w-[50%]" />
+                                <hr className="border border-gray-300 w-[50%]" />
                                 <span className="block text-sm font-semibold">o</span>
-                                <hr className="border-2 border-black w-[50%]" />
+                                <hr className="border border-gray-300 w-[50%]" />
                             </div>
                             <InitSesion setShow={setShow} />
                         </Modal>

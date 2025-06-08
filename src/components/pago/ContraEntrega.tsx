@@ -20,9 +20,7 @@ export const ContraEntrega = () => {
   useEffect(() => {
     let productosLocal = JSON.parse(localStorage.getItem("carrito") || "[]");
     let datosEnvioLocal = JSON.parse(Cookies.get("dataUserForBuy") || "");
-    let datosUsuarioLogLocal = JSON.parse(
-      Cookies.get("user_sesion") || "{}"
-    );
+    let datosUsuarioLogLocal = JSON.parse(Cookies.get("user_sesion") || "{}");
 
     setDatosEnvio(datosEnvioLocal);
     setDatosusuarioLog(datosUsuarioLogLocal);
@@ -95,16 +93,16 @@ export const ContraEntrega = () => {
           <path d="M12 16v.01" />
         </svg>
       </p>
-      <ul className="text-sm mb-4 pl-6">
-        <li className="mb-2 list-disc  text-balance">
+      <ul className="text-sm mb-4 pl-6 text-left list-decimal text-pretty">
+        <li className="mb-2">
           En caso de no poder recibir la compra, deje a alguien encargado para
           que la reciba por usted.
         </li>
-        <li className="mb-2 list-disc text-balance">
+        <li className="mb-2">
           Al momento de recibir su compra tenga en cuanta que el pago debe ser
           en efectivo.
         </li>
-        <li className=" list-disc text-balance">
+        <li>
           Si tiene dudas sobre el metodo de pago seleccionado, antes de
           continuar lo invitamos a consultar la pagina de{" "}
           <a href="/medios-de-pago" className="text-blue-500 font-semibold">

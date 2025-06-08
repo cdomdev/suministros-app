@@ -1,8 +1,9 @@
 import { type DataForgotPassword } from "@/types/types";
+import Cookies from "js-cookie";
 
 const SuccessRequest = ({ email }: DataForgotPassword) => {
   const removeData = () => {
-    localStorage.removeItem("isSuccessSend");
+    Cookies.remove("isSuccessSend");
     window.location.href = "/";
   };
   return (

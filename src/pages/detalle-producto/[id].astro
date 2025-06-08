@@ -7,17 +7,24 @@ import { formateValue } from "@/utils/formatearValor";
 import { BtnAddCar } from "@/components/carritoDecompras/BtnAddCar";
 import MasVendidos from "@/components/MasVendidos.astro";
 import type {  Producto } from "@/types/types";
+import BreadCrums from "@/components/BreadCrums.astro";
 const { id } = Astro.params;
 let producto: Producto | null = null ;
 if (id) {
     producto = await getProductoBy(id);
 }
-
+let cat = ""
+let sub = ""
+if(producto){
+   cat = producto.categoria.nombre
+    sub =  producto.subcategoria.nombre
+}
 ---
 
 <Layout title=`${producto?.titulo}`>
+    <BreadCrums pagina={["productos", cat, sub  ]}/>
     <section class="min-h-dvh">
-        <article class="pt-20 max-w-[95vw] m-auto mb-5">
+        <article class="pt-5 max-w-[95vw] m-auto mb-5">
             <div class="flex flex-col gap-3 md:grid md:grid-cols-col-cust-2">
                 <div class="flex flex-col items-center justify-center gap-3 ">
                     <div class="flex justify-end w-full pr-20">

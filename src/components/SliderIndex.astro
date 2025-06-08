@@ -22,103 +22,15 @@ const itemsSlider = [
     text: "Acompañamiento y asesoria en tuscompras",
     icon: User,
   },
-   {
-    text: "Ofertas y descuentos en todos los productos",
-    icon: OfertIcon,
-  },
-  {
-    text: "Envios a varios destinos nacionales",
-    icon: Truck2,
-  },
-  {
-    text: "Opciones de pago a travez de mercado pago",
-    icon: MercadoPagoIcon,
-  },
-  {
-    text: "Acompañamiento y asesoria en tuscompras",
-    icon: User,
-  },
-   {
-    text: "Ofertas y descuentos en todos los productos",
-    icon: OfertIcon,
-  },
-  {
-    text: "Envios a varios destinos nacionales",
-    icon: Truck2,
-  },
-  {
-    text: "Opciones de pago a travez de mercado pago",
-    icon: MercadoPagoIcon,
-  },
-  {
-    text: "Acompañamiento y asesoria en tuscompras",
-    icon: User,
-  },
-   {
-    text: "Ofertas y descuentos en todos los productos",
-    icon: OfertIcon,
-  },
-  {
-    text: "Envios a varios destinos nacionales",
-    icon: Truck2,
-  },
-  {
-    text: "Opciones de pago a travez de mercado pago",
-    icon: MercadoPagoIcon,
-  },
-  {
-    text: "Acompañamiento y asesoria en tuscompras",
-    icon: User,
-  },
-    {
-    text: "Ofertas y descuentos en todos los productos",
-    icon: OfertIcon,
-  },
-  {
-    text: "Envios a varios destinos nacionales",
-    icon: Truck2,
-  },
-  {
-    text: "Opciones de pago a travez de mercado pago",
-    icon: MercadoPagoIcon,
-  },
-  {
-    text: "Acompañamiento y asesoria en tuscompras",
-    icon: User,
-  },
-    {
-    text: "Ofertas y descuentos en todos los productos",
-    icon: OfertIcon,
-  },
-  {
-    text: "Envios a varios destinos nacionales",
-    icon: Truck2,
-  },
-  {
-    text: "Opciones de pago a travez de mercado pago",
-    icon: MercadoPagoIcon,
-  },
-  {
-    text: "Acompañamiento y asesoria en tuscompras",
-    icon: User,
-  },
-    {
-    text: "Ofertas y descuentos en todos los productos",
-    icon: OfertIcon,
-  },
-  {
-    text: "Envios a varios destinos nacionales",
-    icon: Truck2,
-  },
-  {
-    text: "Opciones de pago a travez de mercado pago",
-    icon: MercadoPagoIcon,
-  },
-  {
-    text: "Acompañamiento y asesoria en tuscompras",
-    icon: User,
-  },
-  
+];
+
+const duplicateItems = [
+  ...itemsSlider,
+  ...itemsSlider,
+  ...itemsSlider,
+  ...itemsSlider,
+  ...itemsSlider,
+  ...itemsSlider,
 ];
 ---
 
@@ -127,7 +39,7 @@ const itemsSlider = [
 >
   <div class="slide-track flex gap-4 mx-0 my-2">
     {
-      itemsSlider.map((item) => (
+      duplicateItems.map((item) => (
         <CardSlider icon={item.icon} text={item.text} />
       ))
     }

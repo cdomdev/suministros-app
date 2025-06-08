@@ -2,9 +2,19 @@
 import Back from "@/components/icons/Back.astro";
 import UsuarioLayout from "@/layouts/UsuarioLayout.astro";
 import UpdateProfile from "@/components/usuario/UpdateProfile";
+const cookies = Astro.cookies;
+const userSessionCookie = cookies.get("user_sesion");
+const userSessionString = userSessionCookie ? userSessionCookie.value : null;
+import type { DatosUsurio } from "@/types/types";
+let data: DatosUsurio | null = null;
+try {
+  data = userSessionString ? JSON.parse(userSessionString) : null;
+} catch (error) {
+  console.error("Error parsing cookie JSON:", error);
+}
 ---
 
-<UsuarioLayout>
+<UsuarioLayout userSesion={data}>
   <h1 class="font-semibold mt-7 md:mt-14 mb-10 text-lg pt-10">
     Actualizar datos
   </h1>

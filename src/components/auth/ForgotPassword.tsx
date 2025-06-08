@@ -6,6 +6,7 @@ import { sendRequestResettPassword } from "@/services/auth";
 import { useToastStore } from "@/context/store.context";
 import { Spinner } from "../Spinner";
 import { Toast } from "../Toast";
+import Cookies from "js-cookie";
 
 interface ValuesForgotPassword {
   email: string;
@@ -19,7 +20,8 @@ const ForgotPassword = () => {
   const { showToast } = useToastStore();
 
   useEffect(() => {
-    const dataSuccess = localStorage.getItem("isSuccessSend");
+    const dataSuccess = Cookies.get("isSuccessSend");
+
     if (dataSuccess) {
       let dataPase = JSON.parse(dataSuccess);
       setValue(dataPase);
@@ -38,7 +40,11 @@ const ForgotPassword = () => {
         "success"
       );
       setData(response.data);
-      localStorage.setItem("isSuccessSend", JSON.stringify(true));
+      Cookies.set("isSuccessSend", JSON.stringify(true), {
+        expires: 1,
+        sameSite: "lax",
+        secure: true,
+      });
     } else if (
       status === 400 ||
       status === 401 ||

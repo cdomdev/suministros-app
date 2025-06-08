@@ -1,7 +1,7 @@
 
 export const Person = () => {
     return (
-        <div className="flex flex-col items-center gap-1 md:gap-2 cursor-pointer">
+        <div className="flex flex-col items-center gap-1  cursor-pointer">
             <div
                 className="relative w-7 h-7 md:w-10 md:h-10 overflow-hidden bg-gray-100 rounded-full dark:bg-gray-600"
             >

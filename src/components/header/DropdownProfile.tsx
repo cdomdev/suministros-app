@@ -32,6 +32,17 @@ const DropdownProfile = () => {
     setDropdownOpen((prevState) => !prevState);
   };
 
+  const items = [
+    {
+      title: "Mi perfil",
+      hrer: "/usuario/perfil",
+    },
+    {
+      title: "Mis compras",
+      hrer: "/usuario/compras",
+    },
+  ];
+
   return (
     <div>
       <UserProfile toggleDropdown={toggleDropdown} />
@@ -45,37 +56,39 @@ const DropdownProfile = () => {
           <div className="font-semibold text-xs text-balance text-center">
             {data?.nombre}
           </div>
-          <div className="font-medium truncate text-xs text-gray-400">{data?.email || ""}</div>
+          <div className="font-medium truncate text-xs text-gray-400">
+            {data?.email || ""}
+          </div>
         </div>
-        <ul
-          className="text-xs md:text-sm text-gray-700 dark:text-gray-200"
-          aria-labelledby="avatarButton"
-        >
-          <li>
-            <a
-              href="/usuario/perfil"
-              className="block px-4 py-2 text-center hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white border-b"
+        {!data ? (
+          <p className="text-xs text-pretty text-gray-500">
+            Algo salio mal con tu sesion
+          </p>
+        ) : (
+          <>
+            <ul
+              className="text-xs md:text-sm text-gray-700 dark:text-gray-200"
+              aria-labelledby="avatarButton"
             >
-              Mi Perfil
-            </a>
-          </li>
-          <li>
-            <a
-              href="/usuario/compras"
-              className="block px-4 py-2 text-center hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white"
+              {items.map((item, i) => (
+                <li key={i}>
+                  <a
+                    href={item.hrer}
+                    className="block px-4 py-2 text-center hover:bg-gray-100 dark:hover:bg-gray-600 dark:hover:text-white border-b"
+                  >
+                    {item.title}
+                  </a>
+                </li>
+              ))}
+            </ul>
+            <button
+              onClick={() => logoutCookies()}
+              className="block text-xs md:text-sm text-gray-700 hover:bg-red-600 w-full duration-200 hover:text-white rounded-b-md py-2"
             >
-              Mis Compras
-            </a>
-          </li>
-        </ul>
-        <div>
-          <button
-            onClick={() => logoutCookies()}
-            className="block text-xs md:text-sm text-gray-700 hover:bg-red-600 w-full duration-200 hover:text-white rounded-b-md py-2"
-          >
-            Cerrar sesion
-          </button>
-        </div>
+              Cerrar sesion
+            </button>
+          </>
+        )}
       </div>
     </div>
   );
