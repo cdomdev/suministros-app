@@ -31,21 +31,21 @@ export default function NavigateProfile({ isAuthenticated }: { isAuthenticated: 
                         isOpen={show}
                         onClose={() => setShow(false)}>
 
-                        <h2 className="font-semibold text-center text-xl md:text-2xl">
+                        <h2 className="font-semibold text-center text-base md:text-lg">
                             Se requiere iniciar sesión
                         </h2>
-                        <h3 className="text-center text-sm md:text-base leading-5">
+                        <h3 className="text-center  text-sm leading-5">
                             Tienes que iniciar sesión para utilizar esta función.
                         </h3>
                         <hr className="my-2" />
-                        <p className="text-wrap text-xs md:text-sm mx-auto text-black">
+                        <p className="text-xs md:text-sm mx-auto text-black text-left text-pretty">
                             La seccion a la que va a acceder contiene información
                             personal, por lo que necesitamos su identidad para saber qué
                             información podemos proporcionarle. Por lo tanto, deberá
                             iniciar sesión rigistrarse si realmente desea acceder.
                         </p>
                         <div
-                            className="w-full flex flex-col mx-auto justify-center items-center gap-2 mt-3">
+                            className="w-full flex flex-col mx-auto justify-center items-center gap-3 mt-3">
                             <a href="/registro"
                                 className="text-white w-full inline-block text-center rounded-md py-2 bg-blue-600 hover:bg-blue-800 duration-200 text-xs md:text-sm"
                             >Quiero registrarme</a>

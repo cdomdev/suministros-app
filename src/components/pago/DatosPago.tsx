@@ -3,7 +3,7 @@ import { calcularCostoEnvio } from "@/utils/calcularCostoDeEnvio";
 import { calcularTotal } from "@/utils/calcularPago";
 import { formateValue } from "@/utils/formatearValor";
 import { useState, useEffect } from "react";
-// import MercadoPago from "@/components/pago/MercadoPago";
+import MercadoPago from "@/components/pago/MercadoPago";
 import { useUbicacion } from "@/hook/useUbicacion";
 import Cookies from "js-cookie";
 import OpcionesPago from "./OpcionPago";
@@ -90,7 +90,7 @@ const DetosPago = () => {
               </a>
               .
             </p>
-            {/* <MercadoPago /> */}
+            <MercadoPago />
             <OpcionesPago />
           </div>
         </div>

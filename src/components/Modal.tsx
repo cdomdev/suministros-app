@@ -27,10 +27,10 @@ export const Modal: React.FC<ModalProps> = ({
           <button
             onClick={onClose}
             type="button"
-            className="absolute top-1 right-2 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 inline-flex justify-center items-center cursor-pointer"
+            className="absolute top-1 right-2 text-gray-400 bg-transparent hover:bg-gray-200 hover:text-gray-900 rounded-lg text-sm w-8 h-8 py-2 inline-flex justify-center items-center cursor-pointer"
           >
             <svg
-              className="w-3 h-3"
+              className="size-4"
               aria-hidden="true"
               xmlns="http://www.w3.org/2000/svg"
               fill="none"

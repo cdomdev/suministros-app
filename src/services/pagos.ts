@@ -15,7 +15,7 @@ export const mercadoPago = async ({
   datos,
   valorDeEnvio,
 }: propMercadopago) => {
-  const response = query(`/finish/`, "POST", {
+  const response = query(`/user/shoping-finish-mercadopago`, "POST", {
     datos,
     valorDeEnvio,
     productos,

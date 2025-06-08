@@ -3,19 +3,19 @@ import IconHomeMigajas from "./icons/IconHomeMigajas.astro";
 
 interface Props {
   pagina: string | string[];
+  class?: string
 }
 
-const { pagina } = Astro.props;
+const { pagina, class: className} = Astro.props;
 
 const breadcrumbs = Array.isArray(pagina) ? pagina : [pagina];
 ---
 
-<div class="pl-2 md:pl-6 mb-3 pt-14 md:pt-12">
+<div class={`${className} mb-3 pt-14 md:pt-12`}>
   <nav class="flex" aria-label="Breadcrumb">
     <ol
       class="inline-flex items-center space-x-1 md:space-x-2 rtl:space-x-reverse"
     >
-      <!-- Home siempre presente -->
       <li class="inline-flex items-center">
         <a
           href="/"
@@ -26,7 +26,6 @@ const breadcrumbs = Array.isArray(pagina) ? pagina : [pagina];
         </a>
       </li>
 
-      <!-- Iterar sobre las páginas -->
       {
         breadcrumbs.slice(1).map((name, index) => {
           const isLast = index === breadcrumbs.length - 2;

@@ -1,16 +1,17 @@
 import { useEffect, useState } from "react";
 import { initMercadoPago } from "@mercadopago/sdk-react";
-import type { Producto, DatosUsurio,  } from "@/types/types";
+import type { Producto, DatosUsurio } from "@/types/types";
 import { calcularTotal } from "@/utils";
 import { calcularCostoEnvio } from "@/utils";
 import { mercadoPago } from "@/services/pagos";
 import { Toast } from "../Toast";
 import { useToastStore } from "@/context/store.context";
 import { useUbicacion } from "@/hook/useUbicacion";
+import Cookies from "js-cookie";
+import { Spinner } from "../Spinner";
 
 const clientMercadopago = import.meta.env.PUBLIC_CLIENT_MERCADOPAGO;
 const rutaUser = import.meta.env.PUBLIC_URL_CLIENT_MERCADOPAGO;
-
 
 const MercadoPago = () => {
   const [isLoading, setIsLoading] = useState<boolean>(false);
@@ -18,7 +19,7 @@ const MercadoPago = () => {
   const [datosUsuarioLog, setDatosusuarioLog] = useState<DatosUsurio>();
   const [datosProductos, setdatosproductos] = useState<Producto[]>([]);
 
-  const {departamento} = useUbicacion()
+  const { departamento } = useUbicacion();
   const { showToast } = useToastStore();
 
   initMercadoPago(clientMercadopago, {
@@ -27,15 +28,8 @@ const MercadoPago = () => {
 
   useEffect(() => {
     let productosLocal = JSON.parse(localStorage.getItem("carrito") || "[]");
-    let datosEnvioLocal = JSON.parse(
-      localStorage.getItem("dataUserForBuy") || ""
-    );
-    let datosUsuarioLogLocal = JSON.parse(
-      sessionStorage.getItem("infoProfileUSer") || "{}"
-    );
-    let dataLocation = JSON.parse(
-      sessionStorage.getItem("referenceDataLocation") || ""
-    );
+    let datosEnvioLocal = JSON.parse(Cookies.get("dataUserForBuy") || "");
+    let datosUsuarioLogLocal = JSON.parse(Cookies.get("user_sesion") || "{}");
     setDatosEnvio(datosEnvioLocal);
     setDatosusuarioLog(datosUsuarioLogLocal);
     setdatosproductos(productosLocal);
@@ -45,9 +39,14 @@ const MercadoPago = () => {
   const subtotal = calcularTotal(datosProductos);
   const envio = calcularCostoEnvio({ departamento, subtotal });
 
+  console.log(datosUsuario);
+
   const createOrder = async () => {
     if (!datosProductos || !datosEnvio || datosProductos.length === 0) {
-      showToast("Faltan algunos datos, verifica eh intentalo de nuevo", "error");
+      showToast(
+        "Faltan algunos datos, verifica eh intentalo de nuevo",
+        "error"
+      );
       return;
     }
 
@@ -61,14 +60,17 @@ const MercadoPago = () => {
     });
     const { status } = res;
     if (status === 201) {
+      setIsLoading(false);
       const { init_point } = res.data;
       window.location.href = init_point;
     } else if (status === 400 || status === 404) {
+      setIsLoading(false);
       showToast(
         `Algo salio mal al procesar tu compra, intentalo de nuevo`,
         "error"
       );
     } else if (status === 500) {
+      setIsLoading(false);
       showToast(
         `Algo salio mal al procesar tu compra, intentalo mas tarde`,
         "error"
@@ -86,16 +88,17 @@ const MercadoPago = () => {
           {isLoading ? (
             <>
               <img
-                src="../../../mercadopago.webp"
+                src="mercadopago.webp"
                 alt="logo de mercadopago"
                 className="size-7 shrink-0"
               />
-              Estamos procesando tu pago...
+              <p className="text-xs">Procesando</p>
+              <Spinner className="size-3" />
             </>
           ) : (
             <>
               <img
-                src="../../../mercadopago.webp"
+                src="mercadopago.webp"
                 alt="logo de mercadopago"
                 className="size-7"
               />

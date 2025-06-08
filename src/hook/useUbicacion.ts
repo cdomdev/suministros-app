@@ -1,6 +1,6 @@
 import { useEffect, useState } from "react";
 import { useLocationStore } from "@/context/locationStore";
-import locations from "@/content/locations.json";
+import locations from "@/content/locations/locations.json";
 import type { CiudadPorDepartamento } from "@/types/types";
 import Cookies from "js-cookie";
 

@@ -15,7 +15,7 @@ export const CardProductos: React.FC<Producto> = ({
   return (
     <a
       key={id}
-      href={`/detalle-producto/${id}`}
+      href={`/detalle-producto?id=${id}`}
       className="card-producto rounded-sm flex flex-col justify-between w-[10em] md:w-[16em] p-3 h-auto md:min-h-[25em] bg-white border hover:shadow-md duration-150"
     >
       <div className="flex w-full justify-between items-center mb-1">
