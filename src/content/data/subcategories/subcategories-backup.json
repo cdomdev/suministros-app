@@ -1,0 +1,54 @@
+{
+  "subcategorias": [
+    {
+      "id": "1604b2f7-cd83-4f39-bf10-ac57ba99bfea",
+      "nombre": "Pinturas",
+      "codigo": "pinturas"
+    },
+    {
+      "id": "2e05806d-4361-45fc-b849-5e740238db70",
+      "nombre": "Pisos ceramicos",
+      "codigo": "pisosceramicos"
+    },
+    {
+      "id": "48390ab7-0006-45c1-8ca4-a46e00574cc1",
+      "nombre": "Lavaderos",
+      "codigo": "lavaderos"
+    },
+    {
+      "id": "529686de-d938-459d-9925-5a3205c8da37",
+      "nombre": "Griferias",
+      "codigo": "griferias"
+    },
+    {
+      "id": "55f0d507-6dcb-4cbc-a918-13c70c534d5a",
+      "nombre": "Lavaplatos",
+      "codigo": "lavaplatos"
+    },
+    {
+      "id": "675df771-a656-402c-b2a0-1645c7088233",
+      "nombre": "Sanitarios",
+      "codigo": "sanitarios"
+    },
+    {
+      "id": "962181d8-01a3-4dcd-b2b2-8a72a184780d",
+      "nombre": "Paredes",
+      "codigo": "paredes"
+    },
+    {
+      "id": "a516aca8-c6eb-43c8-b85e-d5085c07a4cd",
+      "nombre": "Espejos",
+      "codigo": "espejos"
+    },
+    {
+      "id": "c236f9b2-25b9-45fc-9b2c-718b70ced87d",
+      "nombre": "Pegantes",
+      "codigo": "pegantes"
+    },
+    {
+      "id": "d20e2220-50f3-4788-b698-edae672d5dff",
+      "nombre": "Limpiadores",
+      "codigo": "limpiadores"
+    }
+  ]
+}

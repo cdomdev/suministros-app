@@ -1,0 +1,24 @@
+{
+  "categorias": [
+    {
+      "id": "47c6c04a-9599-4aca-a00d-c6859a835e46",
+      "nombre": "Baños",
+      "codigo": "baños"
+    },
+    {
+      "id": "5b30b9ca-697c-4133-9a28-52015b14f9cc",
+      "nombre": "Pisos y paredes",
+      "codigo": "pisosyparedes"
+    },
+    {
+      "id": "d5a05513-6254-4bfd-a1f4-78bc0c79aaec",
+      "nombre": "Cocinas",
+      "codigo": "cocinas"
+    },
+    {
+      "id": "d9145012-db9b-487a-8ad7-75b92a8389dc",
+      "nombre": "Construcción y remodelación",
+      "codigo": "construcciónyremodelación"
+    }
+  ]
+}

@@ -1,0 +1,234 @@
+[
+  {
+    "productos": [
+      {
+        "id": "35c3d792-8951-417a-ab1e-fe1304f700b0",
+        "titulo": "Lavaplatos De Sobreponer Bracciano Niquel 80x50x22",
+        "marca": "lecco",
+        "precio": "1599900.00",
+        "cantidad": 1,
+        "descripcion": "Lavaplatos en acero inoxidable con acabado satinado mate para sobreponer encima del mesón de cocina. Su diseño moderno y funcional con sello antihumedad y sistema antiruido y una poceta profunda de 21,4 cm, lo convierten en un objeto decorativo y estético dentro de la cocina. Incluye dispensador de jabón, escurridor de cuchillos, escurridor de verduras, y tabla para picar que se acoplan al espacio interno del lavaplatos. Kit de instalación incluido: canastilla y sifón.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/n8eva64azcldobpmtmh5.webp",
+        "referencia": "LECCOL509",
+        "descuento": null,
+        "categoria": {
+          "id": "d5a05513-6254-4bfd-a1f4-78bc0c79aaec",
+          "nombre": "Cocinas"
+        },
+        "subcategoria": {
+          "id": "55f0d507-6dcb-4cbc-a918-13c70c534d5a",
+          "nombre": "Lavaplatos"
+        }
+      },
+      {
+        "id": "49f18ef9-bb5f-4eec-b42f-61e7421fd270",
+        "titulo": "Sanitario Two Piece Piacenza Blanco",
+        "marca": "lecco",
+        "precio": "379900.00",
+        "cantidad": 10,
+        "descripcion": "Sanitario de dos piezas (tanque y taza) de bajo consumo de agua y alto poder de descarga con un diseño moderno y un perfil alongado para mayor comodidad. Tiene consumo de agua de 4 lts en liquidos y 5.5 Lts en solidos. Promedio por descarga y una capacidad de evacuación de 400 gramos. Fabricado en porcelana sanitaria de fácil limpieza e incluye anillo de cera para su instalación.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/tte2iy6ibr0bgs2zqjx4.webp",
+        "referencia": "LECCOP269",
+        "descuento": null,
+        "categoria": {
+          "id": "47c6c04a-9599-4aca-a00d-c6859a835e46",
+          "nombre": "Baños"
+        },
+        "subcategoria": {
+          "id": "675df771-a656-402c-b2a0-1645c7088233",
+          "nombre": "Sanitarios"
+        }
+      },
+      {
+        "id": "6729f127-e18d-4f71-b206-0ea06067007d",
+        "titulo": "Mueble Para Lavadero 2 Puertas Blanco 58x57 Cm. No Incluye Lavadero",
+        "marca": "Nacional",
+        "precio": "411900.00",
+        "cantidad": 1,
+        "descripcion": "Mueble lavadero de alta calidad, resistente al peso, da un toque elegante y actual a su patio de ropas. Cuenta con dos (2) puertas de apertura horizontal, espacio inferior para objetos de aseo, manijas y patas metálicas. Ideal para combinar con el lavadero de 60x50 cm.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/mgpdasgzk0uolnu7g4e4.webp",
+        "referencia": "MB3721001",
+        "descuento": 12,
+        "categoria": {
+          "id": "d5a05513-6254-4bfd-a1f4-78bc0c79aaec",
+          "nombre": "Cocinas"
+        },
+        "subcategoria": {
+          "id": "48390ab7-0006-45c1-8ca4-a46e00574cc1",
+          "nombre": "Lavaderos"
+        }
+      },
+      {
+        "id": "6cc93f2c-4837-48f6-ab96-8f569baacbc7",
+        "titulo": "Pared Toscana Greige Mate Rectificado 30x90 Cm",
+        "marca": "importado",
+        "precio": "111274.00",
+        "cantidad": 12,
+        "descripcion": "Pared en acabado mate, impresión digital, tipo cemento, inspirada en un concepto arquitectónico contemporáneo, urbano con un look industrial que aporta dinamismo y movimiento en el diseño. La impresión digital reproduce diferentes patrones y texturas con alto nivel de realismo. Los bordes rectificados dan una mayor precisión dimensional facilitando la instalación cercana entre las piezas dando una mayor sensación de amplitud.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/pdwjsrnmfpvqq6pwsjue.png",
+        "referencia": "HAL534573",
+        "descuento": null,
+        "categoria": {
+          "id": "5b30b9ca-697c-4133-9a28-52015b14f9cc",
+          "nombre": "Pisos y paredes"
+        },
+        "subcategoria": {
+          "id": "962181d8-01a3-4dcd-b2b2-8a72a184780d",
+          "nombre": "Paredes"
+        }
+      },
+      {
+        "id": "7b1ce0ed-b23e-45ec-97d7-0adc356aa920",
+        "titulo": "Mueble Para Lavadero Mitte 2 Puertas 60x46 Cm",
+        "marca": "Nacional",
+        "precio": "71990.00",
+        "cantidad": 1,
+        "descripcion": "Mueble lavadero de alta calidad, resistente al peso, da un toque elegante y actual a su patio de ropas. Cuenta con dos (2) puertas de apertura horizontal, espacio inferior para objetos de aseo, manijas y patas metálicas. Ideal para combinar con el lavadero de 60x46 cm.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/wbdwddcpwdcmh3fegbtr.webp",
+        "referencia": "MB3721021",
+        "descuento": 9,
+        "categoria": {
+          "id": "d5a05513-6254-4bfd-a1f4-78bc0c79aaec",
+          "nombre": "Cocinas"
+        },
+        "subcategoria": {
+          "id": "48390ab7-0006-45c1-8ca4-a46e00574cc1",
+          "nombre": "Lavaderos"
+        }
+      },
+      {
+        "id": "a72e8d2e-c420-420d-aa62-46361674bab3",
+        "titulo": "Piso Skyhard Sand 60x60 Cm T4 Cj x 2.16m²",
+        "marca": "importado",
+        "precio": "40900.00",
+        "cantidad": 10,
+        "descripcion": "Piso skyhard sand 60x60 t4 caja x 2.16m² v2",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/xw6rvrvhfojsfe7lcmls.png",
+        "referencia": "POR533518",
+        "descuento": null,
+        "categoria": {
+          "id": "5b30b9ca-697c-4133-9a28-52015b14f9cc",
+          "nombre": "Pisos y paredes"
+        },
+        "subcategoria": {
+          "id": "2e05806d-4361-45fc-b849-5e740238db70",
+          "nombre": "Pisos ceramicos"
+        }
+      },
+      {
+        "id": "b845ebb6-ae19-4ae4-ad74-5e3889ab55d7",
+        "titulo": "Sanitario One-piece Alpes Blanco Descarga 800 Gramos",
+        "marca": "lecco",
+        "precio": "899900.00",
+        "cantidad": 10,
+        "descripcion": "Sanitario one piece con sifón oculto de bajo consumo de agua y alto poder de descarga con diseño compacto y contemporáneo. Tiene un bajo consumo de agua de 4 lts promedio por descarga y una capacidad de evacuación de 800 gramos. Cuenta con asiento de cierre suave para mayor comodidad y sifón esmaltado evitando la devolución de olores y posibles taponamientos. Fabricado en porcelana sanitaria de fácil limpieza e incluye anillo de cera para su instalación.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/fqgap68a9xjg3cvob1t6.webp",
+        "referencia": "LECCOP151",
+        "descuento": null,
+        "categoria": {
+          "id": "47c6c04a-9599-4aca-a00d-c6859a835e46",
+          "nombre": "Baños"
+        },
+        "subcategoria": {
+          "id": "675df771-a656-402c-b2a0-1645c7088233",
+          "nombre": "Sanitarios"
+        }
+      },
+      {
+        "id": "b957c444-d9d0-44c3-ae8e-366f23b97455",
+        "titulo": "Piso Kendal Dark 60 x 60 T4 Cj x 2.16m² V2",
+        "marca": "importado",
+        "precio": "41900.00",
+        "cantidad": 10,
+        "descripcion": "Piso kendal dark 60 x 60 t4 caja x 2.16m²v2",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/rcw6e4sylaflxztpvlcr.png",
+        "referencia": " POR533522",
+        "descuento": 7,
+        "categoria": {
+          "id": "5b30b9ca-697c-4133-9a28-52015b14f9cc",
+          "nombre": "Pisos y paredes"
+        },
+        "subcategoria": {
+          "id": "2e05806d-4361-45fc-b849-5e740238db70",
+          "nombre": "Pisos ceramicos"
+        }
+      },
+      {
+        "id": "c9a77541-ac43-4486-902f-232a9fcf379a",
+        "titulo": "Pared Porc Vivaz Bl Matte Rect 58.4x58.4 Cm",
+        "marca": "importado",
+        "precio": "220830.00",
+        "cantidad": 4,
+        "descripcion": "Pared porcelanato en alto relieve, impresión digital y aspecto tridimensional en acabado mate. Tiene una decoración y un relieve que le otorga diferentes texturas y profundidad a cada pieza. Sus bordes rectificados permiten uniones casi imperceptibles entre las piezas que dan uniformidad al espacio donde se instale.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/mvvnxzjnqzbowudj8jhk.png",
+        "referencia": "CEU512166",
+        "descuento": null,
+        "categoria": {
+          "id": "5b30b9ca-697c-4133-9a28-52015b14f9cc",
+          "nombre": "Pisos y paredes"
+        },
+        "subcategoria": {
+          "id": "962181d8-01a3-4dcd-b2b2-8a72a184780d",
+          "nombre": "Paredes"
+        }
+      },
+      {
+        "id": "de6b859c-9c54-4dcf-b6d4-3aae912f049d",
+        "titulo": "Lavaplatos De Sobre Bajo Poner Scale Grafito 60x45x21.4 Cm",
+        "marca": "lecco",
+        "precio": "1299900.00",
+        "cantidad": 2,
+        "descripcion": "Lavaplatos en acero inoxidable con acabado grafito para sobre y bajo poner; encima o debajo del mesón de cocina. Su diseño moderno y funcional con sello antihumedad y sistema antiruido y una poceta profunda de 21,4 cm, lo convierten en un objeto decorativo y estético dentro de la cocina. Incluye dispensador de jabónescurridor de cuchillos, escurridor de verduras, y tabla para picar que se acoplan al espacio interno del lavaplatos.. Kit de instalación incluido: canastilla y sifón.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/vozt5fmb72ezcgrb7bdi.webp",
+        "referencia": "LECCOL518",
+        "descuento": null,
+        "categoria": {
+          "id": "d5a05513-6254-4bfd-a1f4-78bc0c79aaec",
+          "nombre": "Cocinas"
+        },
+        "subcategoria": {
+          "id": "55f0d507-6dcb-4cbc-a918-13c70c534d5a",
+          "nombre": "Lavaplatos"
+        }
+      },
+      {
+        "id": "f3d3d43e-42d9-4c5a-bfef-0b9290187dd8",
+        "titulo": "Espejo metálico cromado retráctil 360°",
+        "marca": "lecco",
+        "precio": "118930.00",
+        "cantidad": 1,
+        "descripcion": "Espejo metálico cromado retráctil con aumento y cuerpo giratorio 360° para mayor comodidad. Su sistema de fijación a pared y oculto aprovecha mejor el espacio y evita la acumulación de impurezas facilitando su limpieza.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/k3ak5njpqb99fbqon9wf.webp",
+        "referencia": "LECCOA565",
+        "descuento": null,
+        "categoria": {
+          "id": "47c6c04a-9599-4aca-a00d-c6859a835e46",
+          "nombre": "Baños"
+        },
+        "subcategoria": {
+          "id": "a516aca8-c6eb-43c8-b85e-d5085c07a4cd",
+          "nombre": "Espejos"
+        }
+      },
+      {
+        "id": "f60de167-f191-4c1c-8c04-97c3204e1626",
+        "titulo": "Espejo Sidon Gabinete Formica Roble Claro 80x55 Cm.",
+        "marca": "nacional",
+        "precio": "634900.00",
+        "cantidad": 10,
+        "descripcion": "Espejo gabinete en fórmica de 80x55. Un elemento práctico e ideal para decorar tu baño y al mismo tiempo almacenar objetos.",
+        "image": "https://res.cloudinary.com/dd7gtmrax/image/upload/f_webp,q_auto,w_300,h_300,c_fill/ras3zvtjcuxhq3gbjbmv.webp",
+        "referencia": "MB3806012",
+        "descuento": null,
+        "categoria": {
+          "id": "47c6c04a-9599-4aca-a00d-c6859a835e46",
+          "nombre": "Baños"
+        },
+        "subcategoria": {
+          "id": "a516aca8-c6eb-43c8-b85e-d5085c07a4cd",
+          "nombre": "Espejos"
+        }
+      }
+    ]
+  }
+]
