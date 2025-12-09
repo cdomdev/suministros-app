@@ -30,19 +30,14 @@ try {
       class="flex flex-wrap justify-center md:justify-start gap-x-3 md:gap-x-8 gap-y-4 py-4 w-full"
     >
       {
-        ofertas && ofertas.productos.length > 0 ? (
-          ofertas.productos.map((producto) => (
-            <CardProductos
-              id={producto.id}
-              image={producto.image}
-              precio={producto.precio}
-              referencia={producto.referencia}
-              titulo={producto.titulo}
-              descuento={producto.descuento}
-              marca={producto.marca}
-              categoria={producto.subcategoria}
-            />
-          ))
+        !ofertas ? (
+          <div class="flex w-full flex-col items-center justify-center text-center">
+            <p class="text-gray-500 text-base my-10">
+              No hay ofertas disponibles
+            </p>
+          </div>
+        ) : ofertas && ofertas.productos.length > 0 ? (
+          ofertas.productos.map((producto) => <CardProductos {...producto} />)
         ) : (
           <div class="flex w-full flex-col items-center justify-center text-center">
             <Spiner />

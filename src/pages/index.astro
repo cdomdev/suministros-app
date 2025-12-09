@@ -26,11 +26,11 @@ const items = [
 
 <Layout title="Suministros">
   <Carrusel />
-  <section class="flex flex-col gap-4 my-2">
+  <section class="flex flex-col gap-4 my-2 mb-10">
     <SliderIndex />
   </section>
-  <ContainerSecctions>
-    <h2 class="text-lg text-pretty px-2 md:px-0 md:text-xl font-bold mb-2">
+  <ContainerSecctions class="mb-5">
+    <h2 class="text-lg text-pretty px-2 md:text-xl font-bold mb-2">
       Haz de tu hogar o negocio un espacio único
     </h2>
     <p class="text-gray-600 text-sm md:text-base px-2 text-pretty leading-1">
@@ -40,24 +40,24 @@ const items = [
     </p>
   </ContainerSecctions>
 
-  <section class="mt-3">
-    <div class="text-center mb-6">
-      <h3 class="text-lg md:text-xl font-semibold">Productos más vendidos</h3>
-    </div>
+  <ContainerSecctions class="px-2">
+    <h2 class="text-sm md:text-base font-semibold">Productos más vendidos</h2>
     <MasVendidos />
-  </section>
+  </ContainerSecctions>
 
-  <section class="py-10 bg-white">
-    <div class="text-center mb-6">
-      <h3 class="text-lg md:text-xl font-semibold">Categorías</h3>
-    </div>
+  <ContainerSecctions class="py-10 bg-white">
+    <h2 class="text-sm md:text-base font-semibold  mb-10">Categorías</h2>
     <div class="flex flex-col md:flex-row gap-6 max-w-6xl mx-auto px-4">
       {
         items.map((item) => (
           <a href={item.href}>
             <div class="rounded-lg overflow-hidden shadow-md hover:shadow-sm duration-200 transition cursor-pointer bg-red-200 md:min-w-[250px]">
-              <img src={item.img} class="w-full h-32 object-cover" alt="image-category-reference" />
-              <div class="text-center py-2 bg-gray-100 font-semibold text-xm md:text-base">
+              <img
+                src={item.img}
+                class="w-full h-32 object-cover"
+                alt="image-category-reference"
+              />
+              <div class="text-center py-2 bg-gray-100 font-semibold text-sm md:text-base">
                 {item.text}
               </div>
             </div>
@@ -65,9 +65,9 @@ const items = [
         ))
       }
     </div>
-  </section>
+  </ContainerSecctions>
 
-  <section class="bg-gray-50 py-10">
+  <ContainerSecctions class="bg-gray-50 py-10">
     <div
       class="flex flex-col md:flex-row items-center justify-center gap-12 text-center max-w-4xl mx-auto"
     >
@@ -86,5 +86,5 @@ const items = [
         <p class="text-xs text-gray-500">Recibe tus compras donde estés</p>
       </div>
     </div>
-  </section>
+  </ContainerSecctions>
 </Layout>

@@ -2,7 +2,7 @@ import { useStepsStore } from "@/context/steps.context";
 import { useEffect, useState } from "react";
 import type { Producto } from "@/types/types";
 import { eventEmitter } from "@/events/carritoChanged";
-import LoginAndShoping from "../LoginAndShoping";
+import LoginAndShoping from "../header/LoginAndShoping";
 
 export default function VlidatedAtuhCarrito({
   isAuthenticated,

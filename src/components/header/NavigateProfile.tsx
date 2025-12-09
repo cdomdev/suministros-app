@@ -1,6 +1,6 @@
 import { Modal } from "@/components/Modal";
 import { useState } from "react";
-import { IconModalIF } from "./icons/IconModalIF";
+import { IconModalIF } from "../icons/IconModalIF";
 
 export default function NavigateProfile({ isAuthenticated }: { isAuthenticated: boolean }) {
     const [show, setShow] = useState<boolean>(false);

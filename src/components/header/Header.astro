@@ -1,17 +1,19 @@
 ---
 import SubMenu from "./SubMenu.astro";
 import Buscador from "../buscador/Buscador";
-import CarritoPageNav from "../carritoDecompras/CarritoPageNav";
+import CarritoPageNav from "./CarritoPageNav";
 import Offcanvas from "./Offcanvas.astro";
 import { Locations } from "@/components/Locations";
-import NavigateProfile from "@/components/NavigateProfile";
-import LoginAndShoping from "@/components/LoginAndShoping";
+import NavigateProfile from "./NavigateProfile";
+import LoginAndShoping from "./LoginAndShoping";
 const cookies = Astro.cookies;
 const authToken = cookies.get("access_token");
 const isAuthenticated = authToken !== undefined;
 ---
 
-<nav class="border-gray-200 dark:bg-gray-900 dark:border-gray-700 w-full fixed top-0 z-10 bg-white">
+<nav
+  class="border-gray-200 dark:bg-gray-900 dark:border-gray-700 w-full fixed top-0 z-10 bg-white"
+>
   <div class="flex flex-wrap items-center justify-between py-3 px-3 relative">
     <button
       onclick="document.getElementById('sidebar').classList.toggle('-translate-x-full')"
@@ -21,8 +23,19 @@ const isAuthenticated = authToken !== undefined;
       aria-expanded="false"
     >
       <span class="sr-only">Open main menu</span>
-      <svg class="w-5 h-5" aria-hidden="true" xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 17 14">
-        <path stroke="currentColor" stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M1 1h15M1 7h15M1 13h15"/>
+      <svg
+        class="w-5 h-5"
+        aria-hidden="true"
+        xmlns="http://www.w3.org/2000/svg"
+        fill="none"
+        viewBox="0 0 17 14"
+      >
+        <path
+          stroke="currentColor"
+          stroke-linecap="round"
+          stroke-linejoin="round"
+          stroke-width="2"
+          d="M1 1h15M1 7h15M1 13h15"></path>
       </svg>
     </button>
 
@@ -39,7 +52,11 @@ const isAuthenticated = authToken !== undefined;
         <Locations client:only />
       </div>
       <NavigateProfile isAuthenticated={isAuthenticated} client:only />
-      <LoginAndShoping isAuthenticated={isAuthenticated} isBtn={false} client:only />
+      <LoginAndShoping
+        isAuthenticated={isAuthenticated}
+        isBtn={false}
+        client:only
+      />
       <CarritoPageNav client:visible />
     </div>
 
@@ -48,7 +65,9 @@ const isAuthenticated = authToken !== undefined;
 
   <hr class="text-gray-500" />
 
-  <div class="py-1 md:py-2 w-full shadow-md lg:px-5 justify-between hidden md:flex submenu-items">
+  <div
+    class="py-1 md:py-2 w-full shadow-md lg:px-5 justify-between hidden md:flex submenu-items"
+  >
     <SubMenu />
   </div>
 </nav>

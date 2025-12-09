@@ -14,21 +14,20 @@ try {
 
 <div class="flex flex-wrap md:flex-row justify-center gap-4">
   {
-    masVendidos && masVendidos.productos.length > 0 ? (
-      masVendidos.productos.map((producto) => (
-        <CardProductos
-          id={producto.id}
-          image={producto.image}
-          precio={producto.precio}
-          referencia={producto.referencia}
-          titulo={producto.titulo}
-          descuento={producto.descuento}
-          marca={producto.marca}
-          categoria={producto.categoria}
-        />
-      ))
+    masVendidos ? (
+      masVendidos && masVendidos.productos.length > 0 ? (
+        masVendidos.productos.map((producto) => (
+          <CardProductos
+           {...producto}
+          />
+        ))
+      ) : (
+        <Spiner />
+      )
     ) : (
-      <Spiner />
+      <p class="text-center text-gray-500 text-sm my-5 ">
+        No hay productos en el inventario
+      </p>
     )
   }
 </div>

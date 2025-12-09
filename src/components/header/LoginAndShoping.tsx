@@ -1,9 +1,9 @@
 import { Modal } from "@/components/Modal"
 import { useState } from "react"
-import InitSesion from "./auth/InitSesion";
-import { GoogleAuth } from "./auth/GoogleAuth";
-import DropdownProfile from "./header/DropdownProfile";
-import { Person } from "./icons/Person";
+import InitSesion from "../auth/InitSesion";
+import { GoogleAuth } from "../auth/GoogleAuth";
+import DropdownProfile from "./DropdownProfile";
+import { Person } from "../icons/Person";
 
 interface AuthProps {
     isAuthenticated?: boolean;
