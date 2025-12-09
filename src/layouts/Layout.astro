@@ -4,8 +4,7 @@ import Footer from "../components/Footer.astro";
 import BtnWhatsApp from "@/components/BtnWhatsApp.astro";
 const { title } = Astro.props;
 import "@/styles/globals.css";
-
-import ViewTransitions from "astro/components/ViewTransitions.astro";
+import { ClientRouter } from "astro:transitions";
 ---
 
 <!doctype html>
@@ -43,7 +42,7 @@ import ViewTransitions from "astro/components/ViewTransitions.astro";
     <link rel="icon" type="image/svg+xml" href="/favicon.ico" />
     <meta name="generator" content={Astro.generator} />
     <title>{title}</title>
-    <ViewTransitions />
+    <ClientRouter />
   </head>
   <body>
     <Header />
