@@ -1,7 +1,7 @@
 import { Modal } from "@/components/Modal"
 import { useState } from "react"
 import InitSesion from "../auth/InitSesion";
-import { GoogleAuth } from "../auth/GoogleAuth";
+// import { GoogleAuth } from "../auth/GoogleAuth";
 import DropdownProfile from "./DropdownProfile";
 import { Person } from "../icons/Person";
 
@@ -31,18 +31,18 @@ export default function LoginAndShoping({ isAuthenticated
                         }
 
                         <Modal isOpen={show} onClose={() => setShow(false)}>
-                            <label
+                            {/* <label
                                 htmlFor="email"
                                 className="block mb-2 text-sm font-medium text-center text-black dark:text-white"
                             >
                                 Inicia sesion con tu cuenta de google
-                            </label>
-                            <GoogleAuth setShow={setShow} />
-                            <div className="flex items-center justify-center mb-2 gap-2">
+                            </label> */}
+                            {/* <GoogleAuth setShow={setShow} /> */}
+                            {/* <div className="flex items-center justify-center mb-2 gap-2">
                                 <hr className="border border-gray-300 w-[50%]" />
                                 <span className="block text-sm font-semibold">o</span>
                                 <hr className="border border-gray-300 w-[50%]" />
-                            </div>
+                            </div> */}
                             <InitSesion setShow={setShow} />
                         </Modal>
                     </>

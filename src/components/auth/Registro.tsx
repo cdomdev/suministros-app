@@ -28,6 +28,9 @@ const Registro: React.FC = () => {
         `Tu registro fue exitoso, ya puedes iniciar sesion en suministros`,
         "success"
       );
+      setTimeout(() => {
+        window.location.href = "/";
+      }, 1500);
     } else if (
       status === 409 ||
       status == 404 ||
